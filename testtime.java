@@ -1,14 +1,14 @@
-
-import javax.swing.*;
+ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class testtime {
+public class TestTime {
     private JFrame fenetre;
     private JLabel imageLabel;
+    int res=0;
 
-    public testtime() {
-        fenetre = new JFrame("Affichage de photos");
+    public TestTime() {
+         fenetre = new JFrame("Affichage de photos");
         fenetre.setSize(800, 600);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -16,39 +16,45 @@ public class testtime {
         fenetre.add(imageLabel);
 
         // Créer un Timer pour afficher la première image pendant 1 seconde
-        Timer timer1 = new Timer(3000, new ActionListener() {
+        Timer timer1 = new Timer(500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                afficherImage("../project/caracteresIcone/SageIcone.png");
+                afficherImage("../project/caracteresIcone/positionTwoChevalier.png");
             }
         });
-        timer1.setRepeats(false); // Arrête le timer après une seule exécution
+        timer1.setRepeats(true); // Arrête le timer après une seule exécution
         timer1.start();
 
         // Créer un Timer pour afficher la deuxième image pendant 2 secondes
-        Timer timer2 = new Timer(2000, new ActionListener() {
+        Timer timer2 = new Timer(500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                afficherImage("../project/caracteresIcone/SorciereIcone.png");
+                afficherImage("../project/caracteresIcone/positionOneChevalier.png");
             }
         });
-        timer2.setRepeats(false); // Arrête le timer après une seule exécution
+        timer2.setRepeats(true); // Arrête le timer après une seule exécution
         timer2.setInitialDelay(1000); // Démarrer après la fin du premier timer
-        timer2.start();
-
+       timer2.start();
+    
         fenetre.setVisible(true);
+        res++;
+    
     }
+    
 
     private void afficherImage(String nomImage) {
         ImageIcon imageIcon = new ImageIcon(nomImage);
         imageLabel.setIcon(imageIcon);
     }
 
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new testtime();
+          
+                new TestTime();
+             
             }
         });
     }

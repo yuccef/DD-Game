@@ -7,6 +7,10 @@ public class BeginTheGame {
 
         // Création de la fenêtre Swing
         JFrame MapPicture = new JFrame("D&D");
+        MapPicture.setSize(800, 600);
+        MapPicture.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
 
         // Crée un panneau pour contenir les composants
         JPanel panneau = new JPanel() {
