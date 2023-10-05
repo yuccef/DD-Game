@@ -10,7 +10,7 @@ public class premiertest {
     public static void main(String[] args) { 
 
         // Création des fenetres swing
-        JFrame fenetre = new JFrame("D&D");
+         JFrame fenetre = new JFrame("D&D");
         
 
 
@@ -38,9 +38,9 @@ public class premiertest {
 
         // Les boutons utilisés dans la première page de jeu
       
-        JButton boutonPerso = new JButton("Choisir le Personnage");
+        JButton boutonPerso = new JButton("Commencer le jeu");
         JButton Rulesbouton = new JButton("Regles de jeux");
-        JButton boutonCommencer = new JButton("Commencer le jeu");
+        // JButton boutonCommencer = new JButton("Commencer le jeu");
 
 
 
@@ -48,7 +48,7 @@ public class premiertest {
 
         boutonPerso.setPreferredSize(new Dimension(200, 50));
         Rulesbouton.setPreferredSize(new Dimension(200, 50));
-        boutonCommencer.setPreferredSize(new Dimension(200, 50));
+        // boutonCommencer.setPreferredSize(new Dimension(200, 50));
 
 
         // Utilise un gestionnaire de mise en page pour positionner les boutons
@@ -56,16 +56,16 @@ public class premiertest {
 
         boutonPanel.add(Rulesbouton);
         boutonPanel.add(boutonPerso);
-        boutonPanel.add(boutonCommencer);
+        // boutonPanel.add(boutonCommencer);
 
-        BeginTheGame beginTheGame = new BeginTheGame();
-        boutonCommencer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                fenetre.setVisible(false);
-                beginTheGame.MapOfTheGame();
-            }
-        });
+        // BeginTheGame beginTheGame = new BeginTheGame();
+        // boutonCommencer.addActionListener(new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e) {
+        //         fenetre.setVisible(false);
+        //         beginTheGame.MapOfTheGame();
+        //     }
+        // });
 
         // Ajoute un écouteur d'événements au bouton "Règles de jeux"
         Rulesbouton.addActionListener(new ActionListener() {
@@ -77,7 +77,7 @@ public class premiertest {
 
         // Ajoute un écouteur d'événements au bouton "Choisir le Personnage"
         // Create an instance of CharacterButtonInterface
-        CaractereButtonInterface characterInterface = new CaractereButtonInterface();
+        CaractereButtonInterface characterInterface = new CaractereButtonInterface( );
 
         // Add an action listener to the "Choisir le Personnage" button
         boutonPerso.addActionListener(new ActionListener() {
