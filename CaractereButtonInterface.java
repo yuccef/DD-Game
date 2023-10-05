@@ -16,9 +16,9 @@ public class CaractereButtonInterface {
         JPanel mainPanel = new JPanel(new GridLayout(1, 3)); // 1 ligne, 3 colonnes
 
         // Créez les boutons personnalisés avec image au-dessus
-        CustomButton sorciereButton = new CustomButton("Sorcière", "SorciereIcone.png");
-        CustomButton chevalierButton = new CustomButton("Chevalier", "ChevalierIcone.png");
-        CustomButton maitreButton = new CustomButton("Maitre du jeu", "SageIcone.png");
+        CustomButton sorciereButton = new CustomButton("Sorcière", "../project/caracteresIcone/SorciereIcone.png");
+        CustomButton chevalierButton = new CustomButton("Chevalier", "../project/caracteresIcone/ChevalierIcone.png");
+        CustomButton maitreButton = new CustomButton("Maitre du jeu", "../project/caracteresIcone/SageIcone.png");
 
         // Ajoutez les boutons personnalisés au panneau principal
         mainPanel.add(sorciereButton);
