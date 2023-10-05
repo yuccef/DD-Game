@@ -2,12 +2,12 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TestTime {
+public class ChangeChevalierAttack {
     private JFrame fenetre;
     private JLabel imageLabel;
     int res=0;
 
-    public TestTime() {
+    public ChangeChevalierAttack() {
          fenetre = new JFrame("Affichage de photos");
         fenetre.setSize(800, 600);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -16,7 +16,7 @@ public class TestTime {
         fenetre.add(imageLabel);
 
         // Créer un Timer pour afficher la première image pendant 1 seconde
-        Timer timer1 = new Timer(500, new ActionListener() {
+        Timer timer1 = new Timer(800, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 afficherImage("../project/caracteresIcone/positionTwoChevalier.png");
@@ -26,7 +26,7 @@ public class TestTime {
         timer1.start();
 
         // Créer un Timer pour afficher la deuxième image pendant 2 secondes
-        Timer timer2 = new Timer(500, new ActionListener() {
+        Timer timer2 = new Timer(800, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 afficherImage("../project/caracteresIcone/positionOneChevalier.png");
@@ -53,7 +53,7 @@ public class TestTime {
             @Override
             public void run() {
           
-                new TestTime();
+                new ChangeChevalierAttack();
              
             }
         });
