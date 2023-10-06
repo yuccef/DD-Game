@@ -1,60 +1,62 @@
- import javax.swing.*;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ChangeChevalierAttack {
+    private int x = 0;
     private JFrame fenetre;
     private JLabel imageLabel;
-    int res=0;
+    private String[] imagePaths = {
+        "../project/KnightMvmnt/run1.png",
+        "../project/KnightMvmnt/run2.png",
+        "../project/KnightMvmnt/run3.png",
+        "../project/KnightMvmnt/run4.png",
+        "../project/KnightMvmnt/run5.png",
+        "../project/KnightMvmnt/run7.png",
+        "../project/KnightMvmnt/run8.png"
+    };
+    private int currentImageIndex = 0;
 
     public ChangeChevalierAttack() {
-         fenetre = new JFrame("Affichage de photos");
+        fenetre = new JFrame("Affichage de photos");
         fenetre.setSize(800, 600);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         imageLabel = new JLabel();
         fenetre.add(imageLabel);
 
-        // Créer un Timer pour afficher la première image pendant 1 seconde
-        Timer timer1 = new Timer(800, new ActionListener() {
+        // Create a Timer to switch images
+        Timer timer = new Timer(100, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                afficherImage("../project/caracteresIcone/positionTwoChevalier.png");
+                afficherImage(imagePaths[currentImageIndex]);
+                currentImageIndex = (currentImageIndex + 1) % imagePaths.length; // Loop through the images
             }
         });
-        timer1.setRepeats(true); // Arrête le timer après une seule exécution
-        timer1.start();
+        timer.start();
 
-        // Créer un Timer pour afficher la deuxième image pendant 2 secondes
-        Timer timer2 = new Timer(800, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherImage("../project/caracteresIcone/positionOneChevalier.png");
-            }
-        });
-        timer2.setRepeats(true); // Arrête le timer après une seule exécution
-        timer2.setInitialDelay(1000); // Démarrer après la fin du premier timer
-       timer2.start();
-    
+        // Déplacez cette ligne pour rendre la fenêtre visible après l'ajout des composants
         fenetre.setVisible(true);
-        res++;
-    
     }
-    
 
     private void afficherImage(String nomImage) {
         ImageIcon imageIcon = new ImageIcon(nomImage);
+        imageLabel.setBounds(x, 220, 100, 100); // Position et taille de l'image
         imageLabel.setIcon(imageIcon);
-    }
+        fenetre.repaint(); // Actualisez la fenêtre pour afficher l'image
 
+        // Incrémentez x pour déplacer l'image horizontalement
+        x += 5;
+        if (x > 1000) {
+            x = 0; // Réinitialisez x lorsque vous atteignez la fin
+        }
+    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-          
                 new ChangeChevalierAttack();
-             
             }
         });
     }

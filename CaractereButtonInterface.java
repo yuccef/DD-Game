@@ -10,6 +10,8 @@ public class CaractereButtonInterface {
 
     int choix = 0;  // 0 = rien, 1 = sorcière, 2 = chevalier, 3 = maitre du jeu
     BeginTheGame beginTheGame = new BeginTheGame();
+    LevelsOfGame Niveau = new LevelsOfGame();
+
     public void ShowCaracterButton() {
         fenetrePersonnages = new JFrame("Choisir un personnage");
         fenetrePersonnages.setLocationRelativeTo(null);
@@ -38,7 +40,7 @@ public class CaractereButtonInterface {
             public void actionPerformed(ActionEvent e) {
                 if (JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment choisir la sorcière ?") == JOptionPane.YES_OPTION) {
                     fenetrePersonnages.setVisible(false);
-                    beginTheGame.MapOfTheGame();
+                    Niveau.showLevelsButton();
                     choix = 1;
                 }
             }
@@ -49,7 +51,7 @@ public class CaractereButtonInterface {
             public void actionPerformed(ActionEvent e) {
                 if (JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment choisir le Chevalier ?") == JOptionPane.YES_OPTION) {
                     fenetrePersonnages.setVisible(false);
-                    beginTheGame.MapOfTheGame();
+                    Niveau.showLevelsButton();
                     choix = 2;
                 }
             }
@@ -60,7 +62,7 @@ public class CaractereButtonInterface {
             public void actionPerformed(ActionEvent e) {
                 if (JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment choisir le Maitre du jeu ?") == JOptionPane.YES_OPTION) {
                     fenetrePersonnages.setVisible(false);
-                    beginTheGame.MapOfTheGame();
+                    Niveau.showLevelsButton();
                     choix = 3;
                 }
             }

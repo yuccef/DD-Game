@@ -40,7 +40,7 @@ public class premiertest {
       
         JButton boutonPerso = new JButton("Commencer le jeu");
         JButton Rulesbouton = new JButton("Regles de jeux");
-        JButton Levelsbouton = new JButton("Niveau");
+        // JButton Levelsbouton = new JButton("Niveau");
 
         // JButton boutonCommencer = new JButton("Commencer le jeu");
 
@@ -50,7 +50,7 @@ public class premiertest {
 
         boutonPerso.setPreferredSize(new Dimension(200, 50));
         Rulesbouton.setPreferredSize(new Dimension(200, 50));
-        Levelsbouton.setPreferredSize(new Dimension(200, 50));
+        // Levelsbouton.setPreferredSize(new Dimension(200, 50));
 
 
         // Utilise un gestionnaire de mise en page pour positionner les boutons
@@ -58,7 +58,7 @@ public class premiertest {
 
         boutonPanel.add(Rulesbouton);
         boutonPanel.add(boutonPerso);
-        boutonPanel.add(Levelsbouton);
+        // boutonPanel.add(Levelsbouton);
         // boutonPanel.add(boutonCommencer);
 
         // BeginTheGame beginTheGame = new BeginTheGame();
@@ -90,14 +90,14 @@ public class premiertest {
             }
         });
 
-        LevelsOfGame niveauDeJeu = new LevelsOfGame() ;
+        // LevelsOfGame niveauDeJeu = new LevelsOfGame() ;
 
-        Levelsbouton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                niveauDeJeu.showLevelsButton(); // Show the character selection window
-            }
-        });
+        // Levelsbouton.addActionListener(new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e) {
+        //         niveauDeJeu.showLevelsButton(); // Show the character selection window
+        //     }
+        // });
 
         
 
