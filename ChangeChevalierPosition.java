@@ -29,9 +29,24 @@ public class ChangeChevalierPosition {
         "../project/KnightMvmnt/run77.png",
         "../project/KnightMvmnt/run88.png"
     };
-
+      public String[] imagePathsAttack = {
+        "../project/KnightMvmnt/KnightAttack1.png",
+        "../project/KnightMvmnt/KnightAttack2.png",
+         "../project/KnightMvmnt/KnightAttack3.png",
+       // "../project/KnightMvmnt/KnightAttack4.png",
+    };
+          public String[] imagePathsDefense = {
+        "../project/KnightMvmnt/KnightDefense.png",
+        "../project/KnightMvmnt/KnightDefense2.png",
+         "../project/KnightMvmnt/KnightDefense3.png",
+       // "../project/KnightMvmnt/KnightAttack4.png",
+    };
 
     private int currentImageIndexX = 0;
+    private int currentImageIndexAttack = 0;
+    private int currentImageIndexDefense = 0;
+
+
 
     private int y = 220;
 
@@ -50,13 +65,45 @@ public class ChangeChevalierPosition {
             public void actionPerformed(ActionEvent e) {
                  while(c<1){
                 afficherImage(imagePaths[currentImageIndexX]);
-                afficherImage(imagePathsInverse[currentImageIndexX]);
+                //afficherImage(imagePathsInverse[currentImageIndexX]);
+                //afficherImage(imagePathsAttackDefence[currentImageIndexX]);
+
                 c=c+1;
                  }
                 currentImageIndexX = (currentImageIndexX + 1) % imagePaths.length; // Loop through the images
             }
         });
         timer.start();
+
+          Timer timer1 = new Timer(50, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                 while(c<1){
+               // afficherImage(imagePaths[currentImageIndexX]);
+                //afficherImage(imagePathsInverse[currentImageIndexX]);
+                //afficherImage(imagePathsAttackDefence[currentImageIndexX]);
+
+                c=c+1;
+                 }
+                currentImageIndexAttack = (currentImageIndexAttack + 1) % imagePaths.length; // Loop through the images
+            }
+        });
+        timer1.start();
+
+                  Timer timer2 = new Timer(50, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                 while(c<1){
+               // afficherImage(imagePaths[currentImageIndexX]);
+                //afficherImage(imagePathsInverse[currentImageIndexX]);
+                //afficherImage(imagePathsAttackDefence[currentImageIndexX]);
+
+                c=c+1;
+                 }
+                currentImageIndexDefense = (currentImageIndexDefense + 1) % imagePaths.length; // Loop through the images
+            }
+        });
+        timer2.start();
 
         fenetre.setVisible(true);
         fenetre.addKeyListener(new KeyListener() {
@@ -81,7 +128,7 @@ public class ChangeChevalierPosition {
                     if (x <= 0) {
                         x = 0; // Réinitialisez x lorsque vous atteignez la fin
                     }
-                    afficherImage(imagePathsInverse[currentImageIndexX]); // Affichez l'image mise à jour
+                    afficherImage(imagePaths[currentImageIndexX]); // Affichez l'image mise à jour
                 }
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
                     // Code à exécuter lorsque la touche droite est enfoncée
@@ -99,6 +146,15 @@ public class ChangeChevalierPosition {
                     }
                     afficherImage(imagePaths[currentImageIndexX]); // Affichez l'image mise à jour
                 }
+                if (e.getKeyChar() == 'y') {
+                afficherImage(imagePathsAttack[currentImageIndexAttack]); // Affichez l'image mise à jour
+
+                    }
+                 if (e.getKeyChar() == 'd') {
+                afficherImage(imagePathsDefense[currentImageIndexDefense]); // Affichez l'image mise à jour
+
+                    }
+                
             }
 
             @Override

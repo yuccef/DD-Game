@@ -11,8 +11,6 @@ public class premiertest {
 
         // Création des fenetres swing
          JFrame fenetre = new JFrame("D&D");
-        
-
 
         // Crée un panneau pour contenir les composants
          JPanel panneau = new JPanel() { 
@@ -58,17 +56,6 @@ public class premiertest {
 
         boutonPanel.add(Rulesbouton);
         boutonPanel.add(boutonPerso);
-        // boutonPanel.add(Levelsbouton);
-        // boutonPanel.add(boutonCommencer);
-
-        // BeginTheGame beginTheGame = new BeginTheGame();
-        // boutonCommencer.addActionListener(new ActionListener() {
-        //     @Override
-        //     public void actionPerformed(ActionEvent e) {
-        //         fenetre.setVisible(false);
-        //         beginTheGame.MapOfTheGame();
-        //     }
-        // });
 
         // Ajoute un écouteur d'événements au bouton "Règles de jeux"
         Rulesbouton.addActionListener(new ActionListener() {
