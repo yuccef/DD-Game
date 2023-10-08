@@ -1,46 +1,121 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class ChangeChevalierPosition {
+    private int x = 0;
+    private int c=0;
     private JFrame fenetre;
-    private JLabel imageLabel1;
-    private Timer timer;
-    private int x1 = 0; // Position en x de la première image
+    public JLabel imageLabel;
+    public String[] imagePaths = {
+        "../project/KnightMvmnt/run1.png",
+        "../project/KnightMvmnt/run2.png",
+        "../project/KnightMvmnt/run3.png",
+        "../project/KnightMvmnt/run4.png",
+        "../project/KnightMvmnt/run5.png",
+        "../project/KnightMvmnt/run6.png",
+        "../project/KnightMvmnt/run7.png",
+        "../project/KnightMvmnt/run8.png"
+    };
+      public String[] imagePathsInverse = {
+        "../project/KnightMvmnt/run11.png",
+        "../project/KnightMvmnt/run22.png",
+        "../project/KnightMvmnt/run33.png",
+        "../project/KnightMvmnt/run44.png",
+        "../project/KnightMvmnt/run55.png",
+        "../project/KnightMvmnt/run66.png",
+        "../project/KnightMvmnt/run77.png",
+        "../project/KnightMvmnt/run88.png"
+    };
+
+
+    private int currentImageIndexX = 0;
+
+    private int y = 220;
+
 
     public ChangeChevalierPosition() {
-        fenetre = new JFrame("Animation de photos");
+        fenetre = new JFrame("Affichage de photos");
         fenetre.setSize(800, 600);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fenetre.setLayout(null);
-        ChangeChevalierAttack Attack  = new ChangeChevalierAttack();
 
-        imageLabel1 = new JLabel(Attack.ChangeChevalierAttack());
+        imageLabel = new JLabel();
+        fenetre.add(imageLabel);
 
-        fenetre.add(imageLabel1);
-
-        imageLabel1.setBounds(x1, 220, 100, 100); // Position et taille de la première image
-
- 
-        timer = new Timer(200, new ActionListener() {
+        // Create a Timer to switch images
+        Timer timer = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Mettre à jour les positions des images
-                x1 += 5; // Augmenter la position de la première image
-                if (x1 > fenetre.getWidth()) {
-                    x1 = -100; // Repositionner la première image à gauche
-                }
-                imageLabel1.setLocation(x1, 220);
+                 while(c<1){
+                afficherImage(imagePaths[currentImageIndexX]);
+                afficherImage(imagePathsInverse[currentImageIndexX]);
+                c=c+1;
+                 }
+                currentImageIndexX = (currentImageIndexX + 1) % imagePaths.length; // Loop through the images
             }
         });
-        timer.setRepeats(true); // Arrête le timer après une seule exécution
         timer.start();
 
-
-       
-   
         fenetre.setVisible(true);
-        
+        fenetre.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // Ne rien faire ici, car nous n'utilisons pas keyTyped
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    // Code à exécuter lorsque la touche droite est enfoncée
+                    x += 5; // Avancez l'animation
+                    if (x > 1000) {
+                        x = 0; // Réinitialisez x lorsque vous atteignez la fin
+                    }
+                    afficherImage(imagePaths[currentImageIndexX]); // Affichez l'image mise à jour
+                }
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    // Code à exécuter lorsque la touche droite est enfoncée
+                    x -= 5; // Avancez l'animation
+                    if (x <= 0) {
+                        x = 0; // Réinitialisez x lorsque vous atteignez la fin
+                    }
+                    afficherImage(imagePathsInverse[currentImageIndexX]); // Affichez l'image mise à jour
+                }
+                if (e.getKeyCode() == KeyEvent.VK_UP) {
+                    // Code à exécuter lorsque la touche droite est enfoncée
+                    y -= 5; // Avancez l'animation
+                    if (y <= 0) {
+                        y = 0; // Réinitialisez x lorsque vous atteignez la fin
+                    }
+                    afficherImage(imagePaths[currentImageIndexX]); // Affichez l'image mise à jour
+                }
+                if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                    // Code à exécuter lorsque la touche droite est enfoncée
+                    y += 5; // Avancez l'animation
+                    if (y > 1000) {
+                        y = 0; // Réinitialisez x lorsque vous atteignez la fin
+                    }
+                    afficherImage(imagePaths[currentImageIndexX]); // Affichez l'image mise à jour
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // Ne rien faire ici, car nous n'utilisons pas keyReleased
+            }
+        });
+
+        fenetre.setFocusable(true); // Assurez-vous que la fenêtre est focusable
+        fenetre.requestFocus(); // Donnez le focus à la fenêtre pour détecter les touches
+    }
+
+    private void afficherImage(String nomImage) {
+        ImageIcon imageIcon = new ImageIcon(nomImage);
+        imageLabel.setIcon(imageIcon);
+        imageLabel.setBounds(x,y, imageIcon.getIconWidth(), imageIcon.getIconHeight()); // Définissez la position de l'image
+        fenetre.repaint(); // Actualisez la fenêtre pour afficher l'image
     }
 
     public static void main(String[] args) {
