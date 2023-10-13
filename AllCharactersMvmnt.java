@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+
+
+
 public class AllCharactersMvmnt {
 
     private int xKnight = 325;
@@ -15,7 +18,7 @@ public class AllCharactersMvmnt {
 
     private int xPirate= 325;
     private int yPirate= 0;
-    
+
     private JFrame fenetre;
     private JPanel characterPanel;
 
@@ -82,13 +85,27 @@ public class AllCharactersMvmnt {
         "../project/PirateMvmnt/run7.png",
     };
 
+    public String[] imagePathsPirateAttack = {
+         "../project/PirateMvmnt/attack1.png",
+         "../project/PirateMvmnt/attack2.png",
+         "../project/PirateMvmnt/attack3.png",
+         "../project/PirateMvmnt/attack4.png",
+         "../project/PirateMvmnt/attack5.png",
+         "../project/PirateMvmnt/attack6.png",
+         "../project/PirateMvmnt/attack7.png",
+    };
+
 
 
     private int currentImageIndexKinghtRun = 0;
     private int currentImageIndexKnightAttack = 0;
     private int currentImageIndexKnightDefense = 0;
+
     private int currentImageIndexWitchRun = 0;
+
     private int currentImageIndexPirateRun = 0;
+    private int currentImageIndexPirateAttack = 0;
+
 
 
 
@@ -140,6 +157,8 @@ public class AllCharactersMvmnt {
         });
         timerKnightAttack.start();
 
+
+
         Timer timerKnightDefense = new Timer(50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -148,6 +167,7 @@ public class AllCharactersMvmnt {
         });
         timerKnightDefense.start();
         
+
 
         Timer timerWitch = new Timer(200, new ActionListener() {
             @Override
@@ -169,6 +189,17 @@ public class AllCharactersMvmnt {
         timerPirate.start();
 
 
+        Timer timerPirateAttack = new Timer(200, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                afficherImagePirate(imagePathsPirateAttack[currentImageIndexPirateAttack]);
+                currentImageIndexPirateAttack = (currentImageIndexPirateAttack + 1) % imagePathsPirateAttack.length; // Loop through the images
+            }
+        });
+        timerPirateAttack.start();
+
+
+   
         fenetre.setVisible(true);   
         fenetre.addKeyListener(new KeyListener() {
             @Override
@@ -177,92 +208,99 @@ public class AllCharactersMvmnt {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+
+                //key listener for knight
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {       //Right knight
                     xKnight += 5;
                     if (xKnight > 570)  xKnight = 570;   
                     afficherImage(imagePathsKnightRun[currentImageIndexKinghtRun]); 
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {        //Left knight
                     xKnight -= 5; 
                     if (xKnight <= 0)  xKnight = 0; 
                     afficherImage(imagePathsKnightRunInverse[currentImageIndexKinghtRun]); 
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_UP) {
+                if (e.getKeyCode() == KeyEvent.VK_UP) {          //Up knight
                     yKnight -= 5; 
                     if (yKnight <= 0) yKnight = 0; 
                     afficherImage(imagePathsKnightRun[currentImageIndexKinghtRun]);
                 }
 
-
-                if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                if (e.getKeyCode() == KeyEvent.VK_DOWN) {        //Down knight
                     yKnight += 5; 
                     if (yKnight >= 550)  yKnight = 550;
                     afficherImage(imagePathsKnightRun[currentImageIndexKinghtRun]); 
                 }
 
-                if (e.getKeyChar() == 'y'| e.getKeyChar() == 'Y'  ) {
+                if (e.getKeyChar() == 'y'| e.getKeyChar() == 'Y'  ){     //Attack knight
                 afficherImage(imagePathsKnightAttack[currentImageIndexKnightAttack]); 
-
                     }
-                 if (e.getKeyChar() == 'd'| e.getKeyChar() == 'D' ) {
+
+                 if (e.getKeyChar() == 'd'| e.getKeyChar() == 'D' ) {    //Defense knight
                 afficherImage(imagePathsKnightDefense[currentImageIndexKnightDefense]);
 
                     }  
 
-//key listener for witch
-if (e.getKeyCode() == 'k' | e.getKeyCode() == 'K') { //Right witch
+
+                //key listener for witch
+                 if (e.getKeyCode() == 'k' | e.getKeyCode() == 'K') { //Right witch
                     xWitch += 5; 
                     if (xWitch > 570)   xWitch = 570;  
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]); 
                 }
 
- if (e.getKeyCode() ==  'h' | e.getKeyCode() == 'H') { //Left witch
+                 if (e.getKeyCode() ==  'h' | e.getKeyCode() == 'H') { //Left witch
                     xWitch -= 5;
                     if (xWitch <= 0)  xWitch = 0;
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
                 }
- if (e.getKeyCode() ==  'u' | e.getKeyCode() == 'U') { //Up witch
+                
+                 if (e.getKeyCode() ==  'u' | e.getKeyCode() == 'U') { //Up witch
                     yWitch -= 5;
                     if (yWitch<= 0)   yWitch = 0; 
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]); 
                 }
-if (e.getKeyCode() ==  'j' | e.getKeyCode() == 'J') { //Down witch
+
+                 if (e.getKeyCode() ==  'j' | e.getKeyCode() == 'J') { //Down witch
                     yWitch += 5; 
                     if (yWitch >= 550)  yWitch = 550; 
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
                 }   
                 
             
-//key listener for pirate                
-if (e.getKeyCode() == 'b' | e.getKeyCode() == 'B') { //Right pirate
+                 //key listener for pirate                
+                 if (e.getKeyCode() == 'b'  | e.getKeyCode() == 'B') {  //Right pirate
                     xPirate += 5; 
                     if (xPirate > 570)   xPirate = 570;  
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]); 
                 }
 
-
- if (e.getKeyCode() ==  'c' | e.getKeyCode() == 'C') {  //Left pirate
+                 if (e.getKeyCode() ==  'c' | e.getKeyCode() == 'C') {  //Left pirate
                     xPirate -= 5;
                     if (xPirate <= 0)  xPirate = 0;
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
                 }
 
- if (e.getKeyCode() ==  'f' | e.getKeyCode() == 'F') {  //Up pirate
+                 if (e.getKeyCode() ==  'f' | e.getKeyCode() == 'F') {  //Up pirate
                     yPirate -= 5;
                     if (yPirate<= 0)   yPirate = 0; 
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]); 
                 }
-if (e.getKeyCode() ==  'v' | e.getKeyCode() == 'V') { //Down pirate
+
+                 if (e.getKeyCode() ==  'v' | e.getKeyCode() == 'V') {  //Down pirate
                     yPirate += 5; 
                     if (yPirate >= 550)  yPirate = 550; 
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
-                } 
-
-
+                }
+                
+                 if (e.getKeyChar() ==  'n' | e.getKeyChar() == 'N' ) { //Attack pirate
+                afficherImagePirate(imagePathsPirateAttack[currentImageIndexPirateAttack]);
+                    }  
             }
 
+ 
             @Override
             public void keyReleased(KeyEvent e) {
                 // Do nothing here, as we are not using keyReleased
@@ -292,14 +330,15 @@ if (e.getKeyCode() ==  'v' | e.getKeyCode() == 'V') { //Down pirate
 
     }
 
-
-        private void afficherImagePirate(String nomImagePirate) {
+    private void afficherImagePirate(String nomImagePirate) {
         ImageIcon imageIconPirate = new ImageIcon(nomImagePirate);
         characterLabelPirate.setIcon(imageIconPirate);
         characterLabelPirate.setBounds(xPirate, yPirate, imageIconPirate.getIconWidth(), imageIconPirate.getIconHeight());
         characterLabelPirate.repaint(); // Repaint the label to show the updated position
 
     }
+
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new AllCharactersMvmnt());
