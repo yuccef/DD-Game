@@ -7,7 +7,6 @@ import java.awt.event.KeyListener;
 
 
 
-
 public class AllCharactersMvmnt {
 
     private int xKnight = 325;
@@ -37,7 +36,7 @@ public class AllCharactersMvmnt {
         "../project/CharactersMvmnt/KnightMvmnt/run7.png",
         "../project/CharactersMvmnt/KnightMvmnt/run8.png"
     };
-
+    
 
     public String[] imagePathsKnightRunInverse = {
         "../project/CharactersMvmnt/KnightMvmnt/run11.png",
@@ -77,6 +76,16 @@ public class AllCharactersMvmnt {
         "../project/CharactersMvmnt/WitchMvmnt/run8.png"
     };
 
+    public String[] imagePathsWitchAttack = {
+        "../project/CharactersMvmnt/WitchMvmnt/attack1.png",
+        "../project/CharactersMvmnt/WitchMvmnt/attack2.png",
+        "../project/CharactersMvmnt/WitchMvmnt/attack3.png",
+        "../project/CharactersMvmnt/WitchMvmnt/attac4.png",
+        "../project/CharactersMvmnt/WitchMvmnt/attac5.png",
+        "../project/CharactersMvmnt/WitchMvmnt/attac6.png",
+        "../project/CharactersMvmnt/WitchMvmnt/attack7.png",
+    };
+
     public String[] imagePathsPirateRun = {
         "../project/CharactersMvmnt/PirateMvmnt/run1.png",
         "../project/CharactersMvmnt/PirateMvmnt/run2.png",
@@ -86,6 +95,7 @@ public class AllCharactersMvmnt {
         "../project/CharactersMvmnt/PirateMvmnt/run6.png",
         "../project/CharactersMvmnt/PirateMvmnt/run7.png",
     };
+
 
     public String[] imagePathsPirateAttack = {
          "../project/CharactersMvmnt/PirateMvmnt/attack1.png",
@@ -168,7 +178,9 @@ public class AllCharactersMvmnt {
             }
         });
         timerKnightDefense.start();
-        
+ 
+
+
 
 
         Timer timerWitchRun = new Timer(200, new ActionListener() {
@@ -179,6 +191,9 @@ public class AllCharactersMvmnt {
             }
         });
         timerWitchRun.start();
+
+
+
 
 
         Timer timerPirateRun = new Timer(200, new ActionListener() {
@@ -200,7 +215,9 @@ public class AllCharactersMvmnt {
         timerPirateAttack.start();
 
 
-   
+
+        
+
         fenetre.setVisible(true);   
         fenetre.addKeyListener(new KeyListener() {
             @Override
@@ -270,6 +287,9 @@ public class AllCharactersMvmnt {
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
                 }   
                 
+                 if (e.getKeyChar() ==  'i' | e.getKeyChar() == 'I' ) { //Attack witch
+                afficherImageWitch(imagePathsWitchAttack[currentImageIndexWitchRun]);
+                    }
             
                  //key listener for pirate                
                  if (e.getKeyCode() == 'b'  | e.getKeyCode() == 'B') {  //Right pirate
