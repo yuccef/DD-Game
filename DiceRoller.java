@@ -5,14 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class DiceRollerGUI {
+public class DiceRoller {
     private JFrame frame;
     private JButton rollButton;
     private JLabel resultLabel;
     private JLabel diceImageLabel1;
     private JLabel diceImageLabel2;
 
-    public DiceRollerGUI() {
+    public DiceRoller() {
         frame = new JFrame("Lancer de dés");
         frame.setSize(800, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,8 +46,8 @@ public class DiceRollerGUI {
         resultLabel.setText("You rolled " + roll1 + " and " + roll2);
 
         // Load and display the corresponding dice face images
-        String imagePath1 = "./resources/dice" + roll1 + ".png";
-        String imagePath2 = "./resources/die20" + roll2 + ".png";
+        String imagePath1 = "./Dice/dice" + roll1 + ".png";
+        String imagePath2 = "./Dice/die20" + roll2 + ".png";
         ImageIcon icon1 = new ImageIcon(imagePath1);
         ImageIcon icon2 = new ImageIcon(imagePath2);
         diceImageLabel1.setIcon(icon1);
@@ -55,6 +55,6 @@ public class DiceRollerGUI {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new DiceRollerGUI());
+        SwingUtilities.invokeLater(() -> new DiceRoller());
     }
 }

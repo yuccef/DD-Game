@@ -28,71 +28,73 @@ public class AllCharactersMvmnt {
 
 
     public String[] imagePathsKnightRun = {
-        "../project/KnightMvmnt/run1.png",
-        "../project/KnightMvmnt/run2.png",
-        "../project/KnightMvmnt/run3.png",
-        "../project/KnightMvmnt/run4.png",
-        "../project/KnightMvmnt/run5.png",
-        "../project/KnightMvmnt/run6.png",
-        "../project/KnightMvmnt/run7.png",
-        "../project/KnightMvmnt/run8.png"
+        "../project/CharactersMvmnt/KnightMvmnt/run1.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run2.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run3.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run4.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run5.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run6.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run7.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run8.png"
     };
 
 
     public String[] imagePathsKnightRunInverse = {
-        "../project/KnightMvmnt/run11.png",
-        "../project/KnightMvmnt/run22.png",
-        "../project/KnightMvmnt/run33.png",
-        "../project/KnightMvmnt/run44.png",
-        "../project/KnightMvmnt/run55.png",
-        "../project/KnightMvmnt/run66.png",
-        "../project/KnightMvmnt/run77.png",
-        "../project/KnightMvmnt/run88.png"
+        "../project/CharactersMvmnt/KnightMvmnt/run11.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run22.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run33.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run44.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run55.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run66.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run77.png",
+        "../project/CharactersMvmnt/KnightMvmnt/run88.png"
     };
 
 
     public String[] imagePathsKnightAttack = {
-        "../project/KnightMvmnt/KnightAttack1.png",
-        "../project/KnightMvmnt/KnightAttack2.png",
-         "../project/KnightMvmnt/KnightAttack3.png",
-         "../project/KnightMvmnt/KnightAttack4.png",
+        "../project/CharactersMvmnt/KnightMvmnt/KnightAttack1.png",
+        "../project/CharactersMvmnt/KnightMvmnt/KnightAttack2.png",
+         "../project/CharactersMvmnt/KnightMvmnt/KnightAttack3.png",
+         "../project/CharactersMvmnt/KnightMvmnt/KnightAttack4.png",
     };
+
 
     public String[] imagePathsKnightDefense = {
-        "../project/KnightMvmnt/KnightDefense.png",
-        "../project/KnightMvmnt/KnightDefense2.png",
-        "../project/KnightMvmnt/KnightDefense3.png",
+        "../project/CharactersMvmnt/KnightMvmnt/KnightDefense.png",
+        "../project/CharactersMvmnt/KnightMvmnt/KnightDefense2.png",
+        "../project/CharactersMvmnt/KnightMvmnt/KnightDefense3.png",
     };
 
+
     public String[] imagePathsWitchRun = {
-        "../project/WitchMvmnt/run1.png",
-        "../project/WitchMvmnt/run2.png",
-        "../project/WitchMvmnt/run3.png",
-        "../project/WitchMvmnt/run4.png",
-        "../project/WitchMvmnt/run5.png",
-        "../project/WitchMvmnt/run6.png",
-        "../project/WitchMvmnt/run7.png",
-        "../project/WitchMvmnt/run8.png"
+        "../project/CharactersMvmnt/WitchMvmnt/run1.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run2.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run3.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run4.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run5.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run6.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run7.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run8.png"
     };
 
     public String[] imagePathsPirateRun = {
-        "../project/PirateMvmnt/run1.png",
-        "../project/PirateMvmnt/run2.png",
-        "../project/PirateMvmnt/run3.png",
-        "../project/PirateMvmnt/run4.png",
-        "../project/PirateMvmnt/run5.png",
-        "../project/PirateMvmnt/run6.png",
-        "../project/PirateMvmnt/run7.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run1.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run2.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run3.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run4.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run5.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run6.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run7.png",
     };
 
     public String[] imagePathsPirateAttack = {
-         "../project/PirateMvmnt/attack1.png",
-         "../project/PirateMvmnt/attack2.png",
-         "../project/PirateMvmnt/attack3.png",
-         "../project/PirateMvmnt/attack4.png",
-         "../project/PirateMvmnt/attack5.png",
-         "../project/PirateMvmnt/attack6.png",
-         "../project/PirateMvmnt/attack7.png",
+         "../project/CharactersMvmnt/PirateMvmnt/attack1.png",
+         "../project/CharactersMvmnt/PirateMvmnt/attack2.png",
+         "../project/CharactersMvmnt/PirateMvmnt/attack3.png",
+         "../project/CharactersMvmnt/PirateMvmnt/attack4.png",
+         "../project/CharactersMvmnt/PirateMvmnt/attack5.png",
+         "../project/CharactersMvmnt/PirateMvmnt/attack6.png",
+         "../project/CharactersMvmnt/PirateMvmnt/attack7.png",
     };
 
 
@@ -169,31 +171,30 @@ public class AllCharactersMvmnt {
         
 
 
-        Timer timerWitch = new Timer(200, new ActionListener() {
+        Timer timerWitchRun = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
                 currentImageIndexWitchRun = (currentImageIndexWitchRun + 1) % imagePathsWitchRun.length; // Loop through the images
             }
         });
-        timerWitch.start();
+        timerWitchRun.start();
 
 
-        Timer timerPirate = new Timer(200, new ActionListener() {
+        Timer timerPirateRun = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
                 currentImageIndexPirateRun = (currentImageIndexPirateRun + 1) % imagePathsPirateRun.length; // Loop through the images
             }
         });
-        timerPirate.start();
+        timerPirateRun.start();
 
 
         Timer timerPirateAttack = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                afficherImagePirate(imagePathsPirateAttack[currentImageIndexPirateAttack]);
-                currentImageIndexPirateAttack = (currentImageIndexPirateAttack + 1) % imagePathsPirateAttack.length; // Loop through the images
+                currentImageIndexPirateAttack = (currentImageIndexPirateAttack + 1) % imagePathsPirateRun.length; // Loop through the images
             }
         });
         timerPirateAttack.start();
