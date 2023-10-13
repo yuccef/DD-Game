@@ -6,16 +6,22 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class AllCharactersMvmnt {
+
     private int xKnight = 325;
     private int yKnight = 550;
 
     private int xWitch= 0;
     private int yWitch= 325;
 
+    private int xPirate= 325;
+    private int yPirate= 0;
+    
     private JFrame fenetre;
     private JPanel characterPanel;
+
     private JLabel characterLabel;
     private JLabel characterLabelWitch;
+    private JLabel characterLabelPirate;
 
 
     public String[] imagePathsKnightRun = {
@@ -41,7 +47,21 @@ public class AllCharactersMvmnt {
         "../project/KnightMvmnt/run88.png"
     };
 
-        public String[] imagePathsWitchRun = {
+
+    public String[] imagePathsKnightAttack = {
+        "../project/KnightMvmnt/KnightAttack1.png",
+        "../project/KnightMvmnt/KnightAttack2.png",
+         "../project/KnightMvmnt/KnightAttack3.png",
+         "../project/KnightMvmnt/KnightAttack4.png",
+    };
+
+    public String[] imagePathsKnightDefense = {
+        "../project/KnightMvmnt/KnightDefense.png",
+        "../project/KnightMvmnt/KnightDefense2.png",
+        "../project/KnightMvmnt/KnightDefense3.png",
+    };
+
+    public String[] imagePathsWitchRun = {
         "../project/WitchMvmnt/run1.png",
         "../project/WitchMvmnt/run2.png",
         "../project/WitchMvmnt/run3.png",
@@ -52,24 +72,25 @@ public class AllCharactersMvmnt {
         "../project/WitchMvmnt/run8.png"
     };
 
-      public String[] imagePathsKnightAttack = {
-        "../project/KnightMvmnt/KnightAttack1.png",
-        "../project/KnightMvmnt/KnightAttack2.png",
-         "../project/KnightMvmnt/KnightAttack3.png",
-         "../project/KnightMvmnt/KnightAttack4.png",
-    };
-
-          public String[] imagePathsKnightDefense = {
-        "../project/KnightMvmnt/KnightDefense.png",
-        "../project/KnightMvmnt/KnightDefense2.png",
-        "../project/KnightMvmnt/KnightDefense3.png",
+    public String[] imagePathsPirateRun = {
+        "../project/PirateMvmnt/run1.png",
+        "../project/PirateMvmnt/run2.png",
+        "../project/PirateMvmnt/run3.png",
+        "../project/PirateMvmnt/run4.png",
+        "../project/PirateMvmnt/run5.png",
+        "../project/PirateMvmnt/run6.png",
+        "../project/PirateMvmnt/run7.png",
     };
 
 
-      private int currentImageIndexKinghtRun = 0;
-      private int currentImageIndexWitchRun = 0;
-      private int currentImageIndexKnightAttack = 0;
-      private int currentImageIndexKnightDefense = 0;
+
+    private int currentImageIndexKinghtRun = 0;
+    private int currentImageIndexKnightAttack = 0;
+    private int currentImageIndexKnightDefense = 0;
+    private int currentImageIndexWitchRun = 0;
+    private int currentImageIndexPirateRun = 0;
+
+
 
     public AllCharactersMvmnt() {
         fenetre = new JFrame("Affichage de photos");
@@ -95,34 +116,37 @@ public class AllCharactersMvmnt {
 
         characterLabel = new JLabel();
         characterLabelWitch = new JLabel();
+        characterLabelPirate = new JLabel();
+
         characterPanel.add(characterLabel);
         characterPanel.add(characterLabelWitch);
+        characterPanel.add(characterLabelPirate);
 
 
-        Timer timer = new Timer(200, new ActionListener() {
+        Timer timerKnightRun = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 currentImageIndexKinghtRun = (currentImageIndexKinghtRun + 1) % imagePathsKnightRun.length; // Loop through the images
             }
         });
-        timer.start();
+        timerKnightRun.start();
 
 
-        Timer timer1 = new Timer(50, new ActionListener() {
+        Timer timerKnightAttack = new Timer(50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 currentImageIndexKnightAttack = (currentImageIndexKnightAttack + 1) % imagePathsKnightRun.length; // Loop through the images
             }
         });
-        timer1.start();
+        timerKnightAttack.start();
 
-        Timer timer2 = new Timer(50, new ActionListener() {
+        Timer timerKnightDefense = new Timer(50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 currentImageIndexKnightDefense = (currentImageIndexKnightDefense + 1) % imagePathsKnightRun.length; // Loop through the images
             }
         });
-        timer2.start();
+        timerKnightDefense.start();
         
 
         Timer timerWitch = new Timer(200, new ActionListener() {
@@ -133,6 +157,16 @@ public class AllCharactersMvmnt {
             }
         });
         timerWitch.start();
+
+
+        Timer timerPirate = new Timer(200, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
+                currentImageIndexPirateRun = (currentImageIndexPirateRun + 1) % imagePathsPirateRun.length; // Loop through the images
+            }
+        });
+        timerPirate.start();
 
 
         fenetre.setVisible(true);   
@@ -177,30 +211,56 @@ public class AllCharactersMvmnt {
 
                     }  
 
-
-if (e.getKeyCode() == 'k' | e.getKeyCode() == 'K') {
+//key listener for witch
+if (e.getKeyCode() == 'k' | e.getKeyCode() == 'K') { //Right witch
                     xWitch += 5; 
                     if (xWitch > 570)   xWitch = 570;  
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]); 
                 }
 
-
- if (e.getKeyCode() ==  'h' | e.getKeyCode() == 'H') {
+ if (e.getKeyCode() ==  'h' | e.getKeyCode() == 'H') { //Left witch
                     xWitch -= 5;
                     if (xWitch <= 0)  xWitch = 0;
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
                 }
-
- if (e.getKeyCode() ==  'u' | e.getKeyCode() == 'U') {
+ if (e.getKeyCode() ==  'u' | e.getKeyCode() == 'U') { //Up witch
                     yWitch -= 5;
                     if (yWitch<= 0)   yWitch = 0; 
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]); 
                 }
-if (e.getKeyCode() ==  'j' | e.getKeyCode() == 'J') {
+if (e.getKeyCode() ==  'j' | e.getKeyCode() == 'J') { //Down witch
                     yWitch += 5; 
                     if (yWitch >= 550)  yWitch = 550; 
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
-                }        
+                }   
+                
+            
+//key listener for pirate                
+if (e.getKeyCode() == 'b' | e.getKeyCode() == 'B') { //Right pirate
+                    xPirate += 5; 
+                    if (xPirate > 570)   xPirate = 570;  
+                    afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]); 
+                }
+
+
+ if (e.getKeyCode() ==  'c' | e.getKeyCode() == 'C') {  //Left pirate
+                    xPirate -= 5;
+                    if (xPirate <= 0)  xPirate = 0;
+                    afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
+                }
+
+ if (e.getKeyCode() ==  'f' | e.getKeyCode() == 'F') {  //Up pirate
+                    yPirate -= 5;
+                    if (yPirate<= 0)   yPirate = 0; 
+                    afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]); 
+                }
+if (e.getKeyCode() ==  'v' | e.getKeyCode() == 'V') { //Down pirate
+                    yPirate += 5; 
+                    if (yPirate >= 550)  yPirate = 550; 
+                    afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
+                } 
+
+
             }
 
             @Override
@@ -229,6 +289,15 @@ if (e.getKeyCode() ==  'j' | e.getKeyCode() == 'J') {
         characterLabelWitch.setIcon(imageIconWitch);
         characterLabelWitch.setBounds(xWitch, yWitch, imageIconWitch.getIconWidth(), imageIconWitch.getIconHeight());
         characterLabelWitch.repaint(); // Repaint the label to show the updated position
+
+    }
+
+
+        private void afficherImagePirate(String nomImagePirate) {
+        ImageIcon imageIconPirate = new ImageIcon(nomImagePirate);
+        characterLabelPirate.setIcon(imageIconPirate);
+        characterLabelPirate.setBounds(xPirate, yPirate, imageIconPirate.getIconWidth(), imageIconPirate.getIconHeight());
+        characterLabelPirate.repaint(); // Repaint the label to show the updated position
 
     }
 
