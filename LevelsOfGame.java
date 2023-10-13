@@ -31,11 +31,12 @@ public class LevelsOfGame {
     private JButton createLevelButton(String label) {
         JButton button = new JButton(label);
         button.setPreferredSize(new Dimension(200, 50));
-
+BeginTheGame commencerlejeu = new BeginTheGame();
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Niveau " + label);
+            commencerlejeu.MapOfTheGame();;
             }
         });
 
