@@ -9,6 +9,8 @@ import java.awt.event.KeyListener;
 
 public class AllCharactersMvmnt {
 
+    private int turn =4;
+
     private int xKnight = 325;
     private int yKnight = 550;
 
@@ -226,102 +228,135 @@ public class AllCharactersMvmnt {
 
             @Override
             public void keyPressed(KeyEvent e) {
-
-                //key listener for knight
-                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {       //Right knight
-                    xKnight += 5;
+        
+               //key listener for knight
+               if (turn % 3 == 1) {
+                if ( turn % 3 == 1 && e.getKeyCode() == KeyEvent.VK_RIGHT) {       //Right knight
+                    xKnight += 50;
+                    turn++;
                     if (xKnight > 570)  xKnight = 570;   
                     afficherImage(imagePathsKnightRun[currentImageIndexKinghtRun]); 
+
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_LEFT) {        //Left knight
-                    xKnight -= 5; 
+                if ( turn % 3 == 1 && e.getKeyCode() == KeyEvent.VK_LEFT) {        //Left knight
+                    xKnight -= 50; 
+                    turn++;
                     if (xKnight <= 0)  xKnight = 0; 
                     afficherImage(imagePathsKnightRunInverse[currentImageIndexKinghtRun]); 
+
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_UP) {          //Up knight
-                    yKnight -= 5; 
+                if (turn % 3 == 1 &&  e.getKeyCode() == KeyEvent.VK_UP) {          //Up knight
+                    yKnight -= 50; 
+                    turn++;
                     if (yKnight <= 0) yKnight = 0; 
                     afficherImage(imagePathsKnightRun[currentImageIndexKinghtRun]);
+
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_DOWN) {        //Down knight
-                    yKnight += 5; 
+                if ( turn % 3 == 1 && e.getKeyCode() == KeyEvent.VK_DOWN) {        //Down knight
+                    yKnight += 50; 
+                    turn++;
                     if (yKnight >= 550)  yKnight = 550;
                     afficherImage(imagePathsKnightRun[currentImageIndexKinghtRun]); 
+
                 }
 
-                if (e.getKeyChar() == 'y'| e.getKeyChar() == 'Y'  ){     //Attack knight
+                if (turn % 3 == 1 && e.getKeyChar() == 'y'| e.getKeyChar() == 'Y'  ){     //Attack knight
                 afficherImage(imagePathsKnightAttack[currentImageIndexKnightAttack]); 
+                            turn++;
+
                     }
 
-                 if (e.getKeyChar() == 'd'| e.getKeyChar() == 'D' ) {    //Defense knight
+                 if ( turn % 3 == 1 && e.getKeyChar() == 'd'| e.getKeyChar() == 'D' ) {    //Defense knight
                 afficherImage(imagePathsKnightDefense[currentImageIndexKnightDefense]);
+                            turn++;
 
                     }  
-
+               }
+                
 
                 //key listener for witch
-                 if (e.getKeyCode() == 'k' | e.getKeyCode() == 'K') { //Right witch
-                    xWitch += 5; 
+                else if (turn % 3 == 2) {
+                if ( turn % 3 == 2 && e.getKeyCode() == KeyEvent.VK_RIGHT) { //Right witch
+                    xWitch += 50; 
+                    turn++;
                     if (xWitch > 570)   xWitch = 570;  
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]); 
+
                 }
 
-                 if (e.getKeyCode() ==  'h' | e.getKeyCode() == 'H') { //Left witch
-                    xWitch -= 5;
+                 if (turn % 3 == 2 &&  e.getKeyCode() == KeyEvent.VK_LEFT) { //Left witch
+                    xWitch -= 50;
+                    turn++;
                     if (xWitch <= 0)  xWitch = 0;
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
+
                 }
                 
-                 if (e.getKeyCode() ==  'u' | e.getKeyCode() == 'U') { //Up witch
-                    yWitch -= 5;
+                 if (turn % 3 == 2 &&  e.getKeyCode() == KeyEvent.VK_UP) { //Up witch
+                    yWitch -= 50;
+                    turn++;
                     if (yWitch<= 0)   yWitch = 0; 
-                    afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]); 
+                    afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
+ 
                 }
 
-                 if (e.getKeyCode() ==  'j' | e.getKeyCode() == 'J') { //Down witch
-                    yWitch += 5; 
+                 if (turn % 3 == 2 &&  e.getKeyCode() == KeyEvent.VK_DOWN) { //Down witch
+                    yWitch += 50; 
+                    turn++;
                     if (yWitch >= 550)  yWitch = 550; 
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
+
                 }   
                 
-                 if (e.getKeyChar() ==  'i' | e.getKeyChar() == 'I' ) { //Attack witch
+                 if ( turn % 3 == 2 && e.getKeyChar() ==  'i' | e.getKeyChar() == 'I' ) { //Attack witch
                 afficherImageWitch(imagePathsWitchAttack[currentImageIndexWitchRun]);
+                            turn++;
+
                     }
-            
-                 //key listener for pirate                
-                 if (e.getKeyCode() == 'b'  | e.getKeyCode() == 'B') {  //Right pirate
-                    xPirate += 5; 
+                }      
+                
+                                 
+                //key listener for pirate  
+                else if (turn % 3 == 0) {       
+                 if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_RIGHT) {  //Right pirate
+                    xPirate += 50; 
+                    turn++;
                     if (xPirate > 570)   xPirate = 570;  
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]); 
                 }
 
-                 if (e.getKeyCode() ==  'c' | e.getKeyCode() == 'C') {  //Left pirate
-                    xPirate -= 5;
+                 if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_LEFT) {  //Left pirate
+                    xPirate -= 50;
+                    turn++;
                     if (xPirate <= 0)  xPirate = 0;
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
                 }
 
-                 if (e.getKeyCode() ==  'f' | e.getKeyCode() == 'F') {  //Up pirate
-                    yPirate -= 5;
+                 if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_UP) {  //Up pirate
+                    yPirate -= 50;
+                    turn++;
                     if (yPirate<= 0)   yPirate = 0; 
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]); 
                 }
 
-                 if (e.getKeyCode() ==  'v' | e.getKeyCode() == 'V') {  //Down pirate
-                    yPirate += 5; 
+                 if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_DOWN) {  //Down pirate
+                    yPirate += 50; 
+                    turn++;
                     if (yPirate >= 550)  yPirate = 550; 
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
                 }
                 
-                 if (e.getKeyChar() ==  'n' | e.getKeyChar() == 'N' ) { //Attack pirate
+                 if (turn%3 == 0 && e.getKeyChar() ==  'n' | e.getKeyChar() == 'N' ) { //Attack pirate
                 afficherImagePirate(imagePathsPirateAttack[currentImageIndexPirateAttack]);
+                            turn++;    
                     }  
-            }
-
+        }
+    }
  
+
             @Override
             public void keyReleased(KeyEvent e) {
                 // Do nothing here, as we are not using keyReleased
@@ -358,9 +393,6 @@ public class AllCharactersMvmnt {
         characterLabelPirate.repaint(); // Repaint the label to show the updated position
 
     }
-
-
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new AllCharactersMvmnt());
     }
