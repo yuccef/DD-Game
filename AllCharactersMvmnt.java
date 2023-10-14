@@ -14,6 +14,11 @@ public class AllCharactersMvmnt {
     private int xKnight = 325;
     private int yKnight = 550;
 
+    private int xKnight1, yKnight1, xknight2,yKnight2, xknight3,yKnight3 , xkinght4, yKnight4;
+    private int xWitch1, yWitch1, xWitch2,yWitch2, xWitch3,yWitch3, xWitch4, yWitch4;
+    private int xPirate1, yPirate1, xPirate2,yPirate2, xPirate3,yPirate3, xPirate4, yPirate4;
+   
+
     private int xWitch= 0;
     private int yWitch= 325;
 
@@ -21,7 +26,7 @@ public class AllCharactersMvmnt {
     private int yPirate= 0;
 
     private JFrame fenetre;
-    private JPanel characterPanel;
+    //private JPanel characterPanel;
 
     private JLabel characterLabel;
     private JLabel characterLabelWitch;
@@ -150,6 +155,41 @@ public class AllCharactersMvmnt {
                     for (int x = 0; x < 650; x += 50) {
                         g.drawImage(image, x, y, this);
                     }
+                }
+                //Knight
+                Image imageStep = new ImageIcon("../project/MapPixels/step1.jpg").getImage();
+                //Knight
+                if(turn % 3 == 1){ 
+
+                    xKnight1 = xKnight-50;
+                    xknight2 = xKnight+50;
+                    yKnight1 = yKnight-50;
+                    yKnight2 = yKnight+50;
+                    g.drawImage(imageStep, xKnight1, yKnight, this);
+                    g.drawImage(imageStep, xknight2, yKnight, this);
+                    g.drawImage(imageStep, xKnight, yKnight1, this);
+                    g.drawImage(imageStep, xKnight, yKnight2, this);    
+                }
+                //witch
+                else if(turn % 3 == 2){
+                    xWitch1 = xWitch-50;
+                    xWitch2 = xWitch+50;
+                    yWitch1 = yWitch-50;
+                    yWitch2 = yWitch+50;
+                    g.drawImage(imageStep, xWitch1, yWitch, this);
+                    g.drawImage(imageStep, xWitch2, yWitch, this);
+                    g.drawImage(imageStep, xWitch, yWitch1, this);
+                    g.drawImage(imageStep, xWitch, yWitch2, this);    
+                }
+                else if(turn % 3 == 0){
+                    xPirate1 = xPirate-50;
+                    xPirate2 = xPirate+50;
+                    yPirate1 = yPirate-50;
+                    yPirate2 = yPirate+50;
+                    g.drawImage(imageStep, xPirate1, yPirate, this);
+                    g.drawImage(imageStep, xPirate2, yPirate, this);
+                    g.drawImage(imageStep, xPirate, yPirate1, this);
+                    g.drawImage(imageStep, xPirate, yPirate2, this);    
                 }
             }
         };
