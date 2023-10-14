@@ -78,6 +78,17 @@ public class AllCharactersMvmnt {
         "../project/CharactersMvmnt/WitchMvmnt/run8.png"
     };
 
+    public String[] imagePathsWitchRunInverse = {
+        "../project/CharactersMvmnt/WitchMvmnt/run11.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run22.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run33.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run44.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run55.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run66.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run77.png",
+        "../project/CharactersMvmnt/WitchMvmnt/run88.png"
+    };
+
     public String[] imagePathsWitchAttack = {
         "../project/CharactersMvmnt/WitchMvmnt/attack1.png",
         "../project/CharactersMvmnt/WitchMvmnt/attack2.png",
@@ -129,16 +140,21 @@ public class AllCharactersMvmnt {
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        characterPanel = new JPanel() {
+        JPanel characterPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon background = new ImageIcon("./BackGround.jpg");
-                g.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
-                setPreferredSize(new Dimension(353, 346));
-
+                Image image = new ImageIcon("../project/MapPixels/5.png").getImage();
+                // Draw the image as the background
+                for (int y = 0; y < 650; y += 50) {
+                    for (int x = 0; x < 650; x += 50) {
+                        g.drawImage(image, x, y, this);
+                    }
+                }
             }
         };
+
+        characterPanel.setPreferredSize(new Dimension(650, 650));
         fenetre.setSize(new Dimension(650, 650));
         fenetre.setResizable(false);
         fenetre.add(characterPanel);
@@ -235,7 +251,7 @@ public class AllCharactersMvmnt {
                     xKnight += 50;
                     turn++;
                     if (xKnight > 570)  xKnight = 570;   
-                    afficherImage(imagePathsKnightRun[currentImageIndexKinghtRun]); 
+                    afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
 
                 }
 
@@ -243,7 +259,7 @@ public class AllCharactersMvmnt {
                     xKnight -= 50; 
                     turn++;
                     if (xKnight <= 0)  xKnight = 0; 
-                    afficherImage(imagePathsKnightRunInverse[currentImageIndexKinghtRun]); 
+                    afficherImageKnight(imagePathsKnightRunInverse[currentImageIndexKinghtRun]); 
 
                 }
 
@@ -251,7 +267,7 @@ public class AllCharactersMvmnt {
                     yKnight -= 50; 
                     turn++;
                     if (yKnight <= 0) yKnight = 0; 
-                    afficherImage(imagePathsKnightRun[currentImageIndexKinghtRun]);
+                    afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]);
 
                 }
 
@@ -259,18 +275,18 @@ public class AllCharactersMvmnt {
                     yKnight += 50; 
                     turn++;
                     if (yKnight >= 550)  yKnight = 550;
-                    afficherImage(imagePathsKnightRun[currentImageIndexKinghtRun]); 
+                    afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
 
                 }
 
                 if (turn % 3 == 1 && e.getKeyChar() == 'y'| e.getKeyChar() == 'Y'  ){     //Attack knight
-                afficherImage(imagePathsKnightAttack[currentImageIndexKnightAttack]); 
+                afficherImageKnight(imagePathsKnightAttack[currentImageIndexKnightAttack]); 
                             turn++;
 
                     }
 
                  if ( turn % 3 == 1 && e.getKeyChar() == 'd'| e.getKeyChar() == 'D' ) {    //Defense knight
-                afficherImage(imagePathsKnightDefense[currentImageIndexKnightDefense]);
+                afficherImageKnight(imagePathsKnightDefense[currentImageIndexKnightDefense]);
                             turn++;
 
                     }  
@@ -291,7 +307,7 @@ public class AllCharactersMvmnt {
                     xWitch -= 50;
                     turn++;
                     if (xWitch <= 0)  xWitch = 0;
-                    afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
+                    afficherImageWitch(imagePathsWitchRunInverse[currentImageIndexWitchRun]);
 
                 }
                 
@@ -370,7 +386,7 @@ public class AllCharactersMvmnt {
     }
 
 
-    private void afficherImage(String nomImage) {
+    private void afficherImageKnight(String nomImage) {
         ImageIcon imageIcon = new ImageIcon(nomImage);
         characterLabel.setIcon(imageIcon);
         characterLabel.setBounds(xKnight, yKnight, imageIcon.getIconWidth(), imageIcon.getIconHeight());
