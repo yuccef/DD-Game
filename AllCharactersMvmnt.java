@@ -4,26 +4,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-
+import java.util.Random;
 
 public class AllCharactersMvmnt {
 
     private int turn =4;
 
     private int xKnight = 325;
-    private int yKnight = 550;
+    private int yKnight = 600;
 
-    private int xKnight1, yKnight1, xknight2,yKnight2, xknight3,yKnight3 , xkinght4, yKnight4;
-    private int xWitch1, yWitch1, xWitch2,yWitch2, xWitch3,yWitch3, xWitch4, yWitch4;
-    private int xPirate1, yPirate1, xPirate2,yPirate2, xPirate3,yPirate3, xPirate4, yPirate4;
+    private int xKnight1, yKnight1, xknight2,yKnight2;
+    private int xWitch1, yWitch1, xWitch2,yWitch2;
+    private int xPirate1, yPirate1, xPirate2,yPirate2;
    
+    public JPanel DicePaneltest; 
 
     private int xWitch= 0;
-    private int yWitch= 325;
+    private int yWitch= 375;
 
     private int xPirate= 325;
-    private int yPirate= 0;
+    private int yPirate= 50;
 
     private JFrame fenetre;
     //private JPanel characterPanel;
@@ -141,60 +141,67 @@ public class AllCharactersMvmnt {
 
     public AllCharactersMvmnt() {
         fenetre = new JFrame("Affichage de photos");
-        fenetre.setSize(800, 600);
+        fenetre.setSize(800, 700);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+     
+     
+
 
 
         JPanel characterPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                Image image = new ImageIcon("../project/MapPixels/5.png").getImage();
+                Image image = new ImageIcon("../project/MapPixels/3.jpg").getImage();
                 // Draw the image as the background
-                for (int y = 0; y < 650; y += 50) {
+                for (int y = 50; y < 650; y += 50) {
                     for (int x = 0; x < 650; x += 50) {
-                        g.drawImage(image, x, y, this);
-                    }
-                }
-                //Knight
+                    g.drawImage(image, x, y, this);
+                    }}; 
+
                 Image imageStep = new ImageIcon("../project/MapPixels/step1.jpg").getImage();
                 //Knight
                 if(turn % 3 == 1){ 
-
-                    xKnight1 = xKnight-50;
-                    xknight2 = xKnight+50;
-                    yKnight1 = yKnight-50;
-                    yKnight2 = yKnight+50;
+                    xKnight1 = xKnight-60;
+                    xknight2 = xKnight+60;
+                    yKnight1 = yKnight-60;
+                    yKnight2 = yKnight+60;
                     g.drawImage(imageStep, xKnight1, yKnight, this);
                     g.drawImage(imageStep, xknight2, yKnight, this);
                     g.drawImage(imageStep, xKnight, yKnight1, this);
                     g.drawImage(imageStep, xKnight, yKnight2, this);    
                 }
+
                 //witch
-                else if(turn % 3 == 2){
-                    xWitch1 = xWitch-50;
-                    xWitch2 = xWitch+50;
-                    yWitch1 = yWitch-50;
-                    yWitch2 = yWitch+50;
+                 if(turn % 3 == 2){               
+                    xWitch1 = xWitch-60;
+                    xWitch2 = xWitch+60;
+                    yWitch1 = yWitch-60;
+                    yWitch2 = yWitch+60;
                     g.drawImage(imageStep, xWitch1, yWitch, this);
                     g.drawImage(imageStep, xWitch2, yWitch, this);
                     g.drawImage(imageStep, xWitch, yWitch1, this);
                     g.drawImage(imageStep, xWitch, yWitch2, this);    
                 }
-                else if(turn % 3 == 0){
-                    xPirate1 = xPirate-50;
-                    xPirate2 = xPirate+50;
-                    yPirate1 = yPirate-50;
-                    yPirate2 = yPirate+50;
+
+                //pirate
+                 if(turn % 3 == 0){                  
+                    xPirate1 = xPirate-60;
+                    xPirate2 = xPirate+60;
+                    yPirate1 = yPirate-60;
+                    yPirate2 = yPirate+60;
                     g.drawImage(imageStep, xPirate1, yPirate, this);
                     g.drawImage(imageStep, xPirate2, yPirate, this);
                     g.drawImage(imageStep, xPirate, yPirate1, this);
                     g.drawImage(imageStep, xPirate, yPirate2, this);    
-                }
+                } 
+                
             }
         };
 
         characterPanel.setPreferredSize(new Dimension(650, 650));
+        characterPanel.setBounds(50, 0, 650, 650);
         fenetre.setSize(new Dimension(650, 650));
         fenetre.setResizable(false);
         fenetre.add(characterPanel);
@@ -288,7 +295,7 @@ public class AllCharactersMvmnt {
                //key listener for knight
                if (turn % 3 == 1) {
                 if ( turn % 3 == 1 && e.getKeyCode() == KeyEvent.VK_RIGHT) {       //Right knight
-                    xKnight += 50;
+                    xKnight += 55;
                     turn++;
                     if (xKnight > 570)  xKnight = 570;   
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
@@ -296,7 +303,7 @@ public class AllCharactersMvmnt {
                 }
 
                 if ( turn % 3 == 1 && e.getKeyCode() == KeyEvent.VK_LEFT) {        //Left knight
-                    xKnight -= 50; 
+                    xKnight -= 55; 
                     turn++;
                     if (xKnight <= 0)  xKnight = 0; 
                     afficherImageKnight(imagePathsKnightRunInverse[currentImageIndexKinghtRun]); 
@@ -304,7 +311,7 @@ public class AllCharactersMvmnt {
                 }
 
                 if (turn % 3 == 1 &&  e.getKeyCode() == KeyEvent.VK_UP) {          //Up knight
-                    yKnight -= 50; 
+                    yKnight -= 55; 
                     turn++;
                     if (yKnight <= 0) yKnight = 0; 
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]);
@@ -312,7 +319,7 @@ public class AllCharactersMvmnt {
                 }
 
                 if ( turn % 3 == 1 && e.getKeyCode() == KeyEvent.VK_DOWN) {        //Down knight
-                    yKnight += 50; 
+                    yKnight += 55; 
                     turn++;
                     if (yKnight >= 550)  yKnight = 550;
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
@@ -336,7 +343,7 @@ public class AllCharactersMvmnt {
                 //key listener for witch
                 else if (turn % 3 == 2) {
                 if ( turn % 3 == 2 && e.getKeyCode() == KeyEvent.VK_RIGHT) { //Right witch
-                    xWitch += 50; 
+                    xWitch += 55; 
                     turn++;
                     if (xWitch > 570)   xWitch = 570;  
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]); 
@@ -344,7 +351,7 @@ public class AllCharactersMvmnt {
                 }
 
                  if (turn % 3 == 2 &&  e.getKeyCode() == KeyEvent.VK_LEFT) { //Left witch
-                    xWitch -= 50;
+                    xWitch -= 55;
                     turn++;
                     if (xWitch <= 0)  xWitch = 0;
                     afficherImageWitch(imagePathsWitchRunInverse[currentImageIndexWitchRun]);
@@ -352,7 +359,7 @@ public class AllCharactersMvmnt {
                 }
                 
                  if (turn % 3 == 2 &&  e.getKeyCode() == KeyEvent.VK_UP) { //Up witch
-                    yWitch -= 50;
+                    yWitch -= 55;
                     turn++;
                     if (yWitch<= 0)   yWitch = 0; 
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
@@ -360,7 +367,7 @@ public class AllCharactersMvmnt {
                 }
 
                  if (turn % 3 == 2 &&  e.getKeyCode() == KeyEvent.VK_DOWN) { //Down witch
-                    yWitch += 50; 
+                    yWitch += 55; 
                     turn++;
                     if (yWitch >= 550)  yWitch = 550; 
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
@@ -378,28 +385,28 @@ public class AllCharactersMvmnt {
                 //key listener for pirate  
                 else if (turn % 3 == 0) {       
                  if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_RIGHT) {  //Right pirate
-                    xPirate += 50; 
+                    xPirate += 55; 
                     turn++;
                     if (xPirate > 570)   xPirate = 570;  
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]); 
                 }
 
                  if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_LEFT) {  //Left pirate
-                    xPirate -= 50;
+                    xPirate -= 55;
                     turn++;
                     if (xPirate <= 0)  xPirate = 0;
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
                 }
 
                  if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_UP) {  //Up pirate
-                    yPirate -= 50;
+                    yPirate -= 55;
                     turn++;
                     if (yPirate<= 0)   yPirate = 0; 
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]); 
                 }
 
                  if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_DOWN) {  //Down pirate
-                    yPirate += 50; 
+                    yPirate += 55; 
                     turn++;
                     if (yPirate >= 550)  yPirate = 550; 
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
@@ -450,6 +457,61 @@ public class AllCharactersMvmnt {
 
     }
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new AllCharactersMvmnt());
+        SwingUtilities.invokeLater(() -> {
+            AllCharactersMvmnt charactersMvmnt = new AllCharactersMvmnt();
+            Dices dices = new Dices();
+            charactersMvmnt.fenetre.add(dices.panelDice);
+        });
+    }
+}
+
+class Dices {
+    public JFrame frame;
+    public JButton rollButton;
+    public JPanel panelDice;
+    public JLabel resultLabel;
+    public JLabel diceImageLabel1;
+    public JLabel diceImageLabel2;
+
+    public Dices() {
+   
+
+        rollButton = new JButton("Lancer les dés");
+        resultLabel = new JLabel();
+        diceImageLabel1 = new JLabel();
+        diceImageLabel2 = new JLabel();
+
+        rollButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                rollDice();
+            }
+        });
+
+        panelDice = new JPanel();
+        panelDice.setPreferredSize(new Dimension(650, 50));
+        panelDice.setBounds(0, 0, 650, 50);
+        panelDice.add(rollButton);
+        panelDice.add(resultLabel);
+        panelDice.add(diceImageLabel1);
+        panelDice.add(diceImageLabel2);
+
+        // frame.add(panelDice);
+        // frame.setVisible(true);
+    }
+
+    public void rollDice() {
+        Random random = new Random();
+        int roll1 = random.nextInt(6) + 1;
+        int roll2 = random.nextInt(20) + 1;
+        resultLabel.setText("Vous avez obtenu " + roll1 + " et " + roll2);
+
+        // Charger et afficher les images des faces des dés correspondantes
+        String imagePath1 = "./Dice/dice" + roll1 + ".png";
+        String imagePath2 = "./Dice/die20" + roll2 + ".png";
+        ImageIcon icon1 = new ImageIcon(imagePath1);
+        ImageIcon icon2 = new ImageIcon(imagePath2);
+        diceImageLabel1.setIcon(icon1);
+        diceImageLabel2.setIcon(icon2);
     }
 }
