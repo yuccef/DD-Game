@@ -281,7 +281,7 @@ public class AllCharactersMvmnt {
 
 
 
-        
+        Dices dices = new Dices();
 
         fenetre.setVisible(true);   
         fenetre.addKeyListener(new KeyListener() {
@@ -291,6 +291,10 @@ public class AllCharactersMvmnt {
 
             @Override
             public void keyPressed(KeyEvent e) {
+
+                if( e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_ENTER){
+                    dices.rollDice();
+                }
         
                //key listener for knight
                if (turn % 3 == 1) {
@@ -313,7 +317,7 @@ public class AllCharactersMvmnt {
                 if (turn % 3 == 1 &&  e.getKeyCode() == KeyEvent.VK_UP) {          //Up knight
                     yKnight -= 55; 
                     turn++;
-                    if (yKnight <= 0) yKnight = 0; 
+                    if (yKnight <= 50) yKnight = 50; 
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]);
 
                 }
@@ -361,7 +365,7 @@ public class AllCharactersMvmnt {
                  if (turn % 3 == 2 &&  e.getKeyCode() == KeyEvent.VK_UP) { //Up witch
                     yWitch -= 55;
                     turn++;
-                    if (yWitch<= 0)   yWitch = 0; 
+                    if (yWitch<= 50)   yWitch = 50; 
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
  
                 }
@@ -401,7 +405,7 @@ public class AllCharactersMvmnt {
                  if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_UP) {  //Up pirate
                     yPirate -= 55;
                     turn++;
-                    if (yPirate<= 0)   yPirate = 0; 
+                    if (yPirate<= 50)   yPirate = 50; 
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]); 
                 }
 
@@ -426,7 +430,7 @@ public class AllCharactersMvmnt {
             }
         });
 
-
+        fenetre.add(dices.panelDice);
         fenetre.setFocusable(true);
         fenetre.requestFocus();
         fenetre.setVisible(true);
@@ -458,15 +462,13 @@ public class AllCharactersMvmnt {
     }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            AllCharactersMvmnt charactersMvmnt = new AllCharactersMvmnt();
-            Dices dices = new Dices();
-            charactersMvmnt.fenetre.add(dices.panelDice);
+            SwingUtilities.invokeLater(() -> new AllCharactersMvmnt());
         });
     }
 }
 
+
 class Dices {
-    public JFrame frame;
     public JButton rollButton;
     public JPanel panelDice;
     public JLabel resultLabel;
@@ -474,9 +476,7 @@ class Dices {
     public JLabel diceImageLabel2;
 
     public Dices() {
-   
-
-        rollButton = new JButton("Lancer les dés");
+        rollButton = new JButton("Lancer les des");
         resultLabel = new JLabel();
         diceImageLabel1 = new JLabel();
         diceImageLabel2 = new JLabel();
@@ -496,15 +496,12 @@ class Dices {
         panelDice.add(diceImageLabel1);
         panelDice.add(diceImageLabel2);
 
-        // frame.add(panelDice);
-        // frame.setVisible(true);
     }
 
     public void rollDice() {
         Random random = new Random();
         int roll1 = random.nextInt(6) + 1;
         int roll2 = random.nextInt(20) + 1;
-        resultLabel.setText("Vous avez obtenu " + roll1 + " et " + roll2);
 
         // Charger et afficher les images des faces des dés correspondantes
         String imagePath1 = "./Dice/dice" + roll1 + ".png";
