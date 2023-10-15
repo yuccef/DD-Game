@@ -11,7 +11,7 @@ public class AllCharactersMvmnt {
     private int turn =4;
 
     private int xKnight = 325;
-    private int yKnight = 600;
+    private int yKnight = 570;
 
     private int xKnight1, yKnight1, xknight2,yKnight2;
     private int xWitch1, yWitch1, xWitch2,yWitch2;
@@ -155,18 +155,20 @@ public class AllCharactersMvmnt {
                 super.paintComponent(g);
                 Image image = new ImageIcon("../project/MapPixels/3.jpg").getImage();
                 // Draw the image as the background
-                for (int y = 50; y < 650; y += 50) {
-                    for (int x = 0; x < 650; x += 50) {
+                for (int y = 50; y < 750; y += 80) {
+                    for (int x = 0; x < 750; x += 80) {
                     g.drawImage(image, x, y, this);
                     }}; 
 
-                Image imageStep = new ImageIcon("../project/MapPixels/step1.jpg").getImage();
+                Image imageStep = new ImageIcon("../project/MapPixels/step3.jpg").getImage();
                 //Knight
                 if(turn % 3 == 1){ 
-                    xKnight1 = xKnight-60;
-                    xknight2 = xKnight+60;
-                    yKnight1 = yKnight-60;
-                    yKnight2 = yKnight+60;
+                    
+                    Random randomPixel1 = new Random();
+                    xKnight1 = randomPixel1.nextInt(601 - xKnight) + xKnight;
+                    xknight2 = randomPixel1.nextInt(xKnight + 1) ;
+                    yKnight1 = randomPixel1.nextInt(601 - yKnight) + yKnight;
+                    yKnight2 = randomPixel1.nextInt(yKnight + 1) ;
                     g.drawImage(imageStep, xKnight1, yKnight, this);
                     g.drawImage(imageStep, xknight2, yKnight, this);
                     g.drawImage(imageStep, xKnight, yKnight1, this);
@@ -174,11 +176,13 @@ public class AllCharactersMvmnt {
                 }
 
                 //witch
-                 if(turn % 3 == 2){               
-                    xWitch1 = xWitch-60;
-                    xWitch2 = xWitch+60;
-                    yWitch1 = yWitch-60;
-                    yWitch2 = yWitch+60;
+                 if(turn % 3 == 2){ 
+                    
+                    Random randomPixel2 = new Random();
+                    xWitch1 = randomPixel2.nextInt(601 - xWitch) + xWitch;
+                    xWitch2 = randomPixel2.nextInt(xWitch + 1) ;
+                    yWitch1 = randomPixel2.nextInt(601 - yWitch) + yWitch;
+                    yWitch2 = randomPixel2.nextInt(yWitch + 1) ;
                     g.drawImage(imageStep, xWitch1, yWitch, this);
                     g.drawImage(imageStep, xWitch2, yWitch, this);
                     g.drawImage(imageStep, xWitch, yWitch1, this);
@@ -186,11 +190,13 @@ public class AllCharactersMvmnt {
                 }
 
                 //pirate
-                 if(turn % 3 == 0){                  
-                    xPirate1 = xPirate-60;
-                    xPirate2 = xPirate+60;
-                    yPirate1 = yPirate-60;
-                    yPirate2 = yPirate+60;
+                 if(turn % 3 == 0){  
+                    
+                    Random randomPixel3 = new Random();
+                    xPirate1 = randomPixel3.nextInt(601 - xPirate) + xPirate;
+                    xPirate2 = randomPixel3.nextInt(xPirate + 1) ;
+                    yPirate1 = randomPixel3.nextInt(601 - yPirate) + yPirate;
+                    yPirate2 = randomPixel3.nextInt(yPirate + 1) ;
                     g.drawImage(imageStep, xPirate1, yPirate, this);
                     g.drawImage(imageStep, xPirate2, yPirate, this);
                     g.drawImage(imageStep, xPirate, yPirate1, this);
@@ -299,7 +305,7 @@ public class AllCharactersMvmnt {
                //key listener for knight
                if (turn % 3 == 1) {
                 if ( turn % 3 == 1 && e.getKeyCode() == KeyEvent.VK_RIGHT) {       //Right knight
-                    xKnight += 55;
+                    xKnight = xKnight1;
                     turn++;
                     if (xKnight > 570)  xKnight = 570;   
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
@@ -307,7 +313,7 @@ public class AllCharactersMvmnt {
                 }
 
                 if ( turn % 3 == 1 && e.getKeyCode() == KeyEvent.VK_LEFT) {        //Left knight
-                    xKnight -= 55; 
+                    xKnight = xknight2; 
                     turn++;
                     if (xKnight <= 0)  xKnight = 0; 
                     afficherImageKnight(imagePathsKnightRunInverse[currentImageIndexKinghtRun]); 
@@ -315,7 +321,7 @@ public class AllCharactersMvmnt {
                 }
 
                 if (turn % 3 == 1 &&  e.getKeyCode() == KeyEvent.VK_UP) {          //Up knight
-                    yKnight -= 55; 
+                    yKnight = yKnight2; 
                     turn++;
                     if (yKnight <= 50) yKnight = 50; 
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]);
@@ -323,7 +329,7 @@ public class AllCharactersMvmnt {
                 }
 
                 if ( turn % 3 == 1 && e.getKeyCode() == KeyEvent.VK_DOWN) {        //Down knight
-                    yKnight += 55; 
+                    yKnight = yKnight1; 
                     turn++;
                     if (yKnight >= 550)  yKnight = 550;
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
@@ -347,7 +353,7 @@ public class AllCharactersMvmnt {
                 //key listener for witch
                 else if (turn % 3 == 2) {
                 if ( turn % 3 == 2 && e.getKeyCode() == KeyEvent.VK_RIGHT) { //Right witch
-                    xWitch += 55; 
+                    xWitch = xWitch1; 
                     turn++;
                     if (xWitch > 570)   xWitch = 570;  
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]); 
@@ -355,7 +361,7 @@ public class AllCharactersMvmnt {
                 }
 
                  if (turn % 3 == 2 &&  e.getKeyCode() == KeyEvent.VK_LEFT) { //Left witch
-                    xWitch -= 55;
+                    xWitch = xWitch2; ;
                     turn++;
                     if (xWitch <= 0)  xWitch = 0;
                     afficherImageWitch(imagePathsWitchRunInverse[currentImageIndexWitchRun]);
@@ -363,7 +369,7 @@ public class AllCharactersMvmnt {
                 }
                 
                  if (turn % 3 == 2 &&  e.getKeyCode() == KeyEvent.VK_UP) { //Up witch
-                    yWitch -= 55;
+                    yWitch =  yWitch2 ;
                     turn++;
                     if (yWitch<= 50)   yWitch = 50; 
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
@@ -371,7 +377,7 @@ public class AllCharactersMvmnt {
                 }
 
                  if (turn % 3 == 2 &&  e.getKeyCode() == KeyEvent.VK_DOWN) { //Down witch
-                    yWitch += 55; 
+                    yWitch =  yWitch1; 
                     turn++;
                     if (yWitch >= 550)  yWitch = 550; 
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
@@ -389,28 +395,28 @@ public class AllCharactersMvmnt {
                 //key listener for pirate  
                 else if (turn % 3 == 0) {       
                  if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_RIGHT) {  //Right pirate
-                    xPirate += 55; 
+                    xPirate = xPirate1; 
                     turn++;
                     if (xPirate > 570)   xPirate = 570;  
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]); 
                 }
 
                  if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_LEFT) {  //Left pirate
-                    xPirate -= 55;
+                    xPirate = xPirate2;
                     turn++;
                     if (xPirate <= 0)  xPirate = 0;
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
                 }
 
                  if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_UP) {  //Up pirate
-                    yPirate -= 55;
+                    yPirate = yPirate2;
                     turn++;
                     if (yPirate<= 50)   yPirate = 50; 
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]); 
                 }
 
                  if (turn%3 == 0 && e.getKeyCode() == KeyEvent.VK_DOWN) {  //Down pirate
-                    yPirate += 55; 
+                    yPirate = yPirate1; 
                     turn++;
                     if (yPirate >= 550)  yPirate = 550; 
                     afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
