@@ -10,6 +10,7 @@ public class AllCharactersMvmnt {
 
     private int turn =4;
 
+
     private int xKnight = 325;
     private int yKnight = 570;
 
@@ -151,12 +152,12 @@ public class AllCharactersMvmnt {
 
         JPanel characterPanel = new JPanel() {
             @Override
-            protected void paintComponent(Graphics g) {
+            public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Image image = new ImageIcon("../project/MapPixels/3.jpg").getImage();
                 // Draw the image as the background
-                for (int y = 50; y < 750; y += 80) {
-                    for (int x = 0; x < 750; x += 80) {
+                for (int y = 50; y < 750; y += 50) {
+                    for (int x = 0; x < 750; x += 50) {
                     g.drawImage(image, x, y, this);
                     }}; 
 
@@ -165,44 +166,96 @@ public class AllCharactersMvmnt {
                 if(turn % 3 == 1){ 
                     
                     Random randomPixel1 = new Random();
-                    xKnight1 = randomPixel1.nextInt(601 - xKnight) + xKnight;
-                    xknight2 = randomPixel1.nextInt(xKnight + 1) ;
-                    yKnight1 = randomPixel1.nextInt(601 - yKnight) + yKnight;
-                    yKnight2 = randomPixel1.nextInt(yKnight + 1) ;
+                    int kx1 = randomPixel1.nextInt(601 - xKnight) + xKnight;
+                    xKnight1 = kx1;
+
+                    int kx2 = randomPixel1.nextInt(xKnight + 1) ;
+                    xknight2 = kx2;
+
+                    int ky1 = randomPixel1.nextInt(601 - yKnight) + yKnight;
+                    yKnight1 = ky1;
+
+                    int ky2 = randomPixel1.nextInt(yKnight + 1) ;
+                    yKnight2 = ky2;
+
+                        for (int y = 50; y < 750; y += 50) {
+                        for (int x = 0; x < 750; x += 50) {
+                            g.drawImage(image, x, y, this);
+                        }
+                    }
                     g.drawImage(imageStep, xKnight1, yKnight, this);
                     g.drawImage(imageStep, xknight2, yKnight, this);
                     g.drawImage(imageStep, xKnight, yKnight1, this);
-                    g.drawImage(imageStep, xKnight, yKnight2, this);    
+                    g.drawImage(imageStep, xKnight, yKnight2, this);  
+
+
+
                 }
 
                 //witch
                  if(turn % 3 == 2){ 
                     
                     Random randomPixel2 = new Random();
-                    xWitch1 = randomPixel2.nextInt(601 - xWitch) + xWitch;
-                    xWitch2 = randomPixel2.nextInt(xWitch + 1) ;
-                    yWitch1 = randomPixel2.nextInt(601 - yWitch) + yWitch;
-                    yWitch2 = randomPixel2.nextInt(yWitch + 1) ;
+
+                    int wx1 = randomPixel2.nextInt(601 - xWitch) + xWitch;
+                    xWitch1 = wx1;
+
+                    int wx2 = randomPixel2.nextInt(xWitch + 1) ;
+                    xWitch2 = wx2;
+
+                    int wy1 = randomPixel2.nextInt(601 - yWitch) + yWitch;
+                    yWitch1 = wy1;
+
+                    int wy2 = randomPixel2.nextInt(yWitch + 1) ;
+                    yWitch2 = wy2;
+
+                        for (int y = 50; y < 750; y += 50) {
+                        for (int x = 0; x < 750; x += 50) {
+                            g.drawImage(image, x, y, this);
+                        }
+                    }
+    ;
                     g.drawImage(imageStep, xWitch1, yWitch, this);
                     g.drawImage(imageStep, xWitch2, yWitch, this);
                     g.drawImage(imageStep, xWitch, yWitch1, this);
-                    g.drawImage(imageStep, xWitch, yWitch2, this);    
+                    g.drawImage(imageStep, xWitch, yWitch2, this);   
+                    
+
+
                 }
 
                 //pirate
                  if(turn % 3 == 0){  
                     
                     Random randomPixel3 = new Random();
-                    xPirate1 = randomPixel3.nextInt(601 - xPirate) + xPirate;
-                    xPirate2 = randomPixel3.nextInt(xPirate + 1) ;
-                    yPirate1 = randomPixel3.nextInt(601 - yPirate) + yPirate;
-                    yPirate2 = randomPixel3.nextInt(yPirate + 1) ;
+
+
+                    int px1 = randomPixel3.nextInt(601 - xPirate) + xPirate;
+                    xPirate1 = px1;
+
+                    int px2 = randomPixel3.nextInt(xPirate + 1) ;
+                    xPirate2 = px2;
+
+                    int py1 = randomPixel3.nextInt(601 - yPirate) + yPirate;
+                    yPirate1 = py1; 
+
+                    int py2 = randomPixel3.nextInt(yPirate + 1) ;
+                    yPirate2 = py2;
+
+                                        for (int y = 50; y < 800; y += 60) {
+                        for (int x = 0; x < 800; x += 60) {
+                            g.drawImage(image, x, y, this);
+                        }
+                    }
+
                     g.drawImage(imageStep, xPirate1, yPirate, this);
                     g.drawImage(imageStep, xPirate2, yPirate, this);
                     g.drawImage(imageStep, xPirate, yPirate1, this);
-                    g.drawImage(imageStep, xPirate, yPirate2, this);    
-                } 
-                
+                    g.drawImage(imageStep, xPirate, yPirate2, this); 
+                    
+
+
+                }  
             }
         };
 
@@ -335,6 +388,7 @@ public class AllCharactersMvmnt {
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
 
                 }
+                
 
                 if (turn % 3 == 1 && e.getKeyChar() == 'y'| e.getKeyChar() == 'Y'  ){     //Attack knight
                 afficherImageKnight(imagePathsKnightAttack[currentImageIndexKnightAttack]); 
@@ -505,6 +559,19 @@ class Dices {
     }
 
     public void rollDice() {
+        // int turn = 4;  
+        // if (turn % 3 == 1) {
+        //     resultLabel.setText("C'est au tour du chevalier");
+        //     turn++;
+        // }
+        // if (turn % 3 == 2) {
+        //     resultLabel.setText("C'est au tour de la sorcière");
+        //     turn++;
+        // }
+        // if (turn % 3 == 0) {
+        //     resultLabel.setText("C'est au tour du pirate");
+        //     turn++;
+        // } 
         Random random = new Random();
         int roll1 = random.nextInt(6) + 1;
         int roll2 = random.nextInt(20) + 1;
