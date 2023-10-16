@@ -6,19 +6,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
-public class AllCharactersMvmnt {
+public class AllMvmnt {
 
-    private int turn =4;
+    Image image = new ImageIcon("../project/MapPixels/3.jpg").getImage();
+    Image imageStep = new ImageIcon("../project/MapPixels/step3.jpg").getImage();
 
+    private int turn = 4;
 
     private int xKnight = 325;
     private int yKnight = 570;
-
-    private int xKnight1, yKnight1, xknight2,yKnight2;
-    private int xWitch1, yWitch1, xWitch2,yWitch2;
-    private int xPirate1, yPirate1, xPirate2,yPirate2;
-   
-    public JPanel DicePaneltest; 
 
     private int xWitch= 0;
     private int yWitch= 375;
@@ -26,13 +22,24 @@ public class AllCharactersMvmnt {
     private int xPirate= 325;
     private int yPirate= 50;
 
+
+    private int xKnight1, yKnight1, xknight2,yKnight2;
+    private int xWitch1, yWitch1, xWitch2,yWitch2;
+    private int xPirate1, yPirate1, xPirate2,yPirate2;
+
+
+
     private JFrame fenetre;
-    //private JPanel characterPanel;
 
     private JLabel characterLabel;
     private JLabel characterLabelWitch;
     private JLabel characterLabelPirate;
 
+     Random randomPixel1 = new Random();
+
+   
+
+   
 
     public String[] imagePathsKnightRun = {
         "../project/CharactersMvmnt/KnightMvmnt/run1.png",
@@ -128,6 +135,7 @@ public class AllCharactersMvmnt {
 
 
 
+
     private int currentImageIndexKinghtRun = 0;
     private int currentImageIndexKnightAttack = 0;
     private int currentImageIndexKnightDefense = 0;
@@ -140,115 +148,112 @@ public class AllCharactersMvmnt {
 
 
 
-    public AllCharactersMvmnt() {
+    public AllMvmnt() {
         fenetre = new JFrame("Affichage de photos");
         fenetre.setSize(800, 700);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
      
      
-
-
-
         JPanel characterPanel = new JPanel() {
             @Override
             public void paintComponent(Graphics g) {
+
                 super.paintComponent(g);
                 Image image = new ImageIcon("../project/MapPixels/3.jpg").getImage();
-                // Draw the image as the background
+
                 for (int y = 50; y < 750; y += 50) {
                     for (int x = 0; x < 750; x += 50) {
                     g.drawImage(image, x, y, this);
                     }}; 
 
-                Image imageStep = new ImageIcon("../project/MapPixels/step3.jpg").getImage();
-                //Knight
+
+
+       
+            //Knight
                 if(turn % 3 == 1){ 
+
+
+                //right
+                    if(xKnight >= 550) xKnight1 = 570;
+                    else  xKnight1 = randomPixel1.nextInt(600 - xKnight-60  ) + xKnight + 60 ;
+
+
+                 //left
+                    if(xKnight<=60) xknight2 = 0;
+                    else  xknight2 =   randomPixel1.nextInt(xKnight - 60 ) +1;
+
+                //down
+                    if(yKnight>=500) yKnight1 = 570; 
+                    else  yKnight1 = randomPixel1.nextInt(600 - (yKnight + 60)) + yKnight ;  
                     
-                    Random randomPixel1 = new Random();
-                    int kx1 = randomPixel1.nextInt(601 - xKnight) + xKnight;
-                    xKnight1 = kx1;
+                //up
+                   if(yKnight<=100) yKnight2 = 50;
+                   else  yKnight2=  randomPixel1.nextInt(yKnight - 60) + 50 ;
 
-                    int kx2 = randomPixel1.nextInt(xKnight + 1) ;
-                    xknight2 = kx2;
-
-                    int ky1 = randomPixel1.nextInt(601 - yKnight) + yKnight;
-                    yKnight1 = ky1;
-
-                    int ky2 = randomPixel1.nextInt(yKnight + 1) ;
-                    yKnight2 = ky2;
-
-                        for (int y = 50; y < 750; y += 50) {
-                        for (int x = 0; x < 750; x += 50) {
-                            g.drawImage(image, x, y, this);
-                        }
-                    }
                     g.drawImage(imageStep, xKnight1, yKnight, this);
                     g.drawImage(imageStep, xknight2, yKnight, this);
                     g.drawImage(imageStep, xKnight, yKnight1, this);
-                    g.drawImage(imageStep, xKnight, yKnight2, this);     
-                };
-
-                //witch
-                 if(turn % 3 == 2){ 
-                    
-                    Random randomPixel2 = new Random();
-
-                    int wx1 = randomPixel2.nextInt(601 - xWitch) + xWitch;
-                    xWitch1 = wx1;
-
-                    int wx2 = randomPixel2.nextInt(xWitch + 1) ;
-                    xWitch2 = wx2;
-
-                    int wy1 = randomPixel2.nextInt(601 - yWitch) + yWitch;
-                    yWitch1 = wy1;
-
-                    int wy2 = randomPixel2.nextInt(yWitch + 1) ;
-                    yWitch2 = wy2;
-
-                        for (int y = 50; y < 750; y += 50) {
-                        for (int x = 0; x < 750; x += 50) {
-                            g.drawImage(image, x, y, this);
-                        }
-                    }
-    ;
-                    g.drawImage(imageStep, xWitch1, yWitch, this);
-                    g.drawImage(imageStep, xWitch2, yWitch, this);
-                    g.drawImage(imageStep, xWitch, yWitch1, this);
-                    g.drawImage(imageStep, xWitch, yWitch2, this);   
-                }
-
-                //pirate
-                 if(turn % 3 == 0){  
-                    
-                    Random randomPixel3 = new Random();
-
-
-                    int px1 = randomPixel3.nextInt(601 - xPirate) + xPirate;
-                    xPirate1 = px1;
-
-                    int px2 = randomPixel3.nextInt(xPirate + 1) ;
-                    xPirate2 = px2;
-
-                    int py1 = randomPixel3.nextInt(601 - yPirate) + yPirate;
-                    yPirate1 = py1; 
-
-                    int py2 = randomPixel3.nextInt(yPirate + 1) ;
-                    yPirate2 = py2;
-
-                                        for (int y = 50; y < 800; y += 60) {
-                        for (int x = 0; x < 800; x += 60) {
-                            g.drawImage(image, x, y, this);
-                        }
-                    }
-
-                    g.drawImage(imageStep, xPirate1, yPirate, this);
-                    g.drawImage(imageStep, xPirate2, yPirate, this);
-                    g.drawImage(imageStep, xPirate, yPirate1, this);
-                    g.drawImage(imageStep, xPirate, yPirate2, this); 
-
-                }  
+                    g.drawImage(imageStep, xKnight, yKnight2, this);    
             }
+        
+             //Witch
+                if(turn % 3 == 2){ 
+
+            //right
+                if(xWitch>=570) xWitch1 = 570;
+                else  xWitch1 = randomPixel1.nextInt(600 - xWitch - 60 ) + xWitch + 60 ;
+
+            
+            //left   
+                if(xWitch<=60) xWitch2 = 0;
+                else  xWitch2 =   randomPixel1.nextInt(xWitch - 60 ) + 1;
+
+            //down
+                if(yWitch>=500) yWitch1 = 570; 
+                else  yWitch1 = randomPixel1.nextInt(600 - (yWitch + 60)) + yWitch ;
+
+            //up
+                if(yWitch<=100) yWitch2 = 50;
+                else  yWitch2=  randomPixel1.nextInt(yWitch - 60) + 50;
+
+            g.drawImage(imageStep, xWitch1, yWitch, this);
+            g.drawImage(imageStep, xWitch2, yWitch, this);
+            g.drawImage(imageStep, xWitch, yWitch1, this);
+            g.drawImage(imageStep, xWitch, yWitch2, this);   
+        }
+
+            //pirate
+            if(turn % 3 == 0){  
+                    
+
+            //right
+                if(xPirate>=570) xPirate1 = 550;
+                else  xPirate1 = randomPixel1.nextInt(600 - (xPirate +60) )+ xPirate +60    ;
+
+            //left
+                if(xPirate<=60) xPirate2 = 0;
+                else  xPirate2 =   randomPixel1.nextInt(xPirate - 60 ) + 1;
+            
+            //down
+
+                if(yPirate>=570) yPirate1 = 570; 
+                else  yPirate1 = randomPixel1.nextInt(600 - (yPirate + 60)) + yPirate ;
+
+            //up
+
+                if(yPirate<=100) yPirate2 = 50;
+                else  yPirate2=  randomPixel1.nextInt(yPirate - 60)+50 ;
+
+
+
+            g.drawImage(imageStep, xPirate1, yPirate, this);
+            g.drawImage(imageStep, xPirate2, yPirate, this);
+            g.drawImage(imageStep, xPirate, yPirate1, this);
+            g.drawImage(imageStep, xPirate, yPirate2, this); 
+
+        }   
+              }
         };
 
         characterPanel.setPreferredSize(new Dimension(650, 650));
@@ -266,69 +271,6 @@ public class AllCharactersMvmnt {
         characterPanel.add(characterLabel);
         characterPanel.add(characterLabelWitch);
         characterPanel.add(characterLabelPirate);
-
-
-        Timer timerKnightRun = new Timer(200, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                currentImageIndexKinghtRun = (currentImageIndexKinghtRun + 1) % imagePathsKnightRun.length; // Loop through the images
-            }
-        });
-        timerKnightRun.start();
-
-
-        Timer timerKnightAttack = new Timer(50, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                currentImageIndexKnightAttack = (currentImageIndexKnightAttack + 1) % imagePathsKnightRun.length; // Loop through the images
-            }
-        });
-        timerKnightAttack.start();
-
-
-
-        Timer timerKnightDefense = new Timer(50, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                currentImageIndexKnightDefense = (currentImageIndexKnightDefense + 1) % imagePathsKnightRun.length; // Loop through the images
-            }
-        });
-        timerKnightDefense.start();
- 
-
-
-
-
-        Timer timerWitchRun = new Timer(200, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]);
-                currentImageIndexWitchRun = (currentImageIndexWitchRun + 1) % imagePathsWitchRun.length; // Loop through the images
-            }
-        });
-        timerWitchRun.start();
-
-
-
-
-
-        Timer timerPirateRun = new Timer(200, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherImagePirate(imagePathsPirateRun[currentImageIndexPirateRun]);
-                currentImageIndexPirateRun = (currentImageIndexPirateRun + 1) % imagePathsPirateRun.length; // Loop through the images
-            }
-        });
-        timerPirateRun.start();
-
-
-        Timer timerPirateAttack = new Timer(200, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                currentImageIndexPirateAttack = (currentImageIndexPirateAttack + 1) % imagePathsPirateRun.length; // Loop through the images
-            }
-        });
-        timerPirateAttack.start();
 
 
 
@@ -363,7 +305,7 @@ public class AllCharactersMvmnt {
                     turn++;
                     if (xKnight <= 0)  xKnight = 0; 
                     afficherImageKnight(imagePathsKnightRunInverse[currentImageIndexKinghtRun]); 
-                                        fenetre.repaint();
+                     fenetre.repaint();
 
 
                 }
@@ -373,7 +315,7 @@ public class AllCharactersMvmnt {
                     turn++;
                     if (yKnight <= 50) yKnight = 50; 
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]);
-                                        fenetre.repaint();
+                    fenetre.repaint();
 
 
                 }
@@ -388,7 +330,6 @@ public class AllCharactersMvmnt {
 
                 }
                 
-
                 if (turn % 3 == 1 && e.getKeyChar() == 'y'| e.getKeyChar() == 'Y'  ){     //Attack knight
                 afficherImageKnight(imagePathsKnightAttack[currentImageIndexKnightAttack]); 
                             turn++;
@@ -410,7 +351,7 @@ public class AllCharactersMvmnt {
                     turn++;
                     if (xWitch > 570)   xWitch = 570;  
                     afficherImageWitch(imagePathsWitchRun[currentImageIndexWitchRun]); 
-                                        fenetre.repaint();
+                    fenetre.repaint();
 
 
                 }
@@ -495,10 +436,21 @@ public class AllCharactersMvmnt {
                 afficherImagePirate(imagePathsPirateAttack[currentImageIndexPirateAttack]);
                             turn++;    
                     }  
-        }
-    }
- 
+                
 
+                if (e.getKeyChar() == 'y'| e.getKeyChar() == 'Y'  ){     //Attack knight
+                afficherImageKnight(imagePathsKnightAttack[currentImageIndexKnightAttack]); 
+
+                    }
+
+                if ( e.getKeyChar() == 't'| e.getKeyChar() == 'T'  ){     //Defense knight
+                afficherImageKnight(imagePathsKnightDefense[currentImageIndexKnightDefense]);        
+                    }
+            
+                
+            }
+
+        }
             @Override
             public void keyReleased(KeyEvent e) {
                 // Do nothing here, as we are not using keyReleased
@@ -536,10 +488,10 @@ public class AllCharactersMvmnt {
 
     }
 
-    
+   
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            SwingUtilities.invokeLater(() -> new AllCharactersMvmnt());
+            SwingUtilities.invokeLater(() -> new AllMvmnt());
         });
     }
 }
@@ -576,19 +528,7 @@ class Dices {
     }
 
     public void rollDice() {
-        // int turn = 4;  
-        // if (turn % 3 == 1) {
-        //     resultLabel.setText("C'est au tour du chevalier");
-        //     turn++;
-        // }
-        // if (turn % 3 == 2) {
-        //     resultLabel.setText("C'est au tour de la sorcière");
-        //     turn++;
-        // }
-        // if (turn % 3 == 0) {
-        //     resultLabel.setText("C'est au tour du pirate");
-        //     turn++;
-        // } 
+
         Random random = new Random();
         int roll1 = random.nextInt(6) + 1;
         int roll2 = random.nextInt(20) + 1;
