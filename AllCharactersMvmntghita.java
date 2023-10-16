@@ -275,12 +275,11 @@ public class AllCharactersMvmntghita {
                
                 if ( e.getKeyCode() == KeyEvent.VK_RIGHT) {       //Right knight
                     if (xKnight > 570)  xKnight = 570; 
-
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
-                    xKnight = kx1;
+                    xKnight = xKnight1;
 
                 }
-
+            
                 if ( e.getKeyCode() == KeyEvent.VK_LEFT) {        //Left knight
                     xKnight = xknight2; 
                     if (xKnight <= 0)  xKnight = 0; 
