@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class labyrinth {
 
@@ -9,15 +12,10 @@ public class labyrinth {
     private JFrame fenetre;
     private int[][] matrix;
     
-
-
-    private int xKnight = 320;
-    private int yKnight = 0;
-
-private int  xx,yy;
-
-    private JLabel characterLabel;
-
+        private int xKnight = 320;
+        private int yKnight = 0;
+        private int  xx,yy;
+        private JLabel characterLabel;
     
     public String[] imagePathsKnightRun = {
         "../project/CharactersMvmnt/KnightMvmnt/run1.png",
@@ -30,7 +28,6 @@ private int  xx,yy;
         "../project/CharactersMvmnt/KnightMvmnt/run8.png"
     };
     
-
     public String[] imagePathsKnightRunInverse = {
         "../project/CharactersMvmnt/KnightMvmnt/run11.png",
         "../project/CharactersMvmnt/KnightMvmnt/run22.png",
@@ -41,7 +38,6 @@ private int  xx,yy;
         "../project/CharactersMvmnt/KnightMvmnt/run77.png",
         "../project/CharactersMvmnt/KnightMvmnt/run88.png"
     };
-
 
     public String[] imagePathsKnightAttack = {
         "../project/CharactersMvmnt/KnightMvmnt/KnightAttack1.png",
@@ -57,13 +53,8 @@ private int  xx,yy;
         "../project/CharactersMvmnt/KnightMvmnt/KnightDefense3.png",
     };
 
-
-    
     private int currentImageIndexKinghtRun = 0;
  
-
-
-
     public labyrinth() {
         fenetre = new JFrame("Affichage de photos");
         fenetre.setSize(800, 810);
@@ -75,51 +66,67 @@ private int  xx,yy;
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
+
                 Image image = new ImageIcon("../project/MapPixels/labyrinth1.jpg").getImage();
                 Image mageTEST = new ImageIcon("../project/MapPixels/labyrinth2.jpg").getImage();
+                matrix = new int[810][810];
 
-
-                        matrix = new int[810][810];
 
 
             for (int y = 0; y < 810; y += 40) {
-                    for (int x = 0; x < 810; x += 40) {
+                    for (int x = 0; x < 810; x += 40) {                        
                         g.drawImage(image, x, y, this);
                     }
                 }
-                for (int i = 0; i < 810; i++) {
+            for (int i = 0; i < 810; i++) {
                     for (int j = 0; j < 810; j++) {
-                        matrix[i][j] = 0;
-                    }
-                }
-            for (int y = 0; y < 810; y += 80) {
-                for (int x = 0; x < 810; x += 40) {
-                        g.drawImage(mageTEST, x, y, this);
-                    
-                }
-            }
-                for (int i = 0; i < 810; i+=80) {
-                    for (int j = 0; j < 810; j+=40) {
-                        matrix[i][j] = 1;
+                        matrix[j][i] = 0;
                     }
                 }
 
+            for (int y = 0; y < 810; y += 80) {
+                for (int x = 0; x < 810; x += 40) {
+                        g.drawImage(mageTEST, x, y, this);      
+                }
+            }
+
+            for (int i = 0; i < 770; i+=80) {
+                    for (int j = 0; j < 770; j+=40) {
+                            matrix[j][i] = 1;    
+                    }
+                }
+
+            
+
+
+            for(int i=0; i < 770; i++){
+                    for(int j=0; j < 770; j++){
+                        if(matrix[j][i] == 1){
+                                matrix[j][i+40] = 1;
+                                matrix[j+40][i] = 1;
+                                matrix[j+40][i+40] = 1;
+                        }
+                    }
+                }
 
 
             g.drawImage(image, 320 , 0, this);
-            matrix[320][0] = 0;
+            fillMatrixbyZero(0,320);
 
             g.drawImage(image, 440 , 80, this);
-            matrix[440][80] = 0;
+            fillMatrixbyZero(80,440);
+
 
             g.drawImage(image, 160 , 80, this);
-            matrix[160][80] = 0;
+            fillMatrixbyZero(80,160);
+
 
             g.drawImage(image, 40 , 80, this);
-            matrix[40][80] = 0;
+            fillMatrixbyZero(80,40);
+       
 
             g.drawImage(image, 717 , 80, this);
-            matrix[717][80] = 0;
+            fillMatrixbyZero(80,717);
 
 
             g.drawImage(image, 40 , 160, this);
@@ -131,33 +138,31 @@ private int  xx,yy;
             g.drawImage(image, 360 , 160, this);
             g.drawImage(image, 717 , 160, this);
 
-            matrix[40][160] = 0;
-            matrix[240][160] = 0;
-            matrix[120][160] = 0;
-            matrix[160][160] = 0;
-            matrix[200][160] = 0;
-            matrix[320][160] = 0;
-            matrix[360][160] = 0;
-            matrix[717][160] = 0;
-
-
-
+            fillMatrixbyZero(160,40);
+            fillMatrixbyZero(160,240);
+            fillMatrixbyZero(160,120);
+            fillMatrixbyZero(160,160);
+            fillMatrixbyZero(160,200);
+            fillMatrixbyZero(160,320);
+            fillMatrixbyZero(160,360);
+            fillMatrixbyZero(160,717);
+  
 
             g.drawImage(image, 400 , 320, this);
             g.drawImage(image, 40 , 320, this);
 
-            matrix[400][320] = 0;
-            matrix[40][320] = 0;
+            fillMatrixbyZero(320,40);
+            fillMatrixbyZero(320,400);
 
             g.drawImage(image, 40 , 400, this);
             g.drawImage(image, 597 , 400, this);
 
-            matrix[40][400] = 0;
-            matrix[597][400] = 0;
+            fillMatrixbyZero(400,40);
+            fillMatrixbyZero(400,597);
 
             g.drawImage(image, 240 , 480, this);
 
-            matrix[240][480] = 0;
+            fillMatrixbyZero(480,240);
 
             g.drawImage(image, 557 , 240, this);
             g.drawImage(image, 40 , 240, this);
@@ -165,95 +170,93 @@ private int  xx,yy;
             g.drawImage(image, 200 , 240, this);
             g.drawImage(image, 240 , 240, this);
 
-            matrix[557][240] = 0;
-            matrix[40][240] = 0;
-            matrix[120][240] = 0;
-            matrix[200][240] = 0;
-            matrix[240][240] = 0;
-
+            fillMatrixbyZero(240,557);
+            fillMatrixbyZero(240,40);
+            fillMatrixbyZero(240,120);
+            fillMatrixbyZero(240,200);
+            fillMatrixbyZero(240,240);
 
             g.drawImage(mageTEST, 757 , 120, this);
+            fillMatrixbyOne(120, 757);
+
             g.drawImage(mageTEST, 0 , 120, this);
+            fillMatrixbyOne(120, 0);
+
             g.drawImage(mageTEST, 677 , 120, this);
+            fillMatrixbyOne(120, 677);
+
             g.drawImage(mageTEST, 80 , 120, this);
+            fillMatrixbyOne(120, 80);
+
             g.drawImage(mageTEST, 280 , 120, this);
-
-            matrix[757][120] = 1;
-            matrix[0][120] = 1;
-            matrix[677][120] = 1;
-            matrix[80][120] = 1;
-            matrix[280][120] = 1;
-
+            fillMatrixbyOne(120, 280);
 
             g.drawImage(mageTEST, 757 , 40, this);
+            fillMatrixbyOne(40, 757);
+
             g.drawImage(mageTEST, 0 , 40, this);
+            fillMatrixbyOne(40, 0);
+
             g.drawImage(mageTEST, 120 , 40, this);
-
-            matrix[757][40] = 1;
-            matrix[0][40] = 1;
-            matrix[120][40] = 1;
-
+            fillMatrixbyOne(40, 120);
 
             g.drawImage(mageTEST, 0 , 200, this);
+            fillMatrixbyOne(200, 0);
+
             g.drawImage(mageTEST, 757 , 200, this);
+            fillMatrixbyOne(200, 757);
+
             g.drawImage(mageTEST, 80 , 200, this);
+            fillMatrixbyOne(200, 80);
+
             g.drawImage(mageTEST, 280 , 200, this);
-
-            matrix[0][200] = 1;
-            matrix[757][200] = 1;
-            matrix[80][200] = 1;
-            matrix[280][200] = 1;
-
+            fillMatrixbyOne(200, 280);
 
             g.drawImage(mageTEST, 757 , 280, this);
+            fillMatrixbyOne(280, 757);
+
             g.drawImage(mageTEST, 0 , 280, this);
+            fillMatrixbyOne(280, 0);
+
             g.drawImage(mageTEST, 360 , 280, this);
+            fillMatrixbyOne(280, 360);
+
             g.drawImage(mageTEST, 160 , 280, this);
-
-            matrix[757][280] = 1;
-            matrix[0][280] = 1;
-            matrix[360][280] = 1;
-            matrix[160][280] = 1;
-
+            fillMatrixbyOne(280, 160);
 
             g.drawImage(mageTEST, 757 , 360, this);
-            g.drawImage(mageTEST, 0 , 360, this);
-            g.drawImage(mageTEST, 80 , 360, this);
+            fillMatrixbyOne(360, 757);
 
-            matrix[757][360] = 1;
-            matrix[0][360] = 1;
-            matrix[80][360] = 1;
+            g.drawImage(mageTEST, 0 , 360, this);
+            fillMatrixbyOne(360, 0);
+
+            g.drawImage(mageTEST, 80 , 360, this);
+            fillMatrixbyOne(360, 80);
 
             g.drawImage(mageTEST, 757 , 440, this);
+            fillMatrixbyOne(440, 757);
+
             g.drawImage(mageTEST, 0 , 440, this);
+            fillMatrixbyOne(440, 0);
+
             g.drawImage(mageTEST, 200 , 440, this);
-            g.drawImage(mageTEST, 200 , 440, this);
+            fillMatrixbyOne(440, 200);
+
             g.drawImage(mageTEST, 717 , 440, this);
+            fillMatrixbyOne(440, 717);
+
             g.drawImage(mageTEST, 677 , 440, this);
+            fillMatrixbyOne(440, 677);
+
             g.drawImage(mageTEST, 637 , 440, this);
+            fillMatrixbyOne(440, 637);
+
             g.drawImage(mageTEST, 0 , 520, this);
+            fillMatrixbyOne(520, 0);
+        
             g.drawImage(mageTEST, 160 , 240, this);
-
-            matrix[757][440] = 1;
-            matrix[0][440] = 1;
-            matrix[200][440] = 1;
-            matrix[200][440] = 1;
-            matrix[717][440] = 1;
-            matrix[677][440] = 1;
-            matrix[637][440] = 1;
-            matrix[0][520] = 1;
-            matrix[160][240] = 1;
-                
-
-
-
-
-
-
-
-
-
-
+            fillMatrixbyOne(240, 160);
+   
         }
     };
 
@@ -293,27 +296,27 @@ private int  xx,yy;
 
              //key listener for knight
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {       //Right knight
-                    xKnight = xKnight-10;
+                    xKnight = xx+5;
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
                     fenetre.repaint();
 
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {        //Left knight
-                    xKnight = xKnight+10; 
+                    xKnight = xx-5; 
                     afficherImageKnight(imagePathsKnightRunInverse[currentImageIndexKinghtRun]); 
                      fenetre.repaint();
                 }   
 
                 if (e.getKeyCode() == KeyEvent.VK_UP) {          //Up knight
-                    yKnight = yKnight+10; 
+                    yKnight = yy+5; 
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]);
                     fenetre.repaint();
                 }
 
 
                 if (e.getKeyCode() == KeyEvent.VK_DOWN) {        //Down knight
-                    yKnight = yKnight-10; 
+                    yKnight = yy-5; 
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
                                         fenetre.repaint();
                 } 
@@ -324,14 +327,14 @@ private int  xx,yy;
         if(matrix[xx][yy] == 0){
                //key listener for knight
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {       //Right knight
-                    xKnight += 10;
+                    xKnight += 5;
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
                     fenetre.repaint();
 
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {        //Left knight
-                    xKnight -= 10; 
+                    xKnight -= 5; 
                     afficherImageKnight(imagePathsKnightRunInverse[currentImageIndexKinghtRun]); 
                      fenetre.repaint();
 
@@ -339,7 +342,7 @@ private int  xx,yy;
                 }   
 
                 if (e.getKeyCode() == KeyEvent.VK_UP) {          //Up knight
-                    yKnight -= 10; 
+                    yKnight -= 5; 
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]);
                     fenetre.repaint();
                     
@@ -348,7 +351,7 @@ private int  xx,yy;
 
 
                 if (e.getKeyCode() == KeyEvent.VK_DOWN) {        //Down knight
-                    yKnight += 10; 
+                    yKnight += 5; 
                     afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]); 
                                         fenetre.repaint();
 
@@ -365,21 +368,56 @@ private int  xx,yy;
                 
 
 
-
         fenetre.setVisible(true);
 
 
     }
 
     private void afficherImageKnight(String nomImage) {
+        // for(int i = 0; i < 810; i++){
+        //     for(int j = 0; j < 810; j++){
+        //         System.out.print(matrix[i][j]);
+        //     }
+        //     System.out.println();
+        // }
         ImageIcon imageIcon = new ImageIcon(nomImage);
         characterLabel.setIcon(imageIcon);
         characterLabel.setBounds(xKnight, yKnight, imageIcon.getIconWidth(), imageIcon.getIconHeight());
         characterLabel.repaint(); // Repaint the label to show the updated position
-
     }
 
+  public void ModifyMatrix(int x, int y){
+        matrix[x][y] = 1;
+        matrix[x+40][y] = 1;
+        matrix[x][y+40] = 1;
+        matrix[x+40][y+40] = 1;
+    }
+
+public void fillMatrixbyZero(int x, int y){
+ 
+    for(int k = 0; k < 40; k++){
+        matrix[x][y+k] = 0;
+        matrix[x+k][y] = 0;
+        
+    }
+
+}
+
+public void fillMatrixbyOne(int x, int y){
+ 
+    for(int k = 0; k < 40; k++){
+        matrix[x][y+k] = 1;
+        matrix[x+k][y] = 1;
+        
+    }
+
+}
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(labyrinth::new);
-    }
+SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new labyrinth();
+            }
+        });
+}
 }
