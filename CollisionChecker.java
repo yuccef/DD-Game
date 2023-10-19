@@ -12,7 +12,7 @@ import java.awt.Color;
 
     GamePannel gp;
 
-    public CollisionChecker(GamePannel gp) {
+    public CollisionCheckEGR35JHer(GamePannel gp) {
         this.gp = gp;
     }
 

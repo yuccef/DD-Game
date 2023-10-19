@@ -30,32 +30,30 @@ public class labyrinth {
         private int xKnight = 120;
         private int yKnight = 120;
 
-        private int KnightRight = xKnight+60;
-        private int KnightDown = yKnight-74;
+
         
-        private int  xx,yy;
         private JLabel characterLabel;
     
     public String[] imagePathsKnightRun = {
-        "../project/CharactersMvmnt/WitchMvmnt/run1.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run2.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run3.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run4.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run5.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run6.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run7.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run8.png"
+        "../project/CharactersMvmnt/PirateMvmnt/run1.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run2.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run3.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run4.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run5.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run6.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run7.png",
+      
     };
     
     public String[] imagePathsKnightRunInverse = {
-        "../project/CharactersMvmnt/WitchMvmnt/run11.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run22.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run33.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run44.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run55.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run66.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run77.png",
-        "../project/CharactersMvmnt/WitchMvmnt/run88.png"
+        "../project/CharactersMvmnt/PirateMvmnt/run11.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run22.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run33.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run44.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run55.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run66.png",
+        "../project/CharactersMvmnt/PirateMvmnt/run77.png",
+     
     };
 
 
@@ -82,29 +80,32 @@ public class labyrinth {
 
                 Image image = new ImageIcon("../project/MapPixels/labyrinth1.jpg").getImage();
                 Image mageTEST = new ImageIcon("../project/MapPixels/labyrinth2.jpg").getImage();
-                  int[][] m = {
-                    {1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                    {1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1},
-                    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-                    {1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-                    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                    {1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-                    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
-                    {1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                    {1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                    {1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1},
-                    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-                    {1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-                    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                    {1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1}
-                };
-                Bmatrix = CreatTheBigMatrix(m);   
+                Lmatrix=loadMap("map.txt");
+                // int[][] m = {
+                //     {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                //     {0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+                //     {0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0},
+                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0},
+                //     {0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+                //     {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},
+                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0},
+                //     {0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
+                //     {0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+                //     {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                //     {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                //     {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                //     {0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+                //     {0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0},
+                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0},
+                //     {0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+                //     {0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0}
+                // };
+                
+                
+                Bmatrix = CreatTheBigMatrix(Lmatrix);   
 
                 for(int i=0; i<800; i=i+40){
                     for(int j=0; j<800; j=j+40){
@@ -117,7 +118,7 @@ public class labyrinth {
 
                 for(int i=0; i<20;i++){
                     for(int j=0; j<20; j++){
-                        if(m[i][j] == 1){
+                        if(Lmatrix[i][j] == 1){
                             g.drawImage(mageTEST, i*40 , j*40, this);
                         }
                     }   
@@ -164,9 +165,7 @@ public class labyrinth {
 
             @Override
             public void keyPressed(KeyEvent e) {
-           xx = xKnight;    
-           yy = yKnight;  
-           
+       
            
                //key listener for knight
                if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right knight
@@ -250,31 +249,29 @@ public class labyrinth {
 
     }
 
-    private void moveKnight(int dx, int dy) {
-        int newX = xKnight + dx * 5; // Step size 5 in the x direction
-        int newY = yKnight + dy * 5; // Step size 5 in the y direction
-    
-        // Checking boundaries to avoid going out of the matrix
-        if (newX >= 0 && newX + 30 < MATRIX_SIZE && newY >= 0 && newY + 30 < MATRIX_SIZE) {
-            // Checking for collision with maze walls
-            boolean canMove = true;
-            for (int i = newX; i < newX + 40; i++) {
-                for (int j = newY; j < newY + 40; j++) {
-                    if (Bmatrix[i][j] == 1) { // If the Knight collides with a wall
-                        canMove = false;
-                        break;
-                    }
+ private void moveKnight(int dx, int dy) {
+    int newX = xKnight + dx * 5; // Multiply by 40 to match the block size
+    int newY = yKnight + dy * 5; // Multiply by 40 to match the block size
+
+    if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
+        // Checking for collision with maze walls
+        boolean canMove = true;
+        for (int i = newX; i < newX + 40; i++) {
+            for (int j = newY; j < newY + 40; j++) {
+                if (Bmatrix[i][j] == 1) { // If the Knight collides with a wall
+                    canMove = false;
+                    break;
                 }
             }
-            if (canMove) {
-                xKnight = newX;
-                yKnight = newY;
-                afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]);
-            }
+        }
+        if (canMove) {
+            xKnight = newX;
+            yKnight = newY;
+            afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]);
         }
     }
-    
-    
+}
+
 
     private void afficherImageKnight(String nomImage) {
 
