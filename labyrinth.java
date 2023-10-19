@@ -80,30 +80,9 @@ public class labyrinth {
 
                 Image image = new ImageIcon("../project/MapPixels/labyrinth1.jpg").getImage();
                 Image mageTEST = new ImageIcon("../project/MapPixels/labyrinth2.jpg").getImage();
-                Lmatrix=loadMap("map.txt");
-                // int[][] m = {
-                //     {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                //     {0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-                //     {0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0},
-                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0},
-                //     {0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
-                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-                //     {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},
-                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0},
-                //     {0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
-                //     {0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-                //     {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                //     {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                //     {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                //     {0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-                //     {0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0},
-                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0},
-                //     {0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0},
-                //     {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-                //     {0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0}
-                // };
-                
+                int [][] mapTXT=loadMap("map.txt");
+                Lmatrix = transposeMatrix(mapTXT);
+               
                 
                 Bmatrix = CreatTheBigMatrix(Lmatrix);   
 
@@ -123,15 +102,7 @@ public class labyrinth {
                         }
                     }   
                 }
-                //print Bmatrix
-                for(int i=0; i<800; i=i+40){
-                    for(int j=0; j<800; j=j+40){
-                        System.out.print(Bmatrix[j][i]);
-                    }
-                    System.out.println();
 
-                
-                }
         }
                 
     };
@@ -270,6 +241,21 @@ public class labyrinth {
             afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]);
         }
     }
+}
+
+public int[][] transposeMatrix(int[][] matrix) {
+    int rows = matrix.length;
+    int columns = matrix[0].length;
+
+    int[][] transposedMatrix = new int[columns][rows];
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            transposedMatrix[j][i] = matrix[i][j];
+        }
+    }
+
+    return transposedMatrix;
 }
 
 
