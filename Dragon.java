@@ -1,23 +1,40 @@
 public class Dragon {
+
+    // Liste des attributs
+    public int x, y;
+    public String name;
     public int score;
+    public int damage;
+    public int defense;
 
-    public Dragon(int initialScore) {
+
+    // Liste des méthodes
+    public Dragon(char nom, int initialScore, int initialDamage, int initialDefense) {
+        name = String.valueOf(nom);
         score = initialScore;
+        damage = initialDamage;
+        defense = initialDefense;
     }
 
-    public void attack(KnightCaracter knight) {
-        knight.damage(this);
+    public void damageDragon(FighterCaracter fighter) { 
+        fighter.score -= damage;
     }
 
-    // Ajoutez d'autres méthodes et champs au besoin
+    public void dragonAttack(FighterCaracter fighter) { 
+        damageDragon(fighter);
+    }
+
+    public int deathDragon() {
+        if (score <= 0) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+
 
     public static void main(String[] args) {
-        KnightCaracter knight = new KnightCaracter(100); // Exemple d'initialisation du chevalier
-        Dragon dragon = new Dragon(200); // Exemple d'initialisation du dragon
 
-        dragon.attack(knight); // Le dragon attaque le chevalier
-        System.out.println("Chevalier: Score = " + knight.score);
-        System.out.println("Dragon: Score = " + dragon.score);
     }
 }
-
