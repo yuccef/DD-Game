@@ -11,13 +11,10 @@ import java.lang.String;
 
 
 
-
-
-
 public class labyrinth {
 
     private static final int MATRIX_SIZE = 810;
-    // private static final int BLOCK_SIZE = 40;
+
 
     Image image;
     Image imageStep;
@@ -80,10 +77,9 @@ public class labyrinth {
 
                 Image image = new ImageIcon("../project/MapPixels/labyrinth1.jpg").getImage();
                 Image mageTEST = new ImageIcon("../project/MapPixels/labyrinth2.jpg").getImage();
+               
                 int [][] mapTXT=loadMap("map.txt");
                 Lmatrix = transposeMatrix(mapTXT);
-               
-                
                 Bmatrix = CreatTheBigMatrix(Lmatrix);   
 
                 for(int i=0; i<800; i=i+40){
@@ -221,11 +217,10 @@ public class labyrinth {
     }
 
  private void moveKnight(int dx, int dy) {
-    int newX = xKnight + dx * 5; // Multiply by 40 to match the block size
-    int newY = yKnight + dy * 5; // Multiply by 40 to match the block size
+    int newX = xKnight + dx * 5;
+    int newY = yKnight + dy * 5;
 
     if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
-        // Checking for collision with maze walls
         boolean canMove = true;
         for (int i = newX; i < newX + 40; i++) {
             for (int j = newY; j < newY + 40; j++) {
@@ -257,7 +252,6 @@ public int[][] transposeMatrix(int[][] matrix) {
 
     return transposedMatrix;
 }
-
 
     private void afficherImageKnight(String nomImage) {
 
