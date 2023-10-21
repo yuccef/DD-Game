@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.String;
+
+//import TheFighter.FighterCaracter;
  
 //import TheFighter.FighterCaracter;
 
@@ -17,7 +19,6 @@ public class labyrinth {
     public   int MATRIX_SIZE = 810;
     Image image;
     Image imageStep;
-    labyrinth labyrinthtest= this ;
 
     public JFrame fenetre;
     public int[][] Lmatrix;
@@ -55,6 +56,7 @@ public class labyrinth {
 
  
     public labyrinth() {
+
         fenetre = new JFrame("Affichage de photos");
         fenetre.setSize(800, 800);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,8 +117,7 @@ public class labyrinth {
             }
         });
         timerKnightRun.start();
-
-
+        
         fenetre.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -124,10 +125,8 @@ public class labyrinth {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                     //FighterCaracter FighterTest;
-                       // FighterTest = new FighterCaracter();
        
-
+           
                //key listener for knight
                if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right knight
                 moveKnight(1, 0);
@@ -148,6 +147,9 @@ public class labyrinth {
         fenetre.setVisible(true);
     }
 
+    
+
+    
 
 
     public void moveKnight(int dx, int dy) {
@@ -172,6 +174,9 @@ public class labyrinth {
         }
     }
 
+
+
+
     public void afficherImageKnight(String nomImage) {
 
         ImageIcon imageIcon = new ImageIcon(nomImage);
@@ -181,14 +186,15 @@ public class labyrinth {
     }
 
 
-
     public static void main(String[] args) {
 SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
+                 new labyrinth();
+                 //new FighterCaracter();
 
-                new labyrinth();
             }
         });
+    }
 }
-}
+
