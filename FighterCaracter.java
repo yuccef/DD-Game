@@ -8,9 +8,6 @@ public int score;
 public int damage;
 public int defense;
 public int death;
-
-
-
     
     public FighterCaracter(char nom ,int initialScore, int initialDamage, int initialDefense) {
         name = nom;
@@ -19,20 +16,36 @@ public int death;
         score = initialScore;
     }
 
-    public void DamageFighterCaracter(FighterCaracter Fighter) {
-        Fighter.score -= damage;
+    public void DamageFighterCaracterTheDragon(FighterCaracter Fighter, Dragon Dragon) {
+        Dragon.score -= Fighter.damage;
     }
 
-    public void FighterCaracterAttack(FighterCaracter Fighter, Dragon Dragon) {
-        DamageFighterCaracter(Fighter);
+    public void FighterCaracterBlessed(FighterCaracter Fighter, Dragon Dragon) {
+        Fighter.score -= Dragon.damage; ;
+    }
+    
+    public void FighterDefense(FighterCaracter Fighter, Dragon Dragon) {
+        Fighter.score -= Dragon.damage - Fighter.defense;
     }
 
-
-
-    public void FighterCaracterDealth() {
-        if (score <= 0) death= 1;
-            death= 0; 
+    public void FighterCaracterUpdateDealth( FighterCaracter Fighter) {
+        if (Fighter.score <= 0) Fighter.death= 1;
+            Fighter.death= 0; 
     }
 
+    public void lose(FighterCaracter Fighter) {
+        if (Fighter.death == 1) {
+            System.out.println("You lose");
+           // break;
+        }
+    }
 
+    public void BonusLife(FighterCaracter Fighter) {
+        if(Fighter.score <= 49) {
+            Fighter.score += 20;
+        }
+        if (Fighter.score >= 100) {
+            Fighter.score = 100;
+        }
+    }
 }

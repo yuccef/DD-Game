@@ -6,6 +6,7 @@ public class Dragon {
     public int score;
     public int damage;
     public int defense;
+    public int death;
 
 
     // Liste des méthodes
@@ -16,23 +17,29 @@ public class Dragon {
         defense = initialDefense;
     }
 
-    public void damageDragon(FighterCaracter fighter) { 
-        fighter.score -= damage;
+    public void DamageDragonFighterCaracter(FighterCaracter Fighter, Dragon Dragon) {
+        Fighter.score -= Dragon.damage;
     }
 
-    public void dragonAttack(FighterCaracter fighter) { 
-        damageDragon(fighter);
+    public void DragonBlessed(FighterCaracter Fighter, Dragon Dragon) {
+        Dragon.score -= Fighter.damage; ;
     }
 
-    public int deathDragon() {
-        if (score <= 0) {
-            return 1;
-        } else {
-            return 0;
+    public void DragonDefense(FighterCaracter Fighter, Dragon Dragon) {
+        Dragon.score -= Fighter.damage - Dragon.defense;
+    }
+
+    public void DragonUpdateDealth(Dragon Dragon) {
+        if (Dragon.score <= 0) Dragon.death= 1;
+            Dragon.death= 0; 
+    }
+
+    public void lose(Dragon Dragon) {
+        if (Dragon.death == 1) {
+            System.out.println("You win");
+           // break;
         }
     }
-
-
 
     public static void main(String[] args) {
 
