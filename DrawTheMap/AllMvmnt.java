@@ -1,3 +1,5 @@
+package DrawTheMap;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,8 +10,8 @@ import java.util.Random;
 
 public class AllMvmnt {
 
-    Image image = new ImageIcon("../project/MapPixels/3.jpg").getImage();
-    Image imageStep = new ImageIcon("../project/MapPixels/step3.jpg").getImage();
+    Image image = new ImageIcon("../Ressource/MapPixels/3.jpg").getImage();
+    Image imageStep = new ImageIcon("../Ressource/MapPixels/step3.jpg").getImage();
 
     private int turn = 4;
 

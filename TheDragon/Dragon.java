@@ -1,3 +1,7 @@
+package TheDragon;
+
+import TheFighter.FighterCaracter;
+
 public class Dragon {
 
     // Liste des attributs
