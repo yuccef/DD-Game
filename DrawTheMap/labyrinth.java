@@ -8,27 +8,25 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.String;
-
  
 public class labyrinth {
-
 
     public   int MATRIX_SIZE = 810;
     Image image;
     Image imageStep;
 
-    public JFrame fenetre;
+    public JFrame Window;
     public int[][] Lmatrix;
     public int[][] Bmatrix;
     
-    public int xKnight = 120;
-    public int yKnight = 120;
+    public int xFighter = 120;
+    public int yFighter = 120;
 
     public JLabel characterLabel;
-    public int currentImageIndexKinghtRun = 0;
+    public int currentImageIndexFighterRun = 0;
 
     
-    public String[] imagePathsKnightRun = {
+    public String[] imagePathsFighterRun = {
         "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run1.png",
         "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run2.png",
         "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run3.png",
@@ -54,9 +52,9 @@ public class labyrinth {
  
     public labyrinth() {
 
-        fenetre = new JFrame("Affichage de photos");
-        fenetre.setSize(800, 800);
-        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Window = new JFrame("Affichage de photos");
+        Window.setSize(800, 800);
+        Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
         JPanel characterPanel = new JPanel() {
@@ -90,32 +88,31 @@ public class labyrinth {
                     }   
                 }
 
-        }
-                
+        }             
     };
 
         characterPanel.setPreferredSize(new Dimension(800, 650));
         characterPanel.setBounds(0, 0, 800, 650);
-        fenetre.setSize(new Dimension(800, 650));
-        fenetre.setResizable(false);
-        fenetre.add(characterPanel);
+        Window.setSize(new Dimension(800, 650));
+        Window.setResizable(false);
+        Window.add(characterPanel);
         characterPanel.setLayout(null); // Set layout to null to position the character precisely
 
 
         characterLabel = new JLabel();
         characterPanel.add(characterLabel);
-        characterLabel.setBounds(xKnight, yKnight, 40, 40);
+        characterLabel.setBounds(xFighter, yFighter, 40, 40);
 
 
-         Timer timerKnightRun = new Timer(200, new ActionListener() {
+         Timer timerFighterRun = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currentImageIndexKinghtRun = (currentImageIndexKinghtRun + 1) % imagePathsKnightRun.length; // Loop through the images
+                currentImageIndexFighterRun = (currentImageIndexFighterRun + 1) % imagePathsFighterRun.length; // Loop through the images
             }
         });
-        timerKnightRun.start();
+        timerFighterRun.start();
         
-        fenetre.addKeyListener(new KeyListener() {
+        Window.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
             }
@@ -126,13 +123,13 @@ public class labyrinth {
            
                //key listener for knight
                if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right knight
-                moveKnight(1, 0);
+                moveFighter(1, 0);
             } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left knight
-                moveKnight(-1, 0);
+                moveFighter(-1, 0);
             } else if (e.getKeyCode() == KeyEvent.VK_UP) { // Up knight
-                moveKnight(0, -1);
+                moveFighter(0, -1);
             } else if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down knight
-                moveKnight(0, 1);
+                moveFighter(0, 1);
             }
             } 
 
@@ -141,50 +138,40 @@ public class labyrinth {
                     // Do nothing here, as we are not using keyReleased
                 }
             });
-        fenetre.setVisible(true);
+        Window.setVisible(true);
     }
 
-    
-
-    
-
-
-    public void moveKnight(int dx, int dy) {
-        int newX = xKnight + dx * 5;
-        int newY = yKnight + dy * 5;
+    public void moveFighter(int dx, int dy) {
+        int newX = xFighter + dx * 5;
+        int newY = yFighter + dy * 5;
     
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
                 for (int j = newY; j < newY + 40; j++) {
-                    if (Bmatrix[i][j] == 1) { // If the Knight collides with a wall
+                    if (Bmatrix[i][j] == 1) { 
                         canMove = false;
                         break;
                     }
                 }
             }
             if (canMove) {
-                xKnight = newX;
-                yKnight = newY;
-                afficherImageKnight(imagePathsKnightRun[currentImageIndexKinghtRun]);
+                xFighter = newX;
+                yFighter = newY;
+                ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun]);
             }
         }
     }
 
-
-
-
-    public void afficherImageKnight(String nomImage) {
+    public void ShowFighter(String nomImage) {
 
         ImageIcon imageIcon = new ImageIcon(nomImage);
         characterLabel.setIcon(imageIcon);
-        characterLabel.setBounds(xKnight, yKnight, imageIcon.getIconWidth(), imageIcon.getIconHeight());
+        characterLabel.setBounds(xFighter, yFighter, imageIcon.getIconWidth(), imageIcon.getIconHeight());
         characterLabel.repaint(); // Repaint the label to show the updated position
     }
-
-
     public static void main(String[] args) {
-SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                  new labyrinth();

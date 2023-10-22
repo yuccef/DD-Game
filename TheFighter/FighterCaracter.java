@@ -29,8 +29,8 @@ public class FighterCaracter {
         score = initialScore;
         damage = initialDamage;
         defense = initialDefense;
-        xFighter = labyrinth.xKnight;
-        yFighter = labyrinth.yKnight;
+        xFighter = labyrinth.xFighter;
+        yFighter = labyrinth.yFighter;
         this.labyrinth = labyrinth;
 
     }
@@ -88,7 +88,7 @@ public class FighterCaracter {
             if (canMove) {
                 X = newX;
                 Y = newY;
-                labyrinth.afficherImageKnight(labyrinth.imagePathsKnightRun[labyrinth.currentImageIndexKinghtRun]);
+                labyrinth.ShowFighter(labyrinth.imagePathsFighterRun[labyrinth.currentImageIndexFighterRun]);
             }
         }
     }
