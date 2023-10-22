@@ -7,32 +7,42 @@ public class FighterCaracter {
 
     public int MATRIX_SIZE = 810;
 
+    // Liste des attributs
     labyrinth labyrinth;
 
-    int xFighter;
+    public int xFighter;
     public int yFighter;
-    public int xDragon, yDragon;
     public char name;
     public int score;
     public int damage;
     public int defense;
     public int Close;
 
-    public FighterCaracter(labyrinth labyrinth) {
+    public int VarDefenseFighter=0;
+    public int VarBlessedFighter=0;
+    public int VarDamageFighter=0;
+
+  
+    // Liste des méthodes
+    public FighterCaracter(labyrinth labyrinth, char nom, int initialScore, int initialDamage, int initialDefense) {
+        name = nom;
+        score = initialScore;
+        damage = initialDamage;
+        defense = initialDefense;
+        xFighter = labyrinth.xKnight;
+        yFighter = labyrinth.yKnight;
         this.labyrinth = labyrinth;
-        
+
     }
 
     public void DamageFighterCaracterTheDragon(FighterCaracter Fighter, Dragon Dragon) {
         Dragon.score -= Fighter.damage;
-    }
-
-    public void FighterCaracterBlessed(FighterCaracter Fighter, Dragon Dragon) {
-        Fighter.score -= Dragon.damage;
+        VarDamageFighter = 1;
     }
 
     public void FighterDefense(FighterCaracter Fighter, Dragon Dragon) {
-        Fighter.score -= Dragon.damage - Fighter.defense;
+        Fighter.score = Dragon.damage - Fighter.defense;
+        VarDefenseFighter = 1;
     }
 
     public int FighterCaracterUpdateDealth(FighterCaracter Fighter) {
@@ -57,7 +67,7 @@ public class FighterCaracter {
     }
 
     public int ActionCanWorks(FighterCaracter Fighter, Dragon Dragon) {
-        if (xFighter - xDragon <= 40 && yFighter - yDragon <= 40) return Close = 1;
+        if (xFighter - Dragon.xDragon <= 40 && yFighter - Dragon.yDragon <= 40) return Close = 1;
         else return Close = 0;
     }
 
@@ -82,4 +92,20 @@ public class FighterCaracter {
             }
         }
     }
+
+    public void FitherAndDragon(FighterCaracter Fighter, Dragon Dragon) {
+        if (ActionCanWorks(Fighter, Dragon) == 1) {
+            if (VarDamageFighter == 1 && Dragon.VarDefenseDragon == 0) {
+                DamageFighterCaracterTheDragon(Fighter, Dragon);
+                VarDamageFighter = 0;
+            }
+            if (VarDamageFighter == 1 && Dragon.VarDefenseDragon == 1) {
+                FighterDefense(Fighter, Dragon);
+                VarDamageFighter = 0;
+            }
+           
+        }
+    }
+
+
 }

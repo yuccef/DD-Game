@@ -9,10 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.String;
 
-//import TheFighter.FighterCaracter;
  
-//import TheFighter.FighterCaracter;
-
 public class labyrinth {
 
 
