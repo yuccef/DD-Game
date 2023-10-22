@@ -1,6 +1,6 @@
 package TheDragon;
 
-import DrawTheMap.MapMaths;
+//import DrawTheMap.MapMaths;
 import TheFighter.FighterCaracter;
 
 public class Dragon {
@@ -16,7 +16,6 @@ public class Dragon {
     public int VarDefenseDragon = 0;
     public int VarBlessedDragon = 0;
     public int VarDamageDragon = 0;
-
 
 
     // Liste des méthodes
