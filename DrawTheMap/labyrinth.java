@@ -27,15 +27,24 @@ public class labyrinth {
 
     
     public String[] imagePathsFighterRun = {
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run1.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run2.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run3.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run4.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run5.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run6.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run7.png",
+        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run1.png",
+        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run2.png",
+        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run3.png",
+        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run4.png",
+        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run5.png",
+        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run6.png",
+        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run7.png",
       
     };
+
+    public String[] imagePathsFighterAttack={
+            "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/Attack1.png",
+            "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/Attack2.png",
+            "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/Attack3.png",
+            "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/Attack4.png",
+
+    };
+
     
     public String[] imagePathsKnightRunInverse = {
         "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run11.png",
@@ -119,19 +128,20 @@ public class labyrinth {
 
             @Override
             public void keyPressed(KeyEvent e) {
-       
-           
-               //key listener for knight
-               if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right knight
-                moveFighter(1, 0);
-            } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left knight
-                moveFighter(-1, 0);
-            } else if (e.getKeyCode() == KeyEvent.VK_UP) { // Up knight
-                moveFighter(0, -1);
-            } else if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down knight
-                moveFighter(0, 1);
+                //key listener for knight
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right knight
+                    moveFighter(1, 0);
+                } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left knight
+                    moveFighter(-1, 0);
+                } else if (e.getKeyCode() == KeyEvent.VK_UP) { // Up knight
+                    moveFighter(0, -1);
+                } else if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down knight
+                    moveFighter(0, 1);
+                } else if (e.getKeyChar() == 'A' || e.getKeyChar() == 'a') {
+                    ShowFighter(imagePathsFighterAttack[currentImageIndexFighterRun]);
+                }
             }
-            } 
+             
 
                 @Override
             public void keyReleased(KeyEvent e) {
