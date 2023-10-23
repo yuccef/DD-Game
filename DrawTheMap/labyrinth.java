@@ -2,6 +2,8 @@ package DrawTheMap;
 
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -65,6 +67,134 @@ public class labyrinth {
         Window.setSize(800, 800);
         Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //RightSide Panel
+        JPanel RightSide = new JPanel();
+        RightSide.setLayout(null); 
+        RightSide.setBounds(800, 0, 285, 612);
+        RightSide.setBackground(Color.decode("#e8dfdb"));
+        LineBorder border = new LineBorder(Color.decode("#365979"), 10, true);
+        LineBorder border1 = new LineBorder(Color.decode("#8bb1c4"), 5, true);
+        LineBorder border2 = new LineBorder(Color.decode("#b96343"), 5, true);
+
+        RightSide.setBorder(border);
+
+        //RightSide Label (Title)
+        JLabel TitleLabel = new JLabel("  Jeu de combat");
+        TitleLabel.setBorder(border);
+        Font font = new Font("Lucida Handwriting", Font.BOLD, 20);
+        TitleLabel.setFont(font);
+        TitleLabel.setForeground(Color.decode("#7e5835"));
+        TitleLabel.setOpaque(true);
+        TitleLabel.setBackground(Color.decode("#d1c0b9"));
+        TitleLabel.setBounds(40, 60, 220, 50);
+
+
+         // Fither 1 Label
+
+        //picture
+        JLabel FighterLabel = new JLabel();
+        Font font2 = new Font("Lucida Handwriting", Font.BOLD, 15);
+        FighterLabel.setBounds(20, 210, 110,    100);
+        ImageIcon imageIconFighter1 = new ImageIcon("../Project/Ressource/CharactersMvmnt/KnightMvmnt1/Attack1.png");
+        Image image = imageIconFighter1.getImage();
+        Image newImage = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH); 
+        imageIconFighter1 = new ImageIcon(newImage); 
+        FighterLabel.setIcon(imageIconFighter1);
+        FighterLabel.setBorder(border1);
+
+        //name
+        JLabel FighterLabel2 = new JLabel("  Fighter 1");
+        FighterLabel2.setBorder(border1);
+        FighterLabel2.setFont(font2);
+        FighterLabel2.setForeground(Color.decode("#425b8a"));
+        FighterLabel2.setOpaque(true);
+        FighterLabel2.setBackground(Color.decode("#d1c0b9"));
+        FighterLabel2.setBounds(20, 150, 110, 50);
+
+        //life
+        JLabel FighterLabel3 = new JLabel("  Life : 100");
+        FighterLabel3.setBorder(border1);
+        FighterLabel3.setFont(font2);
+        FighterLabel3.setForeground(Color.decode("#425b8a"));
+        FighterLabel3.setOpaque(true);
+        FighterLabel3.setBackground(Color.decode("#d1c0b9"));
+        FighterLabel3.setBounds(20, 320, 110, 50);
+
+
+        // Fither 2 Label
+
+        //picture
+        JLabel FighterLabel4 = new JLabel();
+        Font font3 = new Font("Lucida Handwriting", Font.BOLD, 15);
+        FighterLabel4.setBounds(150, 210, 110,    100);
+        ImageIcon imageIconFighter2 = new ImageIcon("../Project/Ressource/CharactersMvmnt/PirateMvmnt/run1.png");
+        Image image2 = imageIconFighter2.getImage();
+        Image newImage2 = image2.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        imageIconFighter2 = new ImageIcon(newImage2);
+        FighterLabel4.setIcon(imageIconFighter2);
+        FighterLabel4.setBorder(border1);
+        
+        //name
+        JLabel FighterLabel5 = new JLabel("  Fighter 2");
+        FighterLabel5.setBorder(border1);
+        FighterLabel5.setFont(font3);
+        FighterLabel5.setForeground(Color.decode("#425b8a"));
+        FighterLabel5.setOpaque(true);
+        FighterLabel5.setBackground(Color.decode("#d1c0b9"));
+        FighterLabel5.setBounds(150, 150, 110, 50);
+
+        //life
+        JLabel FighterLabel6 = new JLabel("  Life : 100");
+        FighterLabel6.setBorder(border1);
+        FighterLabel6.setFont(font3);
+        FighterLabel6.setForeground(Color.decode("#425b8a"));
+        FighterLabel6.setOpaque(true);
+        FighterLabel6.setBackground(Color.decode("#d1c0b9"));
+        FighterLabel6.setBounds(150, 320, 110, 50);
+
+        //Timer
+        JLabel labelTimer = new JLabel("0");
+        Timer timer = new Timer(1000, new ActionListener() {
+            int count = 0;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                count++;
+                labelTimer.setText("Timer : " + count + "s");
+            }
+        });
+
+        timer.start();
+        labelTimer.setBounds(170, 6,    110, 30);
+        labelTimer.setBorder(border2);
+        labelTimer.setFont(font3);
+        labelTimer.setForeground(Color.decode("#425b8a"));
+        labelTimer.setOpaque(true);
+        labelTimer.setBackground(Color.decode("#d1c0b9"));
+
+
+
+
+
+
+
+
+
+        RightSide.add(FighterLabel2);
+        RightSide.add(FighterLabel);
+        RightSide.add(FighterLabel3);
+        RightSide.add(FighterLabel4);
+        RightSide.add(FighterLabel5);
+        RightSide.add(FighterLabel6);
+        RightSide.add(labelTimer);
+
+        RightSide.add(TitleLabel);
+        Window.add(RightSide);
+        Window.setLayout(null);
+
+
+
+        
 
         JPanel characterPanel = new JPanel() {
             @Override
@@ -102,7 +232,7 @@ public class labyrinth {
 
         characterPanel.setPreferredSize(new Dimension(800, 650));
         characterPanel.setBounds(0, 0, 800, 650);
-        Window.setSize(new Dimension(800, 650));
+        Window.setSize(new Dimension(1100, 650));
         Window.setResizable(false);
         Window.add(characterPanel);
         characterPanel.setLayout(null); // Set layout to null to position the character precisely
@@ -110,6 +240,7 @@ public class labyrinth {
 
         characterLabel = new JLabel();
         characterPanel.add(characterLabel);
+        //label.add(characterPanel);
         characterLabel.setBounds(xFighter, yFighter, 40, 40);
 
 
