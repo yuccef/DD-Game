@@ -12,7 +12,7 @@ public class FighterCaracter {
 
     public int xFighter;
     public int yFighter;
-    public char name;
+    public String name;
     public int score;
     public int damage;
     public int defense;
@@ -24,14 +24,14 @@ public class FighterCaracter {
 
   
     // Liste des méthodes
-    public FighterCaracter(labyrinth labyrinth, char nom, int initialScore, int initialDamage, int initialDefense) {
+    public FighterCaracter( String nom, int initialScore, int initialDamage, int initialDefense) {
         name = nom;
         score = initialScore;
         damage = initialDamage;
         defense = initialDefense;
-        xFighter = labyrinth.xFighter;
-        yFighter = labyrinth.yFighter;
-        this.labyrinth = labyrinth;
+        // xFighter = labyrinth.xFighter;
+        // yFighter = labyrinth.yFighter;
+        // this.labyrinth = labyrinth;
 
     }
 
@@ -66,10 +66,10 @@ public class FighterCaracter {
         }
     }
 
-    public int ActionCanWorks(FighterCaracter Fighter, Dragon Dragon) {
-        if (xFighter - Dragon.xDragon <= 40 && yFighter - Dragon.yDragon <= 40) return Close = 1;
-        else return Close = 0;
-    }
+    // public int ActionCanWorks(FighterCaracter Fighter, Dragon Dragon) {
+    //     if (xFighter - Dragon.xDragon <= 40 && yFighter - Dragon.yDragon <= 40) return Close = 1;
+    //     else return Close = 0;
+    // }
 
     public void FighterCaracterMove(int dx, int dy, int X, int Y) {
         int newX = X + dx * 5;
@@ -94,7 +94,7 @@ public class FighterCaracter {
     }
 
     public void FitherAndDragon(FighterCaracter Fighter, Dragon Dragon) {
-        if (ActionCanWorks(Fighter, Dragon) == 1) {
+        // if (ActionCanWorks(Fighter, Dragon) == 1) {
             if (VarDamageFighter == 1 && Dragon.VarDefenseDragon == 0) {
                 DamageFighterCaracterTheDragon(Fighter, Dragon);
                 VarDamageFighter = 0;
@@ -108,4 +108,4 @@ public class FighterCaracter {
     }
 
 
-}
+// }
