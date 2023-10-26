@@ -34,6 +34,12 @@ public class labyrinth {
     public JLabel characterLabel;
     public JLabel DragonLabel;
     public int currentImageIndexFighterRun = 0;
+    public int currentImageIndexFighterAttack=0;
+    public int currentImageIndexDragonRun = 0;
+    public int currentImageIndexDragonAttack = 0;
+
+
+    public char SideDragon, SideFighter;
     JLabel FighterLabel3;
     JLabel FighterLabel2;
     JLabel FighterLabel5;
@@ -89,7 +95,7 @@ public class labyrinth {
             PicturesSheet2 + "run5.png",
             PicturesSheet2 + "run6.png",
             PicturesSheet2 + "run7.png",
-            PicturesSheet2 + "run8.png",
+          
     };
 
     public String[] imagePathsDragonRunInverse={
@@ -99,10 +105,31 @@ public class labyrinth {
         PicturesSheet2 + "run44.png",
         PicturesSheet2 + "run55.png",
         PicturesSheet2 + "run66.png",
-        PicturesSheet2 + "run77.png",
-        PicturesSheet2 + "run88.png",
+     
     };
     
+    public String[] imagePathsDragonAttack={
+        PicturesSheet2 + "Attack1.png",
+        PicturesSheet2 + "Attack2.png",
+        PicturesSheet2 + "Attack3.png",
+        PicturesSheet2 + "Attack4.png",
+        PicturesSheet2 + "Attack5.png",
+        PicturesSheet2 + "Attack6.png",
+        PicturesSheet2 + "Attack7.png",
+    };
+
+    public String[] imagPathsDragonAttackInverse={
+        PicturesSheet2 + "Attack11.png",
+        PicturesSheet2 + "Attack22.png",
+        PicturesSheet2 + "Attack33.png",
+        PicturesSheet2 + "Attack44.png",
+        PicturesSheet2 + "Attack55.png",
+        PicturesSheet2 + "Attack66.png",
+        PicturesSheet2 + "Attack77.png",
+    };
+    
+
+
 
 
  
@@ -140,7 +167,7 @@ public class labyrinth {
 
         //picture
         JLabel FighterLabel = new JLabel();
-        Font font2 = new Font("Lucida Handwriting", Font.BOLD, 15);
+        Font font2 = new Font("Lucida Handwriting", Font.BOLD, 7);
         FighterLabel.setBounds(20, 210, 124,    124);
         ImageIcon imageIconFighter1 = new ImageIcon("../Project/Ressource/CharactersMvmnt/KnightMvmnt1/FirstCharacterIcone.png");
         Image image = imageIconFighter1.getImage();
@@ -304,10 +331,27 @@ public class labyrinth {
         Timer timerDragonRun = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currentImageIndexFighterRun = (currentImageIndexFighterRun + 1) % imagePathsDragonRun.length; // Loop through the images
+                currentImageIndexDragonRun = (currentImageIndexDragonRun + 1) % imagePathsDragonRun.length; // Loop through the images
             }
         });
         timerDragonRun.start();
+
+        Timer timerFighterAttack = new Timer(200, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentImageIndexFighterAttack = (currentImageIndexFighterAttack + 1) % imagePathsFighterAttack.length; // Loop through the images
+            }
+        });
+        timerFighterAttack.start();
+
+
+        Timer timerDragonAttack = new Timer(200, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentImageIndexDragonAttack = (currentImageIndexDragonAttack + 1) % imagePathsDragonAttack.length; // Loop through the images
+            }
+        });
+        timerDragonAttack.start();
         
         Window.addKeyListener(new KeyListener() {
             @Override
@@ -318,27 +362,34 @@ public class labyrinth {
             public void keyPressed(KeyEvent e) {
                 //key listener for knight
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right knight
+                    SideFighter = 'R';
                     if( xFighter+ 40 < xDragon){
                         moveFighter(1,1, 0);
                     }
                 } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left knight
+                    SideFighter = 'L';
                     moveFighter(1,-1, 0);
                 } else if (e.getKeyCode() == KeyEvent.VK_UP) { // Up knight
                     moveFighter(1,0, -1);
                 } else if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down knight
                     moveFighter(1,0, 1);
                 } else if (e.getKeyChar() == 'A' || e.getKeyChar() == 'a') {
-                    ShowFighter(imagePathsFighterAttack[currentImageIndexFighterRun],"");
+                    moveAttack(1);
                 }
                 //key listener for dragon
                 if(e.getKeyChar() == 'd' || e.getKeyChar() == 'D'){
+                    SideDragon = 'R';
                     moveFighter(2,1, 0);
                 }else if(e.getKeyChar() == 'q' || e.getKeyChar() == 'Q'){
+                    SideDragon = 'L';
                     moveFighter(2,-1, 0);
                 }else if(e.getKeyChar() == 'z' || e.getKeyChar() == 'Z'){
                     moveFighter(2,0, -1);
                 }else if(e.getKeyChar() == 's' || e.getKeyChar() == 'S'){
                     moveFighter(2,0, 1);
+                }
+                else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    moveAttack(2);
                 }
 
             }
@@ -372,7 +423,7 @@ public class labyrinth {
             if (canMove) {
                 xFighter = newX;
                 yFighter = newY;
-                ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexFighterRun]);
+                ShowFighter(imagePathsFighterRun[currentImageIndexFighterAttack], imagePathsDragonRun[currentImageIndexDragonRun]);
                       FighterLabel2.setText(" Y " + yFighter);
                       FighterLabel3.setText("  X :" + xFighter);
 
@@ -393,12 +444,55 @@ public class labyrinth {
             if(canMove){
             xDragon=newXX;
             yDragon=newYY;
-            ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexFighterRun]);
+            ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexDragonRun]);
             FighterLabel5.setText(" Y " + yDragon);
             FighterLabel6.setText("  X :" + xDragon);
             }
         }
     }
+
+    // if(Choice==3){
+    //     if(newX>=0 && newX+40<MATRIX_SIZE && newY>=0 && newY+40<MATRIX_SIZE){
+    //         boolean canMove=true;
+    //         for(int i=newX;i<newX+40;i++){
+    //         for(int j=newY;j<newY+40;j++){
+    //             if(Bmatrix[i][j]==1){
+    //             canMove=false;
+    //             break;
+    //             }
+    //         }
+    //         }
+    //         if(canMove){
+    //         xFighter=newX;
+    //         yFighter=newY;
+    //         ShowFighter(imagePathsFighterAttack[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexFighterRun]);
+    //         FighterLabel2.setText(" Y " + yFighter);
+    //         FighterLabel3.setText("  X :" + xFighter);
+    //         }
+    //     }
+
+    // }
+    //     if(Choice==4){
+    //     if(newX>=0 && newX+40<MATRIX_SIZE && newY>=0 && newY+40<MATRIX_SIZE){
+    //         boolean canMove=true;
+    //         for(int i=newX;i<newX+40;i++){
+    //         for(int j=newY;j<newY+40;j++){
+    //             if(Bmatrix[i][j]==1){
+    //             canMove=false;
+    //             break;
+    //             }
+    //         }
+    //         }
+    //         if(canMove){
+    //         xFighter=newX;
+    //         yFighter=newY;
+    //         ShowFighter(imagePathsDragonAttack[currentImageIndexFighterRun], imagePathsFighterRun[currentImageIndexFighterRun]);
+    //         FighterLabel2.setText(" Y " + yFighter);
+    //         FighterLabel3.setText("  X :" + xFighter);
+    //         }
+    //     }
+
+    // }
 }
 
     if(dx<=0 ){
@@ -416,12 +510,13 @@ public class labyrinth {
             if (canMove) {
                 xFighter = newX;
                 yFighter = newY;
-                ShowFighter(imagePathsFighterRunInverse[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexFighterRun]);
+                ShowFighter(imagePathsFighterRunInverse[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexDragonRun]);
                       FighterLabel2.setText(" Y " + yFighter);
                       FighterLabel3.setText("  X :" + xFighter);
 
             }
         }
+
     }
 
 if(Choice==2){
@@ -438,12 +533,13 @@ if(Choice==2){
             if(canMove){
             xDragon=newXX;
             yDragon=newYY;
-            ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun], imagePathsDragonRunInverse[currentImageIndexFighterRun]);
+            ShowFighter(imagePathsFighterRun[currentImageIndexDragonRun], imagePathsDragonRunInverse[currentImageIndexDragonRun]);
             FighterLabel5.setText(" Y " + yDragon);
             FighterLabel6.setText("  X :" + xDragon);
             }
         }
     }
+
 }
     
     }
@@ -462,6 +558,190 @@ if(Choice==2){
         DragonLabel.setBounds(xDragon, yDragon, imageIcon2.getIconWidth(), imageIcon2.getIconHeight());
         // characterLabel.repaint();
     }
+
+
+
+
+    public void moveAttack( int Choice)  {
+    if(Choice==1){
+        if(SideFighter=='R'){
+                    if(SideDragon=='R'){
+        int newX = xFighter +  7;
+        int newY = yFighter +  7;
+        if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
+            boolean canMove = true;
+            for (int i = newX; i < newX + 40; i++) {
+                for (int j = newY; j < newY + 40; j++) {
+                    if (Bmatrix[i][j] == 1) { // If the pixel is black
+                        canMove = false;
+                        break;
+                    }
+                }
+            }
+            if (canMove) {
+                xFighter = newX;
+                yFighter = newY;
+                ShowFighter(imagePathsFighterAttack[currentImageIndexFighterAttack],imagePathsDragonRun[currentImageIndexDragonRun]);
+            }
+        }
+    }
+                    if(SideDragon=='L'){
+         int newX = xFighter +  7;
+        int newY = yFighter +  7;
+        if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
+            boolean canMove = true;
+            for (int i = newX; i < newX + 40; i++) {
+                for (int j = newY; j < newY + 40; j++) {
+                    if (Bmatrix[i][j] == 1) { // If the pixel is black
+                        canMove = false;
+                        break;
+                    }
+                }
+            }
+            if (canMove) {
+                xFighter = newX;
+                yFighter = newY;
+                ShowFighter(imagePathsFighterAttack[currentImageIndexFighterAttack],imagePathsDragonRunInverse[currentImageIndexDragonRun]);
+            }
+        }
+
+    }
+}
+        if(SideFighter=='L'){
+                         if(SideDragon=='R'){
+        int newX = xFighter -  7;
+        int newY = yFighter -  7;
+        if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
+            boolean canMove = true;
+            for (int i = newX; i < newX + 40; i++) {
+                for (int j = newY; j < newY + 40; j++) {
+                    if (Bmatrix[i][j] == 1) { // If the pixel is black
+                        canMove = false;
+                        break;
+                    }
+                }
+            }
+            if (canMove) {
+                xFighter = newX;
+                yFighter = newY;
+                ShowFighter(imagePathsFighterAttackInverse[currentImageIndexFighterAttack],imagePathsDragonRun[currentImageIndexDragonRun]);
+            }
+        }
+    }
+                         if(SideDragon=='L'){
+        int newX = xFighter -  7;
+        int newY = yFighter -  7;
+        if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
+            boolean canMove = true;
+            for (int i = newX; i < newX + 40; i++) {
+                for (int j = newY; j < newY + 40; j++) {
+                    if (Bmatrix[i][j] == 1) { // If the pixel is black
+                        canMove = false;
+                        break;
+                    }
+                }
+            }
+            if (canMove) {
+                xFighter = newX;
+                yFighter = newY;
+                ShowFighter(imagePathsFighterAttackInverse[currentImageIndexFighterAttack],imagePathsDragonRunInverse[currentImageIndexDragonRun]);
+            }
+        }
+    }
+}
+}
+    if(Choice==2){
+     if(SideDragon=='R'){
+                          if(SideFighter=='R'){
+        int newX = xDragon +  7;
+        int newY = yDragon +  7;
+        if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
+            boolean canMove = true;
+            for (int i = newX; i < newX + 40; i++) {
+                for (int j = newY; j < newY + 40; j++) {
+                    if (Bmatrix[i][j] == 1) { // If the pixel is black
+                        canMove = false;
+                        break;
+                    }
+                }
+            }
+            if (canMove) {
+                xDragon = newX;
+                yDragon = newY;
+                ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun],imagePathsDragonAttack[currentImageIndexDragonAttack]);
+            }
+        }
+    }
+                          if(SideFighter=='L'){
+         int newX = xDragon +  7;
+        int newY = yDragon +  7;
+        if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
+            boolean canMove = true;
+            for (int i = newX; i < newX + 40; i++) {
+                for (int j = newY; j < newY + 40; j++) {
+                    if (Bmatrix[i][j] == 1) { // If the pixel is black
+                        canMove = false;
+                        break;
+                    }
+                }
+            }
+            if (canMove) {
+                xDragon = newX;
+                yDragon = newY;
+                ShowFighter(imagePathsFighterRunInverse[currentImageIndexFighterRun],imagePathsDragonAttack[currentImageIndexDragonAttack]);
+            }
+        }
+
+    }
+}
+     if(SideDragon=='L'){
+                       if(SideFighter=='R'){
+        int newX = xDragon -  7;
+        int newY = yDragon -  7;
+        if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
+            boolean canMove = true;
+            for (int i = newX; i < newX + 40; i++) {
+                for (int j = newY; j < newY + 40; j++) {
+                    if (Bmatrix[i][j] == 1) { // If the pixel is black
+                        canMove = false;
+                        break;
+                    }
+                }
+            }
+            if (canMove) {
+                xDragon = newX;
+                yDragon = newY;
+                ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun],imagPathsDragonAttackInverse[currentImageIndexDragonAttack]);
+            }
+        }
+    }
+                       if(SideFighter=='L'){
+      int newX = xDragon -  7;
+        int newY = yDragon -  7;
+        if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
+            boolean canMove = true;
+            for (int i = newX; i < newX + 40; i++) {
+                for (int j = newY; j < newY + 40; j++) {
+                    if (Bmatrix[i][j] == 1) { // If the pixel is black
+                        canMove = false;
+                        break;
+                    }
+                }
+            }
+            if (canMove) {
+                xDragon = newX;
+                yDragon = newY;
+                ShowFighter(imagePathsFighterRunInverse[currentImageIndexFighterRun],imagPathsDragonAttackInverse[currentImageIndexDragonAttack]);
+            }
+        }                  
+        
+                        
+
+}
+}
+}
+}
+
 
   
     public static void main(String[] args) {
