@@ -145,13 +145,13 @@ public class labyrinth {
 
 
         Window = new JFrame("Affichage de photos");
-        Window.setSize(800, 800);
+        Window.setSize(800, 785);
         Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //RightSide Panel
         JPanel RightSide = new JPanel();
         RightSide.setLayout(null); 
-        RightSide.setBounds(800, 0, 285, 612);
+        RightSide.setBounds(800, 0, 285, 597);
         RightSide.setBackground(Color.decode("#e8dfdb"));
         LineBorder border = new LineBorder(Color.decode("#365979"), 10, true);
         LineBorder border1 = new LineBorder(Color.decode("#8bb1c4"), 5, true);
@@ -310,9 +310,9 @@ public class labyrinth {
         }             
     };
 
-        characterPanel.setPreferredSize(new Dimension(800, 650));
-        characterPanel.setBounds(0, 0, 800, 650);
-        Window.setSize(new Dimension(1100, 650));
+        characterPanel.setPreferredSize(new Dimension(800, 635));
+        characterPanel.setBounds(0, 0, 800, 635);
+        Window.setSize(new Dimension(1100, 635));
         Window.setResizable(false);
         Window.add(characterPanel);
         characterPanel.setLayout(null); // Set layout to null to position the character precisely
