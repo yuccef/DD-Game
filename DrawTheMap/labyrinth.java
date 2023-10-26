@@ -451,48 +451,6 @@ public class labyrinth {
         }
     }
 
-    // if(Choice==3){
-    //     if(newX>=0 && newX+40<MATRIX_SIZE && newY>=0 && newY+40<MATRIX_SIZE){
-    //         boolean canMove=true;
-    //         for(int i=newX;i<newX+40;i++){
-    //         for(int j=newY;j<newY+40;j++){
-    //             if(Bmatrix[i][j]==1){
-    //             canMove=false;
-    //             break;
-    //             }
-    //         }
-    //         }
-    //         if(canMove){
-    //         xFighter=newX;
-    //         yFighter=newY;
-    //         ShowFighter(imagePathsFighterAttack[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexFighterRun]);
-    //         FighterLabel2.setText(" Y " + yFighter);
-    //         FighterLabel3.setText("  X :" + xFighter);
-    //         }
-    //     }
-
-    // }
-    //     if(Choice==4){
-    //     if(newX>=0 && newX+40<MATRIX_SIZE && newY>=0 && newY+40<MATRIX_SIZE){
-    //         boolean canMove=true;
-    //         for(int i=newX;i<newX+40;i++){
-    //         for(int j=newY;j<newY+40;j++){
-    //             if(Bmatrix[i][j]==1){
-    //             canMove=false;
-    //             break;
-    //             }
-    //         }
-    //         }
-    //         if(canMove){
-    //         xFighter=newX;
-    //         yFighter=newY;
-    //         ShowFighter(imagePathsDragonAttack[currentImageIndexFighterRun], imagePathsFighterRun[currentImageIndexFighterRun]);
-    //         FighterLabel2.setText(" Y " + yFighter);
-    //         FighterLabel3.setText("  X :" + xFighter);
-    //         }
-    //     }
-
-    // }
 }
 
     if(dx<=0 ){
@@ -567,7 +525,7 @@ if(Choice==2){
         if(SideFighter=='R'){
                     if(SideDragon=='R'){
         int newX = xFighter +  7;
-        int newY = yFighter +  7;
+        int newY = yFighter ;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
@@ -587,7 +545,7 @@ if(Choice==2){
     }
                     if(SideDragon=='L'){
          int newX = xFighter +  7;
-        int newY = yFighter +  7;
+        int newY = yFighter ;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
@@ -610,7 +568,7 @@ if(Choice==2){
         if(SideFighter=='L'){
                          if(SideDragon=='R'){
         int newX = xFighter -  7;
-        int newY = yFighter -  7;
+        int newY = yFighter ;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
@@ -630,7 +588,7 @@ if(Choice==2){
     }
                          if(SideDragon=='L'){
         int newX = xFighter -  7;
-        int newY = yFighter -  7;
+        int newY = yFighter;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
@@ -654,7 +612,7 @@ if(Choice==2){
      if(SideDragon=='R'){
                           if(SideFighter=='R'){
         int newX = xDragon +  7;
-        int newY = yDragon +  7;
+        int newY = yDragon ;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
@@ -674,7 +632,7 @@ if(Choice==2){
     }
                           if(SideFighter=='L'){
          int newX = xDragon +  7;
-        int newY = yDragon +  7;
+        int newY = yDragon ;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
@@ -697,7 +655,7 @@ if(Choice==2){
      if(SideDragon=='L'){
                        if(SideFighter=='R'){
         int newX = xDragon -  7;
-        int newY = yDragon -  7;
+        int newY = yDragon;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
@@ -717,7 +675,7 @@ if(Choice==2){
     }
                        if(SideFighter=='L'){
       int newX = xDragon -  7;
-        int newY = yDragon -  7;
+        int newY = yDragon;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
