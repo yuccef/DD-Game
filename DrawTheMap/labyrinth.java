@@ -30,13 +30,20 @@ public class labyrinth {
     public int yDragon = 440;
     public String PicturesSheet = "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/";
     public String PicturesSheet2 = "../Project/Ressource/CharactersMvmnt/FirstDragon/";
+    public String FirePicture ="../Project/Ressource/CharactersMvmnt/FirstDragon/Fire.png";
 
     public JLabel characterLabel;
     public JLabel DragonLabel;
+    public JLabel FireLabel;
     public int currentImageIndexFighterRun = 0;
     public int currentImageIndexFighterAttack=0;
     public int currentImageIndexDragonRun = 0;
     public int currentImageIndexDragonAttack = 0;
+
+    Timer timerFire; // Timer pour gérer l'animation du feu
+    int xFire; // Coordonnée x du feu
+    int yFire; // C
+                    int FirstTime=0;
 
 
     public char SideDragon, SideFighter;
@@ -317,6 +324,10 @@ public class labyrinth {
         characterPanel.add(characterLabel);
         characterLabel.setBounds(xFighter, yFighter, 40, 40);
 
+        FireLabel = new JLabel();
+        characterPanel.add(FireLabel);
+        FireLabel.setBounds(xDragon, yDragon, 40, 40);
+
         
 
 
@@ -352,6 +363,50 @@ public class labyrinth {
             }
         });
         timerDragonAttack.start();
+
+
+
+        timerFire = new Timer(30, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if(FirstTime==0){
+                xFire = xDragon;
+                yFire = yDragon;
+                FirstTime=1;
+                }
+            if(SideDragon=='L'){
+
+                if (xFire == xFighter   || xFire==40 || xFire==760) {
+                    timerFire.stop();
+                    FireLabel.setIcon(null);
+                }else{
+                    ShowFire(FirePicture, xFire, yFire);
+                    xFire -= 5;
+
+                }
+            }
+            if(SideDragon=='R'){
+             
+             if (xFire == xFighter   || xFire==760) {
+                    timerFire.stop();
+                    FireLabel.setIcon(null);
+                }else{
+                    ShowFire(FirePicture, xFire, yFire);
+                    xFire += 5;
+
+                }   
+            }
+                        
+
+  
+        }
+        
+        });
+        timerFire.setInitialDelay(0);
+      
+
+    
         
         Window.addKeyListener(new KeyListener() {
             @Override
@@ -491,7 +546,7 @@ if(Choice==2){
             if(canMove){
             xDragon=newXX;
             yDragon=newYY;
-            ShowFighter(imagePathsFighterRun[currentImageIndexDragonRun], imagePathsDragonRunInverse[currentImageIndexDragonRun]);
+            ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun], imagePathsDragonRunInverse[currentImageIndexDragonRun]);
             FighterLabel5.setText(" Y " + yDragon);
             FighterLabel6.setText("  X :" + xDragon);
             }
@@ -611,7 +666,7 @@ if(Choice==2){
     if(Choice==2){
      if(SideDragon=='R'){
                           if(SideFighter=='R'){
-        int newX = xDragon +  7;
+        int newX = xDragon;
         int newY = yDragon ;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
@@ -627,11 +682,13 @@ if(Choice==2){
                 xDragon = newX;
                 yDragon = newY;
                 ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun],imagePathsDragonAttack[currentImageIndexDragonAttack]);
+                timerFire.start();
+
             }
         }
     }
                           if(SideFighter=='L'){
-         int newX = xDragon +  7;
+         int newX = xDragon ;
         int newY = yDragon ;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
@@ -646,6 +703,8 @@ if(Choice==2){
             if (canMove) {
                 xDragon = newX;
                 yDragon = newY;
+                        timerFire.start();
+
                 ShowFighter(imagePathsFighterRunInverse[currentImageIndexFighterRun],imagePathsDragonAttack[currentImageIndexDragonAttack]);
             }
         }
@@ -654,7 +713,7 @@ if(Choice==2){
 }
      if(SideDragon=='L'){
                        if(SideFighter=='R'){
-        int newX = xDragon -  7;
+        int newX = xDragon;
         int newY = yDragon;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
@@ -669,12 +728,14 @@ if(Choice==2){
             if (canMove) {
                 xDragon = newX;
                 yDragon = newY;
+                        timerFire.start();
+
                 ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun],imagPathsDragonAttackInverse[currentImageIndexDragonAttack]);
             }
         }
     }
                        if(SideFighter=='L'){
-      int newX = xDragon -  7;
+      int newX = xDragon ;
         int newY = yDragon;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
@@ -689,6 +750,8 @@ if(Choice==2){
             if (canMove) {
                 xDragon = newX;
                 yDragon = newY;
+                        timerFire.start();
+
                 ShowFighter(imagePathsFighterRunInverse[currentImageIndexFighterRun],imagPathsDragonAttackInverse[currentImageIndexDragonAttack]);
             }
         }                  
@@ -698,7 +761,20 @@ if(Choice==2){
 }
 }
 }
+
+
 }
+
+
+
+public void ShowFire(String nomImage, int x, int y) {
+
+    ImageIcon imageIcon = new ImageIcon(nomImage);
+    FireLabel.setIcon(imageIcon);
+    FireLabel.setBounds(x, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
+
+}
+
 
 
   
