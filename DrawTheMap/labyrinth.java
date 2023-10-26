@@ -298,7 +298,9 @@ public class labyrinth {
             public void keyPressed(KeyEvent e) {
                 //key listener for knight
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right knight
-                    moveFighter(1,1, 0);
+                    if( xFighter+ 40 < xDragon){
+                        moveFighter(1,1, 0);
+                    }
                 } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left knight
                     moveFighter(1,-1, 0);
                 } else if (e.getKeyCode() == KeyEvent.VK_UP) { // Up knight
