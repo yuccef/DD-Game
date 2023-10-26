@@ -24,10 +24,10 @@ public class labyrinth {
     public int[][] Lmatrix;
     public int[][] Bmatrix;
     
-    public int xFighter = 120;
-    public int yFighter = 120;
-    public int xDragon = 740;
-    public int yDragon = 440;
+    public int xFighter = 0;
+    public int yFighter = 40;
+    public int xDragon = 720;
+    public int yDragon = 520;
     public String PicturesSheet = "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/";
     public String PicturesSheet2 = "../Project/Ressource/CharactersMvmnt/FirstDragon/";
     public String FirePicture ="../Project/Ressource/CharactersMvmnt/FirstDragon/Fire.png";
