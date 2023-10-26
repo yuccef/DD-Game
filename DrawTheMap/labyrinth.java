@@ -61,16 +61,24 @@ public class labyrinth {
         PicturesSheet + "Attack4.png",
     };
 
+    public String[] imagePathsFighterAttackInverse={
+        PicturesSheet + "Attack11.png",
+        PicturesSheet + "Attack22.png",
+        PicturesSheet + "Attack33.png",
+        PicturesSheet + "Attack44.png",
+    };
     
-    public String[] imagePathsKnightRunInverse = {
-            PicturesSheet + "run1Inverse.png",
-            PicturesSheet + "run2Inverse.png",
-            PicturesSheet + "run3Inverse.png",
-            PicturesSheet + "run4Inverse.png",
-            PicturesSheet + "run5Inverse.png",
-            PicturesSheet + "run6Inverse.png",
-            PicturesSheet + "run7Inverse.png",
-            PicturesSheet + "run8Inverse.png", 
+
+    
+    public String[] imagePathsFighterRunInverse = {
+            PicturesSheet + "run11.png",
+            PicturesSheet + "run22.png",
+            PicturesSheet + "run33.png",
+            PicturesSheet + "run44.png",
+            PicturesSheet + "run55.png",
+            PicturesSheet + "run66.png",
+            PicturesSheet + "run77.png",
+            PicturesSheet + "run88.png",
     };
 
     public String[] imagePathsDragonRun = {
@@ -83,6 +91,18 @@ public class labyrinth {
             PicturesSheet2 + "run7.png",
             PicturesSheet2 + "run8.png",
     };
+
+    public String[] imagePathsDragonRunInverse={
+        PicturesSheet2 + "run11.png",
+        PicturesSheet2 + "run22.png",
+        PicturesSheet2 + "run33.png",
+        PicturesSheet2 + "run44.png",
+        PicturesSheet2 + "run55.png",
+        PicturesSheet2 + "run66.png",
+        PicturesSheet2 + "run77.png",
+        PicturesSheet2 + "run88.png",
+    };
+    
 
 
  
@@ -337,7 +357,7 @@ public class labyrinth {
         int newY = yFighter + dy * 5;
         int newXX=xDragon+dx*5;
         int newYY=yDragon+dy*5;
-
+    if(dx>=0 ){
     if(Choice == 1){
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
@@ -359,7 +379,7 @@ public class labyrinth {
             }
         }
     }
-    if(Choice==2){
+        if(Choice==2){
         if(newXX>=0 && newXX+40<MATRIX_SIZE && newYY>=0 && newYY+40<MATRIX_SIZE){
             boolean canMove=true;
             for(int i=newXX;i<newXX+40;i++){
@@ -379,7 +399,53 @@ public class labyrinth {
             }
         }
     }
+}
 
+    if(dx<=0 ){
+        if(Choice == 1){
+        if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
+            boolean canMove = true;
+            for (int i = newX; i < newX + 40; i++) {
+                for (int j = newY; j < newY + 40; j++) {
+                    if (Bmatrix[i][j] == 1) { 
+                        canMove = false;
+                        break;
+                    }
+                }
+            }
+            if (canMove) {
+                xFighter = newX;
+                yFighter = newY;
+                ShowFighter(imagePathsFighterRunInverse[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexFighterRun]);
+                      FighterLabel2.setText(" Y " + yFighter);
+                      FighterLabel3.setText("  X :" + xFighter);
+
+            }
+        }
+    }
+
+if(Choice==2){
+        if(newXX>=0 && newXX+40<MATRIX_SIZE && newYY>=0 && newYY+40<MATRIX_SIZE){
+            boolean canMove=true;
+            for(int i=newXX;i<newXX+40;i++){
+            for(int j=newYY;j<newYY+40;j++){
+                if(Bmatrix[i][j]==1){
+                canMove=false;
+                break;
+                }
+            }
+            }
+            if(canMove){
+            xDragon=newXX;
+            yDragon=newYY;
+            ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun], imagePathsDragonRunInverse[currentImageIndexFighterRun]);
+            FighterLabel5.setText(" Y " + yDragon);
+            FighterLabel6.setText("  X :" + xDragon);
+            }
+        }
+    }
+}
+    
     }
 
 
