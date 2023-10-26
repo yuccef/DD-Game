@@ -24,14 +24,13 @@ public class FighterCaracter {
 
   
     // Liste des méthodes
-    public FighterCaracter( String nom, int initialScore, int initialDamage, int initialDefense) {
+    public FighterCaracter( String nom, int initialScore, int initialDamage, int initialDefense, int xFighter1, int yFighter1) {
         name = nom;
         score = initialScore;
         damage = initialDamage;
         defense = initialDefense;
-        // xFighter = labyrinth.xFighter;
-        // yFighter = labyrinth.yFighter;
-        // this.labyrinth = labyrinth;
+        xFighter =xFighter1;
+        yFighter =yFighter1;
 
     }
 
@@ -66,35 +65,15 @@ public class FighterCaracter {
         }
     }
 
-    // public int ActionCanWorks(FighterCaracter Fighter, Dragon Dragon) {
-    //     if (xFighter - Dragon.xDragon <= 40 && yFighter - Dragon.yDragon <= 40) return Close = 1;
-    //     else return Close = 0;
-    // }
-
-    public void FighterCaracterMove(int dx, int dy, int X, int Y) {
-        int newX = X + dx * 5;
-        int newY = Y + dy * 5;
-
-        if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
-            boolean canMove = true;
-            for (int i = newX; i < newX + 40; i++) {
-                for (int j = newY; j < newY + 40; j++) {
-                    if (labyrinth.Bmatrix[i][j] == 1) { // If the Knight collides with a wall
-                        canMove = false;
-                        break;
-                    }
-                }
-            }
-            if (canMove) {
-                X = newX;
-                Y = newY;
-                labyrinth.ShowFighter(labyrinth.imagePathsFighterRun[labyrinth.currentImageIndexFighterRun]);
-            }
-        }
+    public int ActionCanWorks(FighterCaracter Fighter, Dragon Dragon) {
+        if (Fighter.xFighter - Dragon.xDragon <= 40 && Fighter.yFighter - Dragon.yDragon <= 40) return Close = 1;
+        else return Close = 0;
     }
 
+  
+
     public void FitherAndDragon(FighterCaracter Fighter, Dragon Dragon) {
-        // if (ActionCanWorks(Fighter, Dragon) == 1) {
+         if (ActionCanWorks(Fighter, Dragon) == 1) {
             if (VarDamageFighter == 1 && Dragon.VarDefenseDragon == 0) {
                 DamageFighterCaracterTheDragon(Fighter, Dragon);
                 VarDamageFighter = 0;
@@ -103,6 +82,7 @@ public class FighterCaracter {
                 FighterDefense(Fighter, Dragon);
                 VarDamageFighter = 0;
             }
+        }  
            
         }
     }

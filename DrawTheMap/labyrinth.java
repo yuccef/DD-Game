@@ -3,8 +3,6 @@ package DrawTheMap;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,9 +10,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.String;
 
-//import TheDragon.Dragon;
+import TheDragon.Dragon;
 import TheFighter.FighterCaracter;
-
 
 
 public class labyrinth {
@@ -29,44 +26,62 @@ public class labyrinth {
     
     public int xFighter = 120;
     public int yFighter = 120;
+    public int xDragon = 740;
+    public int yDragon = 440;
+    public String PicturesSheet = "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/";
+    public String PicturesSheet2 = "../Project/Ressource/CharactersMvmnt/FirstDragon/";
 
     public JLabel characterLabel;
+    public JLabel DragonLabel;
     public int currentImageIndexFighterRun = 0;
+    JLabel FighterLabel3;
+    JLabel FighterLabel2;
+    JLabel FighterLabel5;
+    JLabel FighterLabel6;
 
-    FighterCaracter Bnadem = new FighterCaracter( "GHita ",   400, 10, 10);
-    FighterCaracter Pirate = new FighterCaracter(  "Pirate", 300, 10, 10);
+    FighterCaracter Bnadem = new FighterCaracter( "GHita ",   400, 10, 10, xFighter, yFighter);
+    Dragon Dragon = new Dragon("Dragon", 400, 10, 10, xDragon, yDragon);
 
-    //
-    
     public String[] imagePathsFighterRun = {
-        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run1.png",
-        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run2.png",
-        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run3.png",
-        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run4.png",
-        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run5.png",
-        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run6.png",
-        "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/run7.png",
-      
+            PicturesSheet + "run1.png",
+            PicturesSheet + "run2.png",
+            PicturesSheet + "run3.png",
+            PicturesSheet + "run4.png",
+            PicturesSheet + "run5.png",
+            PicturesSheet + "run6.png",
+            PicturesSheet + "run7.png",
+            PicturesSheet + "run8.png",
     };
 
-    public String[] imagePathsFighterAttack={
-            "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/Attack1.png",
-            "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/Attack2.png",
-            "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/Attack3.png",
-            "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/Attack4.png",
 
+    public String[] imagePathsFighterAttack={
+        PicturesSheet + "Attack1.png",
+        PicturesSheet + "Attack2.png",
+        PicturesSheet + "Attack3.png",
+        PicturesSheet + "Attack4.png",
     };
 
     
     public String[] imagePathsKnightRunInverse = {
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run11.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run22.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run33.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run44.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run55.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run66.png",
-        "../Project/Ressource/CharactersMvmnt/PirateMvmnt/run77.png",
-     
+            PicturesSheet + "run1Inverse.png",
+            PicturesSheet + "run2Inverse.png",
+            PicturesSheet + "run3Inverse.png",
+            PicturesSheet + "run4Inverse.png",
+            PicturesSheet + "run5Inverse.png",
+            PicturesSheet + "run6Inverse.png",
+            PicturesSheet + "run7Inverse.png",
+            PicturesSheet + "run8Inverse.png", 
+    };
+
+    public String[] imagePathsDragonRun = {
+            PicturesSheet2 + "run1.png",
+            PicturesSheet2 + "run2.png",
+            PicturesSheet2 + "run3.png",
+            PicturesSheet2 + "run4.png",
+            PicturesSheet2 + "run5.png",
+            PicturesSheet2 + "run6.png",
+            PicturesSheet2 + "run7.png",
+            PicturesSheet2 + "run8.png",
     };
 
 
@@ -115,7 +130,7 @@ public class labyrinth {
         FighterLabel.setBorder(border1);
 
         //name
-        JLabel FighterLabel2 = new JLabel("  "+Bnadem.name);
+         FighterLabel2 = new JLabel(" Y "+Bnadem.yFighter);
         FighterLabel2.setBorder(border1);
         FighterLabel2.setFont(font2);
         FighterLabel2.setForeground(Color.decode("#425b8a"));
@@ -124,7 +139,7 @@ public class labyrinth {
         FighterLabel2.setBounds(20, 150, 110, 50);
 
         //life
-        JLabel FighterLabel3 = new JLabel("  Life :"+ Bnadem.score) ;
+         FighterLabel3 = new JLabel("  X :"+ Bnadem.xFighter) ;
         FighterLabel3.setBorder(border1);
         FighterLabel3.setFont(font2);
         FighterLabel3.setForeground(Color.decode("#425b8a"));
@@ -132,37 +147,39 @@ public class labyrinth {
         FighterLabel3.setBackground(Color.decode("#d1c0b9"));
         FighterLabel3.setBounds(20, 350, 110, 50);
 
-
-        // Fither 2 Label
-
-        //picture
+        // Dragon Label
         JLabel FighterLabel4 = new JLabel();
-        Font font3 = new Font("Lucida Handwriting", Font.BOLD, 15);
         FighterLabel4.setBounds(150, 210, 124,    124);
-        ImageIcon imageIconFighter2 = new ImageIcon("../Project/Ressource/CharactersMvmnt/PirateMvmnt/run1.png");
+        ImageIcon imageIconFighter2 = new ImageIcon("../Project/Ressource/CharactersMvmnt/FirstDragon/FirstDragonIcone.png");
         Image image2 = imageIconFighter2.getImage();
         Image newImage2 = image2.getScaledInstance(124, 124, Image.SCALE_SMOOTH);
         imageIconFighter2 = new ImageIcon(newImage2);
         FighterLabel4.setIcon(imageIconFighter2);
         FighterLabel4.setBorder(border1);
-        
+
         //name
-        JLabel FighterLabel5 = new JLabel("    "+Pirate.name);
+        FighterLabel5 = new JLabel(" Y "+yDragon);
         FighterLabel5.setBorder(border1);
-        FighterLabel5.setFont(font3);
+        FighterLabel5.setFont(font2);
         FighterLabel5.setForeground(Color.decode("#425b8a"));
         FighterLabel5.setOpaque(true);
         FighterLabel5.setBackground(Color.decode("#d1c0b9"));
         FighterLabel5.setBounds(150, 150, 110, 50);
 
+
         //life
-        JLabel FighterLabel6 = new JLabel("  Life :"+ Pirate.score) ;
+        FighterLabel6 = new JLabel("  X :"+ xDragon) ;
         FighterLabel6.setBorder(border1);
-        FighterLabel6.setFont(font3);
+        FighterLabel6.setFont(font2);
         FighterLabel6.setForeground(Color.decode("#425b8a"));
         FighterLabel6.setOpaque(true);
         FighterLabel6.setBackground(Color.decode("#d1c0b9"));
         FighterLabel6.setBounds(150, 350, 110, 50);
+
+        
+
+
+
 
         //Timer
         JLabel labelTimer = new JLabel("0");
@@ -179,7 +196,6 @@ public class labyrinth {
         timer.start();
         labelTimer.setBounds(170, 6,    110, 30);
         labelTimer.setBorder(border2);
-        labelTimer.setFont(font3);
         labelTimer.setForeground(Color.decode("#425b8a"));
         labelTimer.setOpaque(true);
         labelTimer.setBackground(Color.decode("#d1c0b9"));
@@ -195,9 +211,7 @@ public class labyrinth {
         RightSide.add(FighterLabel2);
         RightSide.add(FighterLabel);
         RightSide.add(FighterLabel3);
-        RightSide.add(FighterLabel4);
-        RightSide.add(FighterLabel5);
-        RightSide.add(FighterLabel6);
+
         RightSide.add(labelTimer);
 
         RightSide.add(TitleLabel);
@@ -249,11 +263,14 @@ public class labyrinth {
         Window.add(characterPanel);
         characterPanel.setLayout(null); // Set layout to null to position the character precisely
 
-
+        DragonLabel = new JLabel();
+        characterPanel.add(DragonLabel);
+        DragonLabel.setBounds(xDragon, yDragon, 40, 40);
         characterLabel = new JLabel();
         characterPanel.add(characterLabel);
-        //label.add(characterPanel);
         characterLabel.setBounds(xFighter, yFighter, 40, 40);
+
+        
 
 
          Timer timerFighterRun = new Timer(200, new ActionListener() {
@@ -263,6 +280,14 @@ public class labyrinth {
             }
         });
         timerFighterRun.start();
+
+        Timer timerDragonRun = new Timer(200, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentImageIndexFighterRun = (currentImageIndexFighterRun + 1) % imagePathsDragonRun.length; // Loop through the images
+            }
+        });
+        timerDragonRun.start();
         
         Window.addKeyListener(new KeyListener() {
             @Override
@@ -273,16 +298,27 @@ public class labyrinth {
             public void keyPressed(KeyEvent e) {
                 //key listener for knight
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right knight
-                    moveFighter(1, 0);
+                    moveFighter(1,1, 0);
                 } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left knight
-                    moveFighter(-1, 0);
+                    moveFighter(1,-1, 0);
                 } else if (e.getKeyCode() == KeyEvent.VK_UP) { // Up knight
-                    moveFighter(0, -1);
+                    moveFighter(1,0, -1);
                 } else if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down knight
-                    moveFighter(0, 1);
+                    moveFighter(1,0, 1);
                 } else if (e.getKeyChar() == 'A' || e.getKeyChar() == 'a') {
-                    ShowFighter(imagePathsFighterAttack[currentImageIndexFighterRun]);
+                    ShowFighter(imagePathsFighterAttack[currentImageIndexFighterRun],"");
                 }
+                //key listener for dragon
+                if(e.getKeyChar() == 'd' || e.getKeyChar() == 'D'){
+                    moveFighter(2,1, 0);
+                }else if(e.getKeyChar() == 'q' || e.getKeyChar() == 'Q'){
+                    moveFighter(2,-1, 0);
+                }else if(e.getKeyChar() == 'z' || e.getKeyChar() == 'Z'){
+                    moveFighter(2,0, -1);
+                }else if(e.getKeyChar() == 's' || e.getKeyChar() == 'S'){
+                    moveFighter(2,0, 1);
+                }
+
             }
              
 
@@ -294,10 +330,13 @@ public class labyrinth {
         Window.setVisible(true);
     }
 
-    public void moveFighter(int dx, int dy) {
+    public void moveFighter(int Choice, int dx, int dy) {
         int newX = xFighter + dx * 5;
         int newY = yFighter + dy * 5;
-    
+        int newXX=xDragon+dx*5;
+        int newYY=yDragon+dy*5;
+
+    if(Choice == 1){
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
@@ -311,25 +350,57 @@ public class labyrinth {
             if (canMove) {
                 xFighter = newX;
                 yFighter = newY;
-                ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun]);
+                ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexFighterRun]);
+                      FighterLabel2.setText(" Y " + yFighter);
+                      FighterLabel3.setText("  X :" + xFighter);
+
+            }
+        }
+    }
+    if(Choice==2){
+        if(newXX>=0 && newXX+40<MATRIX_SIZE && newYY>=0 && newYY+40<MATRIX_SIZE){
+            boolean canMove=true;
+            for(int i=newXX;i<newXX+40;i++){
+            for(int j=newYY;j<newYY+40;j++){
+                if(Bmatrix[i][j]==1){
+                canMove=false;
+                break;
+                }
+            }
+            }
+            if(canMove){
+            xDragon=newXX;
+            yDragon=newYY;
+            ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexFighterRun]);
+            FighterLabel5.setText(" Y " + yDragon);
+            FighterLabel6.setText("  X :" + xDragon);
             }
         }
     }
 
-    public void ShowFighter(String nomImage) {
+    }
+
+
+
+    public void ShowFighter(String nomImage, String nomImage2) {
 
         ImageIcon imageIcon = new ImageIcon(nomImage);
+        ImageIcon imageIcon2 = new ImageIcon(nomImage2);
+
         characterLabel.setIcon(imageIcon);
+        DragonLabel.setIcon(imageIcon2);
+
         characterLabel.setBounds(xFighter, yFighter, imageIcon.getIconWidth(), imageIcon.getIconHeight());
-        characterLabel.repaint(); // Repaint the label to show the updated position
+        DragonLabel.setBounds(xDragon, yDragon, imageIcon2.getIconWidth(), imageIcon2.getIconHeight());
+        // characterLabel.repaint();
     }
+
+  
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                  new labyrinth();
-                 //new FighterCaracter();
-
             }
         });
     }

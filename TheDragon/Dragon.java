@@ -19,8 +19,10 @@ public class Dragon {
 
 
     // Liste des méthodes
-    public Dragon(char nom, int initialScore, int initialDamage, int initialDefense) {
-        name = String.valueOf(nom);
+    public Dragon(String nom, int initialScore, int initialDamage, int initialDefense, int xDragon1, int yDragon1) {
+        xDragon = xDragon1;
+        yDragon = yDragon1;
+        name =nom;
         score = initialScore;
         damage = initialDamage;
         defense = initialDefense;
