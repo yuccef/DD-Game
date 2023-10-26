@@ -53,7 +53,7 @@ public class labyrinth {
     JLabel FighterLabel6;
 
     FighterCaracter Bnadem = new FighterCaracter( "GHita ",   400, 10, 10, xFighter, yFighter);
-    Dragon Dragon = new Dragon("Dragon", 400, 10, 10, xDragon, yDragon);
+    Dragon Dragon = new Dragon("Dragon", 400, 20, 20, xDragon, yDragon);
 
     public String[] imagePathsFighterRun = {
             PicturesSheet + "run1.png",
@@ -184,7 +184,7 @@ public class labyrinth {
         FighterLabel.setBorder(border1);
 
         //name
-         FighterLabel2 = new JLabel(" Y "+Bnadem.yFighter);
+         FighterLabel2 = new JLabel(" Score "+Bnadem.score);
         FighterLabel2.setBorder(border1);
         FighterLabel2.setFont(font2);
         FighterLabel2.setForeground(Color.decode("#425b8a"));
@@ -378,13 +378,26 @@ public class labyrinth {
             if(SideDragon=='L'){
 
                 if (xFire == xFighter   || xFire==40 || xFire==760) {
+                 
+                    if(xFire==xFighter && yFire==yFighter){
                     timerFire.stop();
                     FireLabel.setIcon(null);
+                    Dragon.DamageDragonFighterCaracter(Bnadem, Dragon);
+                    Bnadem.FighterCaracterUpdateDealth(Bnadem);
+                    Bnadem.lose(Bnadem);
+                    FighterLabel2.setText(" score " + Bnadem.score);
+
+                }
+                   timerFire.stop();
+                    FireLabel.setIcon(null);
+
+
                 }else{
                     ShowFire(FirePicture, xFire, yFire);
                     xFire -= 5;
 
                 }
+
             }
             if(SideDragon=='R'){
              
@@ -418,9 +431,13 @@ public class labyrinth {
                 //key listener for knight
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right knight
                     SideFighter = 'R';
-                    if( xFighter+ 40 < xDragon){
+                    if (yFighter!=yDragon){
                         moveFighter(1,1, 0);
-                    }
+                    }else{
+                        if(xFighter+40<=xDragon){
+                            moveFighter(1,1, 0);
+                }
+            }
                 } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left knight
                     SideFighter = 'L';
                     moveFighter(1,-1, 0);
@@ -479,8 +496,8 @@ public class labyrinth {
                 xFighter = newX;
                 yFighter = newY;
                 ShowFighter(imagePathsFighterRun[currentImageIndexFighterAttack], imagePathsDragonRun[currentImageIndexDragonRun]);
-                      FighterLabel2.setText(" Y " + yFighter);
-                      FighterLabel3.setText("  X :" + xFighter);
+                      //FighterLabel2.setText(" Y " + yFighter);
+                      //FighterLabel3.setText("  X :" + xFighter);
 
             }
         }
@@ -524,8 +541,8 @@ public class labyrinth {
                 xFighter = newX;
                 yFighter = newY;
                 ShowFighter(imagePathsFighterRunInverse[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexDragonRun]);
-                      FighterLabel2.setText(" Y " + yFighter);
-                      FighterLabel3.setText("  X :" + xFighter);
+                     // FighterLabel2.setText(" Y " + yFighter);
+                     // FighterLabel3.setText("  X :" + xFighter);
 
             }
         }
