@@ -167,7 +167,14 @@ JPanel FighterLifePanel = new JPanel() {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.RED);
+        if(Bnadem.score>200){
+               g.setColor(Color.GREEN);
+        }else if(Bnadem.score>100){
+            g.setColor(Color.YELLOW);
+        }else{
+            g.setColor(Color.RED);
+        }
+         
         int width = (int) ((Bnadem.score / (double) 400) * getWidth());
         g.fillRect(0, 0, width, getHeight());
     }
