@@ -160,8 +160,22 @@ public class labyrinth {
         LineBorder border = new LineBorder(Color.decode("#365979"), 10, true);
         LineBorder border1 = new LineBorder(Color.decode("#8bb1c4"), 5, true);
         LineBorder border2 = new LineBorder(Color.decode("#b96343"), 5, true);
-
         RightSide.setBorder(border);
+
+//Barre of life Panel
+JPanel FighterLifePanel = new JPanel() {
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setColor(Color.RED);
+        int width = (int) ((Bnadem.score / (double) 400) * getWidth());
+        g.fillRect(0, 0, width, getHeight());
+    }
+};
+    FighterLifePanel.setBounds(20, 400, 110, 20);
+    FighterLifePanel.setBorder(border1);
+
+
 
 Font FontForTitle = new Font("Comic Sans MS", Font.BOLD, 20);
 Font FontForTimer = new Font("Courier New", Font.BOLD, 14);
@@ -293,6 +307,7 @@ Font FontForLife = new Font("Verdana", Font.BOLD, 12);
         RightSide.add(DragonLabelRightSideLife);
 
         RightSide.add(labelTimer);
+        RightSide.add(FighterLifePanel);
 
         RightSide.add(TitleLabel);
         Window.add(RightSide);
@@ -412,13 +427,10 @@ Font FontForLife = new Font("Verdana", Font.BOLD, 12);
                     Bnadem.FighterCaracterUpdateDealth(Bnadem);
                     Bnadem.lose(Bnadem);
                     FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
-
+                    FighterLifePanel.repaint();
                 }
                     timerFire.stop();
                     FireLabel.setIcon(null);
-
-
-
                 }else{
                     ShowFire(FirePicture, xFire, yFire);
                     xFire -= 5;

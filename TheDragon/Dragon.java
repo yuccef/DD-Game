@@ -13,6 +13,8 @@ public class Dragon {
     public int defense;
     public int death;
 
+    
+
     public int VarDefenseDragon = 0;
     public int VarBlessedDragon = 0;
     public int VarDamageDragon = 0;
@@ -29,8 +31,13 @@ public class Dragon {
     }
 
     public void DamageDragonFighterCaracter(FighterCaracter Fighter, Dragon Dragon) {
+        if(Fighter.score > 0){
         Fighter.score -= Dragon.damage;
         VarDamageDragon = 1;
+        }else{
+            Fighter.score = 0;
+            System.out.println("You lose");
+        }
     }
 
     public void DragonDefense(FighterCaracter Fighter, Dragon Dragon) {
