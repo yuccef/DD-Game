@@ -30,7 +30,7 @@ public class labyrinth {
     public int yDragon = 520;
     public String PicturesSheet = "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/";
     public String PicturesSheet2 = "../Project/Ressource/CharactersMvmnt/FirstDragon/";
-    public String FirePicture ="../Project/Ressource/CharactersMvmnt/FirstDragon/Fire.png";
+    public String FirePicture ="../Project/Ressource/CharactersMvmnt/FirstDragon/FireInversed.png";
 
     public JLabel characterLabel;
     public JLabel DragonLabel;
@@ -370,7 +370,6 @@ public class labyrinth {
         timerFire = new Timer(30, new ActionListener() {
           @Override
             public void actionPerformed(ActionEvent e) {
-            if(SetFire==0){
 
                 if(FirstTime==0){
                 xFire = xDragon;
@@ -419,7 +418,7 @@ public class labyrinth {
 
   
         }
-    }
+    
         });
         timerFire.setInitialDelay(0);
       
