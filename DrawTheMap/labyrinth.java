@@ -179,7 +179,7 @@ JPanel FighterLifePanel = new JPanel() {
         g.fillRect(0, 0, width, getHeight());
     }
 };
-    FighterLifePanel.setBounds(20, 400, 110, 20);
+    FighterLifePanel.setBounds(20, 345, 110, 40);
     FighterLifePanel.setBorder(border1);
 
 
@@ -187,7 +187,7 @@ JPanel FighterLifePanel = new JPanel() {
 Font FontForTitle = new Font("Comic Sans MS", Font.BOLD, 20);
 Font FontForTimer = new Font("Courier New", Font.BOLD, 14);
 Font FontForNames = new Font("Georgia", Font.BOLD, 16);
-Font FontForLife = new Font("Verdana", Font.BOLD, 12);
+Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
 
 
 
@@ -224,13 +224,19 @@ Font FontForLife = new Font("Verdana", Font.BOLD, 12);
         FighterLabelRightSideName.setBounds(20, 150, 110, 50);
 
         //life
-        FighterLabelRightSideLife = new JLabel("  Score :"+ Bnadem.score) ;
-        FighterLabelRightSideLife.setBorder(border1);
+        FighterLabelRightSideLife = new JLabel("Score:"+ Bnadem.score) ;
+        //FighterLabelRightSideLife.setBorder(border1);
         FighterLabelRightSideLife.setFont(FontForLife);
         FighterLabelRightSideLife.setForeground(Color.decode("#425b8a"));
         FighterLabelRightSideLife.setOpaque(true);
-        FighterLabelRightSideLife.setBackground(Color.decode("#d1c0b9"));
-        FighterLabelRightSideLife.setBounds(20, 350, 110, 50);
+        if(Bnadem.score>200){
+            FighterLabelRightSideLife.setBackground(Color.GREEN);
+        }else if(Bnadem.score>100){
+            FighterLabelRightSideLife.setBackground(Color.YELLOW);
+        }else{
+            FighterLabelRightSideLife.setBackground(Color.RED);
+        }
+        //FighterLabelRightSideLife.setBounds(20, 300, 110, 50);
 
 
         
@@ -312,6 +318,8 @@ Font FontForLife = new Font("Verdana", Font.BOLD, 12);
         RightSide.add(DragonLabelRightSide, gbc);
         RightSide.add(DragonLabelRightSideName);
         RightSide.add(DragonLabelRightSideLife);
+        
+        FighterLifePanel.add(FighterLabelRightSideLife);
 
         RightSide.add(labelTimer);
         RightSide.add(FighterLifePanel);
