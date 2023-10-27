@@ -153,7 +153,7 @@ public class labyrinth {
         Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 //RightSide Panel
-        JPanel RightSide = new JPanel();
+        JPanel RightSide = new JPanel(new GridBagLayout());;
         RightSide.setLayout(null); 
         RightSide.setBounds(800, 0, 285, 597);
         RightSide.setBackground(Color.decode("#e8dfdb"));
@@ -186,7 +186,7 @@ Font FontForLife = new Font("Verdana", Font.BOLD, 12);
         //picture
         JLabel FighterLabelRightSide = new JLabel();
         FighterLabelRightSide.setBounds(20, 210, 110,    124);
-        ImageIcon imageIconFighter1 = new ImageIcon("../Project/Ressource/CharactersMvmnt/KnightMvmnt1/FirstCharacterIcone.png");
+        ImageIcon imageIconFighter1 = new ImageIcon("../Project/Ressource/CharactersMvmnt/KnightMvmnt1/IconeFighter.png");
         Image image = imageIconFighter1.getImage();
         Image newImage = image.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
         imageIconFighter1 = new ImageIcon(newImage); 
@@ -219,12 +219,22 @@ Font FontForLife = new Font("Verdana", Font.BOLD, 12);
         //picture
         JLabel DragonLabelRightSide = new JLabel();
         DragonLabelRightSide.setBounds(160, 210, 110,    124);
-        ImageIcon imageIconDragonLabelRightSide = new ImageIcon("../Project/Ressource/CharactersMvmnt/FirstDragon/AttackPosition.png");
+        ImageIcon imageIconDragonLabelRightSide = new ImageIcon("../Project/Ressource/CharactersMvmnt/FirstDragon/DragonIcone.png");
         Image imageDragonLabelRightSide = imageIconDragonLabelRightSide.getImage();
         Image newImageDragonLabelRightSide = imageDragonLabelRightSide.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
         imageIconDragonLabelRightSide = new ImageIcon(newImageDragonLabelRightSide); 
         DragonLabelRightSide.setIcon(imageIconDragonLabelRightSide);
+        DragonLabelRightSide.setHorizontalAlignment(SwingConstants.CENTER);
+        DragonLabelRightSide.setVerticalAlignment(SwingConstants.CENTER);
         DragonLabelRightSide.setBorder(border1);
+
+    
+
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.CENTER;
 
         //name
          DragonLabelRightSideName = new JLabel("  "+ Dragon.name);
@@ -278,7 +288,7 @@ Font FontForLife = new Font("Verdana", Font.BOLD, 12);
         RightSide.add(FighterLabelRightSideName);
         RightSide.add(FighterLabelRightSide);
         RightSide.add(FighterLabelRightSideLife);
-        RightSide.add(DragonLabelRightSide);
+        RightSide.add(DragonLabelRightSide, gbc);
         RightSide.add(DragonLabelRightSideName);
         RightSide.add(DragonLabelRightSideLife);
 
