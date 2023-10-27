@@ -43,7 +43,8 @@ public class labyrinth {
     Timer timerFire; // Timer pour gérer l'animation du feu
     int xFire; // Coordonnée x du feu
     int yFire; // C
-                    int FirstTime=0;
+    int FirstTime=0;
+    int SetFire=0;
 
 
     public char SideDragon, SideFighter;
@@ -367,8 +368,9 @@ public class labyrinth {
 
 
         timerFire = new Timer(30, new ActionListener() {
-            @Override
+          @Override
             public void actionPerformed(ActionEvent e) {
+            if(SetFire==0){
 
                 if(FirstTime==0){
                 xFire = xDragon;
@@ -388,8 +390,9 @@ public class labyrinth {
                     FighterLabel2.setText(" score " + Bnadem.score);
 
                 }
-                   timerFire.stop();
+                    timerFire.stop();
                     FireLabel.setIcon(null);
+
 
 
                 }else{
@@ -404,6 +407,8 @@ public class labyrinth {
              if (xFire == xFighter   || xFire==760) {
                     timerFire.stop();
                     FireLabel.setIcon(null);
+                    FirstTime=0;    
+
                 }else{
                     ShowFire(FirePicture, xFire, yFire);
                     xFire += 5;
@@ -414,7 +419,7 @@ public class labyrinth {
 
   
         }
-        
+    }
         });
         timerFire.setInitialDelay(0);
       
@@ -700,6 +705,7 @@ if(Choice==2){
                 yDragon = newY;
                 ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun],imagePathsDragonAttack[currentImageIndexDragonAttack]);
                 timerFire.start();
+                FirstTime=0;
 
             }
         }
@@ -721,6 +727,7 @@ if(Choice==2){
                 xDragon = newX;
                 yDragon = newY;
                         timerFire.start();
+                        FirstTime=0;
 
                 ShowFighter(imagePathsFighterRunInverse[currentImageIndexFighterRun],imagePathsDragonAttack[currentImageIndexDragonAttack]);
             }
@@ -746,6 +753,7 @@ if(Choice==2){
                 xDragon = newX;
                 yDragon = newY;
                         timerFire.start();
+                        FirstTime=0;
 
                 ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun],imagPathsDragonAttackInverse[currentImageIndexDragonAttack]);
             }
@@ -768,6 +776,7 @@ if(Choice==2){
                 xDragon = newX;
                 yDragon = newY;
                         timerFire.start();
+                        FirstTime=0;
 
                 ShowFighter(imagePathsFighterRunInverse[currentImageIndexFighterRun],imagPathsDragonAttackInverse[currentImageIndexDragonAttack]);
             }
