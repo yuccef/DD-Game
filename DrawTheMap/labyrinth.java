@@ -183,6 +183,24 @@ JPanel FighterLifePanel = new JPanel() {
     FighterLifePanel.setBorder(border1);
 
 
+JPanel DragonLifePanel = new JPanel() {
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if(Dragon.score>200){
+               g.setColor(Color.GREEN);
+        }else if(Dragon.score>100){
+            g.setColor(Color.YELLOW);
+        }else{
+            g.setColor(Color.RED);
+        }
+         
+        int width = (int) ((Dragon.score / (double) 400) * getWidth());
+        g.fillRect(0, 0, width, getHeight());
+    }
+};
+    DragonLifePanel.setBounds(160, 345, 110, 40);
+    DragonLifePanel.setBorder(border1);
 
 Font FontForTitle = new Font("Comic Sans MS", Font.BOLD, 20);
 Font FontForTimer = new Font("Courier New", Font.BOLD, 14);
@@ -215,7 +233,7 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
         FighterLabelRightSide.setBorder(border1);
 
         //name
-        FighterLabelRightSideName = new JLabel("  "+Bnadem.name);
+        FighterLabelRightSideName = new JLabel("    "+Bnadem.name);
         FighterLabelRightSideName.setBorder(border1);
         FighterLabelRightSideName.setFont(FontForNames);
         FighterLabelRightSideName.setForeground(Color.decode("#425b8a"));
@@ -224,19 +242,10 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
         FighterLabelRightSideName.setBounds(20, 150, 110, 50);
 
         //life
-        FighterLabelRightSideLife = new JLabel("Score:"+ Bnadem.score) ;
-        //FighterLabelRightSideLife.setBorder(border1);
+        FighterLabelRightSideLife = new JLabel("Vie:"+ Bnadem.score +"  ") ;
         FighterLabelRightSideLife.setFont(FontForLife);
-        FighterLabelRightSideLife.setForeground(Color.decode("#425b8a"));
-        FighterLabelRightSideLife.setOpaque(true);
-        if(Bnadem.score>200){
-            FighterLabelRightSideLife.setBackground(Color.GREEN);
-        }else if(Bnadem.score>100){
-            FighterLabelRightSideLife.setBackground(Color.YELLOW);
-        }else{
-            FighterLabelRightSideLife.setBackground(Color.RED);
-        }
-        //FighterLabelRightSideLife.setBounds(20, 300, 110, 50);
+        FighterLabelRightSideLife.setForeground(Color.decode("#425b8a"));    
+        FighterLabelRightSideLife.setBounds(20, 300, 120, 50);
 
 
         
@@ -264,7 +273,7 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
         gbc.anchor = GridBagConstraints.CENTER;
 
         //name
-         DragonLabelRightSideName = new JLabel("  "+ Dragon.name);
+         DragonLabelRightSideName = new JLabel("    "+ Dragon.name);
         DragonLabelRightSideName.setBorder(border1);
         DragonLabelRightSideName.setFont(FontForNames);
         DragonLabelRightSideName.setForeground(Color.decode("#425b8a"));
@@ -273,12 +282,9 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
         DragonLabelRightSideName.setBounds(160, 150, 110, 50);
 
         //life
-        DragonLabelRightSideLife = new JLabel("  Score :"+ Bnadem.score) ;
-        DragonLabelRightSideLife.setBorder(border1);
+        DragonLabelRightSideLife = new JLabel("  Score :"+ Bnadem.score+"  ") ;
         DragonLabelRightSideLife.setFont(FontForLife);
         DragonLabelRightSideLife.setForeground(Color.decode("#425b8a"));
-        DragonLabelRightSideLife.setOpaque(true);
-        DragonLabelRightSideLife.setBackground(Color.decode("#d1c0b9"));
         DragonLabelRightSideLife.setBounds(160, 350, 110, 50);
 
         
@@ -320,8 +326,10 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
         RightSide.add(DragonLabelRightSideLife);
         
         FighterLifePanel.add(FighterLabelRightSideLife);
+        DragonLifePanel.add(DragonLabelRightSideLife);
 
         RightSide.add(labelTimer);
+        RightSide.add(DragonLifePanel);
         RightSide.add(FighterLifePanel);
 
         RightSide.add(TitleLabel);
