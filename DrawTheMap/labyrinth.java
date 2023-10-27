@@ -314,25 +314,22 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
 
 
 
-
-
+        RightSide.add(FighterLabelRightSide);
+        RightSide.add(DragonLabelRightSide, gbc);
 
 
         RightSide.add(FighterLabelRightSideName);
-        RightSide.add(FighterLabelRightSide);
-        RightSide.add(FighterLabelRightSideLife);
-        RightSide.add(DragonLabelRightSide, gbc);
         RightSide.add(DragonLabelRightSideName);
-        RightSide.add(DragonLabelRightSideLife);
         
         FighterLifePanel.add(FighterLabelRightSideLife);
         DragonLifePanel.add(DragonLabelRightSideLife);
 
+        RightSide.add(TitleLabel);
         RightSide.add(labelTimer);
+        
         RightSide.add(DragonLifePanel);
         RightSide.add(FighterLifePanel);
 
-        RightSide.add(TitleLabel);
         Window.add(RightSide);
         Window.setLayout(null);
 
