@@ -46,16 +46,22 @@ public class labyrinth {
 
 
     public char SideDragon, SideFighter;
-    JLabel FighterLabelRightSideLife;
-    JLabel FighterLabelRightSideName;
-    JLabel DragonLabelRightSideName;
-    JLabel DragonLabelRightSideLife;
+    // public JLabel FighterLabelRightSideLife;
+    // public JLabel FighterLabelRightSideName;
+    // public JLabel DragonLabelRightSideName;
+    // public JLabel DragonLabelRightSideLife;
 
 
     //Objects
-    FighterCaracter Bnadem = new FighterCaracter( "Youssef ",   400, 10, 10, xFighter, yFighter);
-    Dragon Dragon = new Dragon("Dragon", 400, 20, 20, xDragon, yDragon);
-
+    public FighterCaracter Bnadem = new FighterCaracter( "Youssef ",   400, 10, 10, xFighter, yFighter);
+   public Dragon Dragon = new Dragon("Dragon", 400, 20, 20, xDragon, yDragon);
+   
+   public FighterCaracter getBnadem() {
+    return this.Bnadem;
+}
+public Dragon getDragon() {
+    return this.Dragon;
+}
 
 
     //Pictures Path
@@ -152,174 +158,178 @@ public class labyrinth {
         Window.setSize(800, 785);
         Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //RightSide Panel
-        JPanel RightSide = new JPanel();
-        RightSide.setLayout(null); 
-        RightSide.setBounds(800, 0, 285, 597);
-        RightSide.setBackground(Color.decode("#e8dfdb"));
-        LineBorder border = new LineBorder(Color.decode("#365979"), 10, true);
-        LineBorder border1 = new LineBorder(Color.decode("#8bb1c4"), 5, true);
-        LineBorder border2 = new LineBorder(Color.decode("#b96343"), 5, true);
-        RightSide.setBorder(border);
+        // //RightSide Panel
+        // JPanel RightSide = new JPanel();
+        // RightSide.setLayout(null); 
+        // RightSide.setBounds(800, 0, 285, 597);
+        // RightSide.setBackground(Color.decode("#e8dfdb"));
+        // LineBorder border = new LineBorder(Color.decode("#365979"), 10, true);
+        // LineBorder border1 = new LineBorder(Color.decode("#8bb1c4"), 5, true);
+        // LineBorder border2 = new LineBorder(Color.decode("#b96343"), 5, true);
+        // RightSide.setBorder(border);
 
-        //Life Panels 
-        JPanel FighterLifePanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                if(Bnadem.score>200){
-                    g.setColor(Color.GREEN);
-                }else if(Bnadem.score>100){
-                    g.setColor(Color.YELLOW);
-                }else{
-                    g.setColor(Color.RED);
-                }
+        // //Life Panels 
+        // JPanel FighterLifePanel = new JPanel() {
+        //     @Override
+        //     protected void paintComponent(Graphics g) {
+        //         super.paintComponent(g);
+        //         if(Bnadem.score>200){
+        //             g.setColor(Color.GREEN);
+        //         }else if(Bnadem.score>100){
+        //             g.setColor(Color.YELLOW);
+        //         }else{
+        //             g.setColor(Color.RED);
+        //         }
                 
-                int width = (int) ((Bnadem.score / (double) 400) * getWidth());
-                g.fillRect(0, 0, width, getHeight());
-            }
-        };
-            FighterLifePanel.setBounds(20, 345, 110, 40);
-            FighterLifePanel.setBorder(border1);
+        //         int width = (int) ((Bnadem.score / (double) 400) * getWidth());
+        //         g.fillRect(0, 0, width, getHeight());
+        //     }
+        // };
+        //     FighterLifePanel.setBounds(20, 345, 110, 40);
+        //     FighterLifePanel.setBorder(border1);
 
 
-        JPanel DragonLifePanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                if(Dragon.score>200){
-                    g.setColor(Color.GREEN);
-                }else if(Dragon.score>100){
-                    g.setColor(Color.YELLOW);
-                }else{
-                    g.setColor(Color.RED);
-                }
+        // JPanel DragonLifePanel = new JPanel() {
+        //     @Override
+        //     protected void paintComponent(Graphics g) {
+        //         super.paintComponent(g);
+        //         if(Dragon.score>200){
+        //             g.setColor(Color.GREEN);
+        //         }else if(Dragon.score>100){
+        //             g.setColor(Color.YELLOW);
+        //         }else{
+        //             g.setColor(Color.RED);
+        //         }
                 
-                int width = (int) ((Dragon.score / (double) 400) * getWidth());
-                g.fillRect(0, 0, width, getHeight());
-            }
-        };
-            DragonLifePanel.setBounds(160, 345, 110, 40);
-            DragonLifePanel.setBorder(border1);
+        //         int width = (int) ((Dragon.score / (double) 400) * getWidth());
+        //         g.fillRect(0, 0, width, getHeight());
+        //     }
+        // };
+        //     DragonLifePanel.setBounds(160, 345, 110, 40);
+        //     DragonLifePanel.setBorder(border1);
 
 
-        //Fonts     
-        Font FontForTitle = new Font("Comic Sans MS", Font.BOLD, 20);
-        Font FontForTimer = new Font("Courier New", Font.BOLD, 14);
-        Font FontForNames = new Font("Georgia", Font.BOLD, 16);
-        Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
-
-
-
-
-        //RightSide Label (Title Label)
-        JLabel TitleLabel = new JLabel("  Jeu de combat");
-        TitleLabel.setBorder(border);
-        TitleLabel.setFont(FontForTitle);
-        TitleLabel.setForeground(Color.decode("#7e5835"));
-        TitleLabel.setOpaque(true);
-        TitleLabel.setBackground(Color.decode("#d1c0b9"));
-        TitleLabel.setBounds(40, 60, 220, 50);
-
-         // RightSide (Timer Label)
-        JLabel RightSideLabelTimer = new JLabel("0");
-        Timer RightSidetimer = new Timer(1000, new ActionListener() {
-            int count = 0;
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                count++;
-                RightSideLabelTimer.setText("Timer : " + count + "s");
-            }
-        });
-
-        RightSidetimer.start();
-        RightSideLabelTimer.setBounds(170, 6,    110, 30);
-        RightSideLabelTimer.setBorder(border2);
-        RightSideLabelTimer.setFont(FontForTimer);
-        RightSideLabelTimer.setForeground(Color.decode("#425b8a"));
-        RightSideLabelTimer.setOpaque(true);
-        RightSideLabelTimer.setBackground(Color.decode("#d1c0b9"));
+        // //Fonts     
+        // Font FontForTitle = new Font("Comic Sans MS", Font.BOLD, 20);
+        // Font FontForTimer = new Font("Courier New", Font.BOLD, 14);
+        // Font FontForNames = new Font("Georgia", Font.BOLD, 16);
+        // Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
 
 
 
-        //Fighter Label
 
-        //picture
-        JLabel FighterLabelRightSidePicture = new JLabel();
-        FighterLabelRightSidePicture.setBounds(20, 210, 110,    124);
-        ImageIcon imageIconFighterLabelRightSidePicture = new ImageIcon("../Project/Ressource/CharactersMvmnt/KnightMvmnt1/IconeFighter.png");
-        Image imageFighterLabelRightSidePicture = imageIconFighterLabelRightSidePicture.getImage();
-        Image newImageFighterLabelRightSidePicture = imageFighterLabelRightSidePicture.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
-        imageIconFighterLabelRightSidePicture = new ImageIcon(newImageFighterLabelRightSidePicture); 
-        FighterLabelRightSidePicture.setIcon(imageIconFighterLabelRightSidePicture);
-        FighterLabelRightSidePicture.setBorder(border1);
+        // //RightSide Label (Title Label)
+        // JLabel TitleLabel = new JLabel("  Jeu de combat");
+        // TitleLabel.setBorder(border);
+        // TitleLabel.setFont(FontForTitle);
+        // TitleLabel.setForeground(Color.decode("#7e5835"));
+        // TitleLabel.setOpaque(true);
+        // TitleLabel.setBackground(Color.decode("#d1c0b9"));
+        // TitleLabel.setBounds(40, 60, 220, 50);
 
-        //name
-        FighterLabelRightSideName = new JLabel("    "+Bnadem.name);
-        FighterLabelRightSideName.setBorder(border1);
-        FighterLabelRightSideName.setFont(FontForNames);
-        FighterLabelRightSideName.setForeground(Color.decode("#425b8a"));
-        FighterLabelRightSideName.setOpaque(true);
-        FighterLabelRightSideName.setBackground(Color.decode("#d1c0b9"));
-        FighterLabelRightSideName.setBounds(20, 150, 110, 50);
+        //  // RightSide (Timer Label)
+        // JLabel RightSideLabelTimer = new JLabel("0");
+        // Timer RightSidetimer = new Timer(1000, new ActionListener() {
+        //     int count = 0;
 
-        //life
-        FighterLabelRightSideLife = new JLabel("Vie:"+ Bnadem.score +"  ") ;
-        FighterLabelRightSideLife.setFont(FontForLife);
-        FighterLabelRightSideLife.setForeground(Color.decode("#425b8a"));    
-        FighterLabelRightSideLife.setBounds(20, 300, 120, 50);
+        //     @Override
+        //     public void actionPerformed(ActionEvent e) {
+        //         count++;
+        //         RightSideLabelTimer.setText("Timer : " + count + "s");
+        //     }
+        // });
+
+        // RightSidetimer.start();
+        // RightSideLabelTimer.setBounds(170, 6,    110, 30);
+        // RightSideLabelTimer.setBorder(border2);
+        // RightSideLabelTimer.setFont(FontForTimer);
+        // RightSideLabelTimer.setForeground(Color.decode("#425b8a"));
+        // RightSideLabelTimer.setOpaque(true);
+        // RightSideLabelTimer.setBackground(Color.decode("#d1c0b9"));
 
 
-        // Dragon Label
 
-        //picture
-        JLabel DragonLabelRightSidePicture = new JLabel();
-        DragonLabelRightSidePicture.setBounds(160, 210, 110,    124);
-        ImageIcon imageIconDragonLabelRightSidePicture = new ImageIcon("../Project/Ressource/CharactersMvmnt/FirstDragon/DragonIcone.png");
-        Image imageDragonLabelRightSidePicture = imageIconDragonLabelRightSidePicture.getImage();
-        Image newImageDragonLabelRightSidePicture = imageDragonLabelRightSidePicture.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
-        imageIconDragonLabelRightSidePicture = new ImageIcon(newImageDragonLabelRightSidePicture); 
-        DragonLabelRightSidePicture.setIcon(imageIconDragonLabelRightSidePicture);
-        DragonLabelRightSidePicture.setHorizontalAlignment(SwingConstants.CENTER);
-        DragonLabelRightSidePicture.setVerticalAlignment(SwingConstants.CENTER);
-        DragonLabelRightSidePicture.setBorder(border1);
+        // //Fighter Label
 
-        //name
-        DragonLabelRightSideName = new JLabel("    "+ Dragon.name);
-        DragonLabelRightSideName.setBorder(border1);
-        DragonLabelRightSideName.setFont(FontForNames);
-        DragonLabelRightSideName.setForeground(Color.decode("#425b8a"));
-        DragonLabelRightSideName.setOpaque(true);
-        DragonLabelRightSideName.setBackground(Color.decode("#d1c0b9"));
-        DragonLabelRightSideName.setBounds(160, 150, 110, 50);
+        // //picture
+        // JLabel FighterLabelRightSidePicture = new JLabel();
+        // FighterLabelRightSidePicture.setBounds(20, 210, 110,    124);
+        // ImageIcon imageIconFighterLabelRightSidePicture = new ImageIcon("../Project/Ressource/CharactersMvmnt/KnightMvmnt1/IconeFighter.png");
+        // Image imageFighterLabelRightSidePicture = imageIconFighterLabelRightSidePicture.getImage();
+        // Image newImageFighterLabelRightSidePicture = imageFighterLabelRightSidePicture.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
+        // imageIconFighterLabelRightSidePicture = new ImageIcon(newImageFighterLabelRightSidePicture); 
+        // FighterLabelRightSidePicture.setIcon(imageIconFighterLabelRightSidePicture);
+        // FighterLabelRightSidePicture.setBorder(border1);
 
-        //life
-        DragonLabelRightSideLife = new JLabel("  Score :"+ Bnadem.score+"  ") ;
-        DragonLabelRightSideLife.setFont(FontForLife);
-        DragonLabelRightSideLife.setForeground(Color.decode("#425b8a"));
-        DragonLabelRightSideLife.setBounds(160, 350, 110, 50);
+        // //name
+        // FighterLabelRightSideName = new JLabel("    "+Bnadem.name);
+        // FighterLabelRightSideName.setBorder(border1);
+        // FighterLabelRightSideName.setFont(FontForNames);
+        // FighterLabelRightSideName.setForeground(Color.decode("#425b8a"));
+        // FighterLabelRightSideName.setOpaque(true);
+        // FighterLabelRightSideName.setBackground(Color.decode("#d1c0b9"));
+        // FighterLabelRightSideName.setBounds(20, 150, 110, 50);
+
+        // //life
+        // FighterLabelRightSideLife = new JLabel("Vie:"+ Bnadem.score +"  ") ;
+        // FighterLabelRightSideLife.setFont(FontForLife);
+        // FighterLabelRightSideLife.setForeground(Color.decode("#425b8a"));    
+        // FighterLabelRightSideLife.setBounds(20, 300, 120, 50);
+
+
+        // // Dragon Label
+
+        // //picture
+        // JLabel DragonLabelRightSidePicture = new JLabel();
+        // DragonLabelRightSidePicture.setBounds(160, 210, 110,    124);
+        // ImageIcon imageIconDragonLabelRightSidePicture = new ImageIcon("../Project/Ressource/CharactersMvmnt/FirstDragon/DragonIcone.png");
+        // Image imageDragonLabelRightSidePicture = imageIconDragonLabelRightSidePicture.getImage();
+        // Image newImageDragonLabelRightSidePicture = imageDragonLabelRightSidePicture.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
+        // imageIconDragonLabelRightSidePicture = new ImageIcon(newImageDragonLabelRightSidePicture); 
+        // DragonLabelRightSidePicture.setIcon(imageIconDragonLabelRightSidePicture);
+        // DragonLabelRightSidePicture.setHorizontalAlignment(SwingConstants.CENTER);
+        // DragonLabelRightSidePicture.setVerticalAlignment(SwingConstants.CENTER);
+        // DragonLabelRightSidePicture.setBorder(border1);
+
+        // //name
+        // DragonLabelRightSideName = new JLabel("    "+ Dragon.name);
+        // DragonLabelRightSideName.setBorder(border1);
+        // DragonLabelRightSideName.setFont(FontForNames);
+        // DragonLabelRightSideName.setForeground(Color.decode("#425b8a"));
+        // DragonLabelRightSideName.setOpaque(true);
+        // DragonLabelRightSideName.setBackground(Color.decode("#d1c0b9"));
+        // DragonLabelRightSideName.setBounds(160, 150, 110, 50);
+
+        // //life
+        // DragonLabelRightSideLife = new JLabel("  Score :"+ Bnadem.score+"  ") ;
+        // DragonLabelRightSideLife.setFont(FontForLife);
+        // DragonLabelRightSideLife.setForeground(Color.decode("#425b8a"));
+        // DragonLabelRightSideLife.setBounds(160, 350, 110, 50);
         
 
-        //Add to Life Panel
-        FighterLifePanel.add(FighterLabelRightSideLife);
-        DragonLifePanel.add(DragonLabelRightSideLife);
+        // //Add to Life Panel
+        // FighterLifePanel.add(FighterLabelRightSideLife);
+        // DragonLifePanel.add(DragonLabelRightSideLife);
 
-        //Add to RightSide Panel
-        RightSide.add(FighterLabelRightSidePicture);
-        RightSide.add(DragonLabelRightSidePicture);
+        // //Add to RightSide Panel
+        // RightSide.add(FighterLabelRightSidePicture);
+        // RightSide.add(DragonLabelRightSidePicture);
 
-        RightSide.add(FighterLabelRightSideName);
-        RightSide.add(DragonLabelRightSideName);
+        // RightSide.add(FighterLabelRightSideName);
+        // RightSide.add(DragonLabelRightSideName);
 
-        RightSide.add(TitleLabel);
-        RightSide.add(RightSideLabelTimer);
+        // RightSide.add(TitleLabel);
+        // RightSide.add(RightSideLabelTimer);
 
-        RightSide.add(DragonLifePanel);
-        RightSide.add(FighterLifePanel);
+        // RightSide.add(DragonLifePanel);
+        // RightSide.add(FighterLifePanel);
 
-        //Add to Window
-        Window.add(RightSide);
+        // //Add to Window
+        // Window.add(RightSide);
+
+
+        RightSidePanel RightSidePanel = new RightSidePanel(labyrinth.this);
+        Window.add(RightSidePanel);
         Window.setLayout(null);
 
 
@@ -439,8 +449,8 @@ public class labyrinth {
                     Dragon.DamageDragonFighterCaracter(Bnadem, Dragon);
                     Bnadem.FighterCaracterUpdateDealth(Bnadem);
                     Bnadem.lose(Bnadem);
-                    FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
-                    FighterLifePanel.repaint();
+                    //FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
+                    //FighterLifePanel.repaint();
                 }
                     timerFire.stop();
                     FireLabel.setIcon(null);
