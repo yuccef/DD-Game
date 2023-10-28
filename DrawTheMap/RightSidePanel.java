@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import TheDragon.Dragon;
-import DrawTheMap.labyrinth;
 import TheFighter.FighterCaracter;
 
 
@@ -18,10 +17,15 @@ public class RightSidePanel extends JPanel {
 
     public labyrinth labyrinthInstance;
 
+
     public JLabel FighterLabelRightSideLife;
     public JLabel FighterLabelRightSideName;
     public JLabel DragonLabelRightSideName;
     public JLabel DragonLabelRightSideLife;
+
+    public JPanel FighterLifePanel;
+    public JPanel DragonLifePanel;
+
 
     public RightSidePanel(labyrinth labyrinthInstance) {
         this.labyrinthInstance = labyrinthInstance;
@@ -42,7 +46,7 @@ public class RightSidePanel extends JPanel {
         Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
 
         // Life Panels
-        JPanel FighterLifePanel = new JPanel() {
+           FighterLifePanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -61,7 +65,7 @@ public class RightSidePanel extends JPanel {
         FighterLifePanel.setBounds(20, 345, 110, 40);
         FighterLifePanel.setBorder(border1);
 
-        JPanel DragonLifePanel = new JPanel() {
+         DragonLifePanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -184,5 +188,7 @@ public class RightSidePanel extends JPanel {
         add(DragonLabelRightSideLife);
         FighterLifePanel.add(FighterLabelRightSideLife);
         DragonLifePanel.add(DragonLabelRightSideLife);
-    }   
+    }    
 }
+
+
