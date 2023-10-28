@@ -17,8 +17,6 @@ import TheFighter.FighterCaracter;
 public class labyrinth {
 
     public  int MATRIX_SIZE = 810;
-    Image image;
-    Image imageStep;
 
     public JFrame Window;
     public int[][] Lmatrix;
@@ -40,9 +38,9 @@ public class labyrinth {
     public int currentImageIndexDragonRun = 0;
     public int currentImageIndexDragonAttack = 0;
 
-    Timer timerFire; // Timer pour gérer l'animation du feu
-    int xFire; // Coordonnée x du feu
-    int yFire; // C
+    Timer timerFire; 
+    int xFire; 
+    int yFire; 
     int FirstTime=0;
     int SetFire=0;
 
@@ -50,15 +48,17 @@ public class labyrinth {
     public char SideDragon, SideFighter;
     JLabel FighterLabelRightSideLife;
     JLabel FighterLabelRightSideName;
-    JLabel FighterLabel5;
-    JLabel FighterLabel6;
     JLabel DragonLabelRightSideName;
     JLabel DragonLabelRightSideLife;
 
 
+    //Objects
     FighterCaracter Bnadem = new FighterCaracter( "Youssef ",   400, 10, 10, xFighter, yFighter);
     Dragon Dragon = new Dragon("Dragon", 400, 20, 20, xDragon, yDragon);
 
+
+
+    //Pictures Path
     public String[] imagePathsFighterRun = {
             PicturesSheet + "run1.png",
             PicturesSheet + "run2.png",
@@ -143,7 +143,7 @@ public class labyrinth {
 
 
 
- 
+    //Methods
     public labyrinth() {
 
 
@@ -152,8 +152,8 @@ public class labyrinth {
         Window.setSize(800, 785);
         Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-//RightSide Panel
-        JPanel RightSide = new JPanel(new GridBagLayout());;
+        //RightSide Panel
+        JPanel RightSide = new JPanel();
         RightSide.setLayout(null); 
         RightSide.setBounds(800, 0, 285, 597);
         RightSide.setBackground(Color.decode("#e8dfdb"));
@@ -162,55 +162,57 @@ public class labyrinth {
         LineBorder border2 = new LineBorder(Color.decode("#b96343"), 5, true);
         RightSide.setBorder(border);
 
-//Barre of life Panel
-JPanel FighterLifePanel = new JPanel() {
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if(Bnadem.score>200){
-               g.setColor(Color.GREEN);
-        }else if(Bnadem.score>100){
-            g.setColor(Color.YELLOW);
-        }else{
-            g.setColor(Color.RED);
-        }
-         
-        int width = (int) ((Bnadem.score / (double) 400) * getWidth());
-        g.fillRect(0, 0, width, getHeight());
-    }
-};
-    FighterLifePanel.setBounds(20, 345, 110, 40);
-    FighterLifePanel.setBorder(border1);
+        //Life Panels 
+        JPanel FighterLifePanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if(Bnadem.score>200){
+                    g.setColor(Color.GREEN);
+                }else if(Bnadem.score>100){
+                    g.setColor(Color.YELLOW);
+                }else{
+                    g.setColor(Color.RED);
+                }
+                
+                int width = (int) ((Bnadem.score / (double) 400) * getWidth());
+                g.fillRect(0, 0, width, getHeight());
+            }
+        };
+            FighterLifePanel.setBounds(20, 345, 110, 40);
+            FighterLifePanel.setBorder(border1);
 
 
-JPanel DragonLifePanel = new JPanel() {
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if(Dragon.score>200){
-               g.setColor(Color.GREEN);
-        }else if(Dragon.score>100){
-            g.setColor(Color.YELLOW);
-        }else{
-            g.setColor(Color.RED);
-        }
-         
-        int width = (int) ((Dragon.score / (double) 400) * getWidth());
-        g.fillRect(0, 0, width, getHeight());
-    }
-};
-    DragonLifePanel.setBounds(160, 345, 110, 40);
-    DragonLifePanel.setBorder(border1);
-
-Font FontForTitle = new Font("Comic Sans MS", Font.BOLD, 20);
-Font FontForTimer = new Font("Courier New", Font.BOLD, 14);
-Font FontForNames = new Font("Georgia", Font.BOLD, 16);
-Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
+        JPanel DragonLifePanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if(Dragon.score>200){
+                    g.setColor(Color.GREEN);
+                }else if(Dragon.score>100){
+                    g.setColor(Color.YELLOW);
+                }else{
+                    g.setColor(Color.RED);
+                }
+                
+                int width = (int) ((Dragon.score / (double) 400) * getWidth());
+                g.fillRect(0, 0, width, getHeight());
+            }
+        };
+            DragonLifePanel.setBounds(160, 345, 110, 40);
+            DragonLifePanel.setBorder(border1);
 
 
+        //Fonts     
+        Font FontForTitle = new Font("Comic Sans MS", Font.BOLD, 20);
+        Font FontForTimer = new Font("Courier New", Font.BOLD, 14);
+        Font FontForNames = new Font("Georgia", Font.BOLD, 16);
+        Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
 
 
-//RightSide Label (Title)
+
+
+        //RightSide Label (Title Label)
         JLabel TitleLabel = new JLabel("  Jeu de combat");
         TitleLabel.setBorder(border);
         TitleLabel.setFont(FontForTitle);
@@ -219,18 +221,39 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
         TitleLabel.setBackground(Color.decode("#d1c0b9"));
         TitleLabel.setBounds(40, 60, 220, 50);
 
+         // RightSide (Timer Label)
+        JLabel RightSideLabelTimer = new JLabel("0");
+        Timer RightSidetimer = new Timer(1000, new ActionListener() {
+            int count = 0;
 
- // Fither 1 Label
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                count++;
+                RightSideLabelTimer.setText("Timer : " + count + "s");
+            }
+        });
+
+        RightSidetimer.start();
+        RightSideLabelTimer.setBounds(170, 6,    110, 30);
+        RightSideLabelTimer.setBorder(border2);
+        RightSideLabelTimer.setFont(FontForTimer);
+        RightSideLabelTimer.setForeground(Color.decode("#425b8a"));
+        RightSideLabelTimer.setOpaque(true);
+        RightSideLabelTimer.setBackground(Color.decode("#d1c0b9"));
+
+
+
+        //Fighter Label
 
         //picture
-        JLabel FighterLabelRightSide = new JLabel();
-        FighterLabelRightSide.setBounds(20, 210, 110,    124);
-        ImageIcon imageIconFighter1 = new ImageIcon("../Project/Ressource/CharactersMvmnt/KnightMvmnt1/IconeFighter.png");
-        Image image = imageIconFighter1.getImage();
-        Image newImage = image.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
-        imageIconFighter1 = new ImageIcon(newImage); 
-        FighterLabelRightSide.setIcon(imageIconFighter1);
-        FighterLabelRightSide.setBorder(border1);
+        JLabel FighterLabelRightSidePicture = new JLabel();
+        FighterLabelRightSidePicture.setBounds(20, 210, 110,    124);
+        ImageIcon imageIconFighterLabelRightSidePicture = new ImageIcon("../Project/Ressource/CharactersMvmnt/KnightMvmnt1/IconeFighter.png");
+        Image imageFighterLabelRightSidePicture = imageIconFighterLabelRightSidePicture.getImage();
+        Image newImageFighterLabelRightSidePicture = imageFighterLabelRightSidePicture.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
+        imageIconFighterLabelRightSidePicture = new ImageIcon(newImageFighterLabelRightSidePicture); 
+        FighterLabelRightSidePicture.setIcon(imageIconFighterLabelRightSidePicture);
+        FighterLabelRightSidePicture.setBorder(border1);
 
         //name
         FighterLabelRightSideName = new JLabel("    "+Bnadem.name);
@@ -248,32 +271,22 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
         FighterLabelRightSideLife.setBounds(20, 300, 120, 50);
 
 
-        
-
-// Dragon Label
+        // Dragon Label
 
         //picture
-        JLabel DragonLabelRightSide = new JLabel();
-        DragonLabelRightSide.setBounds(160, 210, 110,    124);
-        ImageIcon imageIconDragonLabelRightSide = new ImageIcon("../Project/Ressource/CharactersMvmnt/FirstDragon/DragonIcone.png");
-        Image imageDragonLabelRightSide = imageIconDragonLabelRightSide.getImage();
-        Image newImageDragonLabelRightSide = imageDragonLabelRightSide.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
-        imageIconDragonLabelRightSide = new ImageIcon(newImageDragonLabelRightSide); 
-        DragonLabelRightSide.setIcon(imageIconDragonLabelRightSide);
-        DragonLabelRightSide.setHorizontalAlignment(SwingConstants.CENTER);
-        DragonLabelRightSide.setVerticalAlignment(SwingConstants.CENTER);
-        DragonLabelRightSide.setBorder(border1);
-
-    
-
-
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.CENTER;
+        JLabel DragonLabelRightSidePicture = new JLabel();
+        DragonLabelRightSidePicture.setBounds(160, 210, 110,    124);
+        ImageIcon imageIconDragonLabelRightSidePicture = new ImageIcon("../Project/Ressource/CharactersMvmnt/FirstDragon/DragonIcone.png");
+        Image imageDragonLabelRightSidePicture = imageIconDragonLabelRightSidePicture.getImage();
+        Image newImageDragonLabelRightSidePicture = imageDragonLabelRightSidePicture.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
+        imageIconDragonLabelRightSidePicture = new ImageIcon(newImageDragonLabelRightSidePicture); 
+        DragonLabelRightSidePicture.setIcon(imageIconDragonLabelRightSidePicture);
+        DragonLabelRightSidePicture.setHorizontalAlignment(SwingConstants.CENTER);
+        DragonLabelRightSidePicture.setVerticalAlignment(SwingConstants.CENTER);
+        DragonLabelRightSidePicture.setBorder(border1);
 
         //name
-         DragonLabelRightSideName = new JLabel("    "+ Dragon.name);
+        DragonLabelRightSideName = new JLabel("    "+ Dragon.name);
         DragonLabelRightSideName.setBorder(border1);
         DragonLabelRightSideName.setFont(FontForNames);
         DragonLabelRightSideName.setForeground(Color.decode("#425b8a"));
@@ -286,75 +299,50 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
         DragonLabelRightSideLife.setFont(FontForLife);
         DragonLabelRightSideLife.setForeground(Color.decode("#425b8a"));
         DragonLabelRightSideLife.setBounds(160, 350, 110, 50);
-
         
 
-
-        //Timer
-        JLabel labelTimer = new JLabel("0");
-        Timer timer = new Timer(1000, new ActionListener() {
-            int count = 0;
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                count++;
-                labelTimer.setText("Timer : " + count + "s");
-            }
-        });
-
-        timer.start();
-        labelTimer.setBounds(170, 6,    110, 30);
-        labelTimer.setBorder(border2);
-        labelTimer.setFont(FontForTimer);
-        labelTimer.setForeground(Color.decode("#425b8a"));
-        labelTimer.setOpaque(true);
-        labelTimer.setBackground(Color.decode("#d1c0b9"));
-
-
-
-
-
-        RightSide.add(FighterLabelRightSide);
-        RightSide.add(DragonLabelRightSide, gbc);
-
-
-        RightSide.add(FighterLabelRightSideName);
-        RightSide.add(DragonLabelRightSideName);
-        
+        //Add to Life Panel
         FighterLifePanel.add(FighterLabelRightSideLife);
         DragonLifePanel.add(DragonLabelRightSideLife);
 
+        //Add to RightSide Panel
+        RightSide.add(FighterLabelRightSidePicture);
+        RightSide.add(DragonLabelRightSidePicture);
+
+        RightSide.add(FighterLabelRightSideName);
+        RightSide.add(DragonLabelRightSideName);
+
         RightSide.add(TitleLabel);
-        RightSide.add(labelTimer);
-        
+        RightSide.add(RightSideLabelTimer);
+
         RightSide.add(DragonLifePanel);
         RightSide.add(FighterLifePanel);
 
+        //Add to Window
         Window.add(RightSide);
         Window.setLayout(null);
 
 
 
         
-
-        JPanel characterPanel = new JPanel() {
+        //Map Panel
+        JPanel DrawLabyrinthPanel = new JPanel() {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                Image image = new ImageIcon("../Project/Ressource/MapPixels/labyrinth1.jpg").getImage();
-                Image mageTEST = new ImageIcon("../Project/Ressource/MapPixels/labyrinth2.jpg").getImage();
+                Image RoadMap = new ImageIcon("../Project/Ressource/MapPixels/labyrinth1.jpg").getImage();
+                Image WallMap = new ImageIcon("../Project/Ressource/MapPixels/labyrinth2.jpg").getImage();
                
                  MapMaths MapManage = new MapMaths();
 
-                //Lmatrix = MapManage.loadMap("map.txt");
                 Lmatrix = MapManage.loadMap();
                 Bmatrix = MapManage.CreatTheBigMatrix(Lmatrix);   
 
                 for(int i=0; i<800; i=i+40){
                     for(int j=0; j<800; j=j+40){
                         if(Bmatrix[i][j] == 0){
-                            g.drawImage(image, i , j, this);
+                            g.drawImage(RoadMap, i , j, this);
                         }
            
                     }
@@ -363,7 +351,7 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
                 for(int i=0; i<20;i++){
                     for(int j=0; j<20; j++){
                         if(Lmatrix[i][j] == 1){
-                            g.drawImage(mageTEST, i*40 , j*40, this);
+                            g.drawImage(WallMap, i*40 , j*40, this);
                         }
                     }   
                 }
@@ -371,28 +359,36 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
         }             
     };
 
-        characterPanel.setPreferredSize(new Dimension(800, 635));
-        characterPanel.setBounds(0, 0, 800, 635);
+        //Show the fighter and the dragon and Fire
+        characterLabel = new JLabel();
+        DragonLabel = new JLabel();
+        FireLabel = new JLabel();
+
+        //Initial Position
+        characterLabel.setBounds(xFighter, yFighter, 40, 40);
+        DragonLabel.setBounds(xDragon, yDragon, 40, 40);
+        FireLabel.setBounds(xFire, yFire, 40, 40);
+
+        //Add to Panel
+        DrawLabyrinthPanel.setBounds(0, 0, 800, 635);
+        DrawLabyrinthPanel.setLayout(null); 
+        DrawLabyrinthPanel.add(DragonLabel);
+        DrawLabyrinthPanel.add(characterLabel);
+        DrawLabyrinthPanel.add(FireLabel);
+
+
+        //Show the Window
         Window.setSize(new Dimension(1100, 635));
         Window.setResizable(false);
-        Window.add(characterPanel);
-        characterPanel.setLayout(null); // Set layout to null to position the character precisely
+        Window.add(DrawLabyrinthPanel);
 
-        DragonLabel = new JLabel();
-        characterPanel.add(DragonLabel);
-        DragonLabel.setBounds(xDragon, yDragon, 40, 40);
-        characterLabel = new JLabel();
-        characterPanel.add(characterLabel);
-        characterLabel.setBounds(xFighter, yFighter, 40, 40);
 
-        FireLabel = new JLabel();
-        characterPanel.add(FireLabel);
-        FireLabel.setBounds(xDragon, yDragon, 40, 40);
+
 
         
 
-
-         Timer timerFighterRun = new Timer(200, new ActionListener() {
+        //Timer for the fighter and the dragon
+        Timer timerFighterRun = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 currentImageIndexFighterRun = (currentImageIndexFighterRun + 1) % imagePathsFighterRun.length; // Loop through the images
@@ -416,7 +412,6 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
         });
         timerFighterAttack.start();
 
-
         Timer timerDragonAttack = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -424,8 +419,6 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
             }
         });
         timerDragonAttack.start();
-
-
 
         timerFire = new Timer(30, new ActionListener() {
           @Override
@@ -481,7 +474,7 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
       
 
     
-        
+        //Key Listener
         Window.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -527,7 +520,6 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
 
             }
              
-
                 @Override
             public void keyReleased(KeyEvent e) {
                     // Do nothing here, as we are not using keyReleased
@@ -535,6 +527,7 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
             });
         Window.setVisible(true);
     }
+
 
     public void moveFighter(int Choice, int dx, int dy) {
         int newX = xFighter + dx * 5;
@@ -578,8 +571,7 @@ Font FontForLife = new Font("lucida Handwriting", Font.BOLD, 10);
             xDragon=newXX;
             yDragon=newYY;
             ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun], imagePathsDragonRun[currentImageIndexDragonRun]);
-            FighterLabel5.setText(" Y " + yDragon);
-            FighterLabel6.setText("  X :" + xDragon);
+     
             }
         }
     }
@@ -625,8 +617,7 @@ if(Choice==2){
             xDragon=newXX;
             yDragon=newYY;
             ShowFighter(imagePathsFighterRun[currentImageIndexFighterRun], imagePathsDragonRunInverse[currentImageIndexDragonRun]);
-            FighterLabel5.setText(" Y " + yDragon);
-            FighterLabel6.setText("  X :" + xDragon);
+            
             }
         }
     }
@@ -634,8 +625,6 @@ if(Choice==2){
 }
     
     }
-
-
 
     public void ShowFighter(String nomImage, String nomImage2) {
 
@@ -649,9 +638,6 @@ if(Choice==2){
         DragonLabel.setBounds(xDragon, yDragon, imageIcon2.getIconWidth(), imageIcon2.getIconHeight());
         // characterLabel.repaint();
     }
-
-
-
 
     public void moveAttack( int Choice)  {
     if(Choice==1){
@@ -847,9 +833,7 @@ if(Choice==2){
 
 }
 
-
-
-public void ShowFire(String nomImage, int x, int y) {
+    public void ShowFire(String nomImage, int x, int y) {
 
     ImageIcon imageIcon = new ImageIcon(nomImage);
     FireLabel.setIcon(imageIcon);
@@ -858,8 +842,6 @@ public void ShowFire(String nomImage, int x, int y) {
 }
 
 
-
-  
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
