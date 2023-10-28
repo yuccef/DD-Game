@@ -35,16 +35,12 @@ public class labyrinth {
     public int currentImageIndexDragonRun = 0;
     public int currentImageIndexDragonAttack = 0;
 
-    Timer timerFire; 
-    int xFire; 
-    int yFire; 
-    int FirstTime=0;
-    int SetFire=0;
 
 
     public char SideDragon, SideFighter;
 
     PicturesPath Paths = new PicturesPath();
+    public GameTimers gameTimers;
  
 
     //Objects
@@ -65,15 +61,16 @@ public class labyrinth {
 
     //Methods
     public labyrinth() {
-
+        RightSidePanel RightSidePanel = new RightSidePanel(labyrinth.this);
+        gameTimers = new GameTimers(this, RightSidePanel);
 
 
         Window = new JFrame("Affichage de photos");
         Window.setSize(800, 785);
         Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        RightSidePanel RightSidePanel = new RightSidePanel(labyrinth.this);
         Window.add(RightSidePanel);
         Window.setLayout(null);
+        
 
 
 
@@ -112,15 +109,18 @@ public class labyrinth {
         }             
     };
 
+
+
         //Show the fighter and the dragon and Fire
         characterLabel = new JLabel();
         DragonLabel = new JLabel();
         FireLabel = new JLabel();
 
+
         //Initial Position
         characterLabel.setBounds(xFighter, yFighter, 40, 40);
         DragonLabel.setBounds(xDragon, yDragon, 40, 40);
-        FireLabel.setBounds(xFire, yFire, 40, 40);
+        FireLabel.setBounds(gameTimers.xFire, gameTimers.yFire, 40, 40);
 
         //Add to Panel
         DrawLabyrinthPanel.setBounds(0, 0, 800, 635);
@@ -135,97 +135,7 @@ public class labyrinth {
         Window.setResizable(false);
         Window.add(DrawLabyrinthPanel);
 
-
-
-
-        
-
-        //Timer for the fighter and the dragon
-        Timer timerFighterRun = new Timer(200, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                currentImageIndexFighterRun = (currentImageIndexFighterRun + 1) % 7; // Loop through the images
-            }
-        });
-        timerFighterRun.start();
-
-        Timer timerDragonRun = new Timer(200, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                currentImageIndexDragonRun = (currentImageIndexDragonRun + 1) % 6; // Loop through the images
-            }
-        });
-        timerDragonRun.start();
-
-        Timer timerFighterAttack = new Timer(200, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                currentImageIndexFighterAttack = (currentImageIndexFighterAttack + 1) % 4; // Loop through the images
-            }
-        });
-        timerFighterAttack.start();
-
-        Timer timerDragonAttack = new Timer(200, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                currentImageIndexDragonAttack = (currentImageIndexDragonAttack + 1) %4; // Loop through the images
-            }
-        });
-        timerDragonAttack.start();
-
-        timerFire = new Timer(30, new ActionListener() {
-          @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if(FirstTime==0){
-                xFire = xDragon;
-                yFire = yDragon;
-                FirstTime=1;
-                }
-            if(SideDragon=='L'){
-
-
-                if (xFire == xFighter   || xFire==40 || xFire==760) {
-                 
-                    if(xFire==xFighter && yFire==yFighter){
-                    timerFire.stop();
-                    FireLabel.setIcon(null);
-                    Dragon.DamageDragonFighterCaracter(Bnadem, Dragon);
-                    Bnadem.FighterCaracterUpdateDealth(Bnadem);
-                    Bnadem.lose(Bnadem);
-                    RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
-                    RightSidePanel.FighterLifePanel.repaint();
-                }
-                    timerFire.stop();
-                    FireLabel.setIcon(null);
-                }else{
-                    ShowFire("../Project/Ressource/CharactersMvmnt/FirstDragon/FireInversed.png", xFire, yFire);
-                    xFire -= 5;
-
-                }
-
-            }
-            if(SideDragon=='R'){
-             
-             if (xFire == xFighter   || xFire==760) {
-                    timerFire.stop();
-                    FireLabel.setIcon(null);
-                    FirstTime=0;    
-
-                }else{
-                    ShowFire("../Project/Ressource/CharactersMvmnt/FirstDragon/Fire.png", xFire, yFire);
-                    xFire += 5;
-
-                }   
-            }
-                        
-
-  
-        }
-    
-        });
-        timerFire.setInitialDelay(0);
-      
+     
 
     
         //Key Listener
@@ -392,7 +302,13 @@ if(Choice==2){
         DragonLabel.setBounds(xDragon, yDragon, imageIcon2.getIconWidth(), imageIcon2.getIconHeight());
         // characterLabel.repaint();
     }
+public void ShowFire(String nomImage, int x, int y) {
 
+    ImageIcon imageIcon = new ImageIcon(nomImage);
+    FireLabel.setIcon(imageIcon);
+    FireLabel.setBounds(x, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
+
+}
     public void moveAttack( int Choice)  {
     if(Choice==1){
         if(SideFighter=='R'){
@@ -500,8 +416,8 @@ if(Choice==2){
                 xDragon = newX;
                 yDragon = newY;
                 ShowFighter(Paths.imagePathsFighterRun[currentImageIndexFighterRun],Paths.imagePathsDragonAttack[currentImageIndexDragonAttack]);
-                timerFire.start();
-                FirstTime=0;
+                gameTimers.timerFire.start();
+                gameTimers.FirstTime=0;
 
             }
         }
@@ -523,8 +439,8 @@ if(Choice==2){
                 xDragon = newX;
                 yDragon = newY;
                 ShowFighter(Paths.imagePathsFighterRunInverse[currentImageIndexFighterRun],Paths.imagePathsDragonAttack[currentImageIndexDragonAttack]);
-                timerFire.start();
-                FirstTime=0;
+                gameTimers.timerFire.start();
+                gameTimers.FirstTime=0;
             }
         }
 
@@ -547,8 +463,8 @@ if(Choice==2){
             if (canMove) {
                 xDragon = newX;
                 yDragon = newY;
-                        timerFire.start();
-                        FirstTime=0;
+                        gameTimers.timerFire.start();
+                        gameTimers.FirstTime=0;
 
                 ShowFighter(Paths.imagePathsFighterRun[currentImageIndexFighterRun],Paths.imagPathsDragonAttackInverse[currentImageIndexDragonAttack]);
             }
@@ -570,15 +486,12 @@ if(Choice==2){
             if (canMove) {
                 xDragon = newX;
                 yDragon = newY;
-                        timerFire.start();
-                        FirstTime=0;
+                        gameTimers.timerFire.start();
+                        gameTimers.FirstTime=0;
 
                 ShowFighter(Paths.imagePathsFighterRunInverse[currentImageIndexFighterRun],Paths.imagPathsDragonAttackInverse[currentImageIndexDragonAttack]);
             }
-        }                  
-        
-                        
-
+        }                              
 }
 }
 }
@@ -586,13 +499,7 @@ if(Choice==2){
 
 }
 
-    public void ShowFire(String nomImage, int x, int y) {
 
-    ImageIcon imageIcon = new ImageIcon(nomImage);
-    FireLabel.setIcon(imageIcon);
-    FireLabel.setBounds(x, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
-
-}
 
 
     public static void main(String[] args) {
@@ -610,7 +517,7 @@ if(Choice==2){
 
     public labyrinth labyrinthInstance;
 
-
+    public GameTimers gameTimers;
     public JLabel FighterLabelRightSideLife;
     public JLabel FighterLabelRightSideName;
     public JLabel DragonLabelRightSideName;
@@ -622,8 +529,8 @@ if(Choice==2){
 
     public RightSidePanel(labyrinth labyrinthInstance) {
         this.labyrinthInstance = labyrinthInstance;
-        FighterCaracter Bnadem = labyrinthInstance.getBnadem();
         Dragon Dragon = labyrinthInstance.getDragon();
+        FighterCaracter Bnadem = labyrinthInstance.getBnadem();
 
         setLayout(null);
         setBounds(800, 0, 285, 597);
@@ -781,7 +688,139 @@ if(Choice==2){
         add(DragonLabelRightSideLife);
         FighterLifePanel.add(FighterLabelRightSideLife);
         DragonLifePanel.add(DragonLabelRightSideLife);
-    }    
+
+  
+  
+    }   
+     
 }
+       
+class GameTimers 
+ {
+      
+    public Timer timerFire; 
+    public int xFire=0; 
+    public int yFire=0; 
+    public int FirstTime=0;
+    public int SetFire=0;
+    
+    public Timer timerFighterRun;
+    public   Timer timerDragonRun;
+    public    Timer timerFighterAttack;
+    public    Timer timerDragonAttack;
+    public FighterCaracter Bnadem;
+    public Dragon Dragon;
+
+    public  FighterCaracter  getBnademTimer() {
+    return this.Bnadem;
+    }
+    public Dragon getDragonTimer() {
+    return this.Dragon;
+    }
+
+
+   
+    public GameTimers(labyrinth labyrinthInstance ,RightSidePanel RightSidePanelTest) {
+        Bnadem = labyrinthInstance.getBnadem();
+        Dragon = labyrinthInstance.getDragon();
+        labyrinth labyrinth = labyrinthInstance;
+        RightSidePanel RightSidePanel =RightSidePanelTest;
+
+   
+
+
+
+
+
+
+        //Timer for the fighter and the dragon
+         timerFighterRun = new Timer(200, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                labyrinth.currentImageIndexFighterRun = ( labyrinth.currentImageIndexFighterRun + 1) % 7; // Loop through the images
+            }
+        });
+        timerFighterRun.start();
+
+          timerDragonRun = new Timer(200, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                labyrinth.currentImageIndexDragonRun = (labyrinth.currentImageIndexDragonRun + 1) % 6; // Loop through the images
+            }
+        });
+        timerDragonRun.start();
+
+         timerFighterAttack = new Timer(200, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                labyrinth.currentImageIndexFighterAttack = (labyrinth.currentImageIndexFighterAttack + 1) % 4; // Loop through the images
+            }
+        });
+        timerFighterAttack.start();
+
+         timerDragonAttack = new Timer(200, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                labyrinth.currentImageIndexDragonAttack = (labyrinth.currentImageIndexDragonAttack + 1) %4; // Loop through the images
+            }
+        });
+        timerDragonAttack.start();
+
+         timerFire = new Timer(30, new ActionListener() {
+          @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if(FirstTime==0){
+              xFire = labyrinth.xDragon;
+                yFire = labyrinth.yDragon;
+              FirstTime=1;
+                }
+            if(labyrinth.SideDragon=='L'){
+
+
+                if (xFire == labyrinth.xFighter   || xFire==40 || xFire==760) {
+                 
+                    if(xFire==labyrinth.xFighter && yFire==labyrinth.yFighter){
+                    timerFire.stop();
+                    labyrinth.FireLabel.setIcon(null);
+                    Dragon.DamageDragonFighterCaracter(Bnadem, Dragon);
+                    Bnadem.FighterCaracterUpdateDealth(Bnadem);
+                    Bnadem.lose(Bnadem);
+                    RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
+                    RightSidePanel.FighterLifePanel.repaint();
+                }
+                    timerFire.stop();
+                    labyrinth.FireLabel.setIcon(null);
+                }else{
+                    labyrinth.ShowFire("../Project/Ressource/CharactersMvmnt/FirstDragon/FireInversed.png", xFire, yFire);
+                    xFire -= 5;
+
+                }
+
+            }
+            if(labyrinth.SideDragon=='R'){
+             
+             if (xFire == labyrinth.xFighter   ||xFire==760) {
+                   timerFire.stop();
+                    labyrinth.FireLabel.setIcon(null);
+                    FirstTime=0;    
+
+                }else{
+                    labyrinth.ShowFire("../Project/Ressource/CharactersMvmnt/FirstDragon/Fire.png", xFire, yFire);
+                   xFire += 5;
+
+                }   
+            }
+  
+        }
+        });
+        timerFire.setInitialDelay(0);
+
+       
+}
+        
+    
+}
+
 
  
