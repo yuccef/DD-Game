@@ -192,7 +192,6 @@ public class labyrinth {
         Window.setVisible(true);
     }
 
-
     public void moveFighter(int Choice, int dx, int dy) {
         int newX = xFighter + dx * 5;
         int newY = yFighter + dy * 5;
@@ -302,13 +301,15 @@ if(Choice==2){
         DragonLabel.setBounds(xDragon, yDragon, imageIcon2.getIconWidth(), imageIcon2.getIconHeight());
         // characterLabel.repaint();
     }
-public void ShowFire(String nomImage, int x, int y) {
+    
+    public void ShowFire(String nomImage, int x, int y) {
 
     ImageIcon imageIcon = new ImageIcon(nomImage);
     FireLabel.setIcon(imageIcon);
     FireLabel.setBounds(x, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
 
 }
+  
     public void moveAttack( int Choice)  {
     if(Choice==1){
         if(SideFighter=='R'){
@@ -500,8 +501,6 @@ public void ShowFire(String nomImage, int x, int y) {
 }
 
 
-
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -512,8 +511,7 @@ public void ShowFire(String nomImage, int x, int y) {
     }
 }
 
-
- class RightSidePanel extends JPanel {
+     class RightSidePanel extends JPanel {
 
     public labyrinth labyrinthInstance;
 
@@ -695,8 +693,7 @@ public void ShowFire(String nomImage, int x, int y) {
      
 }
        
-class GameTimers 
- {
+    class GameTimers {
       
     public Timer timerFire; 
     public int xFire=0; 
