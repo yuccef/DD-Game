@@ -35,7 +35,7 @@ public class FighterCaracter {
     }
 
     public void DamageFighterCaracterTheDragon(FighterCaracter Fighter, Dragon Dragon) {
-        if(Dragon.score > 0){
+        if(Dragon.score > 30){
         Dragon.score -= Fighter.damage;
         VarDamageFighter = 1;
         }
