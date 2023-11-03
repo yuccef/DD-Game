@@ -46,7 +46,7 @@ public class labyrinth {
  
 
     //Objects
-    public FighterCaracter Bnadem = new FighterCaracter( "Youssef ",   400, 10, 10, xFighter, yFighter);
+    public FighterCaracter Bnadem = new FighterCaracter( "Youssef ",   400, 30, 10, xFighter, yFighter);
     public Dragon Dragon = new Dragon("Dragon", 400, 20, 20, xDragon, yDragon);
    
    public FighterCaracter getBnadem() {
@@ -343,9 +343,10 @@ if(Choice==2){
             if (canMove) {
                 xFighter = newX;
                 yFighter = newY;
-                ShowFighter(Paths.imagePathsFighterAttack[currentImageIndexFighterAttack],Paths.imagePathsDragonRun[currentImageIndexDragonRun]);
                 gameTimers.timerFireFighter.start();
                 gameTimers.FirstTimeFighter=0;
+                ShowFighter(Paths.imagePathsFighterAttack[currentImageIndexFighterAttack],Paths.imagePathsDragonRun[currentImageIndexDragonRun]);
+
             }
         }
     }
@@ -365,9 +366,10 @@ if(Choice==2){
             if (canMove) {
                 xFighter = newX;
                 yFighter = newY;
-                ShowFighter(Paths.imagePathsFighterAttack[currentImageIndexFighterAttack],Paths.imagePathsDragonRunInverse[currentImageIndexDragonRun]);
-                gameTimers.timerFireFighter.start();
+                 gameTimers.timerFireFighter.start();
                 gameTimers.FirstTimeFighter=0;
+                ShowFighter(Paths.imagePathsFighterAttack[currentImageIndexFighterAttack],Paths.imagePathsDragonRunInverse[currentImageIndexDragonRun]);
+
             }
         }
 
@@ -796,9 +798,9 @@ class GameTimers {
             if(labyrinth.SideDragon=='L'){
 
 
-                if (xFire == labyrinth.xFighter   || xFire==40 || xFire==760) {
+                if (xFire <= labyrinth.xFighter   || xFire==40 || xFire==760) {
                  
-                    if(xFire==labyrinth.xFighter && yFire==labyrinth.yFighter){
+                    if(xFire<=labyrinth.xFighter && labyrinth.yDragon==labyrinth.yFighter){
                     timerFire.stop();
                     labyrinth.FireLabel.setIcon(null);
                     Dragon.DamageDragonFighterCaracter(Bnadem, Dragon);
@@ -841,11 +843,12 @@ class GameTimers {
                 if(FirstTimeFighter==0){
                 xFireFighter = labyrinth.xFighter;
                 yFireFighter = labyrinth.yFighter;
-              FirstTimeFighter=1;
+                FirstTimeFighter=1;
                 }
+
             if(labyrinth.SideFighter=='R'){
-                if (xFireFighter == labyrinth.xDragon   || xFireFighter==760) {
-                    if(xFireFighter==labyrinth.xDragon && labyrinth.yFighter==labyrinth.yDragon){
+                if (xFireFighter >= labyrinth.xDragon   || xFireFighter>=760) {
+                    if(xFireFighter>=labyrinth.xDragon && labyrinth.yFighter==labyrinth.yDragon){
                     timerFireFighter.stop();
                     labyrinth.FireFighterLabel.setIcon(null);
                     Bnadem.DamageFighterCaracterTheDragon(Bnadem, Dragon);
