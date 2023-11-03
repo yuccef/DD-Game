@@ -31,6 +31,8 @@ public class labyrinth {
     public JLabel DragonLabel;
     public JLabel FireLabel;
     public JLabel FireFighterLabel;
+    public JLabel FighterShiled;
+    public JLabel DragonShiled;
 
     public int currentImageIndexFighterRun = 0;
     public int currentImageIndexFighterAttack=0;
@@ -118,6 +120,8 @@ public class labyrinth {
         DragonLabel = new JLabel();
         FireLabel = new JLabel();
         FireFighterLabel = new JLabel();
+        FighterShiled = new JLabel();
+        DragonShiled = new JLabel();
 
 
         //Initial Position
@@ -125,6 +129,8 @@ public class labyrinth {
         DragonLabel.setBounds(xDragon, yDragon, 40, 40);
         FireLabel.setBounds(gameTimers.xFire, gameTimers.yFire, 40, 40);
         FireFighterLabel.setBounds(gameTimers.xFireFighter, gameTimers.yFireFighter, 40, 40);
+        FighterShiled.setBounds(xFighter, yFighter, 40, 40);
+        DragonShiled.setBounds(xDragon, yDragon, 40, 40);
 
         //Add to Panel
         DrawLabyrinthPanel.setBounds(0, 0, 800, 635);
@@ -133,6 +139,8 @@ public class labyrinth {
         DrawLabyrinthPanel.add(characterLabel);
         DrawLabyrinthPanel.add(FireLabel);
         DrawLabyrinthPanel.add(FireFighterLabel);
+        DrawLabyrinthPanel.add(FighterShiled);
+        DrawLabyrinthPanel.add(DragonShiled);
 
 
         //Show the Window
@@ -155,9 +163,11 @@ public class labyrinth {
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right knight
                     SideFighter = 'R';
                     if (yFighter!=yDragon){
+                        gameTimers.timerShiledFighter.stop();
                         moveFighter(1,1, 0);
                     }else{
                         if(xFighter+40<=xDragon){
+                            gameTimers.timerShiledFighter.stop();
                             moveFighter(1,1, 0);
                 }
             }
@@ -172,6 +182,9 @@ public class labyrinth {
                  else if (e.getKeyCode()== KeyEvent.VK_ENTER){
                     moveAttack(1);
                     }
+                else if(e.getKeyChar()=='x'|| e.getKeyChar()=='X'){
+                    gameTimers.timerShiledFighter.start();
+                }
 
                 //key listener for dragon
                 if(e.getKeyChar() == 'd' || e.getKeyChar() == 'D'){
@@ -188,6 +201,10 @@ public class labyrinth {
                 else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     moveAttack(2);
                 }
+                else if(e.getKeyChar()=='c'|| e.getKeyChar()=='C'){
+                    gameTimers.timerShiledDragon.start();
+                }   
+
                
             }
              
@@ -205,7 +222,9 @@ public class labyrinth {
         int newXX=xDragon+dx*5;
         int newYY=yDragon+dy*5;
     if(dx>=0 ){
-    if(Choice == 1){
+          if(Choice == 1){
+        gameTimers.timerShiledFighter.stop();
+        FighterShiled.setIcon(null);             
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
@@ -226,7 +245,9 @@ public class labyrinth {
             }
         }
     }
-        if(Choice==2){
+          if(Choice==2){
+        gameTimers.timerShiledDragon.stop();
+        DragonShiled.setIcon(null);
         if(newXX>=0 && newXX+40<MATRIX_SIZE && newYY>=0 && newYY+40<MATRIX_SIZE){
             boolean canMove=true;
             for(int i=newXX;i<newXX+40;i++){
@@ -250,6 +271,8 @@ public class labyrinth {
 
     if(dx<=0 ){
         if(Choice == 1){
+        FighterShiled.setIcon(null);             
+        gameTimers.timerShiledFighter.stop();
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
@@ -271,8 +294,9 @@ public class labyrinth {
         }
 
     }
-
-if(Choice==2){
+        if(Choice==2){
+        gameTimers.timerShiledDragon.stop();
+        DragonShiled.setIcon(null);
         if(newXX>=0 && newXX+40<MATRIX_SIZE && newYY>=0 && newYY+40<MATRIX_SIZE){
             boolean canMove=true;
             for(int i=newXX;i<newXX+40;i++){
@@ -316,16 +340,52 @@ if(Choice==2){
     FireLabel.setBounds(x, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
 
 }
- public void ShowFireFighter( String nomImage, int x, int y) {
+
+public void ShowFireFighter( String nomImage, int x, int y) {
     ImageIcon imageIcon = new ImageIcon(nomImage);  
     FireFighterLabel.setIcon(imageIcon);
     FireFighterLabel.setBounds(x, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
 }
 
+public void ShowShiledFighter( int x, int y) {
+    int xShield=0;
+    String nomImage="";
+    if(SideFighter=='R'){
+        xShield=x+40;
+        nomImage="../Project/Ressource/CharactersMvmnt/KnightMvmnt1/FighterShield.png";
+    }
+    if(SideFighter=='L'){
+        xShield=x-40;
+        nomImage="../Project/Ressource/CharactersMvmnt/KnightMvmnt1/FighterShieldInversed.png";
+    }
+    ImageIcon imageIcon = new ImageIcon(nomImage);
+    FighterShiled.setIcon(imageIcon);
+    FighterShiled.setBounds(xShield, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
+}
+
+public void ShowShiledDragon(int x, int y) {
+        int xShield=0;
+        String nomImage="";
+
+    if(SideDragon=='R'){
+        xShield=x+40;
+       nomImage="../Project/Ressource/CharactersMvmnt/FirstDragon/DragonShieldInversed.png";
+    }
+    if(SideDragon=='L'){
+        xShield=x-40;
+        nomImage="../Project/Ressource/CharactersMvmnt/FirstDragon/DragonShield.png";
+    }
+    ImageIcon imageIcon = new ImageIcon(nomImage);
+    DragonShiled.setIcon(imageIcon);
+    DragonShiled.setBounds(xShield, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
+}
 
   
     public void moveAttack( int Choice)  {
+    
     if(Choice==1){
+        gameTimers.timerShiledFighter.stop();
+        FighterShiled.setIcon(null);             
         if(SideFighter=='R'){
                     if(SideDragon=='R'){
         int newX = xFighter +  7;
@@ -423,6 +483,8 @@ if(Choice==2){
 }
 }
     if(Choice==2){
+        gameTimers.timerShiledDragon.stop();
+        DragonShiled.setIcon(null);
      if(SideDragon=='R'){
                           if(SideFighter=='R'){
         int newX = xDragon;
@@ -533,8 +595,7 @@ if(Choice==2){
         });
     }
 }
-
- class RightSidePanel extends JPanel {
+class RightSidePanel extends JPanel {
 
     public labyrinth labyrinthInstance;
 
@@ -734,6 +795,11 @@ class GameTimers {
     public   Timer timerDragonRun;
     public    Timer timerFighterAttack;
     public    Timer timerDragonAttack;
+
+    public Timer timerShiledFighter;
+    public Timer timerShiledDragon;
+
+
     public FighterCaracter Bnadem;
     public Dragon Dragon;
 
@@ -890,8 +956,70 @@ class GameTimers {
             }
         });
         timerFireFighter.setInitialDelay(0);
+
+        timerShiledFighter = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            if(labyrinth.yDragon==labyrinth.yFighter){
+                if(labyrinth.xDragon<= labyrinth.xFighter+40 ){
+                    labyrinth.FighterShiled.setIcon(null);
+                    timerShiledFighter.stop();
+                    RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
+                    RightSidePanel.FighterLifePanel.repaint();
+                    }
+                else{
+                    labyrinth.ShowShiledFighter(labyrinth.xFighter, labyrinth.yFighter);
+                    Dragon.DamageDragonFighterCaracter(Bnadem, Dragon);
+                    Bnadem.FighterCaracterUpdateDealth(Bnadem);
+                    Bnadem.lose(Bnadem);
+                    RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
+                    RightSidePanel.FighterLifePanel.repaint();
+
+                }
+
+            }else{
+                   labyrinth.ShowShiledFighter(labyrinth.xFighter, labyrinth.yFighter);
+                    RightSidePanel.FighterLifePanel.repaint();
+            } 
+            }
+        });
+        timerShiledFighter.setInitialDelay(0);        
+
+        
+
+
+
+        timerShiledDragon = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            if(labyrinth.yDragon==labyrinth.yFighter){
+                if(labyrinth.xDragon>= labyrinth.xFighter-40 ){
+                    labyrinth.FighterShiled.setIcon(null);
+                    timerShiledDragon.stop();
+                    RightSidePanel.DragonLabelRightSideLife.setText(" Score : " + Dragon.score);
+                    RightSidePanel.DragonLifePanel.repaint();
+                    }
+                else{
+                    labyrinth.ShowShiledDragon(labyrinth.xDragon, labyrinth.yDragon);
+                    Bnadem.DamageFighterCaracterTheDragon(Bnadem, Dragon);
+                    Dragon.DragonUpdateDealth(Dragon);
+                    Dragon.lose(Dragon);
+                    RightSidePanel.DragonLabelRightSideLife.setText(" Score : " + Dragon.score);
+                    RightSidePanel.DragonLifePanel.repaint();
+
+                }
+
+            }else{
+                   labyrinth.ShowShiledDragon(labyrinth.xDragon, labyrinth.yDragon);
+                    RightSidePanel.DragonLifePanel.repaint();
+        }
+           
   
-}
+            }
+        }); 
+
+        
+    }
 }
 
 
