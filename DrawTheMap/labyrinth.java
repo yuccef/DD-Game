@@ -15,6 +15,7 @@ import TheFighter.FighterCaracter;
 //import DrawTheMap.RightSidePanel; 
 
 public class labyrinth {
+    
 
     public  int MATRIX_SIZE = 810;
 
