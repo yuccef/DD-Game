@@ -35,8 +35,14 @@ public class FighterCaracter {
     }
 
     public void DamageFighterCaracterTheDragon(FighterCaracter Fighter, Dragon Dragon) {
+        if(Dragon.score > 0){
         Dragon.score -= Fighter.damage;
         VarDamageFighter = 1;
+        }
+        else{
+            Dragon.score = 0;
+            System.out.println("You win");
+        }
     }
 
     public void FighterDefense(FighterCaracter Fighter, Dragon Dragon) {
