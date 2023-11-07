@@ -41,7 +41,7 @@ public class Dragon {
     }
 
     public void DragonDefense(FighterCaracter Fighter, Dragon Dragon) {
-        Dragon.score -= Fighter.damage - Dragon.defense;
+        Dragon.score = Fighter.damage - Dragon.defense;
         VarDefenseDragon = 1;
     }
 
