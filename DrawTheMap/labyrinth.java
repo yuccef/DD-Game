@@ -200,11 +200,13 @@ public class labyrinth {
                     moveFighter(2,0, 1);
                 }
                 else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+
                     moveAttack(2);
                 }
-                else if(e.getKeyChar()=='c'|| e.getKeyChar()=='C'){
+                else if(e.getKeyChar()=='c'|| e.getKeyChar()=='C'){ //we have a problem here andin Shield fighter too
                     gameTimers.timerShiledDragon.start();
                 }   
+
 
                
             }
