@@ -371,7 +371,7 @@ public void ShowShiledDragon(int x, int y) {
         String nomImage="";
 
     if(SideDragon=='R'){
-        xShield=x+40;
+        xShield=x+70;
        nomImage="../Project/Ressource/CharactersMvmnt/FirstDragon/DragonShieldInversed.png";
     }
     if(SideDragon=='L'){
@@ -972,9 +972,6 @@ class GameTimers {
                     }
                 else{
                     labyrinth.ShowShiledFighter(labyrinth.xFighter, labyrinth.yFighter);
-                    Dragon.DamageDragonFighterCaracter(Bnadem, Dragon);
-                    Bnadem.FighterCaracterUpdateDealth(Bnadem);
-                    Bnadem.lose(Bnadem);
                     RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
                     RightSidePanel.FighterLifePanel.repaint();
 
@@ -996,7 +993,7 @@ class GameTimers {
             @Override
             public void actionPerformed(ActionEvent e) {
             if(labyrinth.yDragon==labyrinth.yFighter){
-                if(labyrinth.xDragon>= labyrinth.xFighter-40 ){
+                if(labyrinth.xDragon<= labyrinth.xFighter-40 ){
                     labyrinth.FighterShiled.setIcon(null);
                     timerShiledDragon.stop();
                     RightSidePanel.DragonLabelRightSideLife.setText(" Score : " + Dragon.score);
@@ -1004,9 +1001,6 @@ class GameTimers {
                     }
                 else{
                     labyrinth.ShowShiledDragon(labyrinth.xDragon, labyrinth.yDragon);
-                    Bnadem.DamageFighterCaracterTheDragon(Bnadem, Dragon);
-                    Dragon.DragonUpdateDealth(Dragon);
-                    Dragon.lose(Dragon);
                     RightSidePanel.DragonLabelRightSideLife.setText(" Score : " + Dragon.score);
                     RightSidePanel.DragonLifePanel.repaint();
 
