@@ -203,8 +203,6 @@ public class labyrinth {
                     moveFighter(2,0, 1);
                 }
                 else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    gameTimers.timerFire.start();
-
                     moveAttack(2);
                 }
                 else if(e.getKeyChar()=='c'|| e.getKeyChar()=='C'){ //we have a problem here andin Shield fighter too
@@ -877,9 +875,14 @@ class GameTimers {
                 }
             if(labyrinth.SideDragon=='L'){
 
-
-                if (xFire <= labyrinth.xFighter   || xFire==40 || xFire==760) {
                  
+    
+           
+            
+       if (xFire <= labyrinth.xFighter   || xFire==40 || xFire==760) {
+                 
+           labyrinth.FireLabel.setIcon(null);
+                  timerFire.stop();
                     if(xFire<=labyrinth.xFighter && labyrinth.yDragon==labyrinth.yFighter){
                     timerFire.stop();
                     labyrinth.FireLabel.setIcon(null);
@@ -891,11 +894,13 @@ class GameTimers {
                     
                 }
                 
-                 
+           
                     
                 }
-
-                 if(ShieldFighterCheker==1 && labyrinth.yDragon==labyrinth.yFighter && xFire <= labyrinth.xFighter +40 ){
+               
+                
+         if(ShieldFighterCheker==1  && xFire <= labyrinth.xFighter +40 ){
+            if(labyrinth.yDragon==labyrinth.yFighter){
                     timerFire.stop();
                     labyrinth.FireLabel.setIcon(null);
                     Bnadem.FighterDefense(Bnadem, Dragon);
@@ -905,11 +910,11 @@ class GameTimers {
                     ShieldFighterCheker=0;
                     timerShiledFighter.stop();
                     labyrinth.FighterShiled.setIcon(null);
-                    
+                 }
+                 timerFire.stop();  
+                labyrinth.FireLabel.setIcon(null);
                 }
-                
-        
-                else{
+               else{
                     labyrinth.ShowFire("../Project/Ressource/CharactersMvmnt/FirstDragon/FireInversed.png", xFire, yFire);
                     xFire -= 5;
 
