@@ -42,33 +42,38 @@ public class labyrinth {
 
 
     public char SideDragon, SideFighter;
+    
+
+    public String Fightermove;
 
     PicturesPath Paths = new PicturesPath();
     public GameTimers gameTimers;
- 
-
+   
+    
     //Objects
     public FighterCaracter Bnadem = new FighterCaracter( "Youssef ",   400, 30, 10, xFighter, yFighter);
     public Dragon Dragon = new Dragon("Dragon", 400, 20, 20, xDragon, yDragon);
-   
-   public FighterCaracter getBnadem() {
-    return this.Bnadem;
+    
+    public FighterCaracter getBnadem() {
+        return this.Bnadem;
     }
     public Dragon getDragon() {
     return this.Dragon;
-    }
-
-
-   
+}
 
 
 
-    //Methods
-    public labyrinth() {
-        RightSidePanel RightSidePanel = new RightSidePanel(labyrinth.this);
-        gameTimers = new GameTimers(this, RightSidePanel);
 
 
+
+
+//Methods
+public labyrinth() {
+    RightSidePanel RightSidePanel = new RightSidePanel(labyrinth.this);
+    gameTimers = new GameTimers(this, RightSidePanel);
+    
+       DragonActionAI DragonActionAI = new DragonActionAI();
+    
         Window = new JFrame("Affichage de photos");
         Window.setSize(800, 785);
         Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -173,21 +178,40 @@ public class labyrinth {
                             moveFighter(1,1, 0);
                 }
             }
+                    Fightermove="run";
+                    DragonActionAI.DragonActionAI(labyrinth.this);
+
                 } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left knight
                     SideFighter = 'L';
                     moveFighter(1,-1, 0);
+                    Fightermove="run";
+                    DragonActionAI.DragonActionAI(labyrinth.this);
                 } else if (e.getKeyCode() == KeyEvent.VK_UP) { // Up knight
                     moveFighter(1,0, -1);
+                    Fightermove="run";
+                    DragonActionAI.DragonActionAI(labyrinth.this );
+
                 } else if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down knight
                     moveFighter(1,0, 1);
+                    Fightermove="run";
+                    DragonActionAI.DragonActionAI(labyrinth.this );
                 }
-                 else if (e.getKeyCode()== KeyEvent.VK_ENTER){
+                else if (e.getKeyCode()== KeyEvent.VK_ENTER){
                     moveAttack(1);
+                    Fightermove="Attack";
+                   // waitTwoSeconds();
+                    DragonActionAI.DragonActionAI(labyrinth.this);
                     }
                 else if(e.getKeyChar()=='x'|| e.getKeyChar()=='X'){
                     gameTimers.ShieldFighterCheker=1;
                     gameTimers.timerShiledFighter.start();
+                    Fightermove="Defend";
+                   // waitTwoSeconds();
+            
+                    DragonActionAI.DragonActionAI(labyrinth.this );
                 }
+             
+
 
                 //key listener for dragon
                 if(e.getKeyChar() == 'd' || e.getKeyChar() == 'D'){
@@ -201,12 +225,12 @@ public class labyrinth {
                 }else if(e.getKeyChar() == 's' || e.getKeyChar() == 'S'){
                     moveFighter(2,0, 1);
                 }
-                else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    moveAttack(2);
-                }
-                else if(e.getKeyChar()=='c'|| e.getKeyChar()=='C'){ //we have a problem here andin Shield fighter too
-                    gameTimers.timerShiledDragon.start();
-                }   
+                // else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                //     moveAttack(2);
+                // }
+                // else if(e.getKeyChar()=='c'|| e.getKeyChar()=='C'){ //we have a problem here andin Shield fighter too
+                //     gameTimers.timerShiledDragon.start();
+                // }   
 
 
                
@@ -217,7 +241,10 @@ public class labyrinth {
                     // Do nothing here, as we are not using keyReleased
                 }
             });
+        
         Window.setVisible(true);
+        DragonActionAI.DragonActionAI(labyrinth.this);
+
     }
 
     public void moveFighter(int Choice, int dx, int dy) {
@@ -325,6 +352,13 @@ public class labyrinth {
     
     }
 
+// public static void waitTwoSeconds() {
+//         try {
+//             Thread.sleep(2000); // Attendez 2 secondes (2000 millisecondes).
+//         } catch (InterruptedException e) {
+//             e.printStackTrace();
+//         }
+//     }
     public void ShowFighter(String nomImage, String nomImage2) {
 
         ImageIcon imageIcon = new ImageIcon(nomImage);
@@ -1039,8 +1073,11 @@ class GameTimers {
         timerShiledFighter.setInitialDelay(0);        
 
         timerShiledDragon = new Timer(500, new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
+                        System.out.println(" Hi I'm timerShiledDragon");
+
             if(labyrinth.yDragon==labyrinth.yFighter){
                 if(labyrinth.xDragon<= labyrinth.xFighter+40 ){
                     labyrinth.DragonShiled.setIcon(null);
@@ -1070,4 +1107,63 @@ class GameTimers {
 }
 
 
+  class  DragonActionAI {
+
+    FighterCaracter Fighter ;
+    Dragon Dragon;
+    int FighterAttackChecker=0;
+
+    String FighterMove;
+    
+    public void DragonActionAI(labyrinth labyrinth) {
+        Fighter = labyrinth.getBnadem();
+        Dragon = labyrinth.getDragon();
+        FighterMove = labyrinth.Fightermove;
  
+        MapMaths MapManage = new MapMaths();
+
+        switch (this.FighterMove) {
+
+            case "Attack":
+                FighterAttackChecker=1;
+                System.out.println("The Fighter attacks!");
+                if(MapManage.generateRandomZeroOne(30)==0){
+                labyrinth.moveAttack(2);
+            }
+            if(MapManage.generateRandomZeroOne(30)==1){
+                labyrinth.gameTimers.timerShiledDragon.start();
+            }
+                break;
+
+            case "Defend":
+                System.out.println("The Fighter defends!");
+
+                if(MapManage.generateRandomZeroOne(30)==1){
+                 labyrinth.moveAttack(2);
+                }
+                if(MapManage.generateRandomZeroOne(30)==0){
+                 labyrinth.moveAttack(2);   
+                }
+                if(MapManage.generateRandomZeroOne(30)==1){
+                 labyrinth.gameTimers.timerShiledDragon.start();
+                         }
+                break;
+
+            case "run":
+                System.out.println("The Fighter runs away!");
+             if(FighterAttackChecker==1 ){
+                FighterAttackChecker=0;
+              if(MapManage.generateRandomZeroOne(40)==1){
+                 labyrinth.moveAttack(2);
+                }
+            }
+                break;
+                
+                        }
+
+
+            
+    }
+    
+}
+

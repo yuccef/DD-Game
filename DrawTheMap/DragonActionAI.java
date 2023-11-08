@@ -11,7 +11,10 @@ public class DragonActionAI {
 
     String FighterMove;
     
-    public void DragonActionAI() {
+    public void DragonActionAI(labyrinth labyrinth) {
+        Fighter = labyrinth.Bnadem;
+        Dragon = labyrinth.Dragon;
+        FighterMove = labyrinth.Fightermove;
 
         switch (this.FighterMove) {
 
@@ -29,7 +32,7 @@ public class DragonActionAI {
                 
 
                 break;
-            case "defend":
+            case "Defend":
                 System.out.println("The Fighter defends!");
 
                 //2 attacks
