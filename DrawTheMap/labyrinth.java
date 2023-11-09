@@ -10,6 +10,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.String;
 
+
+
 import TheDragon.Dragon;
 import TheFighter.FighterCaracter;
 
@@ -29,31 +31,32 @@ public class labyrinth {
  
     public JLabel characterLabel;
     public JLabel DragonLabel;
-    public JLabel FireLabel;
+    public JLabel FireDragonLabel;
     public JLabel FireFighterLabel;
-    public JLabel FighterShiled;
-    public JLabel DragonShiled;
+    public JLabel FighterShield;
+    public JLabel DragonShield;
 
+
+    //Should to update this
     public int currentImageIndexFighterRun = 0;
     public int currentImageIndexFighterAttack=0;
     public int currentImageIndexDragonRun = 0;
     public int currentImageIndexDragonAttack = 0;
 
 
-
     public char SideDragon, SideFighter;
     
-
     public String Fightermove;
 
-    PicturesPath Paths = new PicturesPath();
-    public GameTimers gameTimers;
-   
+
     
     //Objects
+    PicturesPath Paths = new PicturesPath();
+    public GameTimers gameTimers;
     public FighterCaracter Bnadem = new FighterCaracter( "Youssef ",   400, 30, 10, xFighter, yFighter);
     public Dragon Dragon = new Dragon("Dragon", 400, 20, 20, xDragon, yDragon);
     
+    //Getters
     public FighterCaracter getBnadem() {
         return this.Bnadem;
     }
@@ -63,26 +66,21 @@ public class labyrinth {
 
 
 
-
-
-
-
 //Methods
 public labyrinth() {
+   
+    //Objects 2
     RightSidePanel RightSidePanel = new RightSidePanel(labyrinth.this);
     gameTimers = new GameTimers(this, RightSidePanel);
+    DragonActionAI DragonActionAI = new DragonActionAI();
+
     
-       DragonActionAI DragonActionAI = new DragonActionAI();
-    
-        Window = new JFrame("Affichage de photos");
+        Window = new JFrame("D&D Game");
         Window.setSize(800, 785);
         Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Window.add(RightSidePanel);
         Window.setLayout(null);
         
-
-
-
         
         //Map Panel
         JPanel DrawLabyrinthPanel = new JPanel() {
@@ -93,7 +91,7 @@ public labyrinth() {
                 Image RoadMap = new ImageIcon("../Project/Ressource/MapPixels/labyrinth1.jpg").getImage();
                 Image WallMap = new ImageIcon("../Project/Ressource/MapPixels/labyrinth2.jpg").getImage();
                
-                 MapMaths MapManage = new MapMaths();
+                MapMaths MapManage = new MapMaths();
 
                 Lmatrix = MapManage.loadMap();
                 Bmatrix = MapManage.CreatTheBigMatrix(Lmatrix);   
@@ -120,32 +118,42 @@ public labyrinth() {
 
 
 
-        //Show the fighter and the dragon and Fire
+        //Labels
         characterLabel = new JLabel();
         DragonLabel = new JLabel();
-        FireLabel = new JLabel();
+
+        FireDragonLabel = new JLabel();
         FireFighterLabel = new JLabel();
-        FighterShiled = new JLabel();
-        DragonShiled = new JLabel();
+
+        FighterShield = new JLabel();
+        DragonShield = new JLabel();
 
 
-        //Initial Position
+
+        //Initialize Labels
         characterLabel.setBounds(xFighter, yFighter, 40, 40);
         DragonLabel.setBounds(xDragon, yDragon, 40, 40);
-        FireLabel.setBounds(gameTimers.xFire, gameTimers.yFire, 40, 40);
+       
+        FireDragonLabel.setBounds(gameTimers.xFire, gameTimers.yFire, 40, 40);
         FireFighterLabel.setBounds(gameTimers.xFireFighter, gameTimers.yFireFighter, 40, 40);
-        FighterShiled.setBounds(xFighter, yFighter, 40, 40);
-        DragonShiled.setBounds(xDragon, yDragon, 40, 40);
+       
+        FighterShield.setBounds(xFighter, yFighter, 40, 40);
+        DragonShield.setBounds(xDragon, yDragon, 40, 40);
+
+
 
         //Add to Panel
         DrawLabyrinthPanel.setBounds(0, 0, 800, 635);
-        DrawLabyrinthPanel.setLayout(null); 
+        DrawLabyrinthPanel.setLayout(null);
+
         DrawLabyrinthPanel.add(DragonLabel);
         DrawLabyrinthPanel.add(characterLabel);
-        DrawLabyrinthPanel.add(FireLabel);
+
+        DrawLabyrinthPanel.add(FireDragonLabel);
         DrawLabyrinthPanel.add(FireFighterLabel);
-        DrawLabyrinthPanel.add(FighterShiled);
-        DrawLabyrinthPanel.add(DragonShiled);
+
+        DrawLabyrinthPanel.add(FighterShield);
+        DrawLabyrinthPanel.add(DragonShield);
 
 
         //Show the Window
@@ -156,58 +164,49 @@ public labyrinth() {
      
 
     
+// I want to stop this file juste here
+
         //Key Listener
         Window.addKeyListener(new KeyListener() {
+     
             @Override
             public void keyTyped(KeyEvent e) {
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                //key listener for knight
-                if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right knight
+                //key listener for the Fighter
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right Fighter
                     SideFighter = 'R';
-                    if (yFighter!=yDragon){
-                        gameTimers.timerShiledFighter.stop();
-                        gameTimers.ShieldDragonCheker=0;
-                        moveFighter(1,1, 0);
-                    }else{
-                        if(xFighter+40<=xDragon){
-                            gameTimers.timerShiledFighter.stop();
-                            gameTimers.ShieldDragonCheker=0;
-                            moveFighter(1,1, 0);
-                }
-            }
+                    moveFighter(1,1, 0);
                     Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this);
 
-                } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left knight
+                } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left Fighter
                     SideFighter = 'L';
                     moveFighter(1,-1, 0);
                     Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this);
-                } else if (e.getKeyCode() == KeyEvent.VK_UP) { // Up knight
+                // IN UP AND DOWN I SHOULD TO UPDATE SIDES
+                } else if (e.getKeyCode() == KeyEvent.VK_UP) { // Up Fighter
                     moveFighter(1,0, -1);
                     Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this );
 
-                } else if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down knight
+                } else if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down Fighter
                     moveFighter(1,0, 1);
                     Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this );
                 }
-                else if (e.getKeyCode()== KeyEvent.VK_ENTER){
+                else if (e.getKeyCode()== KeyEvent.VK_ENTER){  //Attack
                     moveAttack(1);
                     Fightermove="Attack";
-                   // waitTwoSeconds();
                     DragonActionAI.DragonActionAI(labyrinth.this);
                     }
-                else if(e.getKeyChar()=='x'|| e.getKeyChar()=='X'){
+                else if(e.getKeyChar()=='x'|| e.getKeyChar()=='X'){  //Defend
                     gameTimers.ShieldFighterCheker=1;
-                    gameTimers.timerShiledFighter.start();
-                    Fightermove="Defend";
-                   // waitTwoSeconds();
-            
+                    gameTimers.timerShieldFighter.start();
+                    Fightermove="Defend";            
                     DragonActionAI.DragonActionAI(labyrinth.this );
                 }
              
@@ -229,16 +228,13 @@ public labyrinth() {
                 //     moveAttack(2);
                 // }
                 // else if(e.getKeyChar()=='c'|| e.getKeyChar()=='C'){ //we have a problem here andin Shield fighter too
-                //     gameTimers.timerShiledDragon.start();
+                //     gameTimers.timerShieldDragon.start();
                 // }   
-
-
                
             }
              
                 @Override
             public void keyReleased(KeyEvent e) {
-                    // Do nothing here, as we are not using keyReleased
                 }
             });
         
@@ -246,6 +242,7 @@ public labyrinth() {
         DragonActionAI.DragonActionAI(labyrinth.this);
 
     }
+//this is the end of labyrinth method
 
     public void moveFighter(int Choice, int dx, int dy) {
         int newX = xFighter + dx * 5;
@@ -254,9 +251,9 @@ public labyrinth() {
         int newYY=yDragon+dy*5;
     if(dx>=0 ){
           if(Choice == 1){
-        gameTimers.timerShiledFighter.stop();
+        gameTimers.timerShieldFighter.stop();
          gameTimers.ShieldFighterCheker=0;
-        FighterShiled.setIcon(null);             
+        FighterShield.setIcon(null);             
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
             for (int i = newX; i < newX + 40; i++) {
@@ -271,15 +268,13 @@ public labyrinth() {
                 xFighter = newX;
                 yFighter = newY;
                 ShowFighter(Paths.imagePathsFighterRun[currentImageIndexFighterAttack], Paths.imagePathsDragonRun[currentImageIndexDragonRun]);
-                      //FighterLabelRightSideName.setText(" Y " + yFighter);
-                      //FighterLabelRightSideLife.setText("  X :" + xFighter);
-
+         
             }
         }
     }
           if(Choice==2){
-        gameTimers.timerShiledDragon.stop();
-        DragonShiled.setIcon(null);
+        gameTimers.timerShieldDragon.stop();
+        DragonShield.setIcon(null);
         if(newXX>=0 && newXX+40<MATRIX_SIZE && newYY>=0 && newYY+40<MATRIX_SIZE){
             boolean canMove=true;
             for(int i=newXX;i<newXX+40;i++){
@@ -303,8 +298,8 @@ public labyrinth() {
 
     if(dx<=0 ){
         if(Choice == 1){
-        FighterShiled.setIcon(null);             
-        gameTimers.timerShiledFighter.stop();
+        FighterShield.setIcon(null);             
+        gameTimers.timerShieldFighter.stop();
         gameTimers.ShieldFighterCheker=0;
         if (newX >= 0 && newX + 40 < MATRIX_SIZE && newY >= 0 && newY + 40 < MATRIX_SIZE) {
             boolean canMove = true;
@@ -327,8 +322,8 @@ public labyrinth() {
 
     }
         if(Choice==2){
-        gameTimers.timerShiledDragon.stop();
-        DragonShiled.setIcon(null);
+        gameTimers.timerShieldDragon.stop();
+        DragonShield.setIcon(null);
         if(newXX>=0 && newXX+40<MATRIX_SIZE && newYY>=0 && newYY+40<MATRIX_SIZE){
             boolean canMove=true;
             for(int i=newXX;i<newXX+40;i++){
@@ -352,13 +347,6 @@ public labyrinth() {
     
     }
 
-// public static void waitTwoSeconds() {
-//         try {
-//             Thread.sleep(2000); // Attendez 2 secondes (2000 millisecondes).
-//         } catch (InterruptedException e) {
-//             e.printStackTrace();
-//         }
-//     }
     public void ShowFighter(String nomImage, String nomImage2) {
 
         ImageIcon imageIcon = new ImageIcon(nomImage);
@@ -375,18 +363,18 @@ public labyrinth() {
     public void ShowFire( String nomImage, int x, int y) {
 
     ImageIcon imageIcon = new ImageIcon(nomImage);
-    FireLabel.setIcon(imageIcon);
-    FireLabel.setBounds(x, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
+    FireDragonLabel.setIcon(imageIcon);
+    FireDragonLabel.setBounds(x, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
 
 }
 
-public void ShowFireFighter( String nomImage, int x, int y) {
+    public void ShowFireFighter( String nomImage, int x, int y) {
     ImageIcon imageIcon = new ImageIcon(nomImage);  
     FireFighterLabel.setIcon(imageIcon);
     FireFighterLabel.setBounds(x, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
 }
 
-public void ShowShiledFighter( int x, int y) {
+    public void ShowShieldFighter( int x, int y) {
     int xShield=0;
     String nomImage="";
     if(SideFighter=='R'){
@@ -398,11 +386,11 @@ public void ShowShiledFighter( int x, int y) {
         nomImage="../Project/Ressource/CharactersMvmnt/KnightMvmnt1/FighterShieldInversed.png";
     }
     ImageIcon imageIcon = new ImageIcon(nomImage);
-    FighterShiled.setIcon(imageIcon);
-    FighterShiled.setBounds(xShield, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
+    FighterShield.setIcon(imageIcon);
+    FighterShield.setBounds(xShield, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
 }
 
-public void ShowShiledDragon(int x, int y) {
+    public void ShowShieldDragon(int x, int y) {
         int xShield=0;
         String nomImage="";
 
@@ -415,16 +403,15 @@ public void ShowShiledDragon(int x, int y) {
         nomImage="../Project/Ressource/CharactersMvmnt/FirstDragon/DragonShield.png";
     }
     ImageIcon imageIcon = new ImageIcon(nomImage);
-    DragonShiled.setIcon(imageIcon);
-    DragonShiled.setBounds(xShield, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
+    DragonShield.setIcon(imageIcon);
+    DragonShield.setBounds(xShield, y, imageIcon.getIconWidth(), imageIcon.getIconHeight());
 }
 
-  
     public void moveAttack( int Choice)  {
     
     if(Choice==1){
-        gameTimers.timerShiledFighter.stop();
-        FighterShiled.setIcon(null); 
+        gameTimers.timerShieldFighter.stop();
+        FighterShield.setIcon(null); 
          gameTimers.ShieldFighterCheker=0;   
 
         if(SideFighter=='R'){
@@ -525,8 +512,8 @@ public void ShowShiledDragon(int x, int y) {
 }
     if(Choice==2){
 
-        gameTimers.timerShiledDragon.stop();
-        DragonShiled.setIcon(null);
+        gameTimers.timerShieldDragon.stop();
+        DragonShield.setIcon(null);
      if(SideDragon=='R'){
                           if(SideFighter=='R'){
         int newX = xDragon;
@@ -629,6 +616,8 @@ public void ShowShiledDragon(int x, int y) {
 }
 
 
+
+// main of our file 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -638,6 +627,11 @@ public void ShowShiledDragon(int x, int y) {
         });
     }
 }
+
+
+
+
+//Other classes
 class RightSidePanel extends JPanel {
 
     public labyrinth labyrinthInstance;
@@ -818,8 +812,7 @@ class RightSidePanel extends JPanel {
   
     }   
      
-}
-       
+}    
 class GameTimers {
 
     public Timer timerFireFighter;
@@ -841,8 +834,8 @@ class GameTimers {
     public    Timer timerFighterAttack;
     public    Timer timerDragonAttack;
 
-    public Timer timerShiledFighter;
-    public Timer timerShiledDragon;
+    public Timer timerShieldFighter;
+    public Timer timerShieldDragon;
 
 
     public FighterCaracter Bnadem;
@@ -914,11 +907,11 @@ class GameTimers {
             
        if (xFire <= labyrinth.xFighter   || xFire==40 || xFire==760) {
                  
-           labyrinth.FireLabel.setIcon(null);
+           labyrinth.FireDragonLabel.setIcon(null);
                   timerFire.stop();
                     if(xFire<=labyrinth.xFighter && labyrinth.yDragon==labyrinth.yFighter){
                     timerFire.stop();
-                    labyrinth.FireLabel.setIcon(null);
+                    labyrinth.FireDragonLabel.setIcon(null);
                     Dragon.DamageDragonFighterCaracter(Bnadem, Dragon);
                     Bnadem.FighterCaracterUpdateDealth(Bnadem);
                     Bnadem.lose(Bnadem);
@@ -935,17 +928,17 @@ class GameTimers {
          if(ShieldFighterCheker==1  && xFire <= labyrinth.xFighter +40 ){
             if(labyrinth.yDragon==labyrinth.yFighter){
                     timerFire.stop();
-                    labyrinth.FireLabel.setIcon(null);
+                    labyrinth.FireDragonLabel.setIcon(null);
                     Bnadem.FighterDefense(Bnadem, Dragon);
                     Bnadem.lose(Bnadem);
                     RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
                     RightSidePanel.FighterLifePanel.repaint();  
                     ShieldFighterCheker=0;
-                    timerShiledFighter.stop();
-                    labyrinth.FighterShiled.setIcon(null);
+                    timerShieldFighter.stop();
+                    labyrinth.FighterShield.setIcon(null);
                  }
                  timerFire.stop();  
-                labyrinth.FireLabel.setIcon(null);
+                labyrinth.FireDragonLabel.setIcon(null);
                 }
                else{
                     labyrinth.ShowFire("../Project/Ressource/CharactersMvmnt/FirstDragon/FireInversed.png", xFire, yFire);
@@ -958,7 +951,7 @@ class GameTimers {
              
              if (xFire == labyrinth.xFighter   ||xFire==760) {
                    timerFire.stop();
-                    labyrinth.FireLabel.setIcon(null);
+                    labyrinth.FireDragonLabel.setIcon(null);
                     FirstTime=0;    
 
                 }else{
@@ -1016,8 +1009,8 @@ class GameTimers {
                     RightSidePanel.DragonLabelRightSideLife.setText(" Vie : " + Dragon.score);
                     RightSidePanel.DragonLifePanel.repaint();  
                     ShieldDragonCheker=0;
-                    timerShiledDragon.stop();
-                    labyrinth.DragonShiled.setIcon(null);
+                    timerShieldDragon.stop();
+                    labyrinth.DragonShield.setIcon(null);
                  }
                  timerFireFighter.stop();  
                 labyrinth.FireFighterLabel.setIcon(null);
@@ -1046,19 +1039,19 @@ class GameTimers {
         });
         timerFireFighter.setInitialDelay(0);
 
-        timerShiledFighter = new Timer(500, new ActionListener() {
+        timerShieldFighter = new Timer(500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             if(labyrinth.yDragon==labyrinth.yFighter){
                 if(labyrinth.xDragon<= labyrinth.xFighter+40 ){
-                    labyrinth.FighterShiled.setIcon(null);
-                    timerShiledFighter.stop();
+                    labyrinth.FighterShield.setIcon(null);
+                    timerShieldFighter.stop();
                     ShieldFighterCheker=0;
                     RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
                     RightSidePanel.FighterLifePanel.repaint();
                     }
                 else{
-                    labyrinth.ShowShiledFighter(labyrinth.xFighter, labyrinth.yFighter);
+                    labyrinth.ShowShieldFighter(labyrinth.xFighter, labyrinth.yFighter);
                     RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
                     RightSidePanel.FighterLifePanel.repaint();
                     ShieldFighterCheker=1;
@@ -1066,33 +1059,33 @@ class GameTimers {
                 }
 
             }else{
-                   labyrinth.ShowShiledFighter(labyrinth.xFighter, labyrinth.yFighter);
+                   labyrinth.ShowShieldFighter(labyrinth.xFighter, labyrinth.yFighter);
                     RightSidePanel.FighterLifePanel.repaint();
             } 
             }
         });
-        timerShiledFighter.setInitialDelay(0);        
+        timerShieldFighter.setInitialDelay(0);        
 
-        timerShiledDragon = new Timer(500, new ActionListener() {
+        timerShieldDragon = new Timer(500, new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
 
 
             if(labyrinth.yDragon==labyrinth.yFighter){
-                                        System.out.println(" Hi I'm timerShiledDragon");
+                                        System.out.println(" Hi I'm timerShieldDragon");
                      
               
                 
                 if(labyrinth.xDragon<= labyrinth.xFighter+40 ){
-                    labyrinth.DragonShiled.setIcon(null);
-                    timerShiledDragon.stop();
+                    labyrinth.DragonShield.setIcon(null);
+                    timerShieldDragon.stop();
                     ShieldDragonCheker=0;
                     RightSidePanel.DragonLabelRightSideLife.setText(" Vie : " + Dragon.score);
                     RightSidePanel.DragonLifePanel.repaint();
                     }
                 else{
-                    labyrinth.ShowShiledDragon(labyrinth.xDragon, labyrinth.yDragon);
+                    labyrinth.ShowShieldDragon(labyrinth.xDragon, labyrinth.yDragon);
                     RightSidePanel.DragonLabelRightSideLife.setText(" Vie : " + Dragon.score);
                     RightSidePanel.DragonLifePanel.repaint();
                     ShieldDragonCheker=1;
@@ -1101,22 +1094,20 @@ class GameTimers {
 
             }
             if(labyrinth.yDragon!=labyrinth.yFighter) {
-                                        System.out.println(" Hi I'm timerShiledDragon");
+                                        System.out.println(" Hi I'm timerShieldDragon");
             
-                                        System.out.println(" Hi I'm timerShiledDragon");
+                                        System.out.println(" Hi I'm timerShieldDragon");
           
-                    labyrinth.ShowShiledDragon(labyrinth.xDragon, labyrinth.yDragon);
+                    labyrinth.ShowShieldDragon(labyrinth.xDragon, labyrinth.yDragon);
                     RightSidePanel.DragonLifePanel.repaint();
             } 
             }
         }); 
-        timerShiledDragon.setInitialDelay(0);
+        timerShieldDragon.setInitialDelay(0);
 
         
     }
 }
-
-
   class  DragonActionAI {
 
     FighterCaracter Fighter ;
@@ -1142,7 +1133,7 @@ class GameTimers {
                 
             }
             if (MapManage.generateRandomZeroOne(80) == 1) {
-                labyrinth.gameTimers.timerShiledDragon.start();
+                labyrinth.gameTimers.timerShieldDragon.start();
             }
             break;
 
@@ -1157,7 +1148,7 @@ class GameTimers {
                 labyrinth.moveAttack(2);
             }
             if (MapManage.generateRandomZeroOne(80) == 1) {
-                labyrinth.gameTimers.timerShiledDragon.start();
+                labyrinth.gameTimers.timerShieldDragon.start();
             }
             break;
 
