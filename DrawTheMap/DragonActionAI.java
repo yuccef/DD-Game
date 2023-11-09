@@ -4,48 +4,65 @@ package DrawTheMap;
 import TheDragon.Dragon;
 import TheFighter.FighterCaracter;
 
-public class DragonActionAI {
+class  DragonActionAI {
 
     FighterCaracter Fighter ;
     Dragon Dragon;
+    int FighterAttackChecker=0;
+    CharactersMovesManage CharactersMovesManage;
 
     String FighterMove;
     
     public void DragonActionAI(labyrinth labyrinth) {
-        Fighter = labyrinth.Bnadem;
-        Dragon = labyrinth.Dragon;
+        Fighter = labyrinth.getBnadem();
+         CharactersMovesManage = new CharactersMovesManage(labyrinth);
+        Dragon = labyrinth.getDragon();
         FighterMove = labyrinth.Fightermove;
+        //fighterAttackChecker= labyrinth.FighterAttackChecker;
+ 
+        MapMaths MapManage = new MapMaths();
 
-        switch (this.FighterMove) {
+        switch (FighterMove) {
+        case "Attack":
+            System.out.println("The Fighter attacks!");
+            if (MapManage.generateRandomZeroOne(20) == 0) {
+                                CharactersMovesManage.moveAttack(2,labyrinth);
 
-            case "Attack":
-                System.out.println("The Fighter attacks you!");
-                Dragon.DragonDefense(Fighter, Dragon);
+                
+            }
+            if (MapManage.generateRandomZeroOne(80) == 1) {
+                labyrinth.gameTimers.timerShieldDragon.start();
+            }
+            break;
 
-                //wait 3 secondes
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        case "Defend":
+            System.out.println("The Fighter defends!");
+            if (MapManage.generateRandomZeroOne(80) == 1) {
+               
+                CharactersMovesManage.moveAttack(2,labyrinth);
+            }
+            if (MapManage.generateRandomZeroOne(20) == 0) {
+       
+                 CharactersMovesManage.moveAttack(2,labyrinth);
+            }
+            if (MapManage.generateRandomZeroOne(80) == 1) {
+                labyrinth.gameTimers.timerShieldDragon.start();
+            }
+            break;
+
+        case "run":
+            System.out.println("The Fighter runs away!");
+            if (FighterAttackChecker == 1) {
+                FighterAttackChecker = 0;
+                if (MapManage.generateRandomZeroOne(80) == 1) {
+                    CharactersMovesManage.moveAttack(2,labyrinth);
                 }
-                Dragon.DamageDragonFighterCaracter(Fighter, Dragon);
-                
+            }
+            break;
+    }
 
-                break;
-            case "Defend":
-                System.out.println("The Fighter defends!");
 
-                //2 attacks
-                Dragon.DamageDragonFighterCaracter(Fighter, Dragon);
-                Dragon.DamageDragonFighterCaracter(Fighter, Dragon);
-                Dragon.DragonDefense(Fighter, Dragon);
-                break;
-
-            case "run":
-                System.out.println("The Fighter runs away!");
-                break;
-                
-        }
+            
     }
     
 }
