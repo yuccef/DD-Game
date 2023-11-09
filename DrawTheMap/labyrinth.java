@@ -545,6 +545,7 @@ public void ShowShiledDragon(int x, int y) {
                 xDragon = newX;
                 yDragon = newY;
                 ShowFighter(Paths.imagePathsFighterRun[currentImageIndexFighterRun],Paths.imagePathsDragonAttack[currentImageIndexDragonAttack]);
+    
                 gameTimers.timerFire.start();
                 gameTimers.FirstTime=0;
 
@@ -1076,9 +1077,13 @@ class GameTimers {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                        System.out.println(" Hi I'm timerShiledDragon");
+
 
             if(labyrinth.yDragon==labyrinth.yFighter){
+                                        System.out.println(" Hi I'm timerShiledDragon");
+                     
+              
+                
                 if(labyrinth.xDragon<= labyrinth.xFighter+40 ){
                     labyrinth.DragonShiled.setIcon(null);
                     timerShiledDragon.stop();
@@ -1094,7 +1099,12 @@ class GameTimers {
 
                 }
 
-            }else{
+            }
+            if(labyrinth.yDragon!=labyrinth.yFighter) {
+                                        System.out.println(" Hi I'm timerShiledDragon");
+            
+                                        System.out.println(" Hi I'm timerShiledDragon");
+          
                     labyrinth.ShowShiledDragon(labyrinth.xDragon, labyrinth.yDragon);
                     RightSidePanel.DragonLifePanel.repaint();
             } 
@@ -1119,47 +1129,48 @@ class GameTimers {
         Fighter = labyrinth.getBnadem();
         Dragon = labyrinth.getDragon();
         FighterMove = labyrinth.Fightermove;
+        //fighterAttackChecker= labyrinth.FighterAttackChecker;
  
         MapMaths MapManage = new MapMaths();
 
-        switch (this.FighterMove) {
+        switch (FighterMove) {
+        case "Attack":
+            System.out.println("The Fighter attacks!");
+            if (MapManage.generateRandomZeroOne(20) == 0) {
+                                labyrinth.moveAttack(2);
 
-            case "Attack":
-                FighterAttackChecker=1;
-                System.out.println("The Fighter attacks!");
-                if(MapManage.generateRandomZeroOne(30)==0){
-                labyrinth.moveAttack(2);
+                
             }
-            if(MapManage.generateRandomZeroOne(30)==1){
+            if (MapManage.generateRandomZeroOne(80) == 1) {
                 labyrinth.gameTimers.timerShiledDragon.start();
             }
-                break;
+            break;
 
-            case "Defend":
-                System.out.println("The Fighter defends!");
+        case "Defend":
+            System.out.println("The Fighter defends!");
+            if (MapManage.generateRandomZeroOne(80) == 1) {
+               
+                labyrinth.moveAttack(2);
+            }
+            if (MapManage.generateRandomZeroOne(20) == 0) {
+       
+                labyrinth.moveAttack(2);
+            }
+            if (MapManage.generateRandomZeroOne(80) == 1) {
+                labyrinth.gameTimers.timerShiledDragon.start();
+            }
+            break;
 
-                if(MapManage.generateRandomZeroOne(30)==1){
-                 labyrinth.moveAttack(2);
-                }
-                if(MapManage.generateRandomZeroOne(30)==0){
-                 labyrinth.moveAttack(2);   
-                }
-                if(MapManage.generateRandomZeroOne(30)==1){
-                 labyrinth.gameTimers.timerShiledDragon.start();
-                         }
-                break;
-
-            case "run":
-                System.out.println("The Fighter runs away!");
-             if(FighterAttackChecker==1 ){
-                FighterAttackChecker=0;
-              if(MapManage.generateRandomZeroOne(40)==1){
-                 labyrinth.moveAttack(2);
+        case "run":
+            System.out.println("The Fighter runs away!");
+            if (FighterAttackChecker == 1) {
+                FighterAttackChecker = 0;
+                if (MapManage.generateRandomZeroOne(80) == 1) {
+                    labyrinth.moveAttack(2);
                 }
             }
-                break;
-                
-                        }
+            break;
+    }
 
 
             
