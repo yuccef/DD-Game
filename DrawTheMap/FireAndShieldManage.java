@@ -29,11 +29,11 @@ class FireAndShieldManage {
     String nomImage="";
     if(labyrinth.SideFighter=='R'){
         xShield=x+40;
-        nomImage="../Project/Ressource/CharactersMvmnt/KnightMvmnt1/FighterShield.png";
+        nomImage="../Project/resource/GameCharacters/FirstFighter/FighterShield.png";
     }
     if(labyrinth.SideFighter=='L'){
         xShield=x-40;
-        nomImage="../Project/Ressource/CharactersMvmnt/KnightMvmnt1/FighterShieldInversed.png";
+        nomImage="../Project/resource/GameCharacters/FirstFighter/FighterShieldInversed.png";
     }
     ImageIcon imageIcon = new ImageIcon(nomImage);
     labyrinth.FighterShield.setIcon(imageIcon);
@@ -46,11 +46,11 @@ class FireAndShieldManage {
 
     if(labyrinth.SideDragon=='R'){
         xShield=x+70;
-       nomImage="../Project/Ressource/CharactersMvmnt/FirstDragon/DragonShieldInversed.png";
+       nomImage="../Project/resource/GameCharacters/FirstDragon/DragonShieldInversed.png";
     }
     if(labyrinth.SideDragon=='L'){
         xShield=x-40;
-        nomImage="../Project/Ressource/CharactersMvmnt/FirstDragon/DragonShield.png";
+        nomImage="../Project/resource/GameCharacters/FirstDragon/DragonShield.png";
     }
     ImageIcon imageIcon = new ImageIcon(nomImage);
     labyrinth.DragonShield.setIcon(imageIcon);

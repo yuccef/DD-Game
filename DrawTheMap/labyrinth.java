@@ -100,8 +100,8 @@ public labyrinth() {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                Image RoadMap = new ImageIcon("../Project/Ressource/MapPixels/labyrinth1.jpg").getImage();
-                Image WallMap = new ImageIcon("../Project/Ressource/MapPixels/labyrinth2.jpg").getImage();
+                Image RoadMap = new ImageIcon("../Project/resource/MapPixels/labyrinth1.jpg").getImage();
+                Image WallMap = new ImageIcon("../Project/resource/MapPixels/labyrinth2.jpg").getImage();
                
                 MapMaths MapManage = new MapMaths();
 

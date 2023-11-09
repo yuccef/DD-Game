@@ -119,7 +119,7 @@ public class RightSidePanel extends JPanel {
         //picture
         JLabel FighterLabelRightSidePicture = new JLabel();
         FighterLabelRightSidePicture.setBounds(20, 210, 110,    124);
-        ImageIcon imageIconFighterLabelRightSidePicture = new ImageIcon("../Project/Ressource/CharactersMvmnt/KnightMvmnt1/IconeFighter.png");
+        ImageIcon imageIconFighterLabelRightSidePicture = new ImageIcon("../Project/resource/GameCharacters/FirstFighter/IconeFighter.png");
         Image imageFighterLabelRightSidePicture = imageIconFighterLabelRightSidePicture.getImage();
         Image newImageFighterLabelRightSidePicture = imageFighterLabelRightSidePicture.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
         imageIconFighterLabelRightSidePicture = new ImageIcon(newImageFighterLabelRightSidePicture); 
@@ -147,7 +147,7 @@ public class RightSidePanel extends JPanel {
         //picture
         JLabel DragonLabelRightSidePicture = new JLabel();
         DragonLabelRightSidePicture.setBounds(160, 210, 110,    124);
-        ImageIcon imageIconDragonLabelRightSidePicture = new ImageIcon("../Project/Ressource/CharactersMvmnt/FirstDragon/DragonIcone.png");
+        ImageIcon imageIconDragonLabelRightSidePicture = new ImageIcon("../Project/resource/GameCharacters/FirstDragon/DragonIcone.png");
         Image imageDragonLabelRightSidePicture = imageIconDragonLabelRightSidePicture.getImage();
         Image newImageDragonLabelRightSidePicture = imageDragonLabelRightSidePicture.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
         imageIconDragonLabelRightSidePicture = new ImageIcon(newImageDragonLabelRightSidePicture); 

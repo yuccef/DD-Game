@@ -140,7 +140,7 @@ class GameTimers {
                 labyrinth.FireDragonLabel.setIcon(null);
                 }
                else{
-                    FireAndShieldManage.ShowFire("../Project/Ressource/CharactersMvmnt/FirstDragon/FireInversed.png", xFire, yFire, labyrinth);
+                    FireAndShieldManage.ShowFire("../Project/resource/GameCharacters/FirstDragon/FireInversed.png", xFire, yFire, labyrinth);
                     xFire -= 5;
 
                 }
@@ -154,7 +154,7 @@ class GameTimers {
                     FirstTime=0;    
 
                 }else{
-                     FireAndShieldManage.ShowFire("../Project/Ressource/CharactersMvmnt/FirstDragon/Fire.png", xFire, yFire, labyrinth);
+                     FireAndShieldManage.ShowFire("../Project/resource/GameCharacters/FirstDragon/Fire.png", xFire, yFire, labyrinth);
                    xFire += 5;
 
 
@@ -215,7 +215,7 @@ class GameTimers {
                 labyrinth.FireFighterLabel.setIcon(null);
                 }
                else{
-                     FireAndShieldManage.ShowFireFighter("../Project/Ressource/CharactersMvmnt/KnightMvmnt1/FireFighter.png", xFireFighter, yFireFighter, labyrinth);
+                     FireAndShieldManage.ShowFireFighter("../Project/resource/GameCharacters/FirstFighter/FireFighter.png", xFireFighter, yFireFighter, labyrinth);
                     xFireFighter += 5;
 
                 }
@@ -229,7 +229,7 @@ class GameTimers {
                     FirstTimeFighter=0;    
 
                 }else{
-                     FireAndShieldManage.ShowFireFighter("../Project/Ressource/CharactersMvmnt/KnightMvmnt1/FireFighterInversed.png", xFireFighter, yFireFighter, labyrinth);
+                     FireAndShieldManage.ShowFireFighter("../Project/resource/GameCharacters/FirstFighter/FireFighterInversed.png", xFireFighter, yFireFighter, labyrinth);
                    xFireFighter -= 5;
 
                 }   

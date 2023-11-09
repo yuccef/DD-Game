@@ -1,9 +1,9 @@
 package DrawTheMap;
 
 public class PicturesPath {
-    public  String PicturesSheet = "../Project/Ressource/CharactersMvmnt/KnightMvmnt1/";
-    public  String PicturesSheet2 = "../Project/Ressource/CharactersMvmnt/FirstDragon/";
-    //public  String FirePicture = "../Project/Ressource/CharactersMvmnt/Fire.png";
+    public  String PicturesSheet = "../Project/resource/GameCharacters/FirstFighter/";
+    public  String PicturesSheet2 = "../Project/resource/GameCharacters/FirstDragon/";
+    //public  String FirePicture = "../Project/resource/CharactersMvmnt/Fire.png";
     
     //Pictures Path
     public String[] imagePathsFighterRun = {
