@@ -9,7 +9,7 @@ SRCS = $(wildcard $(SRC_DIR)/*.java) $(wildcard TheFighter/*.java) $(wildcard Th
 # Target executable
 TARGET = DrawTheMap/labyrinth
 
-all: build run
+all: build run clean
 
 build:
 	$(JAVAC) $(SRCS) -d $(OUT_DIR)
@@ -18,4 +18,6 @@ run:
 	$(JAVA) -cp $(OUT_DIR) $(TARGET)
 
 clean:
-	find . -name "*.class" -type f -delete
+	del /Q .\DrawTheMap\*.class
+	del /Q .\TheDragon\*.class
+	del /Q .\TheFighter\*.class
