@@ -160,11 +160,9 @@ int[][] matrix = {
 
     //V % return 1
     public  int generateRandomZeroOne(float V) {
-        Random random = new Random();
-        // Generates a random double between 0 (inclusive) and 1 (exclusive)
-        double rand = random.nextDouble();
-       float V2 = V/100;
-        // If the random value is less than 0.3, return 1; otherwise, return 0.
+             Random random = new Random();
+             double rand = random.nextDouble();
+             float V2 = V/100;
         return rand < V2 ? 1 : 0;
     }
 }
