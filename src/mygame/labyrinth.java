@@ -1,4 +1,4 @@
-package DrawTheMap;
+package src.mygame;
 
 
 import javax.swing.*;
@@ -9,9 +9,16 @@ import java.lang.String;
 
 
 
-import TheDragon.Dragon;
-import TheFighter.FighterCaracter;
-import DrawTheMap.labyrinth;
+import src.mygame.Utils.*;
+import src.mygame.Controllers.*;
+import src.mygame.Views.*;
+
+
+
+import src.mygame.Models.TheDragon.Dragon;
+import src.mygame.Models.TheFighter.FighterCaracter;
+
+
 
 public class labyrinth {
     
@@ -54,8 +61,7 @@ public class labyrinth {
     public FighterCaracter Bnadem = new FighterCaracter( "Youssef ",   400, 30, 10, xFighter, yFighter);
     public Dragon Dragon = new Dragon("Dragon", 400, 20, 20, xDragon, yDragon);
     public CharactersMovesManage CharactersMovesManage;
-    //public RightSidePanel RightSidePanel;
-   RightSidePanel RightSidePanel ;
+    public RightSidePanel RightSidePanel ;
 
 
 
@@ -78,13 +84,17 @@ public labyrinth() {
    
     //Objects 2
 
+    RightSidePanel = new RightSidePanel(labyrinth.this);
+    RightSidePanel.RightSidePanelDraw();
 
-    RightSidePanel = new RightSidePanel();
-    RightSidePanel.RightSidePanel(this);
+   
+
+
+
+    
     gameTimers = new GameTimers(this, RightSidePanel);
     DragonActionAI DragonActionAI = new DragonActionAI();
     CharactersMovesManage = new CharactersMovesManage(this);
-    //RightSidePanel.RightSidePanel(getLabyrinth());
 
     
         Window = new JFrame("D&D Game");
@@ -100,8 +110,8 @@ public labyrinth() {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                Image RoadMap = new ImageIcon("../Project/resource/MapPixels/labyrinth1.jpg").getImage();
-                Image WallMap = new ImageIcon("../Project/resource/MapPixels/labyrinth2.jpg").getImage();
+                Image RoadMap = new ImageIcon("../Project/src/mygame/resource/MapPixels/labyrinth1.jpg").getImage();
+                Image WallMap = new ImageIcon("../Project/src/mygame/resource/MapPixels/labyrinth2.jpg").getImage();
                
                 MapMaths MapManage = new MapMaths();
 
@@ -263,8 +273,8 @@ public static void main(String[] args) {
         @Override
         public void run() {
             labyrinth labyrinthObj = new labyrinth(); // Create an instance of labyrinth
-            labyrinthObj.RightSidePanel = new RightSidePanel(); // Initialize RightSidePanel
-            labyrinthObj.RightSidePanel.RightSidePanel(labyrinthObj); // Call the method on RightSidePanel
+            labyrinthObj.RightSidePanel = new RightSidePanel(labyrinthObj); // Initialize RightSidePanel
+            labyrinthObj.RightSidePanel.RightSidePanelDraw(); // Draw RightSidePanel
             labyrinthObj.Window.setVisible(true);
         }
     });

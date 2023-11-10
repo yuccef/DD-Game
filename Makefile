@@ -1,23 +1,78 @@
+# Makefile for Java project
+
+# Define the compiler and flags
 JAVAC = javac
 JAVA = java
-SRC_DIR = DrawTheMap
-OUT_DIR = .
+JFLAGS = 
 
-# List of Java source files
-SRCS = $(wildcard $(SRC_DIR)/*.java) $(wildcard TheFighter/*.java) $(wildcard TheDragon/*.java)
+# Define the source directory
+SRCDIR = src
 
-# Target executable
-TARGET = DrawTheMap/labyrinth
+# Define the package names
+PACKAGEDIRS = mygame Controllers Models Utils Views
 
-all: build run clean
+# Define the source files
+SOURCES = $(wildcard $(SRCDIR)/*/*.java) $(wildcard $(SRCDIR)/*.java)$(wildcard $(SRCDIR)/*/*/*.java) 
 
+# Define the classpath
+CLASSPATH = 
+
+# Define the output directory
+OUTDIR = out
+
+# Define the main class
+MAINCLASS = labyrinth
+
+# Default target
+default: build
+
+# Compile the Java source files
 build:
-	$(JAVAC) $(SRCS) -d $(OUT_DIR)
+	$(JAVAC) -d $(OUTDIR) $(SOURCES)
 
+# Run the Java application
 run:
-	$(JAVA) -cp $(OUT_DIR) $(TARGET)
+	$(JAVA) -classpath $(OUTDIR) $(MAINCLASS)
 
+# Clean the compiled class files
 clean:
-	del /Q .\DrawTheMap\*.class
-	del /Q .\TheDragon\*.class
-	del /Q .\TheFighter\*.class
+	rm -rf $(OUTDIR)/*
+
+# Clean and rebuild the project
+rebuild: clean build
+
+# Phony targets
+.PHONY: default build run clean rebuild
+
+
+
+
+# JFLAGS = -g
+# JC = javac
+# .SUFFIXES: .java .class
+# .java.class:
+# 	$(JC) $(JFLAGS) $*.java
+
+# CLASSES = \
+# 	src/mygame/labyrinth.java \
+# 	src/mygame/Controllers/CharactersMovesManage.java \
+# 	src/mygame/Controllers/dragonActionAI.java \
+# 	src/mygame/Controllers/GameTimers.java \
+# 	src/mygame/Models/TheDragon/Dragon.java \
+# 	src/mygame/Models/TheFighter/FighterCaracter.java \
+# 	src/mygame/Utils/MapMaths.java \
+# 	src/mygame/Utils/PicturesPath.java \
+# 	src/mygame/Views/FireAndShieldManage.java \
+# 	src/mygame/Views/RightSidePanel.java
+
+# default: classes
+
+# classes: $(CLASSES:.java=.class)
+
+# clean:
+# 	$(RM) src/mygame/*.class
+# 	$(RM) src/mygame/Controllers/*.class
+# 	$(RM) src/mygame/Models/TheDragon/*.class
+# 	$(RM) src/mygame/Models/TheFighter/*.class
+# 	$(RM) src/mygame/Utils/*.class
+# 	$(RM) src/mygame/Views/*.class

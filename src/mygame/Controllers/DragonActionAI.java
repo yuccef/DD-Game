@@ -1,10 +1,12 @@
-package DrawTheMap;
+package src.mygame.Controllers;
 
 
-import TheDragon.Dragon;
-import TheFighter.FighterCaracter;
+import src.mygame.Models.TheDragon.Dragon;
+import src.mygame.Models.TheFighter.FighterCaracter;
+import src.mygame.labyrinth;
+import src.mygame.Utils.MapMaths;
 
-class  DragonActionAI {
+public class  DragonActionAI {
 
     FighterCaracter Fighter ;
     Dragon Dragon;

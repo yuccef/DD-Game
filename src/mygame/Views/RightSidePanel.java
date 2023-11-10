@@ -1,4 +1,4 @@
-package DrawTheMap;
+package src.mygame.Views;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -6,14 +6,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import TheDragon.Dragon;
-import TheFighter.FighterCaracter;
+
+import src.mygame.*;
+
+
+import src.mygame.Models.TheDragon.Dragon;
+import src.mygame.Models.TheFighter.FighterCaracter;
+import src.mygame.Controllers.*;
 
 
 
 public class RightSidePanel extends JPanel {
 
     public labyrinth labyrinthRightSidePanel;
+
 
     public GameTimers gameTimers;
     public JLabel FighterLabelRightSideLife;
@@ -25,8 +31,10 @@ public class RightSidePanel extends JPanel {
     public JPanel DragonLifePanel;
 
 
-    public void RightSidePanel(labyrinth labyrinth) {
+    public  RightSidePanel(labyrinth labyrinth) {
         labyrinthRightSidePanel = labyrinth;
+    }
+    public void RightSidePanelDraw() {
         labyrinth labyrinth2= this.labyrinthRightSidePanel;
         //labyrinth labyrinth2 = this.labyrinthRightSidePanel;
         Dragon Dragon = labyrinth2.getDragon();
@@ -119,7 +127,7 @@ public class RightSidePanel extends JPanel {
         //picture
         JLabel FighterLabelRightSidePicture = new JLabel();
         FighterLabelRightSidePicture.setBounds(20, 210, 110,    124);
-        ImageIcon imageIconFighterLabelRightSidePicture = new ImageIcon("../Project/resource/GameCharacters/FirstFighter/IconeFighter.png");
+        ImageIcon imageIconFighterLabelRightSidePicture = new ImageIcon("../Project/src/mygame/resource/GameCharacters/FirstFighter/IconeFighter.png");
         Image imageFighterLabelRightSidePicture = imageIconFighterLabelRightSidePicture.getImage();
         Image newImageFighterLabelRightSidePicture = imageFighterLabelRightSidePicture.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
         imageIconFighterLabelRightSidePicture = new ImageIcon(newImageFighterLabelRightSidePicture); 
@@ -147,7 +155,7 @@ public class RightSidePanel extends JPanel {
         //picture
         JLabel DragonLabelRightSidePicture = new JLabel();
         DragonLabelRightSidePicture.setBounds(160, 210, 110,    124);
-        ImageIcon imageIconDragonLabelRightSidePicture = new ImageIcon("../Project/resource/GameCharacters/FirstDragon/DragonIcone.png");
+        ImageIcon imageIconDragonLabelRightSidePicture = new ImageIcon("../Project/src/mygame/resource/GameCharacters/FirstDragon/DragonIcone.png");
         Image imageDragonLabelRightSidePicture = imageIconDragonLabelRightSidePicture.getImage();
         Image newImageDragonLabelRightSidePicture = imageDragonLabelRightSidePicture.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
         imageIconDragonLabelRightSidePicture = new ImageIcon(newImageDragonLabelRightSidePicture); 

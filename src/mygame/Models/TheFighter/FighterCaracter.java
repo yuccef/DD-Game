@@ -1,7 +1,8 @@
-package TheFighter;
+package src.mygame.Models.TheFighter;
 
-import DrawTheMap.labyrinth;
-import TheDragon.Dragon;
+import src.mygame.Models.TheDragon.Dragon;
+import src.mygame.*;
+
 
 public class FighterCaracter {
 

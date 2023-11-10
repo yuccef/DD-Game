@@ -1,12 +1,13 @@
-package DrawTheMap;
+package src.mygame.Views;
 
 import javax.swing.*;
 import java.lang.String;
 
 
 
+import src.mygame.*;
 
-class FireAndShieldManage {
+public class FireAndShieldManage {
 
     // public void FireAndShieldManage(labyrinth labyrinth) {
     // }
@@ -29,11 +30,11 @@ class FireAndShieldManage {
     String nomImage="";
     if(labyrinth.SideFighter=='R'){
         xShield=x+40;
-        nomImage="../Project/resource/GameCharacters/FirstFighter/FighterShield.png";
+        nomImage="../Project/src/mygame/resource/GameCharacters/FirstFighter/FighterShield.png";
     }
     if(labyrinth.SideFighter=='L'){
         xShield=x-40;
-        nomImage="../Project/resource/GameCharacters/FirstFighter/FighterShieldInversed.png";
+        nomImage="../Project/src/mygame/resource/GameCharacters/FirstFighter/FighterShieldInversed.png";
     }
     ImageIcon imageIcon = new ImageIcon(nomImage);
     labyrinth.FighterShield.setIcon(imageIcon);
@@ -46,11 +47,11 @@ class FireAndShieldManage {
 
     if(labyrinth.SideDragon=='R'){
         xShield=x+70;
-       nomImage="../Project/resource/GameCharacters/FirstDragon/DragonShieldInversed.png";
+       nomImage="../Project/src/mygame/resource/GameCharacters/FirstDragon/DragonShieldInversed.png";
     }
     if(labyrinth.SideDragon=='L'){
         xShield=x-40;
-        nomImage="../Project/resource/GameCharacters/FirstDragon/DragonShield.png";
+        nomImage="../Project/src/mygame/resource/GameCharacters/FirstDragon/DragonShield.png";
     }
     ImageIcon imageIcon = new ImageIcon(nomImage);
     labyrinth.DragonShield.setIcon(imageIcon);

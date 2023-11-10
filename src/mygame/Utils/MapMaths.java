@@ -1,4 +1,4 @@
-package DrawTheMap;
+package src.mygame.Utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,6 +10,8 @@ import java.util.Random;
 // import java.io.InputStreamReader;
 
 public class MapMaths{
+
+
 
 int[][] matrix = {
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

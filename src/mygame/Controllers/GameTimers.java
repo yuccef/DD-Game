@@ -1,4 +1,4 @@
-package DrawTheMap;
+package src.mygame.Controllers;
 
 
 
@@ -8,10 +8,14 @@ import java.awt.event.ActionListener;
 
 
 
-import TheDragon.Dragon;
-import TheFighter.FighterCaracter;
+import src.mygame.Views.RightSidePanel;
+import src.mygame.Views.FireAndShieldManage;
+import src.mygame.*;
+import src.mygame.Models.TheDragon.Dragon;
+import src.mygame.Models.TheFighter.FighterCaracter;
 
-class GameTimers {
+
+public class GameTimers {
 
     public Timer timerFireFighter;
     public int xFireFighter=0;
@@ -140,7 +144,7 @@ class GameTimers {
                 labyrinth.FireDragonLabel.setIcon(null);
                 }
                else{
-                    FireAndShieldManage.ShowFire("../Project/resource/GameCharacters/FirstDragon/FireInversed.png", xFire, yFire, labyrinth);
+                    FireAndShieldManage.ShowFire("../Project/src/mygame/resource/GameCharacters/FirstDragon/FireInversed.png", xFire, yFire, labyrinth);
                     xFire -= 5;
 
                 }
@@ -154,7 +158,7 @@ class GameTimers {
                     FirstTime=0;    
 
                 }else{
-                     FireAndShieldManage.ShowFire("../Project/resource/GameCharacters/FirstDragon/Fire.png", xFire, yFire, labyrinth);
+                     FireAndShieldManage.ShowFire("../Project/src/mygame/resource/GameCharacters/FirstDragon/Fire.png", xFire, yFire, labyrinth);
                    xFire += 5;
 
 
@@ -215,7 +219,7 @@ class GameTimers {
                 labyrinth.FireFighterLabel.setIcon(null);
                 }
                else{
-                     FireAndShieldManage.ShowFireFighter("../Project/resource/GameCharacters/FirstFighter/FireFighter.png", xFireFighter, yFireFighter, labyrinth);
+                     FireAndShieldManage.ShowFireFighter("../Project/src/mygame/resource/GameCharacters/FirstFighter/FireFighter.png", xFireFighter, yFireFighter, labyrinth);
                     xFireFighter += 5;
 
                 }
@@ -229,7 +233,7 @@ class GameTimers {
                     FirstTimeFighter=0;    
 
                 }else{
-                     FireAndShieldManage.ShowFireFighter("../Project/resource/GameCharacters/FirstFighter/FireFighterInversed.png", xFireFighter, yFireFighter, labyrinth);
+                     FireAndShieldManage.ShowFireFighter("../Project/src/mygame/resource/GameCharacters/FirstFighter/FireFighterInversed.png", xFireFighter, yFireFighter, labyrinth);
                    xFireFighter -= 5;
 
                 }   

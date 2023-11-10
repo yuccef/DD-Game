@@ -1,7 +1,7 @@
-package TheDragon;
+package src.mygame.Models.TheDragon;
 
-//import DrawTheMap.MapMaths;
-import TheFighter.FighterCaracter;
+import src.mygame.Models.TheFighter.FighterCaracter;
+
 
 public class Dragon {
 

@@ -1,8 +1,17 @@
-package DrawTheMap;
+package src.mygame.Utils;
+
+
+import src.mygame.*;
+
+
 
 public class PicturesPath {
-    public  String PicturesSheet = "../Project/resource/GameCharacters/FirstFighter/";
-    public  String PicturesSheet2 = "../Project/resource/GameCharacters/FirstDragon/";
+
+    public void PicturesPath() {
+    }
+
+    public  String PicturesSheet = "../Project/src/mygame/resource/GameCharacters/FirstFighter/";
+    public  String PicturesSheet2 = "../Project/src/mygame/resource/GameCharacters/FirstDragon/";
     //public  String FirePicture = "../Project/resource/CharactersMvmnt/Fire.png";
     
     //Pictures Path
