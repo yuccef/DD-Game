@@ -1,78 +1,54 @@
 # Makefile for Java project
 
-# Define the compiler and flags
+# Compiler
 JAVAC = javac
+
+# Flags for compiler
+JAVACFLAGS = -cp .
+
+# Java interpreter
 JAVA = java
-JFLAGS = 
 
-# Define the source directory
-SRCDIR = src
+# Flags for Java interpreter
+JAVAFLAGS = -cp .
 
-# Define the package names
-PACKAGEDIRS = mygame Controllers Models Utils Views
+# Source files
+SOURCES = src/mygame/labyrinth.java \
+          src/mygame/Controllers/CharactersMovesManage.java \
+          src/mygame/Controllers/dragonActionAI.java \
+          src/mygame/Controllers/GameTimers.java \
+          src/mygame/Models/TheDragon/Dragon.java \
+          src/mygame/Models/TheFighter/FighterCaracter.java \
+          src/mygame/Utils/MapMaths.java \
+          src/mygame/Utils/PicturesPath.java \
+          src/mygame/Views/FireAndShieldManage.java \
+          src/mygame/Views/RightSidePanel.java
 
-# Define the source files
-SOURCES = $(wildcard $(SRCDIR)/*/*.java) $(wildcard $(SRCDIR)/*.java)$(wildcard $(SRCDIR)/*/*/*.java) 
+# Class files
+CLASSES = $(SOURCES:.java=.class)
 
-# Define the classpath
-CLASSPATH = 
-
-# Define the output directory
-OUTDIR = out
-
-# Define the main class
-MAINCLASS = labyrinth
+# Main class
+MAIN_CLASS = src.mygame.labyrinth
 
 # Default target
-default: build
+all: compile run clean
 
-# Compile the Java source files
-build:
-	$(JAVAC) -d $(OUTDIR) $(SOURCES)
+# Compile Java source files
+compile: $(CLASSES)
 
-# Run the Java application
+%.class: %.java
+	$(JAVAC) $(JAVACFLAGS) $<
+
+# Run the Java program
 run:
-	$(JAVA) -classpath $(OUTDIR) $(MAINCLASS)
+	$(JAVA) $(JAVAFLAGS) $(MAIN_CLASS)
 
-# Clean the compiled class files
+# Clean compiled files
 clean:
-	rm -rf $(OUTDIR)/*
-
-# Clean and rebuild the project
-rebuild: clean build
-
-# Phony targets
-.PHONY: default build run clean rebuild
-
-
-
-
-# JFLAGS = -g
-# JC = javac
-# .SUFFIXES: .java .class
-# .java.class:
-# 	$(JC) $(JFLAGS) $*.java
-
-# CLASSES = \
-# 	src/mygame/labyrinth.java \
-# 	src/mygame/Controllers/CharactersMovesManage.java \
-# 	src/mygame/Controllers/dragonActionAI.java \
-# 	src/mygame/Controllers/GameTimers.java \
-# 	src/mygame/Models/TheDragon/Dragon.java \
-# 	src/mygame/Models/TheFighter/FighterCaracter.java \
-# 	src/mygame/Utils/MapMaths.java \
-# 	src/mygame/Utils/PicturesPath.java \
-# 	src/mygame/Views/FireAndShieldManage.java \
-# 	src/mygame/Views/RightSidePanel.java
-
-# default: classes
-
-# classes: $(CLASSES:.java=.class)
-
-# clean:
-# 	$(RM) src/mygame/*.class
-# 	$(RM) src/mygame/Controllers/*.class
-# 	$(RM) src/mygame/Models/TheDragon/*.class
-# 	$(RM) src/mygame/Models/TheFighter/*.class
-# 	$(RM) src/mygame/Utils/*.class
-# 	$(RM) src/mygame/Views/*.class
+clean:
+	del src\mygame\*.class
+	del src\mygame\Controllers\*.class
+	del src\mygame\Models\TheDragon\*.class
+	del src\mygame\Models\TheFighter\*.class
+	del src\mygame\Utils\*.class
+	del src\mygame\Views\*.class
