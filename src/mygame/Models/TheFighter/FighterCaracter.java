@@ -1,7 +1,7 @@
 package src.mygame.Models.TheFighter;
 
 import src.mygame.Models.TheDragon.Dragon;
-import src.mygame.*;
+import src.mygame.Views.labyrinth;
 
 
 public class FighterCaracter {

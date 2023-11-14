@@ -3,7 +3,7 @@ package src.mygame.Controllers;
 
 import src.mygame.Models.TheDragon.Dragon;
 import src.mygame.Models.TheFighter.FighterCaracter;
-import src.mygame.labyrinth;
+import src.mygame.Views.labyrinth;
 import src.mygame.Utils.MapMaths;
 
 public class  DragonActionAI {

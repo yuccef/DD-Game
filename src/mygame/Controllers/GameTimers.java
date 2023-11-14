@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import src.mygame.Views.RightSidePanel;
 import src.mygame.Views.FireAndShieldManage;
-import src.mygame.*;
+import src.mygame.Views.labyrinth;
 import src.mygame.Models.TheDragon.Dragon;
 import src.mygame.Models.TheFighter.FighterCaracter;
 

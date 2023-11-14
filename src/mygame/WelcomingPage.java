@@ -7,8 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.*;
 
+import src.mygame.Views.*;
 
-public class CaractereButtonInterface {
+
+public class WelcomingPage {
 
     private JFrame charactersWindow;
     public JLabel labelOfWitchButton;
@@ -96,10 +98,10 @@ public class CaractereButtonInterface {
     }
 
        
-    private JButton createLevelButton(String label) {
+    public JButton createLevelButton(String label) {
         JButton button = new JButton(label);
         button.setPreferredSize(new Dimension(200, 50));
-        CaractereButtonInterface caractereButtonInterface = this;
+        WelcomingPage caractereButtonInterface = this;
     
         button.addActionListener(new ActionListener() {
             @Override
@@ -210,7 +212,6 @@ class RoundBtn implements Border {
         }
     }
 
-
 class LevelsOfGame {
 
     private JFrame fenetreLevels;
@@ -244,7 +245,7 @@ class LevelsOfGame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                CaractereButtonInterface app = new CaractereButtonInterface();
+                WelcomingPage app = new WelcomingPage();
                 app.showCaracterButton();
             }
         });

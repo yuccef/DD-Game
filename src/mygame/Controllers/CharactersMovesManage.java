@@ -3,11 +3,7 @@ package src.mygame.Controllers;
 import javax.swing.*;
 import java.lang.String;
 
-import src.mygame.*;
-import src.mygame.Utils.*;
 import src.mygame.Views.*;
-import src.mygame.Controllers.*;
-import src.mygame.Utils.MapMaths;
 import src.mygame.Utils.PicturesPath;
 
 

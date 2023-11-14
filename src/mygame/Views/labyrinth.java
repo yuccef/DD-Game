@@ -1,4 +1,4 @@
-package src.mygame;
+package src.mygame.Views;
 
 
 import javax.swing.*;
@@ -11,7 +11,6 @@ import java.lang.String;
 
 import src.mygame.Utils.*;
 import src.mygame.Controllers.*;
-import src.mygame.Views.*;
 
 
 
@@ -90,6 +89,7 @@ public labyrinth() {
 
     RightSidePanel = new RightSidePanel(labyrinth.this);
     RightSidePanel.RightSidePanelDraw();
+
 
    
 

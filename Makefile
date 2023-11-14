@@ -13,8 +13,8 @@ JAVA = java
 JAVAFLAGS = -cp .
 
 # Source files
-SOURCES = src/mygame/labyrinth.java \
-          src/mygame/CaractereButtonInterface.java \
+SOURCES = src/mygame/Views/labyrinth.java \
+          src/mygame/WelcomingPage.java \
           src/mygame/Controllers/CharactersMovesManage.java \
           src/mygame/Controllers/dragonActionAI.java \
           src/mygame/Controllers/GameTimers.java \
@@ -29,7 +29,7 @@ SOURCES = src/mygame/labyrinth.java \
 CLASSES = $(SOURCES:.java=.class)
 
 # Main class
-MAIN_CLASS = src.mygame.CaractereButtonInterface
+MAIN_CLASS = src.mygame.WelcomingPage
 
 # Default target
 all: compile run clean
