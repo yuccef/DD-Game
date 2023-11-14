@@ -22,6 +22,10 @@ import src.mygame.Models.TheFighter.FighterCaracter;
 
 public class labyrinth {
     
+       public void showLabyrinthWindow() {
+            Window.setVisible(true);
+        }
+    
 
     public  int MATRIX_SIZE = 810;
 
@@ -89,7 +93,8 @@ public labyrinth() {
 
    
 
-
+        
+     
 
     
     gameTimers = new GameTimers(this, RightSidePanel);
@@ -102,7 +107,7 @@ public labyrinth() {
         Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Window.add(RightSidePanel);
         Window.setLayout(null);
-        
+
         
         //Map Panel
         JPanel DrawLabyrinthPanel = new JPanel() {

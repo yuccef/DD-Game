@@ -14,6 +14,7 @@ JAVAFLAGS = -cp .
 
 # Source files
 SOURCES = src/mygame/labyrinth.java \
+          src/mygame/CaractereButtonInterface.java \
           src/mygame/Controllers/CharactersMovesManage.java \
           src/mygame/Controllers/dragonActionAI.java \
           src/mygame/Controllers/GameTimers.java \
@@ -28,7 +29,7 @@ SOURCES = src/mygame/labyrinth.java \
 CLASSES = $(SOURCES:.java=.class)
 
 # Main class
-MAIN_CLASS = src.mygame.labyrinth
+MAIN_CLASS = src.mygame.CaractereButtonInterface
 
 # Default target
 all: compile run clean
@@ -52,3 +53,10 @@ clean:
 	del src\mygame\Models\TheFighter\*.class
 	del src\mygame\Utils\*.class
 	del src\mygame\Views\*.class
+
+
+
+
+
+
+    
