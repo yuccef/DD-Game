@@ -21,7 +21,7 @@ import src.mygame.Models.TheFighter.FighterCaracter;
 
 
 public class labyrinth {
-    
+
        public void showLabyrinthWindow() {
             Window.setVisible(true);
         }
@@ -187,6 +187,7 @@ public labyrinth() {
         Window.setSize(new Dimension(1100, 635));
         Window.setResizable(false);
         Window.add(DrawLabyrinthPanel);
+        Window.setLocationRelativeTo(null);
 
 
     
