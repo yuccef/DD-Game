@@ -18,6 +18,7 @@ public class WelcomingPage {
     public JLabel labelOfHumanFighterButton;
 
     
+  
     int choix = 0;
     LevelsOfGame niveau = new LevelsOfGame();
 
@@ -40,7 +41,7 @@ public class WelcomingPage {
         labelOfHumanFighterButton.setFont(font);
 
 
-        ImageIcon background = new ImageIcon("../Project/src/mygame/resource//Background1.jpg");
+        ImageIcon background = new ImageIcon("../Project/src/mygame/resource//Background.png");
         JLabel backgroundLabel = new JLabel(background);
         backgroundLabel.setBounds(0, 0, 1100, 635);
         charactersWindow.add(backgroundLabel);
@@ -82,7 +83,6 @@ public class WelcomingPage {
         charactersWindow.setVisible(true);
         charactersWindow.setLocationRelativeTo(null);  // Ajoutez cette ligne pour centrer la fenêtre sur l'écran
     }
-
     public void setButtonStyles(JButton button) {
         button.setFont(new Font("Arial", Font.BOLD, 12));
         button.setForeground(Color.WHITE);
@@ -217,6 +217,7 @@ class LevelsOfGame {
     private JFrame fenetreLevels;
 
     public void showLevelsButton() {
+
 
         fenetreLevels = new JFrame("Choisir le niveau souhaite");
         JPanel mainPanel = new JPanel(new GridLayout(1, 3));

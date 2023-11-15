@@ -13,17 +13,17 @@ public class FighterCaracter {
 
     public int xFighter;
     public int yFighter;
+    public int damage;
     public String name;
     public int score;
-    public int damage;
     public int defense;
     public int Close;
-
+    
     public int VarDefenseFighter=0;
     public int VarBlessedFighter=0;
     public int VarDamageFighter=0;
-
-  
+    
+    
     // Liste des méthodes
     public FighterCaracter( String nom, int initialScore, int initialDamage, int initialDefense, int xFighter1, int yFighter1) {
         name = nom;
