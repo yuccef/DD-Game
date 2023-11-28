@@ -15,8 +15,8 @@ JAVAFLAGS = -cp .
 # Source files
 SOURCES = src/mygame/Views/labyrinth.java \
           src/mygame/WelcomingPage.java \
-          src/mygame/Controllers/CharactersMovesManage.java \
           src/mygame/Controllers/dragonActionAI.java \
+          src/mygame/Controllers/CharactersMovesManage.java \
           src/mygame/Controllers/GameTimers.java \
           src/mygame/Models/TheDragon/Dragon.java \
           src/mygame/Models/TheFighter/FighterCaracter.java \
@@ -45,7 +45,6 @@ run:
 	$(JAVA) $(JAVAFLAGS) $(MAIN_CLASS)
 
 # Clean compiled files
-clean:
 clean:
 	del src\mygame\*.class
 	del src\mygame\Controllers\*.class

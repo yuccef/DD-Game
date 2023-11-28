@@ -26,20 +26,32 @@ public class RightSidePanel extends JPanel {
     public JLabel FighterLabelRightSideName;
     public JLabel DragonLabelRightSideName;
     public JLabel DragonLabelRightSideLife;
+    public JLabel theLevelLabel;
+    public JLabel theCharacterLabel;
 
     public JPanel FighterLifePanel;
     public JPanel DragonLifePanel;
 
 
-    public  RightSidePanel(labyrinth labyrinth) {
+
+
+ 
+    public  RightSidePanel(labyrinth labyrinth ) {
         labyrinthRightSidePanel = labyrinth;
     }
+
     public void RightSidePanelDraw() {
+ 
+
+        WelcomingPage welcomingPage = this.labyrinthRightSidePanel.welcomingPageLabyrinth;
+        String theLevel = welcomingPage.getTheLevel();
+        String theCharacter = welcomingPage.getTheCharacter();
         labyrinth labyrinth2= this.labyrinthRightSidePanel;
-        //labyrinth labyrinth2 = this.labyrinthRightSidePanel;
         Dragon Dragon = labyrinth2.getDragon();
         FighterCaracter Bnadem = labyrinth2.getBnadem();
 
+        System.out.println("The character is : "+theCharacter); 
+        System.out.println("The level is : "+theLevel);
         setLayout(null);
         setBounds(800, 0, 285, 597);
         setBackground(Color.decode("#e8dfdb"));
@@ -178,6 +190,20 @@ public class RightSidePanel extends JPanel {
         DragonLabelRightSideLife.setFont(FontForLife);
         DragonLabelRightSideLife.setForeground(Color.decode("#425b8a"));
         DragonLabelRightSideLife.setBounds(160, 350, 110, 50);
+
+
+        //level
+        theLevelLabel = new JLabel("Level : "+theLevel);
+        theLevelLabel.setFont(FontForLife);
+        theLevelLabel.setForeground(Color.decode("#425b8a"));
+        theLevelLabel.setBounds(20, 400, 110, 50);
+
+        //character
+        theCharacterLabel = new JLabel("Character : "+ theCharacter);
+        theCharacterLabel.setFont(FontForLife);
+        theCharacterLabel.setForeground(Color.decode("#425b8a"));
+        theCharacterLabel.setBounds(20, 450, 110, 50);
+
         
         // Add components to the panel
         add(FighterLabelRightSidePicture);
@@ -196,6 +222,9 @@ public class RightSidePanel extends JPanel {
         add(DragonLabelRightSideLife);
         FighterLifePanel.add(FighterLabelRightSideLife);
         DragonLifePanel.add(DragonLabelRightSideLife);
+
+        add(theLevelLabel);
+        add(theCharacterLabel);
 
   
   

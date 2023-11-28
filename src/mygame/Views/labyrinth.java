@@ -1,25 +1,24 @@
 package src.mygame.Views;
 
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.String;
 
-
-
 import src.mygame.Utils.*;
+import src.mygame.WelcomingPage;
 import src.mygame.Controllers.*;
-
-
-
 import src.mygame.Models.TheDragon.Dragon;
 import src.mygame.Models.TheFighter.FighterCaracter;
 
 
 
 public class labyrinth {
+
+
 
        public void showLabyrinthWindow() {
             Window.setVisible(true);
@@ -80,10 +79,11 @@ public class labyrinth {
     return this;
      }
 
-
+    WelcomingPage welcomingPageLabyrinth  ;
 
 //Methods
-public labyrinth() {
+public labyrinth(WelcomingPage welcomingPage) {
+    this.welcomingPageLabyrinth = welcomingPage;
    
     //Objects 2
 
@@ -278,7 +278,8 @@ public static void main(String[] args) {
     SwingUtilities.invokeLater(new Runnable() {
         @Override
         public void run() {
-            labyrinth labyrinthObj = new labyrinth(); // Create an instance of labyrinth
+            WelcomingPage welcomingPage = new WelcomingPage();
+            labyrinth labyrinthObj = new labyrinth(welcomingPage); // Create an instance of labyrinth
             labyrinthObj.RightSidePanel = new RightSidePanel(labyrinthObj); // Initialize RightSidePanel
             labyrinthObj.RightSidePanel.RightSidePanelDraw(); // Draw RightSidePanel
             labyrinthObj.Window.setVisible(true);
