@@ -5,6 +5,7 @@ import java.lang.String;
 
 import src.mygame.Views.*;
 import src.mygame.Utils.PicturesPath;
+import src.mygame.Controllers.Sound;
 
 
 public class CharactersMovesManage{
@@ -13,6 +14,7 @@ public class CharactersMovesManage{
     PicturesPath Paths = new PicturesPath();
 
     public labyrinth labyrinthImportant;
+    Sound sound = new Sound();
 
     //I want a construcctor who initialize the labyrinth
     public CharactersMovesManage(labyrinth labyrinthInstance) {
@@ -130,6 +132,8 @@ if(labyrinth.xFighter==labyrinth.xBonus1 && labyrinth.yFighter==labyrinth.yBonus
     labyrinth.BonusLabel=null;
     labyrinth.Bnadem.BonusLife(labyrinth.Bnadem);
     labyrinth.RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + labyrinth.Bnadem.score);
+    sound.playSound(1);
+
     }
 if(labyrinth.xFighter==labyrinth.xBonus2 && labyrinth.yFighter==labyrinth.yBonus2){
     labyrinth.BonusLabel2.setIcon(null);
@@ -140,6 +144,8 @@ if(labyrinth.xFighter==labyrinth.xBonus2 && labyrinth.yFighter==labyrinth.yBonus
     labyrinth.BonusLabel2=null;
     labyrinth.Bnadem.BonusLife(labyrinth.Bnadem);
     labyrinth.RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + labyrinth.Bnadem.score);
+    sound.playSound(1);
+
 
     
     }

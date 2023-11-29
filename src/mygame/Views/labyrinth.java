@@ -7,6 +7,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.String;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
 
 import src.mygame.Utils.*;
 import src.mygame.WelcomingPage;
@@ -19,6 +23,7 @@ import src.mygame.Models.TheFighter.FighterCaracter;
 public class labyrinth {
 
 
+      Sound sound = new Sound();
 
        public void showLabyrinthWindow() {
             Window.setVisible(true);
@@ -41,6 +46,9 @@ public class labyrinth {
     public int yBonus1 = 120;
     public int xBonus2 = 530;
     public int yBonus2 = 280;
+
+
+    public int Walk =15;
  
     public JLabel characterLabel;
     public JLabel DragonLabel;
@@ -60,6 +68,8 @@ public class labyrinth {
     public int currentImageIndexDragonAttack = 0;
 
     int [] indices = new int[4];
+
+    public boolean isAudioPlaying = false;
 
 
     public char SideDragon, SideFighter;
@@ -193,6 +203,7 @@ public labyrinth(WelcomingPage welcomingPage) {
 
 
 
+
         //Initialize Labels
         characterLabel.setBounds(xFighter, yFighter, 40, 40);
         DragonLabel.setBounds(xDragon, yDragon, 40, 40);
@@ -247,22 +258,37 @@ public labyrinth(WelcomingPage welcomingPage) {
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right Fighter
                     SideFighter = 'R';
                     CharactersMovesManage.moveFighter(1,1, 0, labyrinth.this);
+                    if(Walk %15==0){
+                    sound.playSound(2);
+                    }
+                    Walk++;
                     Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this);
 
                 } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left Fighter
                     SideFighter = 'L';
                        CharactersMovesManage.moveFighter(1,-1, 0, labyrinth.this);
-                    Fightermove="run";
+                    if(Walk %15==0){
+                    sound.playSound(2);
+                    }
+                    Walk++;                       Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this);
                 // IN UP AND DOWN I SHOULD TO UPDATE SIDES
                 } else if (e.getKeyCode() == KeyEvent.VK_UP) { // Up Fighter
                        CharactersMovesManage.moveFighter(1,0, -1, labyrinth.this);
+                    if(Walk %15==0){
+                    sound.playSound(2);
+                    }
+                    Walk++;
                     Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this );
 
                 } else if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down Fighter
                        CharactersMovesManage.moveFighter(1,0, 1, labyrinth.this);
+                    if(Walk %15==0){
+                    sound.playSound(2);
+                    }
+                    Walk++;
                     Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this );
                 }
@@ -277,7 +303,9 @@ public labyrinth(WelcomingPage welcomingPage) {
                     Fightermove="Defend";            
                     DragonActionAI.DragonActionAI(labyrinth.this );
                 }
-             
+       
+
+            
 
 
                 //key listener for dragon
