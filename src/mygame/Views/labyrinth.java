@@ -76,39 +76,28 @@ public class labyrinth {
     
     public String Fightermove;
 
+    public FighterCaracter Bnadem;
+    public Dragon Dragon;
+
+    public String Thelevel;
+    public String TheCharacter;
+
 
     
     //Objects
     PicturesPath Paths = new PicturesPath();
     public GameTimers gameTimers;
-    public FighterCaracter Bnadem = new FighterCaracter( "Youssef ",   400, 30, 10, xFighter, yFighter);
-    public Dragon Dragon = new Dragon("Dragon", 400, 20, 20, xDragon, yDragon);
+    public FighterCaracter HumanFighter = new FighterCaracter( "Human ",   400, 30, 10, xFighter, yFighter);
+    public FighterCaracter Witch = new FighterCaracter( "Witch ",   400, 30, 10, xFighter, yFighter);
+    public FighterCaracter Knight = new FighterCaracter( "Knight ",   400, 30, 10, xFighter, yFighter);
+
+    public Dragon Dragon1 = new Dragon("Dragon 1", 400, 20, 20, xDragon, yDragon);
+    public Dragon Dragon2 = new Dragon("Dragon 2", 500, 40, 20, xDragon, yDragon);
+    public Dragon Dragon3 = new Dragon("Dragon 3", 600, 60, 20, xDragon, yDragon);
     public CharactersMovesManage CharactersMovesManage;
     public RightSidePanel RightSidePanel ;
+    public WelcomingPage welcomingPageLabyrinth  ;
 
-
-
-    //Getters
-    public FighterCaracter getBnadem() {
-        return this.Bnadem;
-    }
-    public Dragon getDragon() {
-    return this.Dragon;
-}
-
- public int getLifeFighter(){
-    return this.Bnadem.score;
-}
-
-public int getLifeDragon(){
-    return this.Dragon.score;
-}
-
-     public labyrinth  getLabyrinth(){
-    return this;
-     }
-
-    WelcomingPage welcomingPageLabyrinth  ;
 
 //Methods
 public labyrinth(WelcomingPage welcomingPage) {
@@ -118,6 +107,29 @@ public labyrinth(WelcomingPage welcomingPage) {
 
     RightSidePanel = new RightSidePanel(labyrinth.this);
     RightSidePanel.RightSidePanelDraw();
+
+    Thelevel = welcomingPageLabyrinth.theLevel;
+    TheCharacter = welcomingPageLabyrinth.theCharacter;
+
+    if(Thelevel == "Easy"){
+        Dragon = Dragon1;
+    }
+    else if(Thelevel == "Medium"){
+        Dragon = Dragon2;
+    }
+    else if(Thelevel == "Hard"){
+        Dragon = Dragon3;
+    }
+
+    if(TheCharacter == "Witch"){
+        Bnadem = Witch;
+    }
+    else if(TheCharacter == "Knight"){
+        Bnadem = Knight;
+    }
+    else if(TheCharacter == "HumanFighter"){
+        Bnadem = HumanFighter;
+    }
 
 
    
@@ -340,6 +352,29 @@ public labyrinth(WelcomingPage welcomingPage) {
 
     }
 //this is the end of labyrinth method
+
+
+
+
+    //Getters
+    public FighterCaracter getBnadem() {
+        return this.Bnadem;
+    }
+    public Dragon getDragon() {
+    return this.Dragon;
+}
+
+ public int getLifeFighter(){
+    return this.Bnadem.score;
+}
+
+public int getLifeDragon(){
+    return this.Dragon.score;
+}
+
+     public labyrinth  getLabyrinth(){
+    return this;
+     }
 
 
 // main of our file 

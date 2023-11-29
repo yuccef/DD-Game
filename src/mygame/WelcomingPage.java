@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.*;
 import java.lang.String;
+
+import src.mygame.Models.TheFighter.FighterCaracter;
 import src.mygame.Views.*;
 
 
@@ -23,6 +25,8 @@ public class WelcomingPage {
     public int WhichCharacter = 0;
     public int WhichLevel = 0;
     public int choix = 0;
+
+
 
     LevelsOfGame niveau = new LevelsOfGame();
 
@@ -167,9 +171,9 @@ public class WelcomingPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String message = switch (choice) {
-                    case 1 -> "Voulez-vous vraiment choisir la sorcière ?";
-                    case 2 -> "Voulez-vous vraiment choisir le Chevalier ?";
-                    case 3 -> "Voulez-vous vraiment choisir le Maitre du jeu ?";
+                    case 1 -> "Voulez-vous vraiment choisir la chevalier ?";
+                    case 2 -> "Voulez-vous vraiment choisir la sorciere ?";
+                    case 3 -> "Voulez-vous vraiment choisir le combatant humain?";
                     default -> "";
                 };
                 WelcomingPage caractereButtonInterface = WelcomingPage.this;

@@ -46,6 +46,24 @@ public class RightSidePanel extends JPanel {
         WelcomingPage welcomingPage = this.labyrinthRightSidePanel.welcomingPageLabyrinth;
         String theLevel = welcomingPage.getTheLevel();
         String theCharacter = welcomingPage.getTheCharacter();
+
+        if(theLevel=="Easy"){
+            labyrinthRightSidePanel.Dragon=labyrinthRightSidePanel.Dragon1;
+        }else if(theLevel=="Medium"){
+            labyrinthRightSidePanel.Dragon=labyrinthRightSidePanel.Dragon2;
+        }else if(theLevel=="Hard"){
+            labyrinthRightSidePanel.Dragon=labyrinthRightSidePanel.Dragon3;
+        }
+
+
+        if(theCharacter=="Witch"){
+            labyrinthRightSidePanel.Bnadem=labyrinthRightSidePanel.Witch;
+        }else if(theCharacter=="Knight"){
+            labyrinthRightSidePanel.Bnadem=labyrinthRightSidePanel.Knight;
+        }else if(theCharacter=="HumanFighter"){
+            labyrinthRightSidePanel.Bnadem=labyrinthRightSidePanel.HumanFighter;
+        }
+
         labyrinth labyrinth2= this.labyrinthRightSidePanel;
         Dragon Dragon = labyrinth2.getDragon();
         FighterCaracter Bnadem = labyrinth2.getBnadem();
@@ -194,7 +212,7 @@ public class RightSidePanel extends JPanel {
         DragonLabelRightSideName.setBounds(160, 150, 110, 50);
 
         //life
-        DragonLabelRightSideLife = new JLabel("  Score :"+ Bnadem.score+"  ") ;
+        DragonLabelRightSideLife = new JLabel("  Score :"+ Dragon.score+"  ") ;
         DragonLabelRightSideLife.setFont(FontForLife);
         DragonLabelRightSideLife.setForeground(Color.decode("#425b8a"));
         DragonLabelRightSideLife.setBounds(160, 350, 200, 50);
