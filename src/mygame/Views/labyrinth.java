@@ -261,7 +261,7 @@ public labyrinth(WelcomingPage welcomingPage) {
                     if(Walk %15==0){
                     sound.playSound(2);
                     }
-                    Walk++;
+                     Walk++;
                     Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this);
 

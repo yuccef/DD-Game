@@ -132,7 +132,7 @@ if(labyrinth.xFighter==labyrinth.xBonus1 && labyrinth.yFighter==labyrinth.yBonus
     labyrinth.BonusLabel=null;
     labyrinth.Bnadem.BonusLife(labyrinth.Bnadem);
     labyrinth.RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + labyrinth.Bnadem.score);
-    sound.playSound(1);
+    sound.playSound(4);
 
     }
 if(labyrinth.xFighter==labyrinth.xBonus2 && labyrinth.yFighter==labyrinth.yBonus2){
@@ -144,7 +144,7 @@ if(labyrinth.xFighter==labyrinth.xBonus2 && labyrinth.yFighter==labyrinth.yBonus
     labyrinth.BonusLabel2=null;
     labyrinth.Bnadem.BonusLife(labyrinth.Bnadem);
     labyrinth.RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + labyrinth.Bnadem.score);
-    sound.playSound(1);
+    sound.playSound(4);
 
 
     

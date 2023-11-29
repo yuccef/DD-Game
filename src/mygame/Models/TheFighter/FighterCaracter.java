@@ -3,6 +3,7 @@ package src.mygame.Models.TheFighter;
 import src.mygame.Models.TheDragon.Dragon;
 import src.mygame.Views.labyrinth;
 import src.mygame.Views.winOrLose;
+import src.mygame.Controllers.Sound;
 
 
 public class FighterCaracter {
@@ -19,6 +20,8 @@ public class FighterCaracter {
     public int score;
     public int defense;
     public int Close;
+
+    public Sound sound= new Sound();
     
     public int VarDefenseFighter=0;
     public int VarBlessedFighter=0;
@@ -44,8 +47,7 @@ public class FighterCaracter {
         else{
             Dragon.score = 0;
             System.out.println("You win");
-                        new winOrLose();
-
+            sound.playSound(1);
         }
     }
 
@@ -61,7 +63,9 @@ public class FighterCaracter {
 
     public void lose(FighterCaracter Fighter) {
         if (FighterCaracterUpdateDealth(Fighter) == 1) {
+
             System.out.println("You lose");
+            sound.playSound(3);
             new winOrLose();
 
             // break;
