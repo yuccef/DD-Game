@@ -71,6 +71,7 @@ public class RightSidePanel extends JPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
+      
                 if (Bnadem.score > 200) {
                     g.setColor(Color.GREEN);
                 } else if (Bnadem.score > 100) {
@@ -78,6 +79,10 @@ public class RightSidePanel extends JPanel {
                 } else {
                     g.setColor(Color.RED);
                 }
+                // if(Bnadem.score>400){
+                //     g.setColor(Color.ORANGE);
+                 
+                // }
 
                 int width = (int) ((Bnadem.score / (double) 400) * getWidth());
                 g.fillRect(0, 0, width, getHeight());
@@ -90,6 +95,8 @@ public class RightSidePanel extends JPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
+                
+
                 if (Dragon.score > 200) {
                     g.setColor(Color.GREEN);
                 } else if (Dragon.score > 100) {

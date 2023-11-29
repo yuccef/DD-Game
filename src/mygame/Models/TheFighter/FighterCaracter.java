@@ -69,12 +69,9 @@ public class FighterCaracter {
     }
 
     public void BonusLife(FighterCaracter Fighter) {
-        if (Fighter.score <= 49) {
             Fighter.score += 20;
-        }
-        if (Fighter.score >= 100) {
-            Fighter.score = 100;
-        }
+        
+    
     }
 
     public int ActionCanWorks(FighterCaracter Fighter, Dragon Dragon) {

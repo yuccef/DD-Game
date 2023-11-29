@@ -35,6 +35,12 @@ public class labyrinth {
     public int yFighter = 40;
     public int xDragon = 720;
     public int yDragon = 520;
+
+
+    public int xBonus1 = 300;
+    public int yBonus1 = 120;
+    public int xBonus2 = 530;
+    public int yBonus2 = 280;
  
     public JLabel characterLabel;
     public JLabel DragonLabel;
@@ -43,12 +49,17 @@ public class labyrinth {
     public JLabel FighterShield;
     public JLabel DragonShield;
 
+    public JLabel BonusLabel;
+    public JLabel BonusLabel2;
+
 
     //Should to update this
     public int currentImageIndexFighterRun = 0;
     public int currentImageIndexFighterAttack=0;
     public int currentImageIndexDragonRun = 0;
     public int currentImageIndexDragonAttack = 0;
+
+    int [] indices = new int[4];
 
 
     public char SideDragon, SideFighter;
@@ -125,6 +136,7 @@ public labyrinth(WelcomingPage welcomingPage) {
 
                 Image RoadMap = new ImageIcon("../Project/src/mygame/resource/MapPixels/labyrinth1.jpg").getImage();
                 Image WallMap = new ImageIcon("../Project/src/mygame/resource/MapPixels/labyrinth2.jpg").getImage();
+
                
                 MapMaths MapManage = new MapMaths();
 
@@ -134,11 +146,19 @@ public labyrinth(WelcomingPage welcomingPage) {
                 for(int i=0; i<800; i=i+40){
                     for(int j=0; j<800; j=j+40){
                         if(Bmatrix[i][j] == 0){
-                            g.drawImage(RoadMap, i , j, this);
+                            g.drawImage(RoadMap, i , j, this);                                                
                         }
+
            
                     }
+     
                 }
+                //juste un exemple
+       
+
+
+                // g.drawImage(Bonus,300 ,120 , this);
+                //     g.drawImage(Bonus, 530 ,280 , this);
 
                 for(int i=0; i<20;i++){
                     for(int j=0; j<20; j++){
@@ -151,7 +171,14 @@ public labyrinth(WelcomingPage welcomingPage) {
         }             
     };
 
+            BonusLabel = new JLabel();
+            BonusLabel2 = new JLabel();
 
+                 Image Bonus = new ImageIcon("../Project/src/mygame/resource/Bonus.png").getImage();
+                ImageIcon BonusIcon = new ImageIcon(Bonus);
+                BonusLabel.setIcon(BonusIcon);
+                BonusLabel2.setIcon(BonusIcon);
+      
 
         //Labels
         characterLabel = new JLabel();
@@ -165,6 +192,7 @@ public labyrinth(WelcomingPage welcomingPage) {
 
 
 
+
         //Initialize Labels
         characterLabel.setBounds(xFighter, yFighter, 40, 40);
         DragonLabel.setBounds(xDragon, yDragon, 40, 40);
@@ -175,6 +203,8 @@ public labyrinth(WelcomingPage welcomingPage) {
         FighterShield.setBounds(xFighter, yFighter, 40, 40);
         DragonShield.setBounds(xDragon, yDragon, 40, 40);
 
+                   BonusLabel.setBounds(xBonus1, yBonus1, BonusIcon.getIconWidth(), BonusIcon.getIconHeight());
+                   BonusLabel2.setBounds(xBonus2, yBonus2, BonusIcon.getIconWidth(), BonusIcon.getIconHeight());
 
 
         //Add to Panel
@@ -189,6 +219,9 @@ public labyrinth(WelcomingPage welcomingPage) {
 
         DrawLabyrinthPanel.add(FighterShield);
         DrawLabyrinthPanel.add(DragonShield);
+
+        DrawLabyrinthPanel.add(BonusLabel);
+        DrawLabyrinthPanel.add(BonusLabel2);
 
 
         //Show the Window
@@ -286,9 +319,10 @@ public static void main(String[] args) {
     SwingUtilities.invokeLater(new Runnable() {
         @Override
         public void run() {
-             new winOrLose();
             WelcomingPage welcomingPage = new WelcomingPage();
             labyrinth labyrinthObj = new labyrinth(welcomingPage); // Create an instance of labyrinth
+            Bonus Bonus = new Bonus();
+            Bonus.Bonus(labyrinthObj);
             labyrinthObj.RightSidePanel = new RightSidePanel(labyrinthObj); // Initialize RightSidePanel
             labyrinthObj.RightSidePanel.RightSidePanelDraw(); // Draw RightSidePanel
             labyrinthObj.Window.setVisible(true);
