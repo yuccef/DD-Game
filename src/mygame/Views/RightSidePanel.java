@@ -58,6 +58,7 @@ public class RightSidePanel extends JPanel {
         LineBorder border = new LineBorder(Color.decode("#365979"), 10, true);
         LineBorder border1 = new LineBorder(Color.decode("#8bb1c4"), 5, true);
         LineBorder border2 = new LineBorder(Color.decode("#b96343"), 5, true);
+        LineBorder border3 = new LineBorder(Color.decode("#654768"), 5, true);  
         setBorder(border);
         //Fonts     
         Font FontForTitle = new Font("Comic Sans MS", Font.BOLD, 20);
@@ -189,20 +190,22 @@ public class RightSidePanel extends JPanel {
         DragonLabelRightSideLife = new JLabel("  Score :"+ Bnadem.score+"  ") ;
         DragonLabelRightSideLife.setFont(FontForLife);
         DragonLabelRightSideLife.setForeground(Color.decode("#425b8a"));
-        DragonLabelRightSideLife.setBounds(160, 350, 110, 50);
+        DragonLabelRightSideLife.setBounds(160, 350, 200, 50);
 
 
         //level
         theLevelLabel = new JLabel("Level : "+theLevel);
+        theLevelLabel.setBorder(border3);
         theLevelLabel.setFont(FontForLife);
-        theLevelLabel.setForeground(Color.decode("#425b8a"));
-        theLevelLabel.setBounds(20, 400, 110, 50);
+        theLevelLabel.setForeground(Color.decode("#1c8d93"));
+        theLevelLabel.setBounds(20, 450, 110, 50);
 
         //character
         theCharacterLabel = new JLabel("Character : "+ theCharacter);
+        theCharacterLabel.setBorder(border3);
         theCharacterLabel.setFont(FontForLife);
         theCharacterLabel.setForeground(Color.decode("#425b8a"));
-        theCharacterLabel.setBounds(20, 450, 110, 50);
+        theCharacterLabel.setBounds(20, 500, 200, 50);
 
         
         // Add components to the panel
