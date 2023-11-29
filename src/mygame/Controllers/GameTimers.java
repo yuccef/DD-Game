@@ -13,6 +13,7 @@ import src.mygame.Views.FireAndShieldManage;
 import src.mygame.Views.labyrinth;
 import src.mygame.Models.TheDragon.Dragon;
 import src.mygame.Models.TheFighter.FighterCaracter;
+import  src.mygame.Views.winOrLose;
 
 
 public class GameTimers {
@@ -58,6 +59,8 @@ public class GameTimers {
         labyrinth labyrinth = labyrinthInstance;
         RightSidePanel RightSidePanel =RightSidePanelTest;
         FireAndShieldManage FireAndShieldManage = new FireAndShieldManage();
+
+                   winOrLose winOrLose = new winOrLose();
 
    
         //Timer for the fighter and the dragon
@@ -106,7 +109,6 @@ public class GameTimers {
 
                  
     
-           
             
        if (xFire <= labyrinth.xFighter   || xFire==40 || xFire==760) {
                  
@@ -118,6 +120,7 @@ public class GameTimers {
                     Dragon.DamageDragonFighterCaracter(Bnadem, Dragon);
                     Bnadem.FighterCaracterUpdateDealth(Bnadem);
                     Bnadem.lose(Bnadem);
+                    winOrLose.winOrLose(labyrinth);
                     RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
                     RightSidePanel.FighterLifePanel.repaint();
                     
@@ -134,6 +137,8 @@ public class GameTimers {
                     labyrinth.FireDragonLabel.setIcon(null);
                     Bnadem.FighterDefense(Bnadem, Dragon);
                     Bnadem.lose(Bnadem);
+                    winOrLose.winOrLose(labyrinth);
+
                     RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
                     RightSidePanel.FighterLifePanel.repaint();  
                     ShieldFighterCheker=0;
@@ -192,7 +197,8 @@ public class GameTimers {
                     Bnadem.DamageFighterCaracterTheDragon(Bnadem, Dragon);
                     Dragon.DragonUpdateDealth(Dragon);
                     Dragon.lose(Dragon);
-    
+                    winOrLose.winOrLose(labyrinth);
+
                     RightSidePanel.DragonLabelRightSideLife.setText(" Vie : " + Dragon.score);
                     RightSidePanel.DragonLifePanel.repaint();
                     
@@ -209,6 +215,8 @@ public class GameTimers {
                     labyrinth.FireFighterLabel.setIcon(null);
                     Dragon.DragonDefense(Bnadem, Dragon);
                     Dragon.lose(Dragon);
+                    winOrLose.winOrLose(labyrinth);
+
                     RightSidePanel.DragonLabelRightSideLife.setText(" Vie : " + Dragon.score);
                     RightSidePanel.DragonLifePanel.repaint();  
                     ShieldDragonCheker=0;

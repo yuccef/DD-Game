@@ -2,6 +2,7 @@ package src.mygame.Models.TheFighter;
 
 import src.mygame.Models.TheDragon.Dragon;
 import src.mygame.Views.labyrinth;
+import src.mygame.Views.winOrLose;
 
 
 public class FighterCaracter {
@@ -43,6 +44,8 @@ public class FighterCaracter {
         else{
             Dragon.score = 0;
             System.out.println("You win");
+                        new winOrLose();
+
         }
     }
 
@@ -59,6 +62,8 @@ public class FighterCaracter {
     public void lose(FighterCaracter Fighter) {
         if (FighterCaracterUpdateDealth(Fighter) == 1) {
             System.out.println("You lose");
+            new winOrLose();
+
             // break;
         }
     }

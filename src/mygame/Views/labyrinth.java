@@ -75,6 +75,14 @@ public class labyrinth {
     return this.Dragon;
 }
 
+ public int getLifeFighter(){
+    return this.Bnadem.score;
+}
+
+public int getLifeDragon(){
+    return this.Dragon.score;
+}
+
      public labyrinth  getLabyrinth(){
     return this;
      }
@@ -278,6 +286,7 @@ public static void main(String[] args) {
     SwingUtilities.invokeLater(new Runnable() {
         @Override
         public void run() {
+             new winOrLose();
             WelcomingPage welcomingPage = new WelcomingPage();
             labyrinth labyrinthObj = new labyrinth(welcomingPage); // Create an instance of labyrinth
             labyrinthObj.RightSidePanel = new RightSidePanel(labyrinthObj); // Initialize RightSidePanel

@@ -1,7 +1,7 @@
 package src.mygame.Models.TheDragon;
 
 import src.mygame.Models.TheFighter.FighterCaracter;
-
+import src.mygame.Views.winOrLose;
 
 public class Dragon {
 
@@ -37,6 +37,7 @@ public class Dragon {
         }else{
             Fighter.score = 0;
             System.out.println("You lose");
+
         }
     }
 
@@ -53,6 +54,8 @@ public class Dragon {
     public void lose(Dragon Dragon) {
         if (Dragon.death == 1) {
             System.out.println("You win");
+                        new winOrLose();
+
         }
     }
 

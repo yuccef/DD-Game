@@ -14,6 +14,7 @@ JAVAFLAGS = -cp .
 
 # Source files
 SOURCES = src/mygame/Views/labyrinth.java \
+          src/mygame/Views/winOrLose.java\
           src/mygame/WelcomingPage.java \
           src/mygame/Controllers/dragonActionAI.java \
           src/mygame/Controllers/CharactersMovesManage.java \

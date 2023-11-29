@@ -104,7 +104,8 @@ public class WelcomingPage {
     public void showLabyrinthWindow() {    
         charactersWindow.dispose(); //Close the window
         new labyrinth(this);  //Open the labyrinth window
-    }
+       
+      }
    
     public JButton createLevelButton(String label) {
 
