@@ -17,6 +17,8 @@ public class CharactersMovesManage{
     Sound sound = new Sound();
     public String[] picturePaths;
     public String[] piturePathsInverse;
+    public String[] picturePathsAttack;
+    public String[] picturePathsAttackInverse;
     String theLevel;
     String theCharacter;
 
@@ -32,14 +34,20 @@ public class CharactersMovesManage{
             if(theCharacter=="Knight"){
                 picturePaths = Paths.imagePathsPirateRun;
                 piturePathsInverse = Paths.imagePathsPirateRunInverse;
+                picturePathsAttack = Paths.imagePathsPirateAttack;
+                picturePathsAttackInverse = Paths.imagePathsPirateAttackInverse;
             }
             if(theCharacter=="Witch"){
                 picturePaths = Paths.imagePathsWitchRun;
                 piturePathsInverse = Paths.imagePathsWitchRunInverse;
+                picturePathsAttack = Paths.imagePathsWitchAttack;
+                picturePathsAttackInverse = Paths.imagePathsWitchAttackInverse;
             }
             if(theCharacter=="HumanFighter"){
                 picturePaths = Paths.imagePathsFighterRun;
                 piturePathsInverse = Paths.imagePathsFighterRunInverse;
+                picturePathsAttack = Paths.imagePathsFighterAttack;
+                picturePathsAttackInverse = Paths.imagePathsFighterAttackInverse;
             }
         }
 
@@ -216,7 +224,7 @@ public void moveAttack( int Choice, labyrinth labyrinthInstance)  {
                 labyrinth.yFighter = newY;
                 labyrinth.gameTimers.timerFireFighter.start();
                 labyrinth.gameTimers.FirstTimeFighter=0;
-                ShowFighter(Paths.imagePathsFighterAttack[labyrinth.currentImageIndexFighterAttack],Paths.imagePathsDragonRun[labyrinth.currentImageIndexDragonRun], labyrinth);
+                ShowFighter(picturePathsAttack[labyrinth.currentImageIndexFighterAttack],Paths.imagePathsDragonRun[labyrinth.currentImageIndexDragonRun], labyrinth);
 
             }
         }
@@ -239,7 +247,7 @@ public void moveAttack( int Choice, labyrinth labyrinthInstance)  {
                 labyrinth.yFighter = newY;
                  labyrinth.gameTimers.timerFireFighter.start();
                 labyrinth.gameTimers.FirstTimeFighter=0;
-                ShowFighter(Paths.imagePathsFighterAttack[labyrinth.currentImageIndexFighterAttack],Paths.imagePathsDragonRunInverse[labyrinth.currentImageIndexDragonRun], labyrinth);
+                ShowFighter(picturePathsAttack[labyrinth.currentImageIndexFighterAttack],Paths.imagePathsDragonRunInverse[labyrinth.currentImageIndexDragonRun], labyrinth);
 
             }
         }
@@ -263,7 +271,7 @@ public void moveAttack( int Choice, labyrinth labyrinthInstance)  {
             if (canMove) {
                 labyrinth.xFighter = newX;
                 labyrinth.yFighter = newY;
-                ShowFighter(Paths.imagePathsFighterAttackInverse[labyrinth.currentImageIndexFighterAttack],Paths.imagePathsDragonRun[labyrinth.currentImageIndexDragonRun], labyrinth);
+                ShowFighter(picturePathsAttackInverse[labyrinth.currentImageIndexFighterAttack],Paths.imagePathsDragonRun[labyrinth.currentImageIndexDragonRun], labyrinth);
                 labyrinth.gameTimers.timerFireFighter.start();
                 labyrinth.gameTimers.FirstTimeFighter=0;
             }
@@ -285,7 +293,7 @@ public void moveAttack( int Choice, labyrinth labyrinthInstance)  {
             if (canMove) {
                 labyrinth.xFighter = newX;
                 labyrinth.yFighter = newY;
-                ShowFighter(Paths.imagePathsFighterAttackInverse[labyrinth.currentImageIndexFighterAttack],Paths.imagePathsDragonRunInverse[labyrinth.currentImageIndexDragonRun], labyrinth);
+                ShowFighter(picturePathsAttackInverse[labyrinth.currentImageIndexFighterAttack],Paths.imagePathsDragonRunInverse[labyrinth.currentImageIndexDragonRun], labyrinth);
                 labyrinth.gameTimers.timerFireFighter.start();
                 labyrinth.gameTimers.FirstTimeFighter=0;
             }
@@ -314,7 +322,7 @@ public void moveAttack( int Choice, labyrinth labyrinthInstance)  {
             if (canMove) {
                 labyrinth.xDragon = newX;
                 labyrinth.yDragon = newY;
-                ShowFighter(Paths.imagePathsFighterRun[labyrinth.currentImageIndexFighterRun],Paths.imagePathsDragonAttack[labyrinth.currentImageIndexDragonAttack], labyrinth);
+                ShowFighter(picturePaths[labyrinth.currentImageIndexFighterRun],Paths.imagePathsDragonAttack[labyrinth.currentImageIndexDragonAttack], labyrinth);
     
                 labyrinth.gameTimers.timerFire.start();
                 labyrinth.gameTimers.FirstTime=0;
@@ -338,7 +346,7 @@ public void moveAttack( int Choice, labyrinth labyrinthInstance)  {
             if (canMove) {
                 labyrinth.xDragon = newX;
                 labyrinth.yDragon = newY;
-                ShowFighter(Paths.imagePathsFighterRunInverse[labyrinth.currentImageIndexFighterRun],Paths.imagePathsDragonAttack[labyrinth.currentImageIndexDragonAttack], labyrinth);
+                ShowFighter(piturePathsInverse[labyrinth.currentImageIndexFighterRun],Paths.imagePathsDragonAttack[labyrinth.currentImageIndexDragonAttack], labyrinth);
                 labyrinth.gameTimers.timerFire.start();
                 labyrinth.gameTimers.FirstTime=0;
             }
@@ -366,7 +374,7 @@ public void moveAttack( int Choice, labyrinth labyrinthInstance)  {
                         labyrinth.gameTimers.timerFire.start();
                         labyrinth.gameTimers.FirstTime=0;
 
-                ShowFighter(Paths.imagePathsFighterRun[labyrinth.currentImageIndexFighterRun],Paths.imagPathsDragonAttackInverse[labyrinth.currentImageIndexDragonAttack], labyrinth);
+                ShowFighter(picturePaths[labyrinth.currentImageIndexFighterRun],Paths.imagPathsDragonAttackInverse[labyrinth.currentImageIndexDragonAttack], labyrinth);
             }
         }
     }
@@ -389,7 +397,7 @@ public void moveAttack( int Choice, labyrinth labyrinthInstance)  {
                         labyrinth.gameTimers.timerFire.start();
                         labyrinth.gameTimers.FirstTime=0;
 
-                ShowFighter(Paths.imagePathsFighterRunInverse[labyrinth.currentImageIndexFighterRun],Paths.imagPathsDragonAttackInverse[labyrinth.currentImageIndexDragonAttack], labyrinth);
+                ShowFighter(piturePathsInverse[labyrinth.currentImageIndexFighterRun],Paths.imagPathsDragonAttackInverse[labyrinth.currentImageIndexDragonAttack], labyrinth);
             }
         }                              
 }
