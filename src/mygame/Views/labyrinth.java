@@ -69,8 +69,6 @@ public class labyrinth {
 
     int [] indices = new int[4];
 
-    public boolean isAudioPlaying = false;
-
 
     public char SideDragon, SideFighter;
     
@@ -108,34 +106,6 @@ public labyrinth(WelcomingPage welcomingPage) {
     RightSidePanel = new RightSidePanel(labyrinth.this);
     RightSidePanel.RightSidePanelDraw();
 
-    Thelevel = welcomingPageLabyrinth.theLevel;
-    TheCharacter = welcomingPageLabyrinth.theCharacter;
-
-    if(Thelevel == "Easy"){
-        Dragon = Dragon1;
-    }
-    else if(Thelevel == "Medium"){
-        Dragon = Dragon2;
-    }
-    else if(Thelevel == "Hard"){
-        Dragon = Dragon3;
-    }
-
-    if(TheCharacter == "Witch"){
-        Bnadem = Witch;
-    }
-    else if(TheCharacter == "Knight"){
-        Bnadem = Knight;
-    }
-    else if(TheCharacter == "HumanFighter"){
-        Bnadem = HumanFighter;
-    }
-
-
-   
-
-        
-     
 
     
     gameTimers = new GameTimers(this, RightSidePanel);

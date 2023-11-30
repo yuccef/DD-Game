@@ -66,26 +66,27 @@ public class WelcomingPage {
         JPanel buttonsPanel = new JPanel(null);
         buttonsPanel.setBounds(250, 200, 600, 200); 
 
-        CustomButton witchButton = new CustomButton(labelOfKnightButton);
-        CustomButton knightButton = new CustomButton(labelOfWitchButton);
+        CustomButton knightButton = new CustomButton(labelOfKnightButton);
+        CustomButton witchButton = new CustomButton(labelOfWitchButton);
         CustomButton humanFighter = new CustomButton(labelOfHumanFighterButton);
-
-        witchButton.setBounds(400, 300, 100, 100);
-        knightButton.setBounds(520, 300, 100, 100);
+        
+        knightButton.setBounds(400, 300, 100, 100);
+        witchButton.setBounds(520, 300, 100, 100);
         humanFighter.setBounds(640, 300, 100, 100);
 
-        setButtonStyles(witchButton);
+
         setButtonStyles(knightButton);
+        setButtonStyles(witchButton);
         setButtonStyles(humanFighter);
 
-        buttonsPanel.add(witchButton);
         buttonsPanel.add(knightButton);
+        buttonsPanel.add(witchButton);
         buttonsPanel.add(humanFighter);
 
         charactersWindow.add(buttonsPanel);
 
-        witchButton.addActionListener(createButtonListener(1));
-        knightButton.addActionListener(createButtonListener(2));
+        knightButton.addActionListener(createButtonListener(1));
+        witchButton.addActionListener(createButtonListener(2));
         humanFighter.addActionListener(createButtonListener(3));
 
         charactersWindow.setSize(new Dimension(1100, 635));
@@ -178,11 +179,11 @@ public class WelcomingPage {
                 };
                 WelcomingPage caractereButtonInterface = WelcomingPage.this;
                 if(choice == 1){
-                    caractereButtonInterface.theCharacter = "Witch";
+                    caractereButtonInterface.theCharacter = "Knight";
                     WhichCharacter = 1;
                 }
-                else if(choice == 2){
-                    caractereButtonInterface.theCharacter = "Knight";
+               else if(choice == 2){
+                    caractereButtonInterface.theCharacter = "Witch";
                     WhichCharacter = 2;
                 }
                 else if(choice == 3){

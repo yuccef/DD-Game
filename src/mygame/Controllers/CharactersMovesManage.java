@@ -15,11 +15,34 @@ public class CharactersMovesManage{
 
     public labyrinth labyrinthImportant;
     Sound sound = new Sound();
+    public String[] picturePaths;
+    public String[] piturePathsInverse;
+    String theLevel;
+    String theCharacter;
+
+
 
     //I want a construcctor who initialize the labyrinth
     public CharactersMovesManage(labyrinth labyrinthInstance) {
          labyrinthImportant=labyrinthInstance ;
-    }
+         theLevel = labyrinthInstance.RightSidePanel.welcomingPage.theLevel;
+         theCharacter = labyrinthInstance.RightSidePanel.welcomingPage.theCharacter;
+            
+
+            if(theCharacter=="Knight"){
+                picturePaths = Paths.imagePathsPirateRun;
+                piturePathsInverse = Paths.imagePathsPirateRunInverse;
+            }
+            if(theCharacter=="Witch"){
+                picturePaths = Paths.imagePathsWitchRun;
+                piturePathsInverse = Paths.imagePathsWitchRunInverse;
+            }
+            if(theCharacter=="HumanFighter"){
+                picturePaths = Paths.imagePathsFighterRun;
+                piturePathsInverse = Paths.imagePathsFighterRunInverse;
+            }
+        }
+
 
 public void moveFighter(int Choice, int dx, int dy , labyrinth labyrinthImportant) {
         labyrinth labyrinth = this.labyrinthImportant;
@@ -46,7 +69,7 @@ public void moveFighter(int Choice, int dx, int dy , labyrinth labyrinthImportan
             if (canMove) {
                 labyrinth.xFighter = newX;
                 labyrinth.yFighter = newY;
-                ShowFighter(Paths.imagePathsFighterRun[labyrinth.currentImageIndexFighterAttack], Paths.imagePathsDragonRun[labyrinth.currentImageIndexDragonRun], labyrinth);
+                ShowFighter(picturePaths[labyrinth.currentImageIndexFighterAttack], Paths.imagePathsDragonRun[labyrinth.currentImageIndexDragonRun], labyrinth);
          
             }
         }
@@ -67,7 +90,7 @@ public void moveFighter(int Choice, int dx, int dy , labyrinth labyrinthImportan
             if(canMove){
             labyrinth.xDragon=newXX;
             labyrinth.yDragon=newYY;
-            ShowFighter(Paths.imagePathsFighterRun[labyrinth.currentImageIndexFighterRun], Paths.imagePathsDragonRun[labyrinth.currentImageIndexDragonRun], labyrinth);
+            ShowFighter(picturePaths[labyrinth.currentImageIndexFighterRun], Paths.imagePathsDragonRun[labyrinth.currentImageIndexDragonRun], labyrinth);
      
             }
         }
@@ -93,7 +116,7 @@ public void moveFighter(int Choice, int dx, int dy , labyrinth labyrinthImportan
             if (canMove) {
                 labyrinth.xFighter = newX;
                 labyrinth.yFighter = newY;
-                ShowFighter(Paths.imagePathsFighterRunInverse[labyrinth.currentImageIndexFighterRun], Paths.imagePathsDragonRun[labyrinth.currentImageIndexDragonRun], labyrinth);
+                ShowFighter(piturePathsInverse[labyrinth.currentImageIndexFighterRun], Paths.imagePathsDragonRun[labyrinth.currentImageIndexDragonRun], labyrinth);
       
 
             }
@@ -116,7 +139,7 @@ public void moveFighter(int Choice, int dx, int dy , labyrinth labyrinthImportan
             if(canMove){
             labyrinth.xDragon=newXX;
             labyrinth.yDragon=newYY;
-            ShowFighter(Paths.imagePathsFighterRun[labyrinth.currentImageIndexFighterRun], Paths.imagePathsDragonRunInverse[labyrinth.currentImageIndexDragonRun], labyrinth);
+            ShowFighter(picturePaths[labyrinth.currentImageIndexFighterRun], Paths.imagePathsDragonRunInverse[labyrinth.currentImageIndexDragonRun], labyrinth);
             
             }
         }
