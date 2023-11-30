@@ -56,7 +56,6 @@ public class PicturesPath {
         PicturesSheet4 + "run4.png",
         PicturesSheet4 + "run5.png",
         PicturesSheet4 + "run6.png",
-        PicturesSheet4 + "run7.png",
 
     };
 
@@ -67,7 +66,6 @@ public class PicturesPath {
         PicturesSheet4 + "run44.png",
         PicturesSheet4 + "run55.png",
         PicturesSheet4 + "run66.png",
-        PicturesSheet4 + "run77.png",
     };
 
     public String[] imagePathsWitchAttack={
