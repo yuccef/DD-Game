@@ -7,9 +7,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.String;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Random;
 
 
 import src.mygame.Utils.*;
@@ -70,7 +67,7 @@ public class labyrinth {
     int [] indices = new int[4];
 
 
-    public char SideDragon, SideFighter;
+    public char SideDragon='L', SideFighter='R';
     
     public String Fightermove;
 
@@ -269,7 +266,7 @@ public labyrinth(WelcomingPage welcomingPage) {
                        CharactersMovesManage.moveFighter(1,0, 1, labyrinth.this);
                     if(Walk %15==0){
                     sound.playSound(2);
-                    
+
                     }
                     Walk++;
                     Fightermove="run";

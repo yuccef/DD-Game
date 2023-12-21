@@ -54,9 +54,8 @@ public class  DragonActionAI {
 
         case "run":
             System.out.println("The Fighter runs away!");
-            if (FighterAttackChecker == 1) {
-                FighterAttackChecker = 0;
-                if (MapManage.generateRandomZeroOne(80) == 1) {
+            if(labyrinth.yFighter==labyrinth.yDragon){
+                if (MapManage.generateRandomZeroOne(50) == 1) {
                     CharactersMovesManage.moveAttack(2,labyrinth);
                 }
             }
