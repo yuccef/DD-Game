@@ -69,7 +69,7 @@ public class labyrinth {
 
     public char SideDragon='L', SideFighter='R';
     
-    public String Fightermove;
+    public String Fightermove="pause";
 
     public FighterCaracter Bnadem;
     public Dragon Dragon;
@@ -234,6 +234,8 @@ public labyrinth(WelcomingPage welcomingPage) {
             @Override
             public void keyPressed(KeyEvent e) {
                 //key listener for the Fighter
+                                Fightermove="pause";
+
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right Fighter
                     SideFighter = 'R';
                     CharactersMovesManage.moveFighter(1,1, 0, labyrinth.this);
@@ -244,7 +246,9 @@ public labyrinth(WelcomingPage welcomingPage) {
                     Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this);
 
-                } else if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left Fighter
+                } 
+                Fightermove="pause";
+                 if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left Fighter
                     SideFighter = 'L';
                        CharactersMovesManage.moveFighter(1,-1, 0, labyrinth.this);
                     if(Walk %15==0){
@@ -253,7 +257,10 @@ public labyrinth(WelcomingPage welcomingPage) {
                     Walk++;                       Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this);
                 // IN UP AND DOWN I SHOULD TO UPDATE SIDES
-                } else if (e.getKeyCode() == KeyEvent.VK_UP) { // Up Fighter
+                } 
+                                Fightermove="pause";
+
+                 if (e.getKeyCode() == KeyEvent.VK_UP) { // Up Fighter
                        CharactersMovesManage.moveFighter(1,0, -1, labyrinth.this);
                     if(Walk %15==0){
                     sound.playSound(2);
@@ -262,7 +269,10 @@ public labyrinth(WelcomingPage welcomingPage) {
                     Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this );
 
-                } else if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down Fighter
+                }  
+                                Fightermove="pause";
+
+                if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down Fighter
                        CharactersMovesManage.moveFighter(1,0, 1, labyrinth.this);
                     if(Walk %15==0){
                     sound.playSound(2);
@@ -272,17 +282,23 @@ public labyrinth(WelcomingPage welcomingPage) {
                     Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this );
                 }
-                else if (e.getKeyCode()== KeyEvent.VK_ENTER){  //Attack
+                                Fightermove="pause";
+
+                 if (e.getKeyCode()== KeyEvent.VK_ENTER){  //Attack
                        CharactersMovesManage.moveAttack(1, labyrinth.this);
                     Fightermove="Attack";
                     DragonActionAI.DragonActionAI(labyrinth.this);
                     }
-                else if(e.getKeyChar()=='x'|| e.getKeyChar()=='X'){  //Defend
+                                    Fightermove="pause";
+
+                 if(e.getKeyChar()=='x'|| e.getKeyChar()=='X'){  //Defend
                     gameTimers.ShieldFighterCheker=1;
                     gameTimers.timerShieldFighter.start();
                     Fightermove="Defend";            
                     DragonActionAI.DragonActionAI(labyrinth.this );
                 }
+                                Fightermove="pause";
+
        
 
             
@@ -292,21 +308,18 @@ public labyrinth(WelcomingPage welcomingPage) {
                 if(e.getKeyChar() == 'd' || e.getKeyChar() == 'D'){
                     SideDragon = 'R';
                        CharactersMovesManage.moveFighter(2,1, 0,  labyrinth.this);
-                }else if(e.getKeyChar() == 'q' || e.getKeyChar() == 'Q'){
+                }
+                if (e.getKeyChar() == 'q' || e.getKeyChar() == 'Q'){
                     SideDragon = 'L';
                        CharactersMovesManage.moveFighter(2,-1, 0, labyrinth.this);
-                }else if(e.getKeyChar() == 'z' || e.getKeyChar() == 'Z'){
-                                              CharactersMovesManage.moveFighter(2,0, -1, labyrinth.this);
-                }else if(e.getKeyChar() == 's' || e.getKeyChar() == 'S'){
-                     CharactersMovesManage.moveFighter(2,0, 1, labyrinth.this);
-                }
+     
                 // else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 //     moveAttack(2);
                 // }
                 // else if(e.getKeyChar()=='c'|| e.getKeyChar()=='C'){ //we have a problem here andin Shield fighter too
                 //     gameTimers.timerShieldDragon.start();
                 // }   
-               
+                }
             }
              
                 @Override
