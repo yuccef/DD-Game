@@ -269,6 +269,7 @@ public labyrinth(WelcomingPage welcomingPage) {
                        CharactersMovesManage.moveFighter(1,0, 1, labyrinth.this);
                     if(Walk %15==0){
                     sound.playSound(2);
+                    
                     }
                     Walk++;
                     Fightermove="run";
