@@ -237,116 +237,64 @@ public labyrinth(WelcomingPage welcomingPage) {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (!allowKeyEvents) {
-                    return; // Ignore key events if not allowed
+                    return; 
                 }
-                //key listener for the Fighter
-                                Fightermove="pause";
+
+                //key listener for fighter
 
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right Fighter
                     SideFighter = 'R';
-                    // if (WalkRunRight %6==0) {
-                                            Fightermove="run1";
-
-                    //  }
-                        WalkRunRight++;
-                    //  Fightermove="pause";
+                    Fightermove="run";
                     CharactersMovesManage.moveFighter(1,1, 0, labyrinth.this);
-                    if(Walk %15==0){
-                    sound.playSound(2);
-                    }
-                     Walk++;
+                    if(Walk %15==0)   sound.playSound(2);
+
+                    Walk++;
                     allowKeyEvents = false;
                     DragonActionAI.DragonActionAI(labyrinth.this);
                     allowKeyEvents = true;
 
                 } 
-                // Fightermove="pause";
-                 if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left Fighter
-                            if(WalkRun %25==0){
-                    Fightermove="run";
-                                        WalkRun++;
-
-                    }
-                 Fightermove="pause";
-                                       SideFighter = 'L';
-                       CharactersMovesManage.moveFighter(1,-1, 0, labyrinth.this);
-                    if(Walk %15==0){
-                    sound.playSound(2);
-                    }
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left Fighter
+                        SideFighter = 'L';
+                        Fightermove="run";
+                        CharactersMovesManage.moveFighter(1,-1, 0, labyrinth.this);
+                        if(Walk %15==0)  sound.playSound(2);
+                    
                     Walk++;     
+                    allowKeyEvents = false;
                     DragonActionAI.DragonActionAI(labyrinth.this);
-                    // IN UP AND DOWN I SHOULD TO UPDATE SIDES
-                } 
-                // Fightermove="pause";
-                
+                    allowKeyEvents = true;
+                }                
                 if (e.getKeyCode() == KeyEvent.VK_UP) { // Up Fighter
-                                       if(WalkRun %25==0){
-                    Fightermove="run";
-                                        WalkRun++;
 
-                    }
-                 Fightermove="pause";                    
                    CharactersMovesManage.moveFighter(1,0, -1, labyrinth.this);
-                    if(Walk %15==0){
-                    sound.playSound(2);
-                    }
+                   if(Walk %15==0) sound.playSound(2);
                     Walk++;
-                    DragonActionAI.DragonActionAI(labyrinth.this );
-
                 }  
-                                // Fightermove="pause";
-
-                                if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down Fighter
-                                    
-        if(WalkRun %15==0){
-                    Fightermove="run";
-                    }
-                    WalkRun++;                       CharactersMovesManage.moveFighter(1,0, 1, labyrinth.this);
-                    if(Walk %15==0){
-                    sound.playSound(2);
-
-                    }
+                if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down Fighter                 
+                
+                    CharactersMovesManage.moveFighter(1,0, 1, labyrinth.this);
+                    if(Walk %15==0) sound.playSound(2);
                     Walk++;
                     DragonActionAI.DragonActionAI(labyrinth.this );
                 }
-                                // Fightermove="pause";
-
-                 if (e.getKeyCode()== KeyEvent.VK_ENTER){  //Attack
-                       CharactersMovesManage.moveAttack(1, labyrinth.this);
+                if (e.getKeyCode()== KeyEvent.VK_ENTER){  //Attack
+                       
                     Fightermove="Attack";
+                    CharactersMovesManage.moveAttack(1, labyrinth.this);
+                    allowKeyEvents = false;
                     DragonActionAI.DragonActionAI(labyrinth.this);
+                    allowKeyEvents = true;
                     }
-                                    // Fightermove="pause";
-
-                 if(e.getKeyChar()=='x'|| e.getKeyChar()=='X'){  //Defend
+                if (e.getKeyChar()=='x'|| e.getKeyChar()=='X'){  //Defend
                     gameTimers.ShieldFighterCheker=1;
                     gameTimers.timerShieldFighter.start();
-                    Fightermove="Defend";            
+                    Fightermove="Defend";  
+                    allowKeyEvents = false;          
                     DragonActionAI.DragonActionAI(labyrinth.this );
+                    allowKeyEvents = true;
                 }
-                                // Fightermove="pause";
-
-       
-
-            
-
-
-                //key listener for dragon
-                if(e.getKeyChar() == 'd' || e.getKeyChar() == 'D'){
-                    SideDragon = 'R';
-                       CharactersMovesManage.moveFighter(2,1, 0,  labyrinth.this);
-                }
-                if (e.getKeyChar() == 'q' || e.getKeyChar() == 'Q'){
-                    SideDragon = 'L';
-                       CharactersMovesManage.moveFighter(2,-1, 0, labyrinth.this);
-     
-                // else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                //     moveAttack(2);
-                // }
-                // else if(e.getKeyChar()=='c'|| e.getKeyChar()=='C'){ //we have a problem here andin Shield fighter too
-                //     gameTimers.timerShieldDragon.start();
-                // }   
-                }
+    
             }
              
                 @Override

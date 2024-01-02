@@ -200,6 +200,7 @@ if(labyrinth.xFighter==labyrinth.xBonus2 && labyrinth.yFighter==labyrinth.yBonus
 }
 
 public void ShowFighter(String nomImage, String nomImage2, labyrinth labyrinthInstance) {
+
         labyrinth labyrinth=this.labyrinthImportant ;
 
         ImageIcon imageIcon = new ImageIcon(nomImage);
@@ -208,6 +209,7 @@ public void ShowFighter(String nomImage, String nomImage2, labyrinth labyrinthIn
         labyrinth.characterLabel.setIcon(imageIcon);
         labyrinth.DragonLabel.setIcon(imageIcon2);
 
+
         labyrinth.characterLabel.setBounds(labyrinth.xFighter, labyrinth.yFighter, imageIcon.getIconWidth(), imageIcon.getIconHeight());
         labyrinth.DragonLabel.setBounds(labyrinth.xDragon, labyrinth.yDragon, imageIcon2.getIconWidth(), imageIcon2.getIconHeight());
         labyrinth.characterLabel.repaint();
@@ -215,8 +217,16 @@ public void ShowFighter(String nomImage, String nomImage2, labyrinth labyrinthIn
     
 public void moveAttack( int Choice, labyrinth labyrinthInstance)  {
         labyrinth labyrinth=this.labyrinthImportant ;
+        boolean testsoundFire = true;
+
     
     if(Choice==1){
+              if(!testsoundFire){
+            return;
+        }   
+        testsoundFire = false;
+        sound.playSound(5);
+        testsoundFire = true;
         labyrinth.gameTimers.timerShieldFighter.stop();
         labyrinth.FighterShield.setIcon(null); 
          labyrinth.gameTimers.ShieldFighterCheker=0;   
@@ -318,7 +328,7 @@ public void moveAttack( int Choice, labyrinth labyrinthInstance)  {
 }
 }
     if(Choice==2){
-
+  
         labyrinth.gameTimers.timerShieldDragon.stop();
         labyrinth.DragonShield.setIcon(null);
      if(labyrinth.SideDragon=='R'){

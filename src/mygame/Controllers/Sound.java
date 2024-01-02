@@ -9,12 +9,13 @@ public class Sound {
     private URL soundFileUrl[];
 
     public Sound() {
-        soundFileUrl = new URL[5]; // Assuming you have 3 sound files
+        soundFileUrl = new URL[6]; // Assuming you have 3 sound files
         soundFileUrl[0] = getClass().getResource("click-sound.wav");
         soundFileUrl[1] = getClass().getResource("Win-sound.wav");
         soundFileUrl[2] = getClass().getResource("walk-sound.wav");
         soundFileUrl[3] = getClass().getResource("Game-Over-Sound.wav");
         soundFileUrl[4] = getClass().getResource("Collect-Item-Sound.wav");
+        soundFileUrl[5] = getClass().getResource("DragonFire2-sound.wav");
 
     }
 

@@ -53,30 +53,9 @@ public class  DragonActionAI {
             }
             break;
 
-        // case "run1":
-        //     System.out.println("The Fighter runs away!");
-        //     if(labyrinth.yFighter==labyrinth.yDragon){
-        //         if (MapManage.generateRandomZeroOne(50) == 1) {
-        //             CharactersMovesManage.moveFighter(2, labyrinth.xDragon,labyrinth.yDragon,labyrinth);
-        //             CharactersMovesManage.moveAttack(2,labyrinth);
-        //         }
-        //         // if(MapManage.generateRandomZeroOne(50) == 0){
-        //         //     for(int i=0;i<3;i++){
-        //         //         CharactersMovesManage.moveFighter(2, -1,0,labyrinth);
-        //         //     }
-        //         // }
-        //         //  else{
-        //         //     for(int i=0;i<3;i++){
-        //         //         CharactersMovesManage.moveFighter(2, 1,0,labyrinth);
-        //         //     }
+    
 
-        //         //  }
-
-                
-        //     }
-        //     break;
-
-                case "run1":
+                case "run":
             System.out.println("The Fighter on Pause!");
 
             if(labyrinth.yFighter==labyrinth.yDragon){
@@ -94,6 +73,7 @@ public class  DragonActionAI {
                     for(int i=0;i<2;i++){
                         if(labyrinth.xFighter<labyrinth.xDragon) CharactersMovesManage.moveFighter(2, -1,0,labyrinth);
                         else return;
+                        // nzid chi thkrbi9a dial side dragon
                     }
                 }
 
