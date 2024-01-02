@@ -46,6 +46,8 @@ public class labyrinth {
 
 
     public int Walk =15;
+    public int WalkRun=6;
+    public int WalkRunRight=6;
  
     public JLabel characterLabel;
     public JLabel DragonLabel;
@@ -226,70 +228,95 @@ public labyrinth(WelcomingPage welcomingPage) {
 
         //Key Listener
         Window.addKeyListener(new KeyListener() {
-     
+            private boolean allowKeyEvents = true;
+
             @Override
             public void keyTyped(KeyEvent e) {
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
+                if (!allowKeyEvents) {
+                    return; // Ignore key events if not allowed
+                }
                 //key listener for the Fighter
                                 Fightermove="pause";
 
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // Right Fighter
                     SideFighter = 'R';
+                    // if (WalkRunRight %6==0) {
+                                            Fightermove="run1";
+
+                    //  }
+                        WalkRunRight++;
+                    //  Fightermove="pause";
                     CharactersMovesManage.moveFighter(1,1, 0, labyrinth.this);
                     if(Walk %15==0){
                     sound.playSound(2);
                     }
                      Walk++;
-                    Fightermove="run";
+                    allowKeyEvents = false;
                     DragonActionAI.DragonActionAI(labyrinth.this);
+                    allowKeyEvents = true;
 
                 } 
-                Fightermove="pause";
+                // Fightermove="pause";
                  if (e.getKeyCode() == KeyEvent.VK_LEFT) { // Left Fighter
-                    SideFighter = 'L';
+                            if(WalkRun %25==0){
+                    Fightermove="run";
+                                        WalkRun++;
+
+                    }
+                 Fightermove="pause";
+                                       SideFighter = 'L';
                        CharactersMovesManage.moveFighter(1,-1, 0, labyrinth.this);
                     if(Walk %15==0){
                     sound.playSound(2);
                     }
-                    Walk++;                       Fightermove="run";
+                    Walk++;     
                     DragonActionAI.DragonActionAI(labyrinth.this);
-                // IN UP AND DOWN I SHOULD TO UPDATE SIDES
+                    // IN UP AND DOWN I SHOULD TO UPDATE SIDES
                 } 
-                                Fightermove="pause";
+                // Fightermove="pause";
+                
+                if (e.getKeyCode() == KeyEvent.VK_UP) { // Up Fighter
+                                       if(WalkRun %25==0){
+                    Fightermove="run";
+                                        WalkRun++;
 
-                 if (e.getKeyCode() == KeyEvent.VK_UP) { // Up Fighter
-                       CharactersMovesManage.moveFighter(1,0, -1, labyrinth.this);
+                    }
+                 Fightermove="pause";                    
+                   CharactersMovesManage.moveFighter(1,0, -1, labyrinth.this);
                     if(Walk %15==0){
                     sound.playSound(2);
                     }
                     Walk++;
-                    Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this );
 
                 }  
-                                Fightermove="pause";
+                                // Fightermove="pause";
 
-                if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down Fighter
-                       CharactersMovesManage.moveFighter(1,0, 1, labyrinth.this);
+                                if (e.getKeyCode() == KeyEvent.VK_DOWN) { // Down Fighter
+                                    
+        if(WalkRun %15==0){
+                    Fightermove="run";
+                    }
+                    WalkRun++;                       CharactersMovesManage.moveFighter(1,0, 1, labyrinth.this);
                     if(Walk %15==0){
                     sound.playSound(2);
 
                     }
                     Walk++;
-                    Fightermove="run";
                     DragonActionAI.DragonActionAI(labyrinth.this );
                 }
-                                Fightermove="pause";
+                                // Fightermove="pause";
 
                  if (e.getKeyCode()== KeyEvent.VK_ENTER){  //Attack
                        CharactersMovesManage.moveAttack(1, labyrinth.this);
                     Fightermove="Attack";
                     DragonActionAI.DragonActionAI(labyrinth.this);
                     }
-                                    Fightermove="pause";
+                                    // Fightermove="pause";
 
                  if(e.getKeyChar()=='x'|| e.getKeyChar()=='X'){  //Defend
                     gameTimers.ShieldFighterCheker=1;
@@ -297,7 +324,7 @@ public labyrinth(WelcomingPage welcomingPage) {
                     Fightermove="Defend";            
                     DragonActionAI.DragonActionAI(labyrinth.this );
                 }
-                                Fightermove="pause";
+                                // Fightermove="pause";
 
        
 

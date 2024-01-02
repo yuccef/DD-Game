@@ -97,8 +97,15 @@ public class GameTimers {
         timerDragonAttack.start();
 
          timerFire = new Timer(30, new ActionListener() {
+
+            
           @Override
+
+        
+
             public void actionPerformed(ActionEvent e) {
+          
+                
 
                 if(FirstTime==0){
                  xFire = labyrinth.xDragon;
@@ -168,6 +175,7 @@ public class GameTimers {
 
 
                 }   
+
             }
   
         }

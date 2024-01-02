@@ -8,6 +8,7 @@ import src.mygame.Utils.MapMaths;
 
 public class  DragonActionAI {
 
+    private boolean AllowOtherFires = true;   
     FighterCaracter Fighter ;
     Dragon Dragon;
     int FighterAttackChecker=0;
@@ -52,47 +53,52 @@ public class  DragonActionAI {
             }
             break;
 
-        case "run":
-            System.out.println("The Fighter runs away!");
-            if(labyrinth.yFighter==labyrinth.yDragon){
-                if (MapManage.generateRandomZeroOne(50) == 1) {
-                    CharactersMovesManage.moveFighter(2, labyrinth.xDragon,labyrinth.yDragon,labyrinth);
-                    CharactersMovesManage.moveAttack(2,labyrinth);
-                }
-                if(MapManage.generateRandomZeroOne(50) == 0){
-                    for(int i=0;i<3;i++){
-                        CharactersMovesManage.moveFighter(2, -1,0,labyrinth);
-                    }
-                }
-                 else{
-                    for(int i=0;i<3;i++){
-                        CharactersMovesManage.moveFighter(2, 1,0,labyrinth);
-                    }
+        // case "run1":
+        //     System.out.println("The Fighter runs away!");
+        //     if(labyrinth.yFighter==labyrinth.yDragon){
+        //         if (MapManage.generateRandomZeroOne(50) == 1) {
+        //             CharactersMovesManage.moveFighter(2, labyrinth.xDragon,labyrinth.yDragon,labyrinth);
+        //             CharactersMovesManage.moveAttack(2,labyrinth);
+        //         }
+        //         // if(MapManage.generateRandomZeroOne(50) == 0){
+        //         //     for(int i=0;i<3;i++){
+        //         //         CharactersMovesManage.moveFighter(2, -1,0,labyrinth);
+        //         //     }
+        //         // }
+        //         //  else{
+        //         //     for(int i=0;i<3;i++){
+        //         //         CharactersMovesManage.moveFighter(2, 1,0,labyrinth);
+        //         //     }
 
-                 }
+        //         //  }
 
                 
-            }
-            break;
+        //     }
+        //     break;
 
-                case "pause":
+                case "run1":
             System.out.println("The Fighter on Pause!");
+
             if(labyrinth.yFighter==labyrinth.yDragon){
-                if (MapManage.generateRandomZeroOne(50) == 1) {
-                    CharactersMovesManage.moveFighter(2, labyrinth.xDragon,labyrinth.yDragon,labyrinth);
+
+                if(!AllowOtherFires){
+                    return;
+                }
+                AllowOtherFires = false;
+                System.err.println("pause Y");
+                if (MapManage.generateRandomZeroOne(40) == 1) {
+                    
                     CharactersMovesManage.moveAttack(2,labyrinth);
                 }
-                if(MapManage.generateRandomZeroOne(50) == 0){
-                    for(int i=0;i<3;i++){
-                        CharactersMovesManage.moveFighter(2, -1,0,labyrinth);
+                if(MapManage.generateRandomZeroOne(13) == 1){
+                    for(int i=0;i<2;i++){
+                        if(labyrinth.xFighter<labyrinth.xDragon) CharactersMovesManage.moveFighter(2, -1,0,labyrinth);
+                        else return;
                     }
                 }
-                 else{
-                    for(int i=0;i<3;i++){
-                        CharactersMovesManage.moveFighter(2, 1,0,labyrinth);
-                    }
 
-                 }
+                AllowOtherFires = true;
+          
 
                 
             }
