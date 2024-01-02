@@ -90,9 +90,9 @@ public class labyrinth {
     public FighterCaracter Witch = new FighterCaracter( "Witch ",   400, 30, 10, xFighter, yFighter);
     public FighterCaracter Knight = new FighterCaracter( "Knight ",   400, 30, 10, xFighter, yFighter);
 
-    public Dragon Dragon1 = new Dragon("Dragon 1", 400, 20, 20, xDragon, yDragon);
-    public Dragon Dragon2 = new Dragon("Dragon 2", 500, 40, 20, xDragon, yDragon);
-    public Dragon Dragon3 = new Dragon("Dragon 3", 600, 60, 20, xDragon, yDragon);
+    public Dragon Dragon1 = new Dragon("Emberclaw", 400, 20, 20, xDragon, yDragon);
+    public Dragon Dragon2 = new Dragon("Stormwing", 500, 40, 20, xDragon, yDragon);
+    public Dragon Dragon3 = new Dragon("Obsidianheart", 600, 60, 20, xDragon, yDragon);
     public CharactersMovesManage CharactersMovesManage;
     public RightSidePanel RightSidePanel ;
     public WelcomingPage welcomingPageLabyrinth  ;
