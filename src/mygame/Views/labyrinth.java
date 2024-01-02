@@ -76,8 +76,10 @@ public class labyrinth {
     public FighterCaracter Bnadem;
     public Dragon Dragon;
 
-    public String Thelevel;
-    public String TheCharacter;
+
+    String TheLevel;
+
+
 
 
     
@@ -105,6 +107,8 @@ public labyrinth(WelcomingPage welcomingPage) {
     RightSidePanel = new RightSidePanel(labyrinth.this);
     RightSidePanel.RightSidePanelDraw();
 
+    TheLevel = welcomingPageLabyrinth.theLevel;
+
 
     
     gameTimers = new GameTimers(this, RightSidePanel);
@@ -131,7 +135,7 @@ public labyrinth(WelcomingPage welcomingPage) {
                
                 MapMaths MapManage = new MapMaths();
 
-                Lmatrix = MapManage.loadMap();
+                Lmatrix = MapManage.loadMap(TheLevel);
                 Bmatrix = MapManage.CreatTheBigMatrix(Lmatrix);   
 
                 for(int i=0; i<800; i=i+40){
