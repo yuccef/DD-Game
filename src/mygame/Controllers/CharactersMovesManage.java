@@ -72,10 +72,10 @@ public class CharactersMovesManage{
             }
 
             if(theLevel=="Hard"){  //Should be changed
-           picturePathsDragonRun = Paths.imagePathsDragon2run;
-                picturePathsDragonRunInverse =Paths.imagePathsDragon2run;
-                picturePathsDragonAttack = Paths.imagePathsDragon2run;
-                picturePathsDragonAttackInverse = Paths.imagePathsDragon2run;
+           picturePathsDragonRun = Paths.imagePathsDragon3run;
+                picturePathsDragonRunInverse =Paths.imagePathsDragon3run;
+                picturePathsDragonAttack = Paths.imagePathsDragon3run;
+                picturePathsDragonAttackInverse = Paths.imagePathsDragon3run;
             }
         }
 

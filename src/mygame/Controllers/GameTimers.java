@@ -156,7 +156,7 @@ public class GameTimers {
                 labyrinth.FireDragonLabel.setIcon(null);
                 }
                else{
-                    FireAndShieldManage.ShowFire("../Project/src/mygame/resource/GameCharacters/FirstDragon/FireInversed.png", xFire, yFire, labyrinth);
+                    FireAndShieldManage.ShowFire( xFire, yFire, labyrinth);
                     xFire -= 5;
 
                 }
@@ -170,7 +170,7 @@ public class GameTimers {
                     FirstTime=0;    
 
                 }else{
-                     FireAndShieldManage.ShowFire("../Project/src/mygame/resource/GameCharacters/FirstDragon/Fire.png", xFire, yFire, labyrinth);
+                     FireAndShieldManage.ShowFire( xFire, yFire, labyrinth);
                    xFire += 5;
 
 

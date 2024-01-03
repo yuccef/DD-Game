@@ -49,6 +49,7 @@ public class RightSidePanel extends JPanel {
     public String IconeWitch = "../Project/src/mygame/resource/GameCharacters/Witch/IconeWitch.png";
     public String IconeKnight = "../Project/src/mygame/resource/GameCharacters/Knight/IconeKnight.png";
     public String IconeDragon2 = "../Project/src/mygame/resource/GameCharacters/SecondDragon/IconeSecondDragon.png";
+    public String IconeDragon3 = "../Project/src/mygame/resource/GameCharacters/ThirdDragon/ThirdDragonIcone.png";
 
 
 
@@ -76,7 +77,7 @@ public class RightSidePanel extends JPanel {
             IconeDragonLevel = IconeDragon2;
         }else if(theLevel=="Hard"){    //Should be changed
             labyrinthRightSidePanel.Dragon=labyrinthRightSidePanel.Dragon3;
-            IconeDragonLevel = IconeDragon;
+            IconeDragonLevel = IconeDragon3;
 
         }
 
