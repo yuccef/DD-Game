@@ -14,6 +14,7 @@ public class PicturesPath {
     public  String PicturesSheet2 = "../Project/src/mygame/resource/GameCharacters/FirstDragon/";
     public  String PicturesSheet3 = "../Project/src/mygame/resource/GameCharacters/Knight/";
     public  String PicturesSheet4 = "../Project/src/mygame/resource/GameCharacters/Witch/";
+    public  String PicturesSheet22 = "../Project/src/mygame/resource/GameCharacters/SecondDragon/";
     
     //Pictures Path
 
@@ -159,6 +160,27 @@ public class PicturesPath {
         PicturesSheet2 + "Attack55.png",
         PicturesSheet2 + "Attack66.png",
         PicturesSheet2 + "Attack77.png",
+    };
+
+    public String[] imagePathsDragon2runInverse={
+
+        PicturesSheet22 + "run1.png",
+        PicturesSheet22 + "run2.png",
+        PicturesSheet22 + "run3.png",
+        PicturesSheet22 + "run4.png",
+        PicturesSheet22 + "run5.png",
+        PicturesSheet22 + "run6.png",
+        PicturesSheet22 + "run7.png",
+    };
+    
+    public String[] imagePathsDragon2run={
+        PicturesSheet22 + "run11.png",
+        PicturesSheet22 + "run22.png",
+        PicturesSheet22 + "run33.png",
+        PicturesSheet22 + "run44.png",
+        PicturesSheet22 + "run55.png",
+        PicturesSheet22 + "run66.png",
+        PicturesSheet22 + "run77.png",
     };
     
 }

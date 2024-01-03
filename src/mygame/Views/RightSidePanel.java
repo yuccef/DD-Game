@@ -20,6 +20,14 @@ public class RightSidePanel extends JPanel {
 
     public labyrinth labyrinthRightSidePanel;
 
+//RDA NZID TSSAWER DIAL LES DRAGONS
+
+
+
+
+
+
+
 
     public GameTimers gameTimers;
     public JLabel FighterLabelRightSideLife;
@@ -34,11 +42,13 @@ public class RightSidePanel extends JPanel {
 
     public WelcomingPage welcomingPage;
 
-   public String Icone;
+    public String Icone;
+    public String IconeDragonLevel;
     public String IconeFighter = "../Project/src/mygame/resource/GameCharacters/FirstFighter/IconeFighter.png";
     public String IconeDragon = "../Project/src/mygame/resource/GameCharacters/FirstDragon/DragonIcone.png";
     public String IconeWitch = "../Project/src/mygame/resource/GameCharacters/Witch/IconeWitch.png";
     public String IconeKnight = "../Project/src/mygame/resource/GameCharacters/Knight/IconeKnight.png";
+    public String IconeDragon2 = "../Project/src/mygame/resource/GameCharacters/SecondDragon/IconeSecondDragon.png";
 
 
 
@@ -59,10 +69,15 @@ public class RightSidePanel extends JPanel {
 
         if(theLevel=="Easy"){
             labyrinthRightSidePanel.Dragon=labyrinthRightSidePanel.Dragon1;
+            IconeDragonLevel = IconeDragon;
+
         }else if(theLevel=="Medium"){
             labyrinthRightSidePanel.Dragon=labyrinthRightSidePanel.Dragon2;
-        }else if(theLevel=="Hard"){
+            IconeDragonLevel = IconeDragon2;
+        }else if(theLevel=="Hard"){    //Should be changed
             labyrinthRightSidePanel.Dragon=labyrinthRightSidePanel.Dragon3;
+            IconeDragonLevel = IconeDragon;
+
         }
 
 
@@ -206,7 +221,7 @@ public class RightSidePanel extends JPanel {
         //picture
         JLabel DragonLabelRightSidePicture = new JLabel();
         DragonLabelRightSidePicture.setBounds(160, 210, 110,    124);
-        ImageIcon imageIconDragonLabelRightSidePicture = new ImageIcon(IconeDragon);
+        ImageIcon imageIconDragonLabelRightSidePicture = new ImageIcon(IconeDragonLevel);
         Image imageDragonLabelRightSidePicture = imageIconDragonLabelRightSidePicture.getImage();
         Image newImageDragonLabelRightSidePicture = imageDragonLabelRightSidePicture.getScaledInstance(124, 124, Image.SCALE_SMOOTH); 
         imageIconDragonLabelRightSidePicture = new ImageIcon(newImageDragonLabelRightSidePicture); 

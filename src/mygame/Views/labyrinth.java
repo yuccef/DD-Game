@@ -152,8 +152,7 @@ public labyrinth(WelcomingPage welcomingPage) {
        
 
 
-                // g.drawImage(Bonus,300 ,120 , this);
-                //     g.drawImage(Bonus, 530 ,280 , this);
+                
 
                 for(int i=0; i<20;i++){
                     for(int j=0; j<20; j++){
