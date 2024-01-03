@@ -170,7 +170,7 @@ public class GameTimers {
                     FirstTime=0;    
 
                 }else{
-                     FireAndShieldManage.ShowFire( xFire, yFire, labyrinth);
+                     FireAndShieldManage.ShowFire(xFire, yFire, labyrinth);
                    xFire += 5;
 
 
