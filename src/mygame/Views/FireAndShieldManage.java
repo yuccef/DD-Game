@@ -15,8 +15,8 @@ public class FireAndShieldManage {
 
 
     //hna nzid les string dial les fires w les shields
-    String FireDragon1 = "../Project/src/mygame/resource/GameCharacters/FirstDragon/Fire.png";
-    String FireDragon1Inversed = "../Project/src/mygame/resource/GameCharacters/FirstDragon/FireInversed.png";
+    String FireDragon1Inversed = "../Project/src/mygame/resource/GameCharacters/FirstDragon/Fire.png";
+    String FireDragon1 = "../Project/src/mygame/resource/GameCharacters/FirstDragon/FireInversed.png";
 
     String FireDragon2 = "../Project/src/mygame/resource/GameCharacters/SecondDragon/Fire.png";
 
@@ -24,8 +24,8 @@ public class FireAndShieldManage {
 
 
 
-    String ShieldDragon1 = "../Project/src/mygame/resource/GameCharacters/FirstDragon/DragonShield.png";
-    String ShieldDragon1Inversed = "../Project/src/mygame/resource/GameCharacters/FirstDragon/DragonShieldInversed.png";
+    String ShieldDragon1Inversed = "../Project/src/mygame/resource/GameCharacters/FirstDragon/DragonShield.png";
+    String ShieldDragon1  = "../Project/src/mygame/resource/GameCharacters/FirstDragon/DragonShieldInversed.png";
 
     String ShieldDragon2 = "../Project/src/mygame/resource/GameCharacters/SecondDragon/Shield.png";
     String ShieldDragon2Inversed = "../Project/src/mygame/resource/GameCharacters/SecondDragon/ShieldInversed.png";

@@ -385,6 +385,7 @@ public void moveAttack( int Choice, labyrinth labyrinthInstance)  {
             }
         }
     }
+    
                           if(labyrinth.SideFighter=='L'){
          int newX = labyrinth.xDragon ;
         int newY = labyrinth.yDragon ;

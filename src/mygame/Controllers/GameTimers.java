@@ -97,11 +97,8 @@ public class GameTimers {
         timerDragonAttack.start();
 
          timerFire = new Timer(30, new ActionListener() {
-
             
           @Override
-
-        
 
             public void actionPerformed(ActionEvent e) {
           
@@ -111,17 +108,20 @@ public class GameTimers {
                  xFire = labyrinth.xDragon;
                  yFire = labyrinth.yDragon;
                  FirstTime=1;
-                }
-            if(labyrinth.SideDragon=='L'){
+           
+             }
+           
+           
+           
+             if(labyrinth.SideDragon=='L'){
 
                  
-    
             
-       if (xFire <= labyrinth.xFighter   || xFire==40 || xFire==760) {
-                 
-           labyrinth.FireDragonLabel.setIcon(null);
-                  timerFire.stop();
-                    if(xFire<=labyrinth.xFighter && labyrinth.yDragon==labyrinth.yFighter){
+       if (xFire <= labyrinth.xFighter  || xFire==40 || xFire==760) {
+                            labyrinth.FireDragonLabel.setIcon(null);
+
+                    if (labyrinth.yDragon==labyrinth.yFighter){
+                    labyrinth.FireDragonLabel.setIcon(null);
                     timerFire.stop();
                     labyrinth.FireDragonLabel.setIcon(null);
                     Dragon.DamageDragonFighterCaracter(Bnadem, Dragon);
@@ -131,7 +131,10 @@ public class GameTimers {
                     RightSidePanel.FighterLabelRightSideLife.setText(" Vie : " + Bnadem.score);
                     RightSidePanel.FighterLifePanel.repaint();
                     
+                    
                 }
+                    timerFire.stop();
+                    labyrinth.FireDragonLabel.setIcon(null);
                 
            
                     
@@ -160,12 +163,13 @@ public class GameTimers {
                     xFire -= 5;
 
                 }
+            
 
             }
             if(labyrinth.SideDragon=='R'){
              
              if (xFire == labyrinth.xFighter   ||xFire==760) {
-                   timerFire.stop();
+                    timerFire.stop();
                     labyrinth.FireDragonLabel.setIcon(null);
                     FirstTime=0;    
 
@@ -200,8 +204,8 @@ public class GameTimers {
                    timerFireFighter.stop();
 
                     if(xFireFighter >= labyrinth.xDragon && labyrinth.yDragon==labyrinth.yFighter){
-                    timerFireFighter.stop();
                     labyrinth.FireFighterLabel.setIcon(null);
+                    timerFireFighter.stop();
                     Bnadem.DamageFighterCaracterTheDragon(Bnadem, Dragon);
                     Dragon.DragonUpdateDealth(Dragon);
                     Dragon.lose(Dragon);
@@ -211,7 +215,8 @@ public class GameTimers {
                     RightSidePanel.DragonLifePanel.repaint();
                     
                 }
-                
+                timerFireFighter.stop();  
+                labyrinth.FireFighterLabel.setIcon(null);
            
                     
                 }
