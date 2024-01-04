@@ -1,3 +1,12 @@
+/////////This File is Done with Factory Design Pattern///////////////
+
+
+
+//reflichir a quoi sert deja 
+
+
+
+
 package src.mygame.Views;
 
 import javax.swing.*;

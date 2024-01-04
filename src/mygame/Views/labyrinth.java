@@ -35,6 +35,7 @@ public class labyrinth {
     
     public int xFighter = 0;
     public int yFighter = 40;
+
     public int xDragon = 720;
     public int yDragon = 520;
 
@@ -86,9 +87,9 @@ public class labyrinth {
     //Objects
     PicturesPath Paths = new PicturesPath();
     public GameTimers gameTimers;
-    public FighterCaracter HumanFighter = new FighterCaracter( "Human ",   400, 30, 10, xFighter, yFighter);
-    public FighterCaracter Witch = new FighterCaracter( "Witch ",   400, 30, 10, xFighter, yFighter);
-    public FighterCaracter Knight = new FighterCaracter( "Knight ",   400, 30, 10, xFighter, yFighter);
+    public FighterCaracter HumanFighter = FighterCaracter.getHumanFighterInstance();
+    public FighterCaracter Witch = FighterCaracter.getWitchFighterInstance();
+    public FighterCaracter Knight = FighterCaracter.getPirateFighterInstance();
 
     public Dragon Dragon1 = new Dragon("Emberclaw", 400, 20, 20, xDragon, yDragon);
     public Dragon Dragon2 = new Dragon("Stormwing", 500, 40, 20, xDragon, yDragon);

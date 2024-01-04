@@ -1,3 +1,11 @@
+////// il faut que j'utilise le pattern design de singeletton dans le fighter et
+//  dans le dragon  afin d'eviter que deux instance se cree en meme temps 
+//  (voire meme labyrinth)   .
+
+// remarque il faut que je vois si ca marche avec le fait que la creation de l'ojet ne cange pas parcontre il faut que je change la vie a chaque fois 
+
+
+
 package src.mygame.Models.TheFighter;
 
 import src.mygame.Models.TheDragon.Dragon;
@@ -8,13 +16,21 @@ import src.mygame.Controllers.Sound;
 
 public class FighterCaracter {
 
+
+
+
+
+    private static FighterCaracter instanceFighter = null;
+
+
+    public int yFighter ;
+    public  int xFighter ;
+
     public int MATRIX_SIZE = 810;
 
     // Liste des attributs
     labyrinth labyrinth;
 
-    public int xFighter;
-    public int yFighter;
     public int damage;
     public String name;
     public int score;
@@ -29,13 +45,42 @@ public class FighterCaracter {
     
     
     // Liste des méthodes
-    public FighterCaracter( String nom, int initialScore, int initialDamage, int initialDefense, int xFighter1, int yFighter1) {
+    private FighterCaracter( String nom, int initialScore, int initialDamage, int initialDefense, int xFighter1, int yFighter1) {
         name = nom;
         score = initialScore;
         damage = initialDamage;
         defense = initialDefense;
         xFighter =xFighter1;
         yFighter =yFighter1;
+
+    }
+    public static FighterCaracter getHumanFighterInstance() {
+         int  xFighter = 0;
+        int   yFighter = 40;
+        if (instanceFighter == null) {
+            instanceFighter = new FighterCaracter( "Human ",   400, 30, 10, xFighter, yFighter);
+        }
+        return instanceFighter;
+
+    }
+
+    public static FighterCaracter getWitchFighterInstance() {
+         int  xFighter = 0;
+        int   yFighter = 40;
+        if (instanceFighter == null) {
+            instanceFighter =  new FighterCaracter( "Witch ",   400, 30, 10, xFighter, yFighter);
+        }
+            return instanceFighter;
+
+    }
+    
+    public static FighterCaracter getPirateFighterInstance() {
+         int  xFighter = 0;
+        int   yFighter = 40;
+        if (instanceFighter == null) {
+            instanceFighter = new FighterCaracter( "Knight ",   400, 30, 10, xFighter, yFighter);
+        }
+        return instanceFighter;
 
     }
 
