@@ -58,7 +58,7 @@ public class GameTimers {
         Dragon = labyrinthInstance.getDragon();
         labyrinth labyrinth = labyrinthInstance;
         RightSidePanel RightSidePanel =RightSidePanelTest;
-        FireAndShieldManage FireAndShieldManage = new FireAndShieldManage();
+        FireAndShieldManage FireAndShieldManage = new FireAndShieldManage( );
 
                    winOrLose winOrLose = new winOrLose();
 
