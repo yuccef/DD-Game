@@ -5,6 +5,10 @@ import src.mygame.Views.winOrLose;
 
 public class Dragon {
 
+
+    private static Dragon instanceDragon = null;
+
+
     // Liste des attributs
     public int xDragon, yDragon;
     public String name;
@@ -21,7 +25,7 @@ public class Dragon {
 
 
     // Liste des méthodes
-    public Dragon(String nom, int initialScore, int initialDamage, int initialDefense, int xDragon1, int yDragon1) {
+    private Dragon(String nom, int initialScore, int initialDamage, int initialDefense, int xDragon1, int yDragon1) {
         xDragon = xDragon1;
         yDragon = yDragon1;
         name =nom;
@@ -29,6 +33,44 @@ public class Dragon {
         damage = initialDamage;
         defense = initialDefense;
     }
+
+    public static Dragon getDragonEasyLevel() {
+              int xDragon = 720;
+         int yDragon = 520;
+       if (instanceDragon == null) {
+           instanceDragon = new Dragon("Emberclaw", 400, 20, 20, xDragon, yDragon);
+       }
+       return instanceDragon;
+
+   }
+
+    public static Dragon getDragonMediumLevel() {
+               int xDragon = 720;
+         int yDragon = 520;
+       if (instanceDragon == null) {
+           instanceDragon =new Dragon("Stormwing", 500, 40, 20, xDragon, yDragon);
+       }
+       return instanceDragon;
+
+    }
+
+    public static Dragon getDragonHardLevel() {
+         int xDragon = 720;
+         int yDragon = 520;
+       if (instanceDragon == null) {
+           instanceDragon =new Dragon("Obsidianheart", 600, 60, 20, xDragon, yDragon);
+       }
+       return instanceDragon;
+
+    }
+
+
+
+
+
+
+
+
 
     public void DamageDragonFighterCaracter(FighterCaracter Fighter, Dragon Dragon) {
         if(Fighter.score > 0){

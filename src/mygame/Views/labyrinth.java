@@ -91,9 +91,6 @@ public class labyrinth {
     public FighterCaracter Witch = FighterCaracter.getWitchFighterInstance();
     public FighterCaracter Knight = FighterCaracter.getPirateFighterInstance();
 
-    public Dragon Dragon1 = new Dragon("Emberclaw", 400, 20, 20, xDragon, yDragon);
-    public Dragon Dragon2 = new Dragon("Stormwing", 500, 40, 20, xDragon, yDragon);
-    public Dragon Dragon3 = new Dragon("Obsidianheart", 600, 60, 20, xDragon, yDragon);
     public CharactersMovesManage CharactersMovesManage;
     public RightSidePanel RightSidePanel ;
     public WelcomingPage welcomingPageLabyrinth  ;

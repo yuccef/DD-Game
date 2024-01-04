@@ -69,14 +69,14 @@ public class RightSidePanel extends JPanel {
         String theCharacter = welcomingPage.getTheCharacter();
 
         if(theLevel=="Easy"){
-            labyrinthRightSidePanel.Dragon=labyrinthRightSidePanel.Dragon1;
+            labyrinthRightSidePanel.Dragon=Dragon.getDragonEasyLevel();
             IconeDragonLevel = IconeDragon;
 
         }else if(theLevel=="Medium"){
-            labyrinthRightSidePanel.Dragon=labyrinthRightSidePanel.Dragon2;
+            labyrinthRightSidePanel.Dragon= Dragon.getDragonMediumLevel();
             IconeDragonLevel = IconeDragon2;
         }else if(theLevel=="Hard"){    //Should be changed
-            labyrinthRightSidePanel.Dragon=labyrinthRightSidePanel.Dragon3;
+            labyrinthRightSidePanel.Dragon= Dragon.getDragonHardLevel();
             IconeDragonLevel = IconeDragon3;
 
         }
