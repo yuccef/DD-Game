@@ -42,4 +42,3 @@ Feel free to adjust the Makefile or include additional instructions as needed fo
  5. OpenClassroom
  6. Craftpix
  7. encycolorpedia
-
