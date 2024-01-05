@@ -1,14 +1,9 @@
 package src.mygame.Utils;
 
 
-import src.mygame.*;
-
-
 
 public class PicturesPath {
-
-    public void PicturesPath() {
-    }
+    
 
     public  String PicturesSheet = "../Project/src/mygame/resource/GameCharacters/FirstFighter/";
     public  String PicturesSheet2 = "../Project/src/mygame/resource/GameCharacters/FirstDragon/";

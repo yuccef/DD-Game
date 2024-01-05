@@ -1,30 +1,33 @@
-# Organization 
+# Dungeons & Dragons Java Game
 
-## In this project we will use this convention :
+## Overview
+This project is an implementation of the "Dungeons & Dragons" game using Java with a graphical interface built with Java Swing. The game incorporates sound effects, artificial intelligence (AI), and allows players to choose a fighter at the beginning. There are three types of fighters available: Humane Fighter, Knight, and Witch. Players also choose the difficulty level (Easy, Medium, Hard), with each level featuring a dragon opponent with specific characteristics (Name, Life, Damage, Defense). The objective is to navigate through a labyrinth to find and defeat the dragon, using 'enter' to attack and 'x' to defend.
 
-In an object-oriented programming (OOP) Java game, the organization and naming of folders typically follow certain conventions to ensure a well-structured and maintainable codebase/ Here is a common folder structure that you might find in an OOP Java game:
+## Features
+- Choose from three different types of fighters: Humane Fighter, Knight, or Witch.
+- Select the difficulty level: Easy, Medium, or Hard.
+- Navigate through a labyrinth to find and battle a dragon.
+- Use 'enter' to attack and 'x' to defend during the dragon encounter.
+- Monitor round characteristics, dynamic features (e.g., life), and a timer on the right side panel.
+- Utilize Design Patterns such as Factory, Observer, and Singleton.
 
-    src: This folder contains all the source code for your Java game/
-        com: This folder includes the top-level package for your game/
-            yourcompanyname: Replace this with your actual company name or a unique identifier for your project/
-                game: This folder contains the main game code/
-                    models: This folder contains the various models or classes representing different objects in the game, such as Player, Enemy, Item, etc/
-                    views: This folder contains the different views or screens of the game, such as MainMenu, GameScreen, EndScreen, etc/
-                    controllers: This folder contains the controller classes that handle user input and manage the game logic/
-                    utils: This folder contains utility classes or helper functions used throughout the game/
-                    resources: This folder contains any external resources needed for the game, such as images, sound files, or other assets/
+## Project Organization
 
-    lib: This folder may contain any external libraries or dependencies that your game requires/
+### Project Structure
+- **src**: Contains all the source code for the Java game.
+  - **game**: Main game code.
+    - **models**: Classes representing different objects in the game (Dragons & Fighters).
+    - **views**: Different views or screens of the game (Labyrinth, RightSidePanel, FireAndShield, etc.).
+    - **controllers**: Classes handling user input and managing game logic (DragonActionAI, CharactersMovesManage, Sound, etc.).
+    - **utils**: Utility classes or helper functions used throughout the game (PicturePaths, MapMaths).
+    - **resources**: External resources needed for the game, such as images (Packages for each Dragon/Fighter).
 
-    res: This folder may contain additional resources, such as configuration files, game data, or other assets needed during runtime/
+### Compilation
+To simplify the execution of the project, a Makefile has been provided. Follow these steps:
+1. Export all files (the entire project).
+2. Open your terminal and navigate to the project directory.
+3. Enter the command `make` in the terminal.
+4. Begin playing the game!
 
-It's important to note that the folder structure may vary depending on the specific requirements of your game and the preferences of the development team/ However, following a structured organization like the one described above can help improve the readability, maintainability, and scalability of your codebase/
+Feel free to adjust the Makefile or include additional instructions as needed for your specific development environment.
 
-
-
-
-
-
-PS C:\Users\layal\Desktop\S6\projet java\project> javac src/mygame/labyrinth.java src/mygame/Controllers/CharactersMovesManage.java src/mygame/Controllers/dragonActionAI.java src/mygame/Controllers/GameTimers.java src/mygame/Models/TheDragon/Dragon.java src/mygame/Models/TheFighter/FighterCaracter.java src/mygame/Utils/MapMaths.java src/mygame/Utils/PicturesPath.java src/mygame/Views/FireAndShieldManage.java src/mygame/Views/RightSidePanel.java
-
-PS C:\Users\layal\Desktop\S6\projet java\project>  java -cp . src.mygame.labyrinth

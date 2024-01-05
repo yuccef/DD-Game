@@ -51,7 +51,7 @@ public class WelcomingPage {
 
         labelOfWitchButton = new JLabel("Sorciere");
         labelOfKnightButton = new JLabel("Chevalier");
-        labelOfHumanFighterButton = new JLabel("Bnadem");
+        labelOfHumanFighterButton = new JLabel("Civil");
 
         Font font = new Font("Georgia", Font.BOLD, 16);
         labelOfKnightButton.setFont(font);
