@@ -6,7 +6,7 @@ import src.mygame.Views.winOrLose;
 public class Dragon {
 
 
-    private static Dragon instanceDragon = null;
+    public  static  Dragon instanceDragon = null;
 
 
     // Liste des attributs
