@@ -31,3 +31,15 @@ To simplify the execution of the project, a Makefile has been provided. Follow t
 
 Feel free to adjust the Makefile or include additional instructions as needed for your specific development environment.
 
+
+
+
+### Sources 
+ 1. Github
+ 2. Stack overflow
+ 3.  Cours developpement jeux et video (Université de Lorraine)
+ 4.  Youtube
+ 5. OpenClassroom
+ 6. Craftpix
+ 7. encycolorpedia
+ 
