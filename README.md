@@ -1,9 +1,11 @@
 # Dungeons & Dragons Java Game
 
 ## Overview
+
 This project is an implementation of the "Dungeons & Dragons" game using Java with a graphical interface built with Java Swing. The game incorporates sound effects, artificial intelligence (AI), and allows players to choose a fighter at the beginning. There are three types of fighters available: Humane Fighter, Knight, and Witch. Players also choose the difficulty level (Easy, Medium, Hard), with each level featuring a dragon opponent with specific characteristics (Name, Life, Damage, Defense). The objective is to navigate through a labyrinth to find and defeat the dragon, using 'enter' to attack and 'x' to defend.
 
 ## Features
+
 - Choose from three different types of fighters: Humane Fighter, Knight, or Witch.
 - Select the difficulty level: Easy, Medium, or Hard.
 - Navigate through a labyrinth to find and battle a dragon.
@@ -14,6 +16,7 @@ This project is an implementation of the "Dungeons & Dragons" game using Java wi
 ## Project Organization
 
 ### Project Structure
+
 - **src**: Contains all the source code for the Java game.
   - **game**: Main game code.
     - **models**: Classes representing different objects in the game (Dragons & Fighters).
@@ -23,7 +26,9 @@ This project is an implementation of the "Dungeons & Dragons" game using Java wi
     - **resources**: External resources needed for the game, such as images (Packages for each Dragon/Fighter).
 
 ### Compilation
+
 To simplify the execution of the project, a Makefile has been provided. Follow these steps:
+
 1. Export all files (the entire project).
 2. Open your terminal and navigate to the project directory.
 3. Enter the command `make` in the terminal.
@@ -32,9 +37,8 @@ To simplify the execution of the project, a Makefile has been provided. Follow t
 Feel free to adjust the Makefile or include additional instructions as needed for your specific development environment.
 
 
-
-
 ## Sources 
+
  1. Github
  2. Stack overflow
  3.  Cours developpement jeux et video (Université de Lorraine)
