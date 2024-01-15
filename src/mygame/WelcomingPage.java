@@ -12,7 +12,7 @@ import src.mygame.Models.TheFighter.FighterCaracter;
 import src.mygame.Views.*;
 
 
-public class WelcomingPage {
+public  class WelcomingPage {
 
     public JFrame charactersWindow;
     public JLabel labelOfWitchButton;

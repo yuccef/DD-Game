@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.String;
+import java.math.*;
 
 
 import src.mygame.Utils.*;
@@ -160,6 +161,26 @@ public labyrinth(WelcomingPage welcomingPage) {
                     }   
                 }
 
+                        
+
+        // int clearRadius = 120; 
+        // int characterCenterX = xFighter + 100; 
+        // int characterCenterY = yFighter + 100; 
+        // g.setColor(new Color(0, 0, 0, 0)); 
+        // g.fillOval(characterCenterX - clearRadius, characterCenterY - clearRadius, clearRadius * 2, clearRadius * 2);
+
+
+
+        
+        
+        
+
+        // g.setColor(new Color(0, 0, 0, 200)); // Adjust the color and alpha value as needed
+        // g.fillRect(0, 0, getWidth(), getHeight());
+
+
+
+ 
         }             
     };
 

@@ -7,7 +7,9 @@ import src.mygame.Models.TheFighter.FighterCaracter;
 import src.mygame.Views.labyrinth;
 import src.mygame.Utils.MapMaths;
 
+
 public class  DragonActionAI {
+
 
     private boolean AllowOtherFires = true;   
     FighterCaracter Fighter ;
