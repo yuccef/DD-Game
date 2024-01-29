@@ -170,10 +170,17 @@ public labyrinth(WelcomingPage welcomingPage) {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-
+                Image WallMap;
                 Image RoadMap = new ImageIcon("../Project/src/mygame/resource/MapPixels/labyrinth1.jpg").getImage();
-                Image WallMap = new ImageIcon("../Project/src/mygame/resource/MapPixels/labyrinth2.jpg").getImage();
-
+                if(TheLevel=="Easy"){
+                   WallMap = new ImageIcon("../Project/src/mygame/resource/MapPixels/labyrinth2.jpg").getImage();
+                }
+                else if(TheLevel=="Medium"){
+                   WallMap = new ImageIcon("../Project/src/mygame/resource/MapPixels/labyrinth3.jpg").getImage();
+                }
+                else{
+                   WallMap = new ImageIcon("../Project/src/mygame/resource/MapPixels/labyrinth4.jpg").getImage();
+                }
                
                 MapMaths MapManage = new MapMaths();
 
