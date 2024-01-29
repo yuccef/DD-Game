@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.border.*;
 import java.lang.String;
 
+import src.mygame.Controllers.Sound;
 import src.mygame.Models.TheFighter.FighterCaracter;
 import src.mygame.Views.*;
 
@@ -29,6 +30,7 @@ public  class WelcomingPage {
 
 
     LevelsOfGame niveau = new LevelsOfGame();
+    Sound       sound = new Sound();
 
 
     public  void WelcomingPage(){
@@ -45,6 +47,9 @@ public  class WelcomingPage {
     }
 
     public void showCaracterButton() {
+
+        sound.playSound(6);
+
 
         charactersWindow = new JFrame("Choisir le Fighter");
         charactersWindow.setLocation(0,0);

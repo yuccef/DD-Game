@@ -217,21 +217,11 @@ public labyrinth(WelcomingPage welcomingPage) {
                         }
                     }   
                 }
-            //     if(testBegin==0){
-            //         xColor=200;
-            //         testBegin=1;
-            //         Timer timer = new Timer(7000, e -> {
-            //            labyrinthDarkness(g);
-            //        });
-            //        timer.start();   
-            
-            //    }
-            //     labyrinthDarkness(g);
+         
 
             if (testBegin == 0) {
                                     xColor=200;
 
-                // Delay darkness for 3 seconds
                 Timer timer = new Timer(3000, e -> {
                     labyrinthDarkness(g);
                 });
