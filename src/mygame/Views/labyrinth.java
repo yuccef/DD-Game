@@ -7,7 +7,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.String;
-import java.math.*;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
 
 
 import src.mygame.Utils.*;
@@ -95,6 +96,48 @@ public class labyrinth {
     public CharactersMovesManage CharactersMovesManage;
     public RightSidePanel RightSidePanel ;
     public WelcomingPage welcomingPageLabyrinth  ;
+    public JPanel DrawLabyrinthPanel;
+
+
+public void labyrinthDarkness(Graphics g) {
+    int clearRadius = 120;
+
+    Graphics2D g2d = (Graphics2D) g;
+
+    int yDragonCenter = yDragon;
+
+    int xFighterCenter = xFighter;  
+    int yFighterCenter = yFighter;
+
+    int xColor;
+
+
+
+    if( yDragonCenter-yFighterCenter>10 || yFighterCenter-yDragonCenter>10){
+        xColor=200;
+    }
+
+    else{
+        xColor=0;
+    }
+
+    g2d.setColor(new Color(0, 0, 0, xColor));
+    g2d.fillRect(0, 0, Window.getWidth(), Window.getHeight());
+
+
+    Area labyrinthArea = new Area(new Ellipse2D.Double(-150, -100, Window.getWidth()+250, Window.getHeight()+200));
+
+    Area clearRadiusArea = new Area(new Ellipse2D.Double(xFighterCenter - clearRadius, yFighterCenter - clearRadius, clearRadius * 2, clearRadius * 2));
+
+    labyrinthArea.subtract(clearRadiusArea);
+
+    g2d.setComposite(AlphaComposite.SrcOver);
+
+
+    g2d.fill(labyrinthArea);
+
+    DrawLabyrinthPanel.repaint();
+}
 
 
 //Methods
@@ -123,7 +166,7 @@ public labyrinth(WelcomingPage welcomingPage) {
 
         
         //Map Panel
-        JPanel DrawLabyrinthPanel = new JPanel() {
+         DrawLabyrinthPanel = new JPanel() {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -147,11 +190,8 @@ public labyrinth(WelcomingPage welcomingPage) {
                     }
      
                 }
-                //juste un exemple
        
 
-
-                
 
                 for(int i=0; i<20;i++){
                     for(int j=0; j<20; j++){
@@ -161,23 +201,16 @@ public labyrinth(WelcomingPage welcomingPage) {
                     }   
                 }
 
+                labyrinthDarkness(g);
+
+             
                         
 
-        // int clearRadius = 120; 
-        // int characterCenterX = xFighter + 100; 
-        // int characterCenterY = yFighter + 100; 
-        // g.setColor(new Color(0, 0, 0, 0)); 
-        // g.fillOval(characterCenterX - clearRadius, characterCenterY - clearRadius, clearRadius * 2, clearRadius * 2);
 
 
 
         
         
-        
-
-        // g.setColor(new Color(0, 0, 0, 200)); // Adjust the color and alpha value as needed
-        // g.fillRect(0, 0, getWidth(), getHeight());
-
 
 
  
@@ -299,6 +332,8 @@ public labyrinth(WelcomingPage welcomingPage) {
                     if(Walk %15==0) sound.playSound(2);
                     Walk++;
                     DragonActionAI.DragonActionAI(labyrinth.this );
+                  
+                    
                 }
                 if (e.getKeyCode()== KeyEvent.VK_ENTER){  //Attack
                        
@@ -316,6 +351,8 @@ public labyrinth(WelcomingPage welcomingPage) {
                     DragonActionAI.DragonActionAI(labyrinth.this );
                     allowKeyEvents = true;
                 }
+
+                DrawLabyrinthPanel.repaint();
     
             }
              
@@ -323,9 +360,13 @@ public labyrinth(WelcomingPage welcomingPage) {
             public void keyReleased(KeyEvent e) {
                 }
             });
+
         
         Window.setVisible(true);
         DragonActionAI.DragonActionAI(labyrinth.this);
+
+
+
 
 
     }
